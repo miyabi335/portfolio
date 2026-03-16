@@ -19,7 +19,6 @@
             padding: 0 15px; 
         }
 
-        /* 基本のボタンスタイル（白） */
         .link-btn {
             background: #fff;
             color: #007aff;
@@ -57,7 +56,7 @@
         }
 
         .btn-title {
-            font-size: 1.1rem; /* タイトル文字を大きく */
+            font-size: 1.1rem;
             font-weight: bold;
             display: block;
         }
@@ -76,8 +75,8 @@
 <div class="link-grid">
     <script>
         const linkData = {
-            // 1-10番（1-10は薄い橙色）
-            1: { name: "Yahoo Japan", url: "https://www.yahoo.co.jp/" },
+            // 1-10番（薄い橙色）
+            1: { name: "公式サイト", url: "https://sanseito.jp/" },
             2: { name: "最新ニュース", url: "https://sanseito.jp/news/" },
             3: { name: "イベント", url: "https://info.sanseito.jp/" },
             4: { name: "メンバー", url: "https://sanseito.jp/member/" },
@@ -88,8 +87,9 @@
             9: { name: "TikTok", url: "https://www.tiktok.com/@sanseito" },
             10: { name: "選挙ドットコム", url: "https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" },
             
-            // 16番（通常の白ボタン）
-            16: { name: "読売新聞", url: "https://www.yomiuri.co.jp/" },
+            // 16-17番（白ボタン）
+            16: { name: "Yahoo Japan", url: "https://www.yahoo.co.jp/" },
+            17: { name: "読売新聞", url: "https://www.yomiuri.co.jp/" },
             
             // 18-25番（薄い水色）
             18: { name: "産経新聞", url: "https://www.sankei.com/" },
@@ -107,7 +107,6 @@
             let url = `link${i}.html`;
             let extraClass = "";
 
-            // 配色判定
             if (i >= 1 && i <= 10) {
                 extraClass = " orange-btn";
             } else if (i >= 18 && i <= 25) {
