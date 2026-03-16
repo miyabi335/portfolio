@@ -3,12 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Links 1-100</title>
+    <title>Links 1-100 - Sakura Edition</title>
     <style>
-        body { font-family: sans-serif; margin: 0; background: #f5f5f7; text-align: center; color: #333; }
-        .header-container { position: relative; width: 100%; height: 15vh; overflow: hidden; background: #333; }
-        .header-image { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
-        .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
+        /* ページ全体の背景設定（桜色と模様） */
+        body { 
+            font-family: sans-serif; 
+            margin: 0; 
+            background-color: #fff0f5; /* 薄い桜色 */
+            /* 桜の花びらをイメージした背景パターン（CSSで表現） */
+            background-image: 
+                radial-gradient(#ffc0cb 10%, transparent 20%),
+                radial-gradient(#ffc0cb 10%, transparent 20%);
+            background-position: 0 0, 50px 50px;
+            background-size: 100px 100px;
+            text-align: center; 
+            color: #333; 
+        }
+
+        .header-container { 
+            position: relative; 
+            width: 100%; 
+            height: 15vh; 
+            overflow: hidden; 
+            background: #ffb7c5; /* ヘッダーも桜色ベース */
+        }
+        .header-image { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            opacity: 0.5; /* 背景と馴染ませる */
+        }
+        .header-text { 
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            color: #fff; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); 
+        }
         
         .link-grid { 
             display: grid; 
@@ -16,7 +48,10 @@
             gap: 10px; 
             max-width: 1000px; 
             margin: 30px auto; 
-            padding: 0 15px; 
+            padding: 20px; 
+            background: rgba(255, 255, 255, 0.4); /* グリッドの背景を少し白くして透かす */
+            border-radius: 15px;
+            backdrop-filter: blur(2px); /* 背景を少しぼかしてボタンを見やすく */
         }
 
         .link-btn {
@@ -34,6 +69,7 @@
             justify-content: center;
             min-height: 70px;
             line-height: 1.4;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
         /* 1-10番：薄い橙色 */
@@ -45,11 +81,23 @@
         /* 36-45番：薄い黄色 */
         .yellow-btn { background: #fffde7; color: #827717; border-color: #fff176; }
 
-        .link-btn:hover { opacity: 0.7; transform: translateY(-2px); }
+        .link-btn:hover { 
+            opacity: 0.8; 
+            transform: translateY(-3px); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
         .btn-title { font-size: 1.1rem; font-weight: bold; display: block; }
 
         .footer-nav { margin: 40px 0; }
-        .back-btn { padding: 10px 30px; background: #666; color: #fff; text-decoration: none; border-radius: 20px; font-weight: bold; }
+        .back-btn { 
+            padding: 12px 40px; 
+            background: #ff80ab; /* 戻るボタンも桜色に */
+            color: #fff; 
+            text-decoration: none; 
+            border-radius: 25px; 
+            font-weight: bold; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body>
@@ -86,7 +134,7 @@
             24: { name: "CNN", url: "https://www.cnn.co.jp/" },
             25: { name: "BBC", url: "https://www.bbc.com/japanese" },
 
-            // 26-35番（薄いグリーン）
+            // 26-35番（薄いグリーン：政党HP）
             26: { name: "自由民主党", url: "https://www.jimin.jp/" },
             27: { name: "日本維新の会", url: "https://o-ishin.jp/" },
             28: { name: "中道改革連合", url: "https://craj.jp/" },
@@ -98,7 +146,7 @@
             34: { name: "日本保守党", url: "https://hoshuto.jp/" },
             35: { name: "社会民主党", url: "https://sdp.or.jp/" },
 
-            // 36-45番（薄い黄色：Xアカウント訂正反映）
+            // 36-45番（薄い黄色：政党Xアカウント）
             36: { name: "自民党(X)", url: "https://x.com/jimin_koho" },
             37: { name: "維新(X)", url: "https://x.com/osaka_ishin" },
             38: { name: "中道改革(X)", url: "https://x.com/CRAJ2026" },
@@ -116,15 +164,10 @@
             let url = `link${i}.html`;
             let extraClass = "";
 
-            if (i >= 1 && i <= 10) {
-                extraClass = " orange-btn";
-            } else if (i >= 16 && i <= 25) {
-                extraClass = " blue-btn";
-            } else if (i >= 26 && i <= 35) {
-                extraClass = " green-btn";
-            } else if (i >= 36 && i <= 45) {
-                extraClass = " yellow-btn";
-            }
+            if (i >= 1 && i <= 10) extraClass = " orange-btn";
+            else if (i >= 16 && i <= 25) extraClass = " blue-btn";
+            else if (i >= 26 && i <= 35) extraClass = " green-btn";
+            else if (i >= 36 && i <= 45) extraClass = " yellow-btn";
 
             if (linkData[i]) {
                 label = `No.${i}<span class="btn-title">${linkData[i].name}</span>`;
