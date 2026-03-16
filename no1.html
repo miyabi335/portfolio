@@ -3,122 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Links 1-100 - Dark Modern Sakura</title>
+    <title>Links 1-100 - Sophisticated Dark AI Edition</title>
     <style>
-        /* 背景：ダークモードでおしゃれな夜桜イメージ */
+        /* 背景：高級感のある抽象的なダークモード */
         body { 
-            font-family: sans-serif; 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
             margin: 0; 
-            background-color: #0f172a; /* 深い紺色 */
-            /* 幻想的な夜の空気感と舞い散る花びら */
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(219, 112, 147, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
-                /* 舞い散る花びらを表現した白い輝き */
-                radial-gradient(rgba(255, 192, 203, 0.2) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 40px 40px;
+            background: radial-gradient(circle at top right, #1e293b, #0f172a 60%);
+            background-color: #020617; 
             background-attachment: fixed;
             text-align: center; 
             color: #f1f5f9; 
+            overflow-x: hidden;
+        }
+
+        /* 抽象的な光の演出 */
+        body::before {
+            content: "";
+            position: fixed;
+            top: -10%; left: -10%; width: 40%; height: 40%;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+        body::after {
+            content: "";
+            position: fixed;
+            bottom: -10%; right: -10%; width: 50%; height: 50%;
+            background: radial-gradient(circle, rgba(219, 112, 147, 0.05) 0%, transparent 70%);
+            z-index: -1;
         }
 
         .header-container { 
             position: relative; 
             width: 100%; 
-            height: 15vh; 
-            overflow: hidden; 
-            background: linear-gradient(to right, #1e293b, #334155);
-            border-bottom: 1px solid rgba(255, 182, 193, 0.3);
+            height: 12vh; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
         }
-        .header-image { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            opacity: 0.2; /* ダークモードに合わせて控えめに */
-        }
-        .header-text { 
-            position: absolute; 
-            top: 50%; 
-            left: 50%; 
-            transform: translate(-50%, -50%); 
-            color: #fff; 
-            text-shadow: 0 0 15px rgba(255, 182, 193, 0.8); /* ぼんやり光るような演出 */
-            letter-spacing: 2px;
+
+        .header-text h1 { 
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 200;
+            letter-spacing: 0.3em;
+            color: #fff;
+            text-transform: uppercase;
         }
         
         .link-grid { 
             display: grid; 
             grid-template-columns: repeat(5, 1fr); 
-            gap: 12px; 
-            max-width: 1000px; 
-            margin: 30px auto; 
-            padding: 25px; 
-            /* ガラスのような透過エフェクト（グラスモーフィズム） */
-            background: rgba(255, 255, 255, 0.05); 
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            gap: 15px; 
+            max-width: 1100px; 
+            margin: 40px auto; 
+            padding: 30px; 
+            background: rgba(255, 255, 255, 0.02); 
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
         }
 
-        /* ボタンのデザインは変更せず、視認性だけ調整 */
         .link-btn {
             background: #fff;
             color: #007aff;
             border: 2px solid #007aff;
             padding: 12px 5px;
-            border-radius: 8px;
+            border-radius: 12px;
             text-decoration: none;
             font-size: 0.8em;
-            transition: 0.3s;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 70px;
+            min-height: 75px;
             line-height: 1.4;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
-        /* 各色のボタン設定（維持） */
+        /* カテゴリ色（既存分） */
         .orange-btn { background: #fff4e6; color: #d35400; border-color: #ffcc99; }
         .blue-btn { background: #e1f5fe; color: #0277bd; border-color: #0277bd; }
         .green-btn { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
         .yellow-btn { background: #fffde7; color: #827717; border-color: #fff176; }
 
-        .link-btn:hover { 
-            opacity: 0.8; 
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+        /* 新規：No.46-50 薄い紫色（ラベンダー） */
+        .purple-btn { 
+            background: #f3e5f5; 
+            color: #7b1fa2; 
+            border-color: #ce93d8; 
         }
-        .btn-title { font-size: 1.1rem; font-weight: bold; display: block; }
 
-        .footer-nav { margin: 50px 0; }
+        .link-btn:hover { 
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.05);
+        }
+        .btn-title { font-size: 1.05rem; font-weight: bold; display: block; margin-top: 2px; }
+
+        .footer-nav { margin: 60px 0; }
         .back-btn { 
-            padding: 12px 40px; 
-            background: rgba(255, 255, 255, 0.1); 
-            color: #fff; 
+            padding: 14px 50px; 
+            background: transparent; 
+            color: rgba(255, 255, 255, 0.6); 
             text-decoration: none; 
-            border-radius: 30px; 
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px; 
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
             transition: 0.3s;
         }
         .back-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: #ffb6c1;
+            color: #fff;
+            border-color: #fff;
+            background: rgba(255, 255, 255, 0.05);
         }
     </style>
 </head>
 <body>
 
 <header class="header-container">
-    <img src="p1.jpg" alt="Header" class="header-image">
-    <div class="header-text"><h1>LINKS 1-100</h1></div>
+    <div class="header-text"><h1>Links Dashboard</h1></div>
 </header>
 
 <div class="link-grid">
     <script>
         const linkData = {
-            // 1-10番（薄い橙色：参政党関連）
+            // 1-10番（橙）
             1: { name: "公式サイト", url: "https://sanseito.jp/" },
             2: { name: "最新ニュース", url: "https://sanseito.jp/news/" },
             3: { name: "イベント", url: "https://info.sanseito.jp/" },
@@ -130,7 +144,7 @@
             9: { name: "TikTok", url: "https://www.tiktok.com/@sanseito" },
             10: { name: "選挙ドットコム", url: "https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" },
             
-            // 16-25番（薄い水色：ニュース）
+            // 16-25番（水色）
             16: { name: "Yahoo Japan", url: "https://www.yahoo.co.jp/" },
             17: { name: "読売新聞", url: "https://www.yomiuri.co.jp/" },
             18: { name: "産経新聞", url: "https://www.sankei.com/" },
@@ -142,7 +156,7 @@
             24: { name: "CNN", url: "https://www.cnn.co.jp/" },
             25: { name: "BBC", url: "https://www.bbc.com/japanese" },
 
-            // 26-35番（薄いグリーン：政党HP）
+            // 26-35番（緑）
             26: { name: "自由民主党", url: "https://www.jimin.jp/" },
             27: { name: "日本維新の会", url: "https://o-ishin.jp/" },
             28: { name: "中道改革連合", url: "https://craj.jp/" },
@@ -154,7 +168,7 @@
             34: { name: "日本保守党", url: "https://hoshuto.jp/" },
             35: { name: "社会民主党", url: "https://sdp.or.jp/" },
 
-            // 36-45番（薄い黄色：政党Xアカウント）
+            // 36-45番（黄）
             36: { name: "自民党(X)", url: "https://x.com/jimin_koho" },
             37: { name: "維新(X)", url: "https://x.com/osaka_ishin" },
             38: { name: "中道改革(X)", url: "https://x.com/CRAJ2026" },
@@ -164,7 +178,14 @@
             42: { name: "チームみらい(X)", url: "https://x.com/team_mirai_jp" },
             43: { name: "れいわ(X)", url: "https://x.com/reiwashinsen" },
             44: { name: "保守党(X)", url: "https://x.com/hoshuto_jp" },
-            45: { name: "社民党(X)", url: "https://x.com/SDPJapan" }
+            45: { name: "社民党(X)", url: "https://x.com/SDPJapan" },
+
+            // 46-50番（紫：AIツール）
+            46: { name: "ChatGPT", url: "https://chatgpt.com/" },
+            47: { name: "Google Gemini", url: "https://gemini.google.com/app" },
+            48: { name: "Claude AI", url: "https://claude.ai/new" },
+            49: { name: "Perplexity", url: "https://www.perplexity.ai/" },
+            50: { name: "Copilot", url: "https://copilot.microsoft.com/" }
         };
 
         for (let i = 1; i <= 100; i++) {
@@ -176,6 +197,7 @@
             else if (i >= 16 && i <= 25) extraClass = " blue-btn";
             else if (i >= 26 && i <= 35) extraClass = " green-btn";
             else if (i >= 36 && i <= 45) extraClass = " yellow-btn";
+            else if (i >= 46 && i <= 50) extraClass = " purple-btn";
 
             if (linkData[i]) {
                 label = `No.${i}<span class="btn-title">${linkData[i].name}</span>`;
@@ -188,7 +210,7 @@
 </div>
 
 <div class="footer-nav">
-    <a href="index.html" class="back-btn">← 戻る（TOP）</a>
+    <a href="index.html" class="back-btn">RETURN TO HOME</a>
 </div>
 
 </body>
