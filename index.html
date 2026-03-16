@@ -3,62 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio 20x20</title>
+    <title>Managed Portfolio</title>
     <style>
-        body { font-family: sans-serif; margin: 0; background: #f5f5f7; text-align: center; }
+        body { font-family: sans-serif; margin: 0; background: #f5f5f7; text-align: center; color: #333; }
+        
+        /* ■■■ ヘッダーのスタイル ■■■ */
+        .header-container {
+            position: relative;
+            width: 100%;
+            height: 40vh; /* 画面の高さの40%にする */
+            overflow: hidden;
+            background: #333; /* 画像がない時の背景色 */
+        }
+        .header-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 横長に引き伸ばさず、きれいに収める */
+            object-position: center; /* 画像の中心を表示 */
+        }
+        .header-text {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .header-text h1 { margin: 0; font-size: 3em; letter-spacing: 4px; }
+
+        .section-title { margin-top: 50px; padding: 10px; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; padding: 20px; }
-        .grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; cursor: pointer; }
+        .grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; cursor: pointer; transition: 0.2s; background: #eee; }
+        .grid img:hover { transform: scale(1.03); }
         .v-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; padding: 20px; }
         .v-card { background: #000; border-radius: 15px; overflow: hidden; aspect-ratio: 16/9; }
         iframe { width: 100%; height: 100%; border: none; }
-        /* 拡大画面 */
-        #lb { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); align-items:center; justify-content:center; z-index:99; }
-        #lb img { max-width:90%; max-height:90%; }
+        #lb { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); align-items:center; justify-content:center; z-index:99; cursor: zoom-out; }
+        #lb img { max-width:95%; max-height:95%; border-radius: 5px; }
     </style>
 </head>
 <body>
 
-<h1>PHOTO GALLERY (20)</h1>
+<header class="header-container">
+    <img src="header.jpg" alt="Header Image" class="header-image">
+    
+    <div class="header-text">
+        <h1>MY PORTFOLIO</h1>
+        <p>Managed by iPhone & PC</p>
+    </div>
+</header>
+
+<div class="section-title">
+    <h2>GALLERY & VIDEOS</h2>
+    <p>画像や動画のIDを書き換えるだけで更新完了！</p>
+</div>
+
 <div class="grid">
-    <img src="p1.jpg" onclick="openLb(this.src)"><img src="p2.jpg" onclick="openLb(this.src)">
-    <img src="p3.jpg" onclick="openLb(this.src)"><img src="p4.jpg" onclick="openLb(this.src)">
-    <img src="p5.jpg" onclick="openLb(this.src)"><img src="p6.jpg" onclick="openLb(this.src)">
-    <img src="p7.jpg" onclick="openLb(this.src)"><img src="p8.jpg" onclick="openLb(this.src)">
-    <img src="p9.jpg" onclick="openLb(this.src)"><img src="p10.jpg" onclick="openLb(this.src)">
-    <img src="p11.jpg" onclick="openLb(this.src)"><img src="p12.jpg" onclick="openLb(this.src)">
-    <img src="p13.jpg" onclick="openLb(this.src)"><img src="p14.jpg" onclick="openLb(this.src)">
-    <img src="p15.jpg" onclick="openLb(this.src)"><img src="p16.jpg" onclick="openLb(this.src)">
-    <img src="p17.jpg" onclick="openLb(this.src)"><img src="p18.jpg" onclick="openLb(this.src)">
-    <img src="p19.jpg" onclick="openLb(this.src)"><img src="p20.jpg" onclick="openLb(this.src)">
+    <img src="p1.jpg" onclick="openLb(this.src)"> <img src="p2.jpg" onclick="openLb(this.src)">
+    <img src="p19.jpg" onclick="openLb(this.src)"> <img src="p20.jpg" onclick="openLb(this.src)">
 </div>
 
-<h1>VIDEO ARCHIVE (20)</h1>
 <div class="v-grid">
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID1"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID2"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID3"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID4"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID5"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID6"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID7"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID8"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID9"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID10"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID11"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID12"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID13"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID14"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID15"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID16"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID17"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID18"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID19"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID20"></iframe></div>
-</div>
-
-<div id="lb" onclick="this.style.display='none'"><img id="lbi"></div>
-<script>
-    function openLb(s){ document.getElementById('lbi').src=s; document.getElementById('lb').style.display='flex'; }
-</script>
-</body>
-</html>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID01"></iframe></div>
+    <div class="v-card"><iframe src="https://www
