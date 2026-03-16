@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Link Directory</title>
+    <title>Links 1-100</title>
     <style>
         body { font-family: sans-serif; margin: 0; background: #f5f5f7; text-align: center; color: #333; }
         .header-container { position: relative; width: 100%; height: 15vh; overflow: hidden; background: #333; }
         .header-image { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
         .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
-        
-        .section-title { margin-top: 30px; padding: 10px; font-weight: bold; border-bottom: 2px solid #ddd; display: inline-block; width: 80%; }
         
         /* 5列グリッド */
         .link-grid { 
@@ -18,7 +16,7 @@
             grid-template-columns: repeat(5, 1fr); 
             gap: 10px; 
             max-width: 1000px; 
-            margin: 20px auto; 
+            margin: 30px auto; 
             padding: 0 15px; 
         }
 
@@ -26,28 +24,20 @@
             background: #fff;
             color: #007aff;
             border: 2px solid #007aff;
-            padding: 12px 5px;
+            padding: 15px 5px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 0.8em;
+            font-size: 0.85em;
             transition: 0.2s;
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
         }
 
         .link-btn:hover {
             background: #007aff;
-            color: #fff;
-        }
-
-        /* 参政党などの主要リンク用カラー */
-        .official-btn {
-            background: #ffede0;
-            color: #e67e22;
-            border-color: #e67e22;
-        }
-        .official-btn:hover {
-            background: #e67e22;
             color: #fff;
         }
 
@@ -62,40 +52,34 @@
     <div class="header-text"><h1>LINKS 1-100</h1></div>
 </header>
 
-<div class="section-title">OFFICIAL & SNS</div>
-<div class="link-grid">
-    <a href="https://sanseito.jp/" class="link-btn official-btn" target="_blank">公式サイト</a>
-    <a href="https://sanseito.jp/news/" class="link-btn official-btn" target="_blank">最新ニュース</a>
-    <a href="https://www.youtube.com/@sanseito-official" class="link-btn official-btn" target="_blank">YouTube</a>
-    <a href="https://twitter.com/sansei411" class="link-btn official-btn" target="_blank">X (Twitter)</a>
-    <a href="https://sanseito.jp/member/" class="link-btn official-btn" target="_blank">地方議員一覧</a>
-</div>
-
-<div class="section-title">DIRECTORY (1-100)</div>
 <div class="link-grid">
     <script>
-        // リンク先URLのリスト（必要に応じて書き換えてください）
-        const links = {
-            1: "https://sanseito.jp/",
-            2: "https://sanseito.jp/news/",
-            3: "https://www.youtube.com/@sanseito-official",
-            4: "https://twitter.com/sansei411",
-            5: "https://www.instagram.com/sanseito",
-            6: "https://www.tiktok.com/@sanseito",
-            7: "https://sanseito.jp/member/"
-            // 8以降はデフォルトで link8.html などに設定されます
+        const linkData = {
+            1: { name: "公式サイト", url: "https://sanseito.jp/" },
+            2: { name: "最新ニュース", url: "https://sanseito.jp/news/" },
+            3: { name: "YouTube", url: "https://www.youtube.com/@sanseito-official" },
+            4: { name: "X (Twitter)", url: "https://twitter.com/sansei411" },
+            5: { name: "Instagram", url: "https://www.instagram.com/sanseito" },
+            6: { name: "地方議員一覧", url: "https://sanseito.jp/member/" }
         };
 
         for (let i = 1; i <= 100; i++) {
-            // 指定がある場合はそのURL、ない場合は link(数字).html を設定
-            let url = links[i] || `link${i}.html`;
-            document.write(`<a href="${url}" class="link-btn" target="_blank">No.${i}</a>`);
+            let label = `No.${i}`;
+            let url = `link${i}.html`; // 基本は連番のhtmlへ
+
+            // 1~6番までは特定の名前とURLを割り当て
+            if (linkData[i]) {
+                label = `No.${i}<br>${linkData[i].name}`;
+                url = linkData[i].url;
+            }
+
+            document.write(`<a href="${url}" class="link-btn" target="_blank">${label}</a>`);
         }
     </script>
 </div>
 
 <div class="footer-nav">
-    <a href="index.html" class="back-btn">← 戻る</a>
+    <a href="index.html" class="back-btn">← 戻る（TOP）</a>
 </div>
 
 </body>
