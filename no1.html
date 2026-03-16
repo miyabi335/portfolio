@@ -43,7 +43,7 @@
             border-color: #ffcc99;
         }
 
-        /* 18-25番：薄い水色 */
+        /* 16-25番：薄い水色 */
         .blue-btn {
             background: #e1f5fe;
             color: #0277bd;
@@ -87,11 +87,9 @@
             9: { name: "TikTok", url: "https://www.tiktok.com/@sanseito" },
             10: { name: "選挙ドットコム", url: "https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" },
             
-            // 16-17番（白ボタン）
+            // 16-25番（すべて薄い水色）
             16: { name: "Yahoo Japan", url: "https://www.yahoo.co.jp/" },
             17: { name: "読売新聞", url: "https://www.yomiuri.co.jp/" },
-            
-            // 18-25番（薄い水色）
             18: { name: "産経新聞", url: "https://www.sankei.com/" },
             19: { name: "朝日新聞", url: "https://www.asahi.com/" },
             20: { name: "毎日新聞", url: "https://mainichi.jp/" },
@@ -107,9 +105,10 @@
             let url = `link${i}.html`;
             let extraClass = "";
 
+            // 配色判定の更新
             if (i >= 1 && i <= 10) {
                 extraClass = " orange-btn";
-            } else if (i >= 18 && i <= 25) {
+            } else if (i >= 16 && i <= 25) { // 16番からに変更
                 extraClass = " blue-btn";
             }
 
