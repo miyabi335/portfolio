@@ -37,29 +37,16 @@
         }
 
         /* 1-10番：薄い橙色 */
-        .orange-btn {
-            background: #fff4e6; 
-            color: #d35400;      
-            border-color: #ffcc99;
-        }
+        .orange-btn { background: #fff4e6; color: #d35400; border-color: #ffcc99; }
 
         /* 16-25番：薄い水色 */
-        .blue-btn {
-            background: #e1f5fe;
-            color: #0277bd;
-            border-color: #0277bd;
-        }
+        .blue-btn { background: #e1f5fe; color: #0277bd; border-color: #0277bd; }
 
-        .link-btn:hover {
-            opacity: 0.7;
-            transform: translateY(-2px);
-        }
+        /* 26-35番：薄いグリーン（訂正反映） */
+        .green-btn { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
 
-        .btn-title {
-            font-size: 1.1rem;
-            font-weight: bold;
-            display: block;
-        }
+        .link-btn:hover { opacity: 0.7; transform: translateY(-2px); }
+        .btn-title { font-size: 1.1rem; font-weight: bold; display: block; }
 
         .footer-nav { margin: 40px 0; }
         .back-btn { padding: 10px 30px; background: #666; color: #fff; text-decoration: none; border-radius: 20px; font-weight: bold; }
@@ -87,7 +74,7 @@
             9: { name: "TikTok", url: "https://www.tiktok.com/@sanseito" },
             10: { name: "選挙ドットコム", url: "https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" },
             
-            // 16-25番（すべて薄い水色）
+            // 16-25番（薄い水色）
             16: { name: "Yahoo Japan", url: "https://www.yahoo.co.jp/" },
             17: { name: "読売新聞", url: "https://www.yomiuri.co.jp/" },
             18: { name: "産経新聞", url: "https://www.sankei.com/" },
@@ -97,7 +84,24 @@
             22: { name: "日経新聞", url: "https://www.nikkei.com/" },
             23: { name: "ロイター", url: "https://jp.reuters.com/" },
             24: { name: "CNN", url: "https://www.cnn.co.jp/" },
-            25: { name: "BBC", url: "https://www.bbc.com/japanese" }
+            25: { name: "BBC", url: "https://www.bbc.com/japanese" },
+
+            // 26-35番（薄いグリーン）
+            26: { name: "自由民主党", url: "https://www.jimin.jp/" },
+            27: { name: "日本維新の会", url: "https://o-ishin.jp/" },
+            28: { name: "立憲民主党", url: "https://cdp-japan.jp/" },
+            29: { name: "国民民主党", url: "https://new-kokumin.jp/" },
+            30: { name: "日本共産党", url: "https://www.jcp.or.jp/" },
+            31: { name: "れいわ新選組", url: "https://reiwa-shinsengumi.com/" },
+            32: { name: "社会民主党", url: "https://sdp.or.jp/" },
+            33: { name: "公明党", url: "https://www.komei.or.jp/" },
+            34: { name: "日本保守党", url: "https://hoshuto.jp/" },
+            35: { name: "参政党", url: "https://sanseito.jp/" },
+
+            // 36番以降（通常ボタン）
+            36: { name: "中道改革連合", url: "#" },
+            37: { name: "チームみらい", url: "#" },
+            38: { name: "つばさの党", url: "https://tsubasa-party.jp/" }
         };
 
         for (let i = 1; i <= 100; i++) {
@@ -105,11 +109,12 @@
             let url = `link${i}.html`;
             let extraClass = "";
 
-            // 配色判定の更新
             if (i >= 1 && i <= 10) {
                 extraClass = " orange-btn";
-            } else if (i >= 16 && i <= 25) { // 16番からに変更
+            } else if (i >= 16 && i <= 25) {
                 extraClass = " blue-btn";
+            } else if (i >= 26 && i <= 35) { // 26番から35番までをグリーンに
+                extraClass = " green-btn";
             }
 
             if (linkData[i]) {
