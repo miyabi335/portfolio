@@ -42,7 +42,7 @@
         /* 16-25番：薄い水色 */
         .blue-btn { background: #e1f5fe; color: #0277bd; border-color: #0277bd; }
 
-        /* 26-35番：薄いグリーン（訂正反映） */
+        /* 26-35番：薄いグリーン（政党・グループ） */
         .green-btn { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
 
         .link-btn:hover { opacity: 0.7; transform: translateY(-2px); }
@@ -86,22 +86,17 @@
             24: { name: "CNN", url: "https://www.cnn.co.jp/" },
             25: { name: "BBC", url: "https://www.bbc.com/japanese" },
 
-            // 26-35番（薄いグリーン）
+            // 26-35番（薄いグリーン：ご指定の順番）
             26: { name: "自由民主党", url: "https://www.jimin.jp/" },
             27: { name: "日本維新の会", url: "https://o-ishin.jp/" },
-            28: { name: "立憲民主党", url: "https://cdp-japan.jp/" },
+            28: { name: "中道改革連合", url: "#" },
             29: { name: "国民民主党", url: "https://new-kokumin.jp/" },
-            30: { name: "日本共産党", url: "https://www.jcp.or.jp/" },
-            31: { name: "れいわ新選組", url: "https://reiwa-shinsengumi.com/" },
-            32: { name: "社会民主党", url: "https://sdp.or.jp/" },
-            33: { name: "公明党", url: "https://www.komei.or.jp/" },
+            30: { name: "参政党", url: "https://sanseito.jp/" },
+            31: { name: "日本共産党", url: "https://www.jcp.or.jp/" },
+            32: { name: "チームみらい", url: "#" },
+            33: { name: "れいわ新選組", url: "https://reiwa-shinsengumi.com/" },
             34: { name: "日本保守党", url: "https://hoshuto.jp/" },
-            35: { name: "参政党", url: "https://sanseito.jp/" },
-
-            // 36番以降（通常ボタン）
-            36: { name: "中道改革連合", url: "#" },
-            37: { name: "チームみらい", url: "#" },
-            38: { name: "つばさの党", url: "https://tsubasa-party.jp/" }
+            35: { name: "社会民主党", url: "https://sdp.or.jp/" }
         };
 
         for (let i = 1; i <= 100; i++) {
@@ -113,7 +108,7 @@
                 extraClass = " orange-btn";
             } else if (i >= 16 && i <= 25) {
                 extraClass = " blue-btn";
-            } else if (i >= 26 && i <= 35) { // 26番から35番までをグリーンに
+            } else if (i >= 26 && i <= 35) {
                 extraClass = " green-btn";
             }
 
