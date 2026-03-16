@@ -3,112 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Managed Multi-Page Portfolio</title>
+    <title>Link Archive - No.1</title>
     <style>
-        body { font-family: sans-serif; margin: 0; background: #f5f5f7; text-align: center; color: #333; }
-        .header-container { position: relative; width: 100%; height: 40vh; overflow: hidden; background: #333; }
-        .header-image { width: 100%; height: 100%; object-fit: cover; }
-        .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        body { font-family: sans-serif; margin: 0; background: #f0f2f5; color: #333; line-height: 1.6; }
+        header { background: #fff; padding: 20px; text-align: center; border-bottom: 2px solid #007aff; position: sticky; top: 0; z-index: 10; }
+        .back-btn { text-decoration: none; color: #007aff; font-weight: bold; font-size: 0.9em; float: left; }
         
-        /* ■■■ 10個のナビゲーションボタン ■■■ */
-        .nav-container { 
-            display: grid; 
-            grid-template-columns: repeat(5, 1fr); /* 横に5個ずつ並べる */
-            gap: 10px; 
-            max-width: 800px; 
-            margin: 30px auto; 
-            padding: 0 20px; 
+        .container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
+        
+        /* 🟡 リンク集のスタイル 🟡 */
+        .link-list { list-style: none; padding: 0; }
+        .link-item { 
+            background: #fff; 
+            margin-bottom: 8px; 
+            border-radius: 8px; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: 0.2s;
         }
-        .nav-button {
-            background: #fff;
-            color: #007aff;
-            border: 2px solid #007aff;
-            padding: 10px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
+        .link-item:hover { transform: translateX(5px); background: #eef6ff; }
+        .link-item a { 
+            display: block; 
+            padding: 15px; 
+            text-decoration: none; 
+            color: #333; 
+            font-weight: 500;
         }
-        .nav-button:hover { background: #007aff; color: #fff; }
+        .link-number { color: #007aff; font-weight: bold; margin-right: 15px; font-size: 0.8em; }
 
-        .section-title { margin-top: 30px; padding: 10px; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; padding: 20px; }
-        .grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; cursor: pointer; background: #eee; }
-        .v-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; padding: 20px; }
-        .v-card { background: #000; border-radius: 15px; overflow: hidden; aspect-ratio: 16/9; }
-        iframe { width: 100%; height: 100%; border: none; }
-        #lb { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); align-items:center; justify-content:center; z-index:99; }
-        #lb img { max-width:95%; max-height:95%; }
+        footer { text-align: center; padding: 40px; color: #888; font-size: 0.8em; }
     </style>
 </head>
 <body>
 
-<header class="header-container">
-    <img src="header.jpg" alt="Header" class="header-image">
-    <div class="header-text">
-        <h1>MY PORTFOLIO</h1>
-        <p>Managed by iPhone & PC</p>
-    </div>
+<header>
+    <a href="index.html" class="back-btn">← 戻る</a>
+    <h2 style="margin: 0;">LINK ARCHIVE 100</h2>
 </header>
 
-<div class="nav-container">
-    <a href="no1.html" class="nav-button">No.1</a>
-    <a href="no2.html" class="nav-button">No.2</a>
-    <a href="no3.html" class="nav-button">No.3</a>
-    <a href="no4.html" class="nav-button">No.4</a>
-    <a href="no5.html" class="nav-button">No.5</a>
-    <a href="no6.html" class="nav-button">No.6</a>
-    <a href="no7.html" class="nav-button">No.7</a>
-    <a href="no8.html" class="nav-button">No.8</a>
-    <a href="no9.html" class="nav-button">No.9</a>
-    <a href="no10.html" class="nav-button">No.10</a>
+<div class="container">
+    <ul class="link-list">
+        <li class="link-item"><a href="https://example.com" target="_blank"><span class="link-number">001</span>お気に入りサイトの名前</a></li>
+        <li class="link-item"><a href="https://example.com" target="_blank"><span class="link-number">002</span>Photoshop参考記事</a></li>
+        <li class="link-item"><a href="https://example.com" target="_blank"><span class="link-number">003</span>京都サイクリングマップ</a></li>
+        <li class="link-item"><a href="https://example.com" target="_blank"><span class="link-number">004</span>Python自動化スクリプト参考</a></li>
+        
+        <li class="link-item"><a href="#" target="_blank"><span class="link-number">005</span>（ここにタイトルを入力）</a></li>
+        <li class="link-item"><a href="#" target="_blank"><span class="link-number">006</span>（ここにタイトルを入力）</a></li>
+        <li class="link-item"><a href="#" target="_blank"><span class="link-number">007</span>（ここにタイトルを入力）</a></li>
+        </ul>
 </div>
 
-<div class="section-title"><h2>PHOTO GALLERY (20)</h2></div>
+<footer>
+    <p>&copy; 2026 No.1 Link Archive</p>
+</footer>
 
-<div class="grid">
-    <img src="p1.jpg" onclick="openLb(this.src)"><img src="p2.jpg" onclick="openLb(this.src)">
-    <img src="p3.jpg" onclick="openLb(this.src)"><img src="p4.jpg" onclick="openLb(this.src)">
-    <img src="p5.jpg" onclick="openLb(this.src)"><img src="p6.jpg" onclick="openLb(this.src)">
-    <img src="p7.jpg" onclick="openLb(this.src)"><img src="p8.jpg" onclick="openLb(this.src)">
-    <img src="p9.jpg" onclick="openLb(this.src)"><img src="p10.jpg" onclick="openLb(this.src)">
-    <img src="p11.jpg" onclick="openLb(this.src)"><img src="p12.jpg" onclick="openLb(this.src)">
-    <img src="p13.jpg" onclick="openLb(this.src)"><img src="p14.jpg" onclick="openLb(this.src)">
-    <img src="p15.jpg" onclick="openLb(this.src)"><img src="p16.jpg" onclick="openLb(this.src)">
-    <img src="p17.jpg" onclick="openLb(this.src)"><img src="p18.jpg" onclick="openLb(this.src)">
-    <img src="p19.jpg" onclick="openLb(this.src)"><img src="p20.jpg" onclick="openLb(this.src)">
-</div>
-
-<div class="section-title"><h2>VIDEO ARCHIVE (20)</h2></div>
-
-<div class="v-grid">
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID1"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID2"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID3"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID4"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID5"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID6"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID7"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID8"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID9"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID10"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID11"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID12"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID13"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID14"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID15"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID16"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID17"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID18"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID19"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID20"></iframe></div>
-</div>
-
-<div id="lb" onclick="this.style.display='none'"><img id="lbi"></div>
-<script>
-    function openLb(s){ document.getElementById('lbi').src=s; document.getElementById('lb').style.display='flex'; }
-</script>
-
-<footer><p>&copy; 2026 Portfolio | No.1-10 Navigation</p></footer>
 </body>
 </html>
