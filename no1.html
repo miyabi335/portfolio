@@ -34,6 +34,7 @@
             align-items: center;
             justify-content: center;
             min-height: 50px;
+            line-height: 1.2;
         }
 
         .link-btn:hover {
@@ -60,14 +61,15 @@
             3: { name: "YouTube", url: "https://www.youtube.com/@sanseito-official" },
             4: { name: "X (Twitter)", url: "https://twitter.com/sansei411" },
             5: { name: "Instagram", url: "https://www.instagram.com/sanseito" },
-            6: { name: "地方議員一覧", url: "https://sanseito.jp/member/" }
+            6: { name: "TikTok", url: "https://www.tiktok.com/@sanseito" },
+            7: { name: "地方議員一覧", url: "https://sanseito.jp/member/" }
         };
 
         for (let i = 1; i <= 100; i++) {
             let label = `No.${i}`;
-            let url = `link${i}.html`; // 基本は連番のhtmlへ
+            let url = `link${i}.html`;
 
-            // 1~6番までは特定の名前とURLを割り当て
+            // 指定がある番号はURLと名前を差し替え
             if (linkData[i]) {
                 label = `No.${i}<br>${linkData[i].name}`;
                 url = linkData[i].url;
