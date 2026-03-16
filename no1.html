@@ -3,19 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Links 1-100 - Sakura Edition</title>
+    <title>Links 1-100 - Sakura Mankai Edition</title>
     <style>
-        /* ページ全体の背景設定（桜色と模様） */
+        /* ページ全体の背景設定（満開の桜） */
         body { 
             font-family: sans-serif; 
             margin: 0; 
-            background-color: #fff0f5; /* 薄い桜色 */
-            /* 桜の花びらをイメージした背景パターン（CSSで表現） */
+            background-color: #ffeff5; /* 非常に薄い桜色 */
+            /* 桜の花びらや枝が咲き乱れる様子を表現した複雑な背景パターン（CSSで表現） */
             background-image: 
-                radial-gradient(#ffc0cb 10%, transparent 20%),
-                radial-gradient(#ffc0cb 10%, transparent 20%);
-            background-position: 0 0, 50px 50px;
-            background-size: 100px 100px;
+                /* 1層目：手前の大きな花びら */
+                radial-gradient(#ffb6c1 20%, transparent 25%),
+                /* 2層目：少し奥の小さな花びら */
+                radial-gradient(#fff0f5 15%, transparent 18%),
+                /* 3層目：奥に生い茂る桜の木々を表現したグラデーション */
+                repeating-linear-gradient(45deg, #ffdbed 0px, #ffdbed 2px, transparent 2px, transparent 10px),
+                repeating-linear-gradient(-45deg, #ffdbed 0px, #ffdbed 2px, transparent 2px, transparent 10px),
+                /* 4層目：さらに奥の生い茂る桜の木々を表現したグラデーション */
+                repeating-linear-gradient(60deg, #ffdbed 0px, #ffdbed 1px, transparent 1px, transparent 8px),
+                repeating-linear-gradient(-60deg, #ffdbed 0px, #ffdbed 1px, transparent 1px, transparent 8px);
+            background-position: 0 0, 25px 25px, 0 0, 0 0, 10px 10px, 10px 10px;
+            background-size: 50px 50px, 50px 50px, 100px 100px, 100px 100px, 80px 80px, 80px 80px;
+            /* 背景をブレンドして、生い茂る桜の木々を表現 */
+            background-blend-mode: multiply, normal, normal, normal, normal, normal;
             text-align: center; 
             color: #333; 
         }
@@ -25,13 +35,17 @@
             width: 100%; 
             height: 15vh; 
             overflow: hidden; 
-            background: #ffb7c5; /* ヘッダーも桜色ベース */
+            background-color: #ffb7c5; /* ヘッダーのベースカラー */
+            /* ヘッダーにも桜模様を適用 */
+            background-image: radial-gradient(#fff 10%, transparent 15%);
+            background-size: 30px 30px;
+            background-position: 0 0;
         }
         .header-image { 
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            opacity: 0.5; /* 背景と馴染ませる */
+            opacity: 0.3; /* 背景模様をより透けさせる */
         }
         .header-text { 
             position: absolute; 
@@ -39,64 +53,83 @@
             left: 50%; 
             transform: translate(-50%, -50%); 
             color: #fff; 
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); 
+            text-shadow: 2px 2px 5px rgba(219, 112, 147, 0.6); /* ピンク系の影で柔らかく */
         }
         
         .link-grid { 
             display: grid; 
             grid-template-columns: repeat(5, 1fr); 
-            gap: 10px; 
+            gap: 12px; /* 間隔を少し広く */
             max-width: 1000px; 
             margin: 30px auto; 
-            padding: 20px; 
-            background: rgba(255, 255, 255, 0.4); /* グリッドの背景を少し白くして透かす */
-            border-radius: 15px;
-            backdrop-filter: blur(2px); /* 背景を少しぼかしてボタンを見やすく */
+            padding: 25px; 
+            background: rgba(255, 255, 255, 0.5); /* 透過度を調整 */
+            border-radius: 20px;
+            backdrop-filter: blur(3px); /* ぼかしを少し強くしてボタンを際立たせる */
+            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3); /* ピンク系の柔らかい影 */
         }
 
         .link-btn {
-            background: #fff;
-            color: #007aff;
-            border: 2px solid #007aff;
+            background: rgba(255, 255, 255, 0.8); /* ボタン自体も少し透けさせる */
+            color: #db7093; /* 文字色を濃いピンクに */
+            border: 2px solid #ffb6c1; /* 枠線を薄いピンクに */
             padding: 12px 5px;
-            border-radius: 8px;
+            border-radius: 10px; /* 角を少し丸く */
             text-decoration: none;
-            font-size: 0.8em;
-            transition: 0.2s;
+            font-size: 0.85em; /* 文字を少し大きく */
+            transition: all 0.3s ease; /* アニメーションを滑らかに */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 70px;
+            min-height: 75px; /* 高さを少し高く */
             line-height: 1.4;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: relative; /* 疑似要素の位置基準 */
+            overflow: hidden; /* 疑似要素がはみ出ないように */
         }
 
-        /* 1-10番：薄い橙色 */
-        .orange-btn { background: #fff4e6; color: #d35400; border-color: #ffcc99; }
-        /* 16-25番：薄い水色 */
-        .blue-btn { background: #e1f5fe; color: #0277bd; border-color: #0277bd; }
-        /* 26-35番：薄いグリーン */
-        .green-btn { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
-        /* 36-45番：薄い黄色 */
-        .yellow-btn { background: #fffde7; color: #827717; border-color: #fff176; }
+        /* ボタンの背景にもうっすら桜模様を透けさせる */
+        .link-btn::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(#ffeff5 20%, transparent 25%);
+            background-size: 20px 20px;
+            opacity: 0.2;
+            z-index: -1; /* 文字の後ろに配置 */
+        }
+
+        /* 1-10番：薄い橙色（桜ベースに変更） */
+        .orange-btn { background: rgba(255, 240, 245, 0.9); color: #d35400; border-color: #ffb6c1; }
+        /* 16-25番：薄い水色（桜ベースに変更） */
+        .blue-btn { background: rgba(240, 248, 255, 0.9); color: #0277bd; border-color: #b0e0e6; }
+        /* 26-35番：薄いグリーン（桜ベースに変更） */
+        .green-btn { background: rgba(240, 255, 240, 0.9); color: #2e7d32; border-color: #98fb98; }
+        /* 36-45番：薄い黄色（桜ベースに変更） */
+        .yellow-btn { background: rgba(255, 255, 240, 0.9); color: #827717; border-color: #f0e68c; }
 
         .link-btn:hover { 
-            opacity: 0.8; 
-            transform: translateY(-3px); 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            opacity: 1; 
+            transform: translateY(-5px) scale(1.03); /* 少し大きくして浮き上がらせる */
+            box-shadow: 0 8px 20px rgba(219, 112, 147, 0.2);
+            border-color: #db7093; /* ホバー時は枠線を濃く */
         }
-        .btn-title { font-size: 1.1rem; font-weight: bold; display: block; }
+        .btn-title { font-size: 1.15rem; font-weight: bold; display: block; }
 
-        .footer-nav { margin: 40px 0; }
+        .footer-nav { margin: 50px 0; }
         .back-btn { 
-            padding: 12px 40px; 
-            background: #ff80ab; /* 戻るボタンも桜色に */
+            padding: 15px 50px; 
+            background: linear-gradient(45deg, #ff80ab, #ffb6c1); /* グラデーションで華やかに */
             color: #fff; 
             text-decoration: none; 
-            border-radius: 25px; 
+            border-radius: 30px; 
             font-weight: bold; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 10px rgba(219, 112, 147, 0.3);
+            transition: all 0.3s ease;
+        }
+        .back-btn:hover {
+            box-shadow: 0 6px 15px rgba(219, 112, 147, 0.4);
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -110,7 +143,7 @@
 <div class="link-grid">
     <script>
         const linkData = {
-            // 1-10番（薄い橙色）
+            // 1-10番（薄い橙色：参政党関連）
             1: { name: "公式サイト", url: "https://sanseito.jp/" },
             2: { name: "最新ニュース", url: "https://sanseito.jp/news/" },
             3: { name: "イベント", url: "https://info.sanseito.jp/" },
@@ -122,7 +155,7 @@
             9: { name: "TikTok", url: "https://www.tiktok.com/@sanseito" },
             10: { name: "選挙ドットコム", url: "https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" },
             
-            // 16-25番（薄い水色）
+            // 16-25番（薄い水色：ニュース）
             16: { name: "Yahoo Japan", url: "https://www.yahoo.co.jp/" },
             17: { name: "読売新聞", url: "https://www.yomiuri.co.jp/" },
             18: { name: "産経新聞", url: "https://www.sankei.com/" },
