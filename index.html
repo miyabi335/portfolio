@@ -3,89 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mega Portfolio | 20x20 Gallery</title>
+    <title>Expanding Gallery Portfolio</title>
     <style>
-        :root { --main-blue: #007aff; --bg-gray: #f5f5f7; }
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; margin: 0; background: var(--bg-gray); color: #333; }
-        header { background: #fff; padding: 40px 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
-        
-        h2 { border-left: 6px solid var(--main-blue); padding-left: 15px; margin: 40px 0 20px; font-size: 1.5em; }
+        /* --- 既存のスタイル --- */
+        body { font-family: sans-serif; margin: 0; background: #f5f5f7; }
+        .grid-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; padding: 20px; }
+        .grid-gallery img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: 0.3s; }
+        .grid-gallery img:hover { opacity: 0.8; }
 
-        /* 画像ギャラリー：4列のグリッド（スマホでは2列） */
-        .grid-gallery { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-            gap: 15px; 
+        /* --- 拡大表示（ライトボックス）のスタイル --- */
+        #lightbox {
+            display: none; /* 通常は隠しておく */
+            position: fixed; z-index: 999;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            align-items: center; justify-content: center;
+            cursor: zoom-out;
         }
-        .grid-gallery img { 
-            width: 100%; height: 200px; object-fit: cover; 
-            border-radius: 12px; background: #ddd; transition: 0.3s; cursor: pointer;
+        #lightbox img {
+            max-width: 90%; max-height: 90%;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            animation: zoom 0.3s;
         }
-        .grid-gallery img:hover { transform: scale(1.03); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-
-        /* 動画ギャラリー：2列のグリッド */
-        .video-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-            gap: 20px; 
-        }
-        .video-card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-        .video-info { padding: 10px; font-size: 0.85em; text-align: center; color: #666; }
-
-        footer { text-align: center; padding: 60px 20px; color: #999; }
+        @keyframes zoom { from { transform: scale(0.7); } to { transform: scale(1); } }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>CREATIVE ARCHIVE</h1>
-    <p>Kyoto Cycling & Photoshop Works</p>
-</header>
+<div class="grid-gallery">
+    <img src="p1.jpg" onclick="openLightbox(this.src)">
+    <img src="p2.jpg" onclick="openLightbox(this.src)">
+    <img src="p3.jpg" onclick="openLightbox(this.src)">
+    </div>
 
-<div class="container">
-
-    <section>
-        <h2>Photoshop & Cycling Photos (20)</h2>
-        <div class="grid-gallery">
-            <img src="p1.jpg" alt="Photo 1">
-            <img src="p2.jpg" alt="Photo 2">
-            <img src="p3.jpg" alt="Photo 3">
-            <img src="p4.jpg" alt="Photo 4">
-            <img src="p5.jpg" alt="Photo 5">
-            <img src="p6.jpg" alt="Photo 6">
-            <img src="p7.jpg" alt="Photo 7">
-            <img src="p8.jpg" alt="Photo 8">
-            <img src="p9.jpg" alt="Photo 9">
-            <img src="p10.jpg" alt="Photo 10">
-            <img src="p11.jpg" alt="Photo 11">
-            <img src="p12.jpg" alt="Photo 12">
-            <img src="p13.jpg" alt="Photo 13">
-            <img src="p14.jpg" alt="Photo 14">
-            <img src="p15.jpg" alt="Photo 15">
-            <img src="p16.jpg" alt="Photo 16">
-            <img src="p17.jpg" alt="Photo 17">
-            <img src="p18.jpg" alt="Photo 18">
-            <img src="p19.jpg" alt="Photo 19">
-            <img src="p20.jpg" alt="Photo 20">
-        </div>
-    </section>
-
-    <section>
-        <h2>Video Works (20)</h2>
-        <div class="video-grid">
-            <div class="video-card"><div class="video-container"><iframe src="https://www.youtube.com/embed/動画ID1"></iframe></div><div class="video-info">Movie 01</div></div>
-            <div class="video-card"><div class="video-container"><iframe src="https://www.youtube.com/embed/動画ID2"></iframe></div><div class="video-info">Movie 02</div></div>
-            </div>
-    </section>
-
+<div id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="">
 </div>
 
-<footer>
-    <p>&copy; 2026 Portfolio. All rights reserved.</p>
-</footer>
+<script>
+    // 拡大画面を開く魔法
+    function openLightbox(src) {
+        document.getElementById('lightbox-img').src = src;
+        document.getElementById('lightbox').style.display = 'flex';
+    }
+    // 拡大画面を閉じる魔法
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+    }
+</script>
 
 </body>
 </html>
