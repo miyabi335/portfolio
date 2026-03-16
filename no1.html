@@ -3,31 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Links 1-100 - Sakura Mankai Edition</title>
+    <title>Links 1-100 - Dark Modern Sakura</title>
     <style>
-        /* ページ全体の背景設定（満開の桜） */
+        /* 背景：ダークモードでおしゃれな夜桜イメージ */
         body { 
             font-family: sans-serif; 
             margin: 0; 
-            background-color: #ffeff5; /* 非常に薄い桜色 */
-            /* 桜の花びらや枝が咲き乱れる様子を表現した複雑な背景パターン（CSSで表現） */
+            background-color: #0f172a; /* 深い紺色 */
+            /* 幻想的な夜の空気感と舞い散る花びら */
             background-image: 
-                /* 1層目：手前の大きな花びら */
-                radial-gradient(#ffb6c1 20%, transparent 25%),
-                /* 2層目：少し奥の小さな花びら */
-                radial-gradient(#fff0f5 15%, transparent 18%),
-                /* 3層目：奥に生い茂る桜の木々を表現したグラデーション */
-                repeating-linear-gradient(45deg, #ffdbed 0px, #ffdbed 2px, transparent 2px, transparent 10px),
-                repeating-linear-gradient(-45deg, #ffdbed 0px, #ffdbed 2px, transparent 2px, transparent 10px),
-                /* 4層目：さらに奥の生い茂る桜の木々を表現したグラデーション */
-                repeating-linear-gradient(60deg, #ffdbed 0px, #ffdbed 1px, transparent 1px, transparent 8px),
-                repeating-linear-gradient(-60deg, #ffdbed 0px, #ffdbed 1px, transparent 1px, transparent 8px);
-            background-position: 0 0, 25px 25px, 0 0, 0 0, 10px 10px, 10px 10px;
-            background-size: 50px 50px, 50px 50px, 100px 100px, 100px 100px, 80px 80px, 80px 80px;
-            /* 背景をブレンドして、生い茂る桜の木々を表現 */
-            background-blend-mode: multiply, normal, normal, normal, normal, normal;
+                radial-gradient(circle at 20% 30%, rgba(219, 112, 147, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+                /* 舞い散る花びらを表現した白い輝き */
+                radial-gradient(rgba(255, 192, 203, 0.2) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px;
+            background-attachment: fixed;
             text-align: center; 
-            color: #333; 
+            color: #f1f5f9; 
         }
 
         .header-container { 
@@ -35,17 +27,14 @@
             width: 100%; 
             height: 15vh; 
             overflow: hidden; 
-            background-color: #ffb7c5; /* ヘッダーのベースカラー */
-            /* ヘッダーにも桜模様を適用 */
-            background-image: radial-gradient(#fff 10%, transparent 15%);
-            background-size: 30px 30px;
-            background-position: 0 0;
+            background: linear-gradient(to right, #1e293b, #334155);
+            border-bottom: 1px solid rgba(255, 182, 193, 0.3);
         }
         .header-image { 
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            opacity: 0.3; /* 背景模様をより透けさせる */
+            opacity: 0.2; /* ダークモードに合わせて控えめに */
         }
         .header-text { 
             position: absolute; 
@@ -53,83 +42,69 @@
             left: 50%; 
             transform: translate(-50%, -50%); 
             color: #fff; 
-            text-shadow: 2px 2px 5px rgba(219, 112, 147, 0.6); /* ピンク系の影で柔らかく */
+            text-shadow: 0 0 15px rgba(255, 182, 193, 0.8); /* ぼんやり光るような演出 */
+            letter-spacing: 2px;
         }
         
         .link-grid { 
             display: grid; 
             grid-template-columns: repeat(5, 1fr); 
-            gap: 12px; /* 間隔を少し広く */
+            gap: 12px; 
             max-width: 1000px; 
             margin: 30px auto; 
             padding: 25px; 
-            background: rgba(255, 255, 255, 0.5); /* 透過度を調整 */
+            /* ガラスのような透過エフェクト（グラスモーフィズム） */
+            background: rgba(255, 255, 255, 0.05); 
             border-radius: 20px;
-            backdrop-filter: blur(3px); /* ぼかしを少し強くしてボタンを際立たせる */
-            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3); /* ピンク系の柔らかい影 */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
+        /* ボタンのデザインは変更せず、視認性だけ調整 */
         .link-btn {
-            background: rgba(255, 255, 255, 0.8); /* ボタン自体も少し透けさせる */
-            color: #db7093; /* 文字色を濃いピンクに */
-            border: 2px solid #ffb6c1; /* 枠線を薄いピンクに */
+            background: #fff;
+            color: #007aff;
+            border: 2px solid #007aff;
             padding: 12px 5px;
-            border-radius: 10px; /* 角を少し丸く */
+            border-radius: 8px;
             text-decoration: none;
-            font-size: 0.85em; /* 文字を少し大きく */
-            transition: all 0.3s ease; /* アニメーションを滑らかに */
+            font-size: 0.8em;
+            transition: 0.3s;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 75px; /* 高さを少し高く */
+            min-height: 70px;
             line-height: 1.4;
-            position: relative; /* 疑似要素の位置基準 */
-            overflow: hidden; /* 疑似要素がはみ出ないように */
         }
 
-        /* ボタンの背景にもうっすら桜模様を透けさせる */
-        .link-btn::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(#ffeff5 20%, transparent 25%);
-            background-size: 20px 20px;
-            opacity: 0.2;
-            z-index: -1; /* 文字の後ろに配置 */
-        }
-
-        /* 1-10番：薄い橙色（桜ベースに変更） */
-        .orange-btn { background: rgba(255, 240, 245, 0.9); color: #d35400; border-color: #ffb6c1; }
-        /* 16-25番：薄い水色（桜ベースに変更） */
-        .blue-btn { background: rgba(240, 248, 255, 0.9); color: #0277bd; border-color: #b0e0e6; }
-        /* 26-35番：薄いグリーン（桜ベースに変更） */
-        .green-btn { background: rgba(240, 255, 240, 0.9); color: #2e7d32; border-color: #98fb98; }
-        /* 36-45番：薄い黄色（桜ベースに変更） */
-        .yellow-btn { background: rgba(255, 255, 240, 0.9); color: #827717; border-color: #f0e68c; }
+        /* 各色のボタン設定（維持） */
+        .orange-btn { background: #fff4e6; color: #d35400; border-color: #ffcc99; }
+        .blue-btn { background: #e1f5fe; color: #0277bd; border-color: #0277bd; }
+        .green-btn { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
+        .yellow-btn { background: #fffde7; color: #827717; border-color: #fff176; }
 
         .link-btn:hover { 
-            opacity: 1; 
-            transform: translateY(-5px) scale(1.03); /* 少し大きくして浮き上がらせる */
-            box-shadow: 0 8px 20px rgba(219, 112, 147, 0.2);
-            border-color: #db7093; /* ホバー時は枠線を濃く */
+            opacity: 0.8; 
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
         }
-        .btn-title { font-size: 1.15rem; font-weight: bold; display: block; }
+        .btn-title { font-size: 1.1rem; font-weight: bold; display: block; }
 
         .footer-nav { margin: 50px 0; }
         .back-btn { 
-            padding: 15px 50px; 
-            background: linear-gradient(45deg, #ff80ab, #ffb6c1); /* グラデーションで華やかに */
+            padding: 12px 40px; 
+            background: rgba(255, 255, 255, 0.1); 
             color: #fff; 
             text-decoration: none; 
             border-radius: 30px; 
-            font-weight: bold; 
-            box-shadow: 0 4px 10px rgba(219, 112, 147, 0.3);
-            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: 0.3s;
         }
         .back-btn:hover {
-            box-shadow: 0 6px 15px rgba(219, 112, 147, 0.4);
-            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ffb6c1;
         }
     </style>
 </head>
