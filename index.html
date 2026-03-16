@@ -3,55 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expanding Gallery Portfolio</title>
+    <title>Portfolio 20x20</title>
     <style>
-        /* --- 既存のスタイル --- */
-        body { font-family: sans-serif; margin: 0; background: #f5f5f7; }
-        .grid-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; padding: 20px; }
-        .grid-gallery img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: 0.3s; }
-        .grid-gallery img:hover { opacity: 0.8; }
-
-        /* --- 拡大表示（ライトボックス）のスタイル --- */
-        #lightbox {
-            display: none; /* 通常は隠しておく */
-            position: fixed; z-index: 999;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            align-items: center; justify-content: center;
-            cursor: zoom-out;
-        }
-        #lightbox img {
-            max-width: 90%; max-height: 90%;
-            border-radius: 5px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-            animation: zoom 0.3s;
-        }
-        @keyframes zoom { from { transform: scale(0.7); } to { transform: scale(1); } }
+        body { font-family: sans-serif; margin: 0; background: #f5f5f7; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; padding: 20px; }
+        .grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; cursor: pointer; }
+        .v-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; padding: 20px; }
+        .v-card { background: #000; border-radius: 15px; overflow: hidden; aspect-ratio: 16/9; }
+        iframe { width: 100%; height: 100%; border: none; }
+        /* 拡大画面 */
+        #lb { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); align-items:center; justify-content:center; z-index:99; }
+        #lb img { max-width:90%; max-height:90%; }
     </style>
 </head>
 <body>
 
-<div class="grid-gallery">
-    <img src="p1.jpg" onclick="openLightbox(this.src)">
-    <img src="p2.jpg" onclick="openLightbox(this.src)">
-    <img src="p3.jpg" onclick="openLightbox(this.src)">
-    </div>
-
-<div id="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img" src="">
+<h1>PHOTO GALLERY (20)</h1>
+<div class="grid">
+    <img src="p1.jpg" onclick="openLb(this.src)"><img src="p2.jpg" onclick="openLb(this.src)">
+    <img src="p3.jpg" onclick="openLb(this.src)"><img src="p4.jpg" onclick="openLb(this.src)">
+    <img src="p5.jpg" onclick="openLb(this.src)"><img src="p6.jpg" onclick="openLb(this.src)">
+    <img src="p7.jpg" onclick="openLb(this.src)"><img src="p8.jpg" onclick="openLb(this.src)">
+    <img src="p9.jpg" onclick="openLb(this.src)"><img src="p10.jpg" onclick="openLb(this.src)">
+    <img src="p11.jpg" onclick="openLb(this.src)"><img src="p12.jpg" onclick="openLb(this.src)">
+    <img src="p13.jpg" onclick="openLb(this.src)"><img src="p14.jpg" onclick="openLb(this.src)">
+    <img src="p15.jpg" onclick="openLb(this.src)"><img src="p16.jpg" onclick="openLb(this.src)">
+    <img src="p17.jpg" onclick="openLb(this.src)"><img src="p18.jpg" onclick="openLb(this.src)">
+    <img src="p19.jpg" onclick="openLb(this.src)"><img src="p20.jpg" onclick="openLb(this.src)">
 </div>
 
-<script>
-    // 拡大画面を開く魔法
-    function openLightbox(src) {
-        document.getElementById('lightbox-img').src = src;
-        document.getElementById('lightbox').style.display = 'flex';
-    }
-    // 拡大画面を閉じる魔法
-    function closeLightbox() {
-        document.getElementById('lightbox').style.display = 'none';
-    }
-</script>
+<h1>VIDEO ARCHIVE (20)</h1>
+<div class="v-grid">
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID1"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID2"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID3"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID4"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID5"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID6"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID7"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID8"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID9"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID10"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID11"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID12"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID13"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID14"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID15"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID16"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID17"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID18"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID19"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID20"></iframe></div>
+</div>
 
+<div id="lb" onclick="this.style.display='none'"><img id="lbi"></div>
+<script>
+    function openLb(s){ document.getElementById('lbi').src=s; document.getElementById('lb').style.display='flex'; }
+</script>
 </body>
 </html>
