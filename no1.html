@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -39,12 +38,12 @@
 
         /* 1-10番：薄い橙色 */
         .orange-btn { background: #fff4e6; color: #d35400; border-color: #ffcc99; }
-
         /* 16-25番：薄い水色 */
         .blue-btn { background: #e1f5fe; color: #0277bd; border-color: #0277bd; }
-
         /* 26-35番：薄いグリーン */
         .green-btn { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
+        /* 36-45番：薄い黄色（Xアカウント） */
+        .yellow-btn { background: #fffde7; color: #827717; border-color: #fff176; }
 
         .link-btn:hover { opacity: 0.7; transform: translateY(-2px); }
         .btn-title { font-size: 1.1rem; font-weight: bold; display: block; }
@@ -63,7 +62,7 @@
 <div class="link-grid">
     <script>
         const linkData = {
-            // 1-10番（薄い橙色）
+            // 1-10番（薄い橙色：参政党関連）
             1: { name: "公式サイト", url: "https://sanseito.jp/" },
             2: { name: "最新ニュース", url: "https://sanseito.jp/news/" },
             3: { name: "イベント", url: "https://info.sanseito.jp/" },
@@ -75,7 +74,7 @@
             9: { name: "TikTok", url: "https://www.tiktok.com/@sanseito" },
             10: { name: "選挙ドットコム", url: "https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" },
             
-            // 16-25番（薄い水色）
+            // 16-25番（薄い水色：ニュース）
             16: { name: "Yahoo Japan", url: "https://www.yahoo.co.jp/" },
             17: { name: "読売新聞", url: "https://www.yomiuri.co.jp/" },
             18: { name: "産経新聞", url: "https://www.sankei.com/" },
@@ -87,7 +86,7 @@
             24: { name: "CNN", url: "https://www.cnn.co.jp/" },
             25: { name: "BBC", url: "https://www.bbc.com/japanese" },
 
-            // 26-35番（薄いグリーン：最新のURL反映）
+            // 26-35番（薄いグリーン：政党HP）
             26: { name: "自由民主党", url: "https://www.jimin.jp/" },
             27: { name: "日本維新の会", url: "https://o-ishin.jp/" },
             28: { name: "中道改革連合", url: "https://craj.jp/" },
@@ -97,7 +96,19 @@
             32: { name: "チームみらい", url: "https://team-mir.ai/" },
             33: { name: "れいわ新選組", url: "https://reiwa-shinsengumi.com/" },
             34: { name: "日本保守党", url: "https://hoshuto.jp/" },
-            35: { name: "社会民主党", url: "https://sdp.or.jp/" }
+            35: { name: "社会民主党", url: "https://sdp.or.jp/" },
+
+            // 36-45番（薄い黄色：政党Xアカウント）
+            36: { name: "自民党(X)", url: "https://x.com/jimin_koho" },
+            37: { name: "維新(X)", url: "https://x.com/osaka_ishin" },
+            38: { name: "中道改革(X)", url: "https://x.com/craj_official" },
+            39: { name: "国民民主(X)", url: "https://x.com/kokumin_koho" },
+            40: { name: "参政党(X)", url: "https://x.com/sansei411" },
+            41: { name: "共産党(X)", url: "https://x.com/jcp_cc" },
+            42: { name: "チームみらい(X)", url: "https://x.com/team_mir_ai" },
+            43: { name: "れいわ(X)", url: "https://x.com/reiwashinsen" },
+            44: { name: "保守党(X)", url: "https://x.com/hoshuto_jp" },
+            45: { name: "社民党(X)", url: "https://x.com/SDPJapan" }
         };
 
         for (let i = 1; i <= 100; i++) {
@@ -111,6 +122,8 @@
                 extraClass = " blue-btn";
             } else if (i >= 26 && i <= 35) {
                 extraClass = " green-btn";
+            } else if (i >= 36 && i <= 45) {
+                extraClass = " yellow-btn";
             }
 
             if (linkData[i]) {
