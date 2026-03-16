@@ -24,17 +24,18 @@
             background: #fff;
             color: #007aff;
             border: 2px solid #007aff;
-            padding: 15px 5px;
+            padding: 12px 5px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 0.85em;
+            font-size: 0.8em;
             transition: 0.2s;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 50px;
-            line-height: 1.2;
+            min-height: 60px;
+            line-height: 1.3;
         }
 
         .link-btn:hover {
@@ -43,7 +44,7 @@
         }
 
         .footer-nav { margin: 40px 0; }
-        .back-btn { padding: 10px 30px; background: #666; color: #fff; text-decoration: none; border-radius: 20px; }
+        .back-btn { padding: 10px 30px; background: #666; color: #fff; text-decoration: none; border-radius: 20px; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -58,20 +59,22 @@
         const linkData = {
             1: { name: "公式サイト", url: "https://sanseito.jp/" },
             2: { name: "最新ニュース", url: "https://sanseito.jp/news/" },
-            3: { name: "YouTube", url: "https://www.youtube.com/@sanseito-official" },
-            4: { name: "X (Twitter)", url: "https://twitter.com/sansei411" },
-            5: { name: "Instagram", url: "https://www.instagram.com/sanseito" },
-            6: { name: "TikTok", url: "https://www.tiktok.com/@sanseito" },
-            7: { name: "地方議員一覧", url: "https://sanseito.jp/member/" }
+            3: { name: "イベント", url: "https://info.sanseito.jp/" },
+            4: { name: "メンバー", url: "https://sanseito.jp/member/" },
+            5: { name: "候補予定者", url: "https://sanseito.jp/2020/candidate/" },
+            6: { name: "YouTube", url: "https://www.youtube.com/@sanseito-official" },
+            7: { name: "X", url: "https://x.com/sansei411" },
+            8: { name: "Instagram", url: "https://www.instagram.com/sanseito" },
+            9: { name: "TikTok", url: "https://www.tiktok.com/@sanseito" },
+            10: { name: "選挙ドットコム", url: "https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" }
         };
 
         for (let i = 1; i <= 100; i++) {
             let label = `No.${i}`;
             let url = `link${i}.html`;
 
-            // 指定がある番号はURLと名前を差し替え
             if (linkData[i]) {
-                label = `No.${i}<br>${linkData[i].name}`;
+                label = `No.${i}<br><span style="font-size:0.9em;">${linkData[i].name}</span>`;
                 url = linkData[i].url;
             }
 
