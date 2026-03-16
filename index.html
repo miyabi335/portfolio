@@ -3,86 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Managed Creative Portfolio</title>
+    <title>Managed Portfolio Max</title>
     <style>
         body { font-family: sans-serif; margin: 0; background: #f5f5f7; text-align: center; color: #333; }
-        
-        /* 横長ヘッダー */
         .header-container { position: relative; width: 100%; height: 45vh; overflow: hidden; background: #333; }
         .header-image { width: 100%; height: 100%; object-fit: cover; }
         .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
         .header-text h1 { margin: 0; font-size: 3em; letter-spacing: 4px; }
 
-        /* ナビゲーションボタン (10個) */
-        .nav-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 900px; margin: 30px auto; padding: 0 20px; }
-        .nav-btn { background: #fff; color: #007aff; border: 2px solid #007aff; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; font-size: 0.9em; }
-        .nav-btn:hover { background: #007aff; color: #fff; }
+        .nav-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 900px; margin: 20px auto; padding: 0 15px; }
+        .nav-btn { background: #fff; color: #007aff; border: 2px solid #007aff; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8em; }
 
-        .section-title { margin-top: 50px; padding: 15px; background: #fff; border-bottom: 1px solid #ddd; }
-        
-        /* 画像ギャラリー */
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; padding: 20px; }
-        .grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; cursor: pointer; background: #eee; transition: 0.2s; }
-        .grid img:hover { transform: scale(1.03); }
+        .section-title { margin-top: 40px; padding: 15px; background: #fff; border-bottom: 1px solid #ddd; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; padding: 15px; }
+        .grid img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; cursor: pointer; background: #eee; }
 
-        /* 動画ギャラリー */
-        .v-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; padding: 20px; }
-        .v-card { background: #000; border-radius: 15px; overflow: hidden; aspect-ratio: 16/9; }
+        /* 動画グリッド（50本対応） */
+        .v-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; padding: 15px; }
+        .v-card { background: #000; border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
         iframe { width: 100%; height: 100%; border: none; }
 
-        /* 拡大表示（ライトボックス） */
-        #lb { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); align-items:center; justify-content:center; z-index:999; cursor: zoom-out; }
+        #lb { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); align-items:center; justify-content:center; z-index:999; }
         #lb img { max-width:95%; max-height:95%; border-radius: 5px; }
     </style>
 </head>
 <body>
 
 <header class="header-container">
-    <img src="header.jpg" alt="Header Image" class="header-image">
-    <div class="header-text">
-        <h1>MY PORTFOLIO</h1>
-        <p>Kyoto & Creative Work</p>
-    </div>
+    <img src="header.jpg" alt="Header" class="header-image">
+    <div class="header-text"><h1>MY PORTFOLIO</h1></div>
 </header>
 
 <div class="nav-container">
     <a href="no1.html" class="nav-btn">No.1(Links)</a>
-    <a href="no2.html" class="nav-btn">No.2</a>
-    <a href="no3.html" class="nav-btn">No.3</a>
-    <a href="no4.html" class="nav-btn">No.4</a>
-    <a href="no5.html" class="nav-btn">No.5</a>
-    <a href="no6.html" class="nav-btn">No.6</a>
-    <a href="no7.html" class="nav-btn">No.7</a>
-    <a href="no8.html" class="nav-btn">No.8</a>
-    <a href="no9.html" class="nav-btn">No.9</a>
+    <a href="no2.html" class="nav-btn">No.2</a><a href="no3.html" class="nav-btn">No.3</a>
+    <a href="no4.html" class="nav-btn">No.4</a><a href="no5.html" class="nav-btn">No.5</a>
+    <a href="no6.html" class="nav-btn">No.6</a><a href="no7.html" class="nav-btn">No.7</a>
+    <a href="no8.html" class="nav-btn">No.8</a><a href="no9.html" class="nav-btn">No.9</a>
     <a href="no10.html" class="nav-btn">No.10</a>
 </div>
 
-<div class="section-title"><h2>PHOTO GALLERY (20)</h2></div>
+<div class="section-title"><h2>PHOTOS (20)</h2></div>
 <div class="grid">
-    <img src="p1.jpg" onclick="openLb(this.src)"><img src="p2.jpg" onclick="openLb(this.src)">
-    <img src="p3.jpg" onclick="openLb(this.src)"><img src="p4.jpg" onclick="openLb(this.src)">
-    <img src="p5.jpg" onclick="openLb(this.src)"><img src="p6.jpg" onclick="openLb(this.src)">
-    <img src="p7.jpg" onclick="openLb(this.src)"><img src="p8.jpg" onclick="openLb(this.src)">
-    <img src="p9.jpg" onclick="openLb(this.src)"><img src="p10.jpg" onclick="openLb(this.src)">
-    <img src="p11.jpg" onclick="openLb(this.src)"><img src="p12.jpg" onclick="openLb(this.src)">
-    <img src="p13.jpg" onclick="openLb(this.src)"><img src="p14.jpg" onclick="openLb(this.src)">
-    <img src="p15.jpg" onclick="openLb(this.src)"><img src="p16.jpg" onclick="openLb(this.src)">
-    <img src="p17.jpg" onclick="openLb(this.src)"><img src="p18.jpg" onclick="openLb(this.src)">
-    <img src="p19.jpg" onclick="openLb(this.src)"><img src="p20.jpg" onclick="openLb(this.src)">
+    <script>for(let i=1;i<=20;i++) document.write(`<img src="p${i}.jpg" onclick="openLb(this.src)">`);</script>
 </div>
 
-<div class="section-title"><h2>VIDEO ARCHIVE (20)</h2></div>
+<div class="section-title"><h2>VIDEOS (50)</h2></div>
 <div class="v-grid">
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID1"></iframe></div>
-    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID2"></iframe></div>
-    </div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID01"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID02"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID03"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID04"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID05"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID06"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID07"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID08"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID09"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID10"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID11"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID12"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID13"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID14"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID15"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID16"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID17"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID18"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID19"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID20"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID21"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID22"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID23"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID24"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID25"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID26"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID27"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID28"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID29"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID30"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID31"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID32"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID33"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID34"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID35"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID36"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID37"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID38"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID39"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID40"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID41"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID42"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID43"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID44"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID45"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID46"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID47"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID48"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID49"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID50"></iframe></div>
+</div>
 
 <div id="lb" onclick="this.style.display='none'"><img id="lbi"></div>
 <script>
     function openLb(s){ document.getElementById('lbi').src=s; document.getElementById('lb').style.display='flex'; }
 </script>
 
-<footer><p>&copy; 2026 Managed Portfolio</p></footer>
+<footer><p>&copy; 2026 Managed Portfolio v2.0</p></footer>
 </body>
 </html>
