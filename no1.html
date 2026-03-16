@@ -57,7 +57,7 @@
         }
 
         .btn-title {
-            font-size: 1.1rem;
+            font-size: 1.1rem; /* タイトル文字を大きく */
             font-weight: bold;
             display: block;
         }
@@ -76,7 +76,7 @@
 <div class="link-grid">
     <script>
         const linkData = {
-            // 1-10番（薄い橙色）
+            // 1-10番（1-10は薄い橙色）
             1: { name: "Yahoo Japan", url: "https://www.yahoo.co.jp/" },
             2: { name: "最新ニュース", url: "https://sanseito.jp/news/" },
             3: { name: "イベント", url: "https://info.sanseito.jp/" },
@@ -88,14 +88,14 @@
             9: { name: "TikTok", url: "https://www.tiktok.com/@sanseito" },
             10: { name: "選挙ドットコム", url: "https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" },
             
-            // 16番（通常白ボタン）
+            // 16番（通常の白ボタン）
             16: { name: "読売新聞", url: "https://www.yomiuri.co.jp/" },
             
             // 18-25番（薄い水色）
             18: { name: "産経新聞", url: "https://www.sankei.com/" },
             19: { name: "朝日新聞", url: "https://www.asahi.com/" },
             20: { name: "毎日新聞", url: "https://mainichi.jp/" },
-            21: { name: "NHK", url: "https://www3.nhk.or.jp/news/" },
+            21: { name: "NHK", url: "https://news.web.nhk/newsweb" },
             22: { name: "日経新聞", url: "https://www.nikkei.com/" },
             23: { name: "ロイター", url: "https://jp.reuters.com/" },
             24: { name: "CNN", url: "https://www.cnn.co.jp/" },
@@ -107,7 +107,7 @@
             let url = `link${i}.html`;
             let extraClass = "";
 
-            // 色分け判定
+            // 配色判定
             if (i >= 1 && i <= 10) {
                 extraClass = " orange-btn";
             } else if (i >= 18 && i <= 25) {
