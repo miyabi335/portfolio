@@ -19,11 +19,11 @@
             padding: 0 15px; 
         }
 
-        /* 基本のボタンスタイル（11番以降：薄い水色） */
+        /* 基本のボタンスタイル（白） */
         .link-btn {
-            background: #e1f5fe; /* 薄い水色 */
-            color: #0277bd;      /* 濃い青色の文字 */
-            border: 2px solid #0277bd;
+            background: #fff;
+            color: #007aff;
+            border: 2px solid #007aff;
             padding: 12px 5px;
             border-radius: 8px;
             text-decoration: none;
@@ -37,17 +37,23 @@
             line-height: 1.4;
         }
 
-        /* 1-10番のスタイル（薄い橙色） */
+        /* 1-10番：薄い橙色 */
         .orange-btn {
             background: #fff4e6; 
             color: #d35400;      
             border-color: #ffcc99;
         }
 
+        /* 18-25番：薄い水色 */
+        .blue-btn {
+            background: #e1f5fe;
+            color: #0277bd;
+            border-color: #0277bd;
+        }
+
         .link-btn:hover {
             opacity: 0.7;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
         .btn-title {
@@ -82,8 +88,10 @@
             9: { name: "TikTok", url: "https://www.tiktok.com/@sanseito" },
             10: { name: "選挙ドットコム", url: "https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" },
             
-            // 11-100番（薄い水色）
+            // 16番（通常白ボタン）
             16: { name: "読売新聞", url: "https://www.yomiuri.co.jp/" },
+            
+            // 18-25番（薄い水色）
             18: { name: "産経新聞", url: "https://www.sankei.com/" },
             19: { name: "朝日新聞", url: "https://www.asahi.com/" },
             20: { name: "毎日新聞", url: "https://mainichi.jp/" },
@@ -97,7 +105,14 @@
         for (let i = 1; i <= 100; i++) {
             let label = `No.${i}`;
             let url = `link${i}.html`;
-            let extraClass = (i <= 10) ? " orange-btn" : "";
+            let extraClass = "";
+
+            // 色分け判定
+            if (i >= 1 && i <= 10) {
+                extraClass = " orange-btn";
+            } else if (i >= 18 && i <= 25) {
+                extraClass = " blue-btn";
+            }
 
             if (linkData[i]) {
                 label = `No.${i}<span class="btn-title">${linkData[i].name}</span>`;
