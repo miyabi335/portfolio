@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Managed Portfolio Max</title>
+    <title>Managed Portfolio Manual</title>
     <style>
         body { font-family: sans-serif; margin: 0; background: #f5f5f7; text-align: center; color: #333; }
         .header-container { position: relative; width: 100%; height: 40vh; overflow: hidden; background: #333; }
@@ -12,8 +12,11 @@
         .nav-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 900px; margin: 20px auto; padding: 0 15px; }
         .nav-btn { background: #fff; color: #007aff; border: 2px solid #007aff; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8em; }
         .section-title { margin-top: 40px; padding: 15px; background: #fff; border-bottom: 1px solid #ddd; }
+        
+        /* 写真グリッド */
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; padding: 15px; }
         .grid img { width: 100%; height: 150px; object-fit: cover; border-radius: 8px; cursor: pointer; background: #eee; }
+
         .v-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; padding: 15px; }
         .v-card { background: #000; border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; }
         iframe { width: 100%; height: 100%; border: none; }
@@ -24,7 +27,7 @@
 <body>
 
 <header class="header-container">
-    <img src="header.jpg" alt="Header" class="header-image">
+    <img src="fuji00001.jpg" alt="Header" class="header-image">
     <div class="header-text"><h1>MY PORTFOLIO</h1></div>
 </header>
 
@@ -40,15 +43,63 @@
 <div class="section-title"><h2>PHOTOS (48)</h2></div>
 <div class="grid">
     <img src="fuji00001.jpg" onclick="openLb(this.src)">
-    <script>for(let i=2; i<=48; i++) document.write(`<img src="p${i}.jpg" onclick="openLb(this.src)" onerror="this.style.display='none'">`);</script>
+    <img src="p2.jpg" onclick="openLb(this.src)">
+    <img src="p3.jpg" onclick="openLb(this.src)">
+    <img src="p4.jpg" onclick="openLb(this.src)">
+    <img src="p5.jpg" onclick="openLb(this.src)">
+    <img src="p6.jpg" onclick="openLb(this.src)">
+    <img src="p7.jpg" onclick="openLb(this.src)">
+    <img src="p8.jpg" onclick="openLb(this.src)">
+    <img src="p9.jpg" onclick="openLb(this.src)">
+    <img src="p10.jpg" onclick="openLb(this.src)">
+    <img src="p11.jpg" onclick="openLb(this.src)">
+    <img src="p12.jpg" onclick="openLb(this.src)">
+    <img src="p13.jpg" onclick="openLb(this.src)">
+    <img src="p14.jpg" onclick="openLb(this.src)">
+    <img src="p15.jpg" onclick="openLb(this.src)">
+    <img src="p16.jpg" onclick="openLb(this.src)">
+    <img src="p17.jpg" onclick="openLb(this.src)">
+    <img src="p18.jpg" onclick="openLb(this.src)">
+    <img src="p19.jpg" onclick="openLb(this.src)">
+    <img src="p20.jpg" onclick="openLb(this.src)">
+    <img src="p21.jpg" onclick="openLb(this.src)">
+    <img src="p22.jpg" onclick="openLb(this.src)">
+    <img src="p23.jpg" onclick="openLb(this.src)">
+    <img src="p24.jpg" onclick="openLb(this.src)">
+    <img src="p25.jpg" onclick="openLb(this.src)">
+    <img src="p26.jpg" onclick="openLb(this.src)">
+    <img src="p27.jpg" onclick="openLb(this.src)">
+    <img src="p28.jpg" onclick="openLb(this.src)">
+    <img src="p29.jpg" onclick="openLb(this.src)">
+    <img src="p30.jpg" onclick="openLb(this.src)">
+    <img src="p31.jpg" onclick="openLb(this.src)">
+    <img src="p32.jpg" onclick="openLb(this.src)">
+    <img src="p33.jpg" onclick="openLb(this.src)">
+    <img src="p34.jpg" onclick="openLb(this.src)">
+    <img src="p35.jpg" onclick="openLb(this.src)">
+    <img src="p36.jpg" onclick="openLb(this.src)">
+    <img src="p37.jpg" onclick="openLb(this.src)">
+    <img src="p38.jpg" onclick="openLb(this.src)">
+    <img src="p39.jpg" onclick="openLb(this.src)">
+    <img src="p40.jpg" onclick="openLb(this.src)">
+    <img src="p41.jpg" onclick="openLb(this.src)">
+    <img src="p42.jpg" onclick="openLb(this.src)">
+    <img src="p43.jpg" onclick="openLb(this.src)">
+    <img src="p44.jpg" onclick="openLb(this.src)">
+    <img src="p45.jpg" onclick="openLb(this.src)">
+    <img src="p46.jpg" onclick="openLb(this.src)">
+    <img src="p47.jpg" onclick="openLb(this.src)">
+    <img src="p48.jpg" onclick="openLb(this.src)">
 </div>
 
 <div class="section-title"><h2>VIDEOS (50)</h2></div>
 <div class="v-grid">
-    <script>for(let i=1; i<=50; i++) document.write(`<div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID${i}"></iframe></div>`);</script>
-</div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID1"></iframe></div>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID2"></iframe></div>
+    </div>
 
 <div id="lb" onclick="this.style.display='none'"><img id="lbi"></div>
 <script>function openLb(s){document.getElementById('lbi').src=s;document.getElementById('lb').style.display='flex';}</script>
+
 </body>
 </html>
