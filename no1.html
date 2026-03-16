@@ -19,16 +19,15 @@
             padding: 0 15px; 
         }
 
-        /* 基本のボタン形式 */
+        /* 基本のボタンスタイル（11番以降：薄い水色） */
         .link-btn {
-            background: #fff;
-            color: #007aff;
-            border: 2px solid #007aff;
+            background: #e1f5fe; /* 薄い水色 */
+            color: #0277bd;      /* 濃い青色の文字 */
+            border: 2px solid #0277bd;
             padding: 12px 5px;
             border-radius: 8px;
             text-decoration: none;
-            font-weight: normal;
-            font-size: 0.8em; /* No.の文字サイズ */
+            font-size: 0.8em;
             transition: 0.2s;
             display: flex;
             flex-direction: column;
@@ -38,21 +37,21 @@
             line-height: 1.4;
         }
 
-        /* 1-10番の薄い橙色スタイル */
+        /* 1-10番のスタイル（薄い橙色） */
         .orange-btn {
-            background: #fff4e6; /* 薄い橙色 */
-            color: #d35400;      /* 濃い橙色の文字 */
+            background: #fff4e6; 
+            color: #d35400;      
             border-color: #ffcc99;
         }
 
         .link-btn:hover {
-            opacity: 0.8;
+            opacity: 0.7;
             transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
-        /* タイトル文字（公式サイト等）のサイズ調整 */
         .btn-title {
-            font-size: 1.2rem; /* 文字を大きく */
+            font-size: 1.1rem;
             font-weight: bold;
             display: block;
         }
@@ -71,7 +70,8 @@
 <div class="link-grid">
     <script>
         const linkData = {
-            1: { name: "公式サイト", url: "https://sanseito.jp/" },
+            // 1-10番（薄い橙色）
+            1: { name: "Yahoo Japan", url: "https://www.yahoo.co.jp/" },
             2: { name: "最新ニュース", url: "https://sanseito.jp/news/" },
             3: { name: "イベント", url: "https://info.sanseito.jp/" },
             4: { name: "メンバー", url: "https://sanseito.jp/member/" },
@@ -80,21 +80,28 @@
             7: { name: "X", url: "https://x.com/sansei411" },
             8: { name: "Instagram", url: "https://www.instagram.com/sanseito" },
             9: { name: "TikTok", url: "https://www.tiktok.com/@sanseito" },
-            10: { name: "選挙ドットコム", url: "https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" }
+            10: { name: "選挙ドットコム", url: "https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" },
+            
+            // 11-100番（薄い水色）
+            16: { name: "読売新聞", url: "https://www.yomiuri.co.jp/" },
+            18: { name: "産経新聞", url: "https://www.sankei.com/" },
+            19: { name: "朝日新聞", url: "https://www.asahi.com/" },
+            20: { name: "毎日新聞", url: "https://mainichi.jp/" },
+            21: { name: "NHK", url: "https://www3.nhk.or.jp/news/" },
+            22: { name: "日経新聞", url: "https://www.nikkei.com/" },
+            23: { name: "ロイター", url: "https://jp.reuters.com/" },
+            24: { name: "CNN", url: "https://www.cnn.co.jp/" },
+            25: { name: "BBC", url: "https://www.bbc.com/japanese" }
         };
 
         for (let i = 1; i <= 100; i++) {
             let label = `No.${i}`;
             let url = `link${i}.html`;
-            let extraClass = "";
+            let extraClass = (i <= 10) ? " orange-btn" : "";
 
-            // 1-10番の設定
-            if (i <= 10) {
-                extraClass = " orange-btn";
-                if (linkData[i]) {
-                    label = `No.${i}<span class="btn-title">${linkData[i].name}</span>`;
-                    url = linkData[i].url;
-                }
+            if (linkData[i]) {
+                label = `No.${i}<span class="btn-title">${linkData[i].name}</span>`;
+                url = linkData[i].url;
             }
 
             document.write(`<a href="${url}" class="link-btn${extraClass}" target="_blank">${label}</a>`);
