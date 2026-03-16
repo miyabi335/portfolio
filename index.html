@@ -4,36 +4,37 @@
     <meta charset="UTF-8">
     <title>Miyabi's Hobby Space</title>
     <style>
-        body { font-family: sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; color: #333; }
+        body { font-family: "Helvetica Neue", Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f0f2f5; color: #333; }
         .container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        h1 { text-align: center; color: #2c3e50; border-bottom: 3px solid #2ea44f; padding-bottom: 10px; }
-        h2 { color: #2ea44f; margin-top: 30px; border-left: 5px solid #2ea44f; padding-left: 15px; }
+        h1 { text-align: center; color: #1a73e8; border-bottom: 3px solid #1a73e8; padding-bottom: 10px; }
+        h2 { color: #1a73e8; margin-top: 30px; border-left: 5px solid #1a73e8; padding-left: 15px; background: #f8f9fa; padding: 10px 15px; border-radius: 0 5px 5px 0; }
         .content-box { margin-bottom: 40px; text-align: center; }
-        img, video { width: 100%; max-width: 600px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-top: 10px; }
-        .links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .links a { background: #2ea44f; color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold; }
-        .links a:hover { background: #227d3c; }
+        img { width: 100%; max-width: 600px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-top: 10px; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 10px; margin-top: 10px; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+        .links a { background: #1a73e8; color: white; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .links a:hover { background: #1557b0; transform: translateY(-2px); }
     </style>
 </head>
 <body>
 
     <div class="container">
         <h1>Miyabi's Hobby Space</h1>
-        <p style="text-align:center;">写真・動画・お気に入りリンク集</p>
+        <p style="text-align:center; color: #666;">写真・動画・お気に入りリンク集</p>
 
         <div class="content-box">
             <h2>📸 お気に入りの写真</h2>
-            <img src="ここに画像ファイル名.jpg" alt="趣味の写真">
-            <p>※複数の場合はこの下に img タグを増やせます</p>
+            <img src="fuji00001.jpg" alt="お気に入りの写真">
+            <p style="margin-top:10px; color:#555;">アップロードした写真（fuji00001.jpg）を表示しています</p>
         </div>
 
         <div class="content-box">
             <h2>🎥 おすすめ動画</h2>
-            <video src="ここに動画ファイル名.mp4" controls></video>
-            
-            <div style="margin-top:20px;">
-                <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
             </div>
+            <p style="margin-top:10px; color:#555;">YouTubeの動画をここに表示できます</p>
         </div>
 
         <div class="content-box">
