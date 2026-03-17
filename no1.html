@@ -189,12 +189,14 @@
         for (let i = 1; i <= 100; i++) {
             let extraClass = "";
             
-            // 色分け条件（優先順位を整理）
-            if (i >= 1 && i <= 10) {
+            // 色分け判定（No.92を優先的に赤にする）
+            if (i === 92) {
+                extraClass = " red-btn"; 
+            } else if (i >= 1 && i <= 10) {
                 extraClass = " orange-btn";
             } else if ((i >= 16 && i <= 25) || (i >= 66 && i <= 75)) {
                 extraClass = " blue-btn";
-            } else if ((i >= 26 && i <= 35) || i === 95) { // 95は緑
+            } else if ((i >= 26 && i <= 35) || i === 95) {
                 extraClass = " green-btn";
             } else if (i >= 36 && i <= 45) {
                 extraClass = " yellow-btn";
@@ -204,11 +206,11 @@
                 extraClass = " brown-btn";
             } else if (i >= 54 && i <= 62) {
                 extraClass = " deep-blue-btn";
-            } else if ((i >= 63 && i <= 65) || (i >= 82 && i <= 92)) { // 92はここ（赤）で確定
+            } else if ((i >= 63 && i <= 65) || (i >= 82 && i <= 91)) {
                 extraClass = " red-btn";
             } else if (i >= 79 && i <= 81) {
                 extraClass = " tan-btn";
-            } else if (i === 93 || i === 94) { // 93, 94は黒
+            } else if (i === 93 || i === 94) {
                 extraClass = " black-btn";
             }
 
