@@ -39,20 +39,19 @@
             padding: 10px 4px;
             border-radius: 12px;
             text-decoration: none;
-            font-size: 0.7rem; /* No.のサイズはそのまま維持 */
+            font-size: 0.7rem;
             display: flex;
             flex-direction: column; 
             align-items: center;
             justify-content: center;
-            height: 95px; /* 文字を大きくしたため高さを少しアップ */
+            height: 95px; 
             box-sizing: border-box;
             transition: 0.3s;
             overflow: hidden;
         }
 
-        /* サイト名のスタイル：ここを大きくしました */
         .btn-title { 
-            font-size: 1.05rem; /* 0.8remから大きく変更 */
+            font-size: 1.05rem; 
             font-weight: bold; 
             margin-top: 6px; 
             display: block;
@@ -61,7 +60,7 @@
             word-break: break-all;
             overflow: hidden;
             display: -webkit-box;
-            -webkit-line-clamp: 2; /* 2行まで表示 */
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
         }
 
@@ -80,7 +79,7 @@
 
         @media (max-width: 900px) { 
             .link-grid { grid-template-columns: repeat(3, 1fr); }
-            .btn-title { font-size: 0.95rem; } /* スマホ等では少し抑える */
+            .btn-title { font-size: 0.95rem; }
         }
         @media (max-width: 500px) { .link-grid { grid-template-columns: repeat(2, 1fr); } }
 
@@ -135,7 +134,7 @@
             41: { name: "共産党(X)", url: "https://x.com/jcp_cc" },
             42: { name: "チームみらい(X)", url: "https://x.com/team_mirai_jp" },
             43: { name: "れいわ(X)", url: "https://x.com/reiwashinsen" },
-            44: { name: "保守党(X)", url: "https://hoshuto_jp" },
+            44: { name: "保守党(X)", url: "https://x.com/hoshuto_jp" },
             45: { name: "社民党(X)", url: "https://x.com/SDPJapan" },
             46: { name: "ChatGPT", url: "https://chatgpt.com/" },
             47: { name: "Google Gemini", url: "https://gemini.google.com/app" },
@@ -172,7 +171,18 @@
             78: { name: "楽天トラベル", url: "https://travel.rakuten.co.jp/" },
             79: { name: "一休.com", url: "https://www.ikyu.com/" },
             80: { name: "じゃらんnet", url: "https://www.jalan.net/" },
-            81: { name: "Booking.com", url: "https://www.booking.com/index.ja.html" }
+            81: { name: "Booking.com", url: "https://www.booking.com/index.ja.html" },
+            82: { name: "トヨタレンタカー", url: "https://rent.toyota.co.jp/" },
+            83: { name: "ニッポンレンタカー", url: "https://www.nipponrentacar.co.jp/" },
+            84: { name: "タイムズカー", url: "https://www.timescar-rental.com/en/" },
+            85: { name: "オリックスレンタカー", url: "https://car.orix.co.jp/" },
+            86: { name: "日産レンタカー", url: "https://nissan-rentacar.com/" },
+            87: { name: "たびらい", url: "https://www.tabirai.net/car/" },
+            88: { name: "楽天トラベル(RC)", url: "https://travel.rakuten.co.jp/cars/" },
+            89: { name: "じゃらんRC", url: "https://www.jalan.net/rentacar/" },
+            90: { name: "スカイチケット", url: "https://skyticket.jp/rentacar/" },
+            91: { name: "ニコニコレンタカー", url: "https://www.2525r.com/" },
+            92: { name: "駅レンタカー", url: "https://www.ekiren.co.jp/" }
         };
 
         for (let i = 1; i <= 100; i++) {
@@ -184,7 +194,7 @@
             else if (i >= 46 && i <= 50) extraClass = " purple-btn";
             else if ((i >= 51 && i <= 53) || (i >= 76 && i <= 78)) extraClass = " brown-btn";
             else if (i >= 54 && i <= 62) extraClass = " deep-blue-btn";
-            else if (i >= 63 && i <= 65) extraClass = " red-btn";
+            else if ((i >= 63 && i <= 65) || (i >= 82 && i <= 91)) extraClass = " red-btn"; // 82-91を赤に
             else if (i >= 79 && i <= 81) extraClass = " tan-btn";
 
             let nameLabel = "";
