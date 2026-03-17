@@ -201,11 +201,11 @@
         for (let i = 1; i <= 100; i++) {
             let extraClass = "";
             
-            // 色分け判定
-            if (i === 92) extraClass = " red-btn";
+            // 色分け判定（No.1-15を濃いオレンジに変更）
+            if (i >= 1 && i <= 15) extraClass = " dark-orange-btn";
+            else if (i === 92) extraClass = " red-btn";
             else if (i === 96) extraClass = " dark-red-btn";
             else if (i >= 97 && i <= 100) extraClass = " dark-orange-btn";
-            else if (i >= 1 && i <= 15) extraClass = " orange-btn"; // 11-15もオレンジに含む
             else if ((i >= 16 && i <= 25) || (i >= 66 && i <= 75)) extraClass = " blue-btn";
             else if ((i >= 26 && i <= 35) || i === 95) extraClass = " green-btn";
             else if (i >= 36 && i <= 45) extraClass = " yellow-btn";
