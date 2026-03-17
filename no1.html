@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Links 1-100 - Sophisticated Dark AI Edition</title>
+    <title>Links Dashboard - Travel Edition</title>
     <style>
         /* 背景：高級感のある抽象的なダークモード */
         body { 
@@ -85,25 +85,24 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
-        /* カテゴリ色（既存分） */
+        /* カテゴリ色 */
         .orange-btn { background: #fff4e6; color: #d35400; border-color: #ffcc99; }
         .blue-btn { background: #e1f5fe; color: #0277bd; border-color: #0277bd; }
         .green-btn { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
         .yellow-btn { background: #fffde7; color: #827717; border-color: #fff176; }
+        .purple-btn { background: #f3e5f5; color: #7b1fa2; border-color: #ce93d8; }
 
-        /* 新規：No.46-50 薄い紫色（ラベンダー） */
-        .purple-btn { 
-            background: #f3e5f5; 
-            color: #7b1fa2; 
-            border-color: #ce93d8; 
-        }
+        /* 新規：薄いグレー (No.51-53) */
+        .gray-btn { background: #f5f5f5; color: #616161; border-color: #bdbdbd; }
+        /* 新規：少し濃い水色 (No.54-62) */
+        .deep-blue-btn { background: #e0f2f1; color: #00796b; border-color: #4db6ac; }
 
         .link-btn:hover { 
             transform: translateY(-5px);
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
             filter: brightness(1.05);
         }
-        .btn-title { font-size: 1.05rem; font-weight: bold; display: block; margin-top: 2px; }
+        .btn-title { font-size: 1.0rem; font-weight: bold; display: block; margin-top: 2px; }
 
         .footer-nav { margin: 60px 0; }
         .back-btn { 
@@ -132,7 +131,6 @@
 <div class="link-grid">
     <script>
         const linkData = {
-            // 1-10番（橙）
             1: { name: "公式サイト", url: "https://sanseito.jp/" },
             2: { name: "最新ニュース", url: "https://sanseito.jp/news/" },
             3: { name: "イベント", url: "https://info.sanseito.jp/" },
@@ -144,7 +142,6 @@
             9: { name: "TikTok", url: "https://www.tiktok.com/@sanseito" },
             10: { name: "選挙ドットコム", url: "https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" },
             
-            // 16-25番（水色）
             16: { name: "Yahoo Japan", url: "https://www.yahoo.co.jp/" },
             17: { name: "読売新聞", url: "https://www.yomiuri.co.jp/" },
             18: { name: "産経新聞", url: "https://www.sankei.com/" },
@@ -156,7 +153,6 @@
             24: { name: "CNN", url: "https://www.cnn.co.jp/" },
             25: { name: "BBC", url: "https://www.bbc.com/japanese" },
 
-            // 26-35番（緑）
             26: { name: "自由民主党", url: "https://www.jimin.jp/" },
             27: { name: "日本維新の会", url: "https://o-ishin.jp/" },
             28: { name: "中道改革連合", url: "https://craj.jp/" },
@@ -168,7 +164,6 @@
             34: { name: "日本保守党", url: "https://hoshuto.jp/" },
             35: { name: "社会民主党", url: "https://sdp.or.jp/" },
 
-            // 36-45番（黄）
             36: { name: "自民党(X)", url: "https://x.com/jimin_koho" },
             37: { name: "維新(X)", url: "https://x.com/osaka_ishin" },
             38: { name: "中道改革(X)", url: "https://x.com/CRAJ2026" },
@@ -180,12 +175,27 @@
             44: { name: "保守党(X)", url: "https://x.com/hoshuto_jp" },
             45: { name: "社民党(X)", url: "https://x.com/SDPJapan" },
 
-            // 46-50番（紫：AIツール）
             46: { name: "ChatGPT", url: "https://chatgpt.com/" },
             47: { name: "Google Gemini", url: "https://gemini.google.com/app" },
             48: { name: "Claude AI", url: "https://claude.ai/new" },
             49: { name: "Perplexity", url: "https://www.perplexity.ai/" },
-            50: { name: "Copilot", url: "https://copilot.microsoft.com/" }
+            50: { name: "Copilot", url: "https://copilot.microsoft.com/" },
+
+            // 51-53 (薄いグレー)
+            51: { name: "JRおでかけネット", url: "https://www.jr-odekake.net/railroad/" },
+            52: { name: "新幹線時刻表", url: "https://timetables.jreast.co.jp/" },
+            53: { name: "駅探 JR時刻表", url: "https://ekitan.com/timetable/railway" },
+
+            // 54-62 (少し濃い水色)
+            54: { name: "羽田空港(HND)", url: "https://tokyo-haneda.com/flight/index.html" },
+            55: { name: "成田空港(NRT)", url: "https://www.narita-airport.jp/ja/flight/" },
+            56: { name: "関西国際(KIX)", url: "https://www.kansai-airport.or.jp/flight/search" },
+            57: { name: "大阪空港(ITM)", url: "https://www.osaka-airport.co.jp/flight/search" },
+            58: { name: "新千歳空港(CTS)", url: "https://www.hokkaido-airports.com/ja/new-chitose/airport/fis/" },
+            59: { name: "セントレア(NGO)", url: "https://www.centrair.jp/flight/index.html" },
+            60: { name: "福岡空港(FUK)", url: "https://www.fukuoka-airport.jp/flight/" },
+            61: { name: "Yahoo!路線情報", url: "https://transit.yahoo.co.jp/" },
+            62: { name: "NAVITIME 飛行機", url: "https://www.navitime.co.jp/air/" }
         };
 
         for (let i = 1; i <= 100; i++) {
@@ -198,6 +208,8 @@
             else if (i >= 26 && i <= 35) extraClass = " green-btn";
             else if (i >= 36 && i <= 45) extraClass = " yellow-btn";
             else if (i >= 46 && i <= 50) extraClass = " purple-btn";
+            else if (i >= 51 && i <= 53) extraClass = " gray-btn";
+            else if (i >= 54 && i <= 62) extraClass = " deep-blue-btn";
 
             if (linkData[i]) {
                 label = `No.${i}<span class="btn-title">${linkData[i].name}</span>`;
