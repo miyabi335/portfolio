@@ -36,10 +36,10 @@
             background: #fff;
             color: #007aff;
             border: 2px solid #007aff;
-            padding: 10px 4px;
+            padding: 10px 6px;
             border-radius: 12px;
             text-decoration: none;
-            font-size: 0.7rem;
+            font-size: 0.75rem; /* No.の数字部分 */
             display: flex;
             flex-direction: column; 
             align-items: center;
@@ -51,17 +51,17 @@
         }
 
         .btn-title { 
-            font-size: 0.9rem; 
+            font-size: 1.05rem; /* タイトルを大きめで統一 */
             font-weight: bold; 
-            margin-top: 6px; 
+            margin-top: 4px; 
             display: block;
             width: 100%;
-            line-height: 1.1;
+            line-height: 1.2;
             word-break: break-all;
-            overflow: hidden;
             display: -webkit-box;
-            -webkit-line-clamp: 2;
+            -webkit-line-clamp: 2; /* 2行まで */
             -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         /* カラー設定 */
@@ -201,7 +201,6 @@
         for (let i = 1; i <= 100; i++) {
             let extraClass = "";
             
-            // 色分け判定（No.1-15を濃いオレンジに変更）
             if (i >= 1 && i <= 15) extraClass = " dark-orange-btn";
             else if (i === 92) extraClass = " red-btn";
             else if (i === 96) extraClass = " dark-red-btn";
