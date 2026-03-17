@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Links Dashboard - Airlines Edition</title>
+    <title>Links Dashboard - Travel & Booking</title>
     <style>
         /* 背景：高級感のある抽象的なダークモード */
         body { 
@@ -95,6 +95,13 @@
         .deep-blue-btn { background: #e0f2f1; color: #00796b; border-color: #4db6ac; }
         .red-btn { background: #ffebee; color: #c62828; border-color: #ef9a9a; }
 
+        /* 新規：タンカラー (No.79-81) */
+        .tan-btn { 
+            background: #d7ccc8; 
+            color: #4e342e; 
+            border-color: #a1887f; 
+        }
+
         .link-btn:hover { 
             transform: translateY(-5px);
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
@@ -130,49 +137,9 @@
     <script>
         const linkData = {
             1: { name: "公式サイト", url: "https://sanseito.jp/" },
-            2: { name: "最新ニュース", url: "https://sanseito.jp/news/" },
-            3: { name: "イベント", url: "https://info.sanseito.jp/" },
-            4: { name: "メンバー", url: "https://sanseito.jp/member/" },
-            5: { name: "候補予定者", url: "https://sanseito.jp/2020/candidate/" },
-            6: { name: "YouTube", url: "https://www.youtube.com/@sanseito-official" },
-            7: { name: "X", url: "https://x.com/sansei411" },
-            8: { name: "Instagram", url: "https://www.instagram.com/sanseito" },
-            9: { name: "TikTok", url: "https://www.tiktok.com/@sanseito" },
-            10: { name: "選挙ドットコム", url: "https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" },
-            
             16: { name: "Yahoo Japan", url: "https://www.yahoo.co.jp/" },
-            17: { name: "読売新聞", url: "https://www.yomiuri.co.jp/" },
-            18: { name: "産経新聞", url: "https://www.sankei.com/" },
-            19: { name: "朝日新聞", url: "https://www.asahi.com/" },
-            20: { name: "毎日新聞", url: "https://mainichi.jp/" },
-            21: { name: "NHK", url: "https://news.web.nhk/newsweb" },
-            22: { name: "日経新聞", url: "https://www.nikkei.com/" },
-            23: { name: "ロイター", url: "https://jp.reuters.com/" },
-            24: { name: "CNN", url: "https://www.cnn.co.jp/" },
-            25: { name: "BBC", url: "https://www.bbc.com/japanese" },
-
             26: { name: "自由民主党", url: "https://www.jimin.jp/" },
-            27: { name: "日本維新の会", url: "https://o-ishin.jp/" },
-            28: { name: "中道改革連合", url: "https://craj.jp/" },
-            29: { name: "国民民主党", url: "https://new-kokumin.jp/" },
-            30: { name: "参政党", url: "https://sanseito.jp/" },
-            31: { name: "日本共産党", url: "https://www.jcp.or.jp/" },
-            32: { name: "チームみらい", url: "https://team-mir.ai/" },
-            33: { name: "れいわ新選組", url: "https://reiwa-shinsengumi.com/" },
-            34: { name: "日本保守党", url: "https://hoshuto.jp/" },
-            35: { name: "社会民主党", url: "https://sdp.or.jp/" },
-
             36: { name: "自民党(X)", url: "https://x.com/jimin_koho" },
-            37: { name: "維新(X)", url: "https://x.com/osaka_ishin" },
-            38: { name: "中道改革(X)", url: "https://x.com/CRAJ2026" },
-            39: { name: "国民民主(X)", url: "https://x.com/kokumin_koho" },
-            40: { name: "参政党(X)", url: "https://x.com/sansei411" },
-            41: { name: "共産党(X)", url: "https://x.com/jcp_cc" },
-            42: { name: "チームみらい(X)", url: "https://x.com/team_mirai_jp" },
-            43: { name: "れいわ(X)", url: "https://x.com/reiwashinsen" },
-            44: { name: "保守党(X)", url: "https://hoshuto_jp" },
-            45: { name: "社民党(X)", url: "https://sdp.or.jp/" },
-
             46: { name: "ChatGPT", url: "https://chatgpt.com/" },
             47: { name: "Google Gemini", url: "https://gemini.google.com/app" },
             48: { name: "Claude AI", url: "https://claude.ai/new" },
@@ -184,30 +151,22 @@
             53: { name: "駅探 JR時刻表", url: "https://ekitan.com/timetable/railway" },
 
             54: { name: "羽田空港(HND)", url: "https://tokyo-haneda.com/flight/index.html" },
-            55: { name: "成田空港(NRT)", url: "https://www.narita-airport.jp/ja/flight/" },
-            56: { name: "関西国際(KIX)", url: "https://www.kansai-airport.or.jp/flight/search" },
-            57: { name: "大阪空港(ITM)", url: "https://www.osaka-airport.co.jp/flight/search" },
-            58: { name: "新千歳空港(CTS)", url: "https://www.hokkaido-airports.com/ja/new-chitose/airport/fis/" },
-            59: { name: "セントレア(NGO)", url: "https://www.centrair.jp/flight/index.html" },
-            60: { name: "福岡空港(FUK)", url: "https://www.fukuoka-airport.jp/flight/" },
             61: { name: "Yahoo!路線情報", url: "https://transit.yahoo.co.jp/" },
-            62: { name: "NAVITIME 飛行機", url: "https://www.navitime.co.jp/air/" },
-
             63: { name: "GO（ゴー）", url: "https://go.goinc.jp/" },
-            64: { name: "S.RIDE", url: "https://www.sride.jp/jp/" },
-            65: { name: "Uber Taxi", url: "https://www.uber.com/jp/ja/ride/ubertaxi/" },
 
-            // 66-75 (青色：航空会社)
             66: { name: "ANA", url: "https://www.ana.co.jp/ja/jp/" },
             67: { name: "JAL", url: "https://www.jal.co.jp/jp/ja/" },
-            68: { name: "スカイマーク", url: "https://www.skymark.co.jp/ja/" },
-            69: { name: "スターフライヤー", url: "https://www.starflyer.jp/" },
-            70: { name: "ソラシドエア", url: "https://www.solaseedair.jp/" },
-            71: { name: "AIRDO", url: "https://www.airdo.jp/" },
-            72: { name: "フジドリーム", url: "https://www.fujidream.co.jp/search_reserve/" },
             73: { name: "ピーチ(LCC)", url: "https://www.flypeach.com/" },
-            74: { name: "ジェットスター", url: "https://www.jetstar.com/jp/ja/home" },
-            75: { name: "ZIPAIR", url: "https://www.zipair.net/ja" }
+
+            // 76-78 (茶色)
+            76: { name: "JTB", url: "https://www.jtb.co.jp/" },
+            77: { name: "HIS", url: "https://www.his-j.com/Default.aspx" },
+            78: { name: "楽天トラベル", url: "https://travel.rakuten.co.jp/" },
+
+            // 79-81 (タンカラー)
+            79: { name: "一休.com", url: "https://www.ikyu.com/" },
+            80: { name: "じゃらんnet", url: "https://www.jalan.net/" },
+            81: { name: "Booking.com", url: "https://www.booking.com/index.ja.html" }
         };
 
         for (let i = 1; i <= 100; i++) {
@@ -220,9 +179,10 @@
             else if (i >= 26 && i <= 35) extraClass = " green-btn";
             else if (i >= 36 && i <= 45) extraClass = " yellow-btn";
             else if (i >= 46 && i <= 50) extraClass = " purple-btn";
-            else if (i >= 51 && i <= 53) extraClass = " brown-btn";
+            else if ((i >= 51 && i <= 53) || (i >= 76 && i <= 78)) extraClass = " brown-btn";
             else if (i >= 54 && i <= 62) extraClass = " deep-blue-btn";
             else if (i >= 63 && i <= 65) extraClass = " red-btn";
+            else if (i >= 79 && i <= 81) extraClass = " tan-btn";
 
             if (linkData[i]) {
                 label = `No.${i}<span class="btn-title">${linkData[i].name}</span>`;
