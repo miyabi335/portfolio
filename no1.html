@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>リンク集・操作パネル</title>
+    <title>参政党＋出張便利リンク</title>
     <style>
         body { 
             font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; 
@@ -101,12 +101,11 @@
 <body>
 
 <header class="header-container">
-    <div class="header-text"><h1>お気に入り・操作パネル</h1></div>
+    <div class="header-text"><h1>参政党＋出張便利リンク</h1></div>
 </header>
 
 <div class="link-grid">
     <script>
-        // （リンクデータは前回と同じのため省略して実行可能です）
         const linkData = {
             1: { name: "公式サイト", url: "https://sanseito.jp/" },
             2: { name: "最新ニュース", url: "https://sanseito.jp/news/" },
@@ -212,10 +211,12 @@
 
         for (let i = 1; i <= 100; i++) {
             let extraClass = "";
-            if (i >= 1 && i <= 15) extraClass = " dark-orange-btn";
+            
+            // 色分け判定
+            if (i >= 1 && i <= 15) extraClass = " dark-orange-btn"; // 参政党：濃いオレンジ
             else if (i === 92) extraClass = " red-btn";
             else if (i === 96) extraClass = " dark-red-btn";
-            else if (i >= 97 && i <= 100) extraClass = " dark-orange-btn";
+            else if (i >= 97 && i <= 100) extraClass = " orange-btn"; // グルメ：薄いオレンジに修正
             else if ((i >= 16 && i <= 25) || (i >= 66 && i <= 75)) extraClass = " blue-btn";
             else if ((i >= 26 && i <= 35) || i === 95) extraClass = " green-btn";
             else if (i >= 36 && i <= 45) extraClass = " yellow-btn";
