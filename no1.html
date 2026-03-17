@@ -74,7 +74,7 @@
             padding: 12px 5px;
             border-radius: 12px;
             text-decoration: none;
-            font-size: 0.8em;
+            font-size: 0.9em; /* 少し大きく調整 */
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             display: flex;
             flex-direction: column;
@@ -94,13 +94,7 @@
         .brown-btn { background: #efebe9; color: #5d4037; border-color: #bcaaa4; }
         .deep-blue-btn { background: #e0f2f1; color: #00796b; border-color: #4db6ac; }
         .red-btn { background: #ffebee; color: #c62828; border-color: #ef9a9a; }
-
-        /* タンカラー (No.79-81) */
-        .tan-btn { 
-            background: #d7ccc8; 
-            color: #4e342e; 
-            border-color: #a1887f; 
-        }
+        .tan-btn { background: #d7ccc8; color: #4e342e; border-color: #a1887f; }
 
         .link-btn:hover { 
             transform: translateY(-5px);
@@ -120,11 +114,7 @@
             font-size: 0.9rem;
             transition: 0.3s;
         }
-        .back-btn:hover {
-            color: #fff;
-            border-color: #fff;
-            background: rgba(255, 255, 255, 0.05);
-        }
+        .back-btn:hover { color: #fff; border-color: #fff; background: rgba(255, 255, 255, 0.05); }
     </style>
 </head>
 <body>
@@ -145,31 +135,24 @@
             48: { name: "Claude AI", url: "https://claude.ai/new" },
             49: { name: "Perplexity", url: "https://www.perplexity.ai/" },
             50: { name: "Copilot", url: "https://copilot.microsoft.com/" },
-
             51: { name: "JRおでかけネット", url: "https://www.jr-odekake.net/railroad/" },
             52: { name: "新幹線時刻表", url: "https://timetables.jreast.co.jp/" },
             53: { name: "駅探 JR時刻表", url: "https://ekitan.com/timetable/railway" },
-
             54: { name: "羽田空港(HND)", url: "https://tokyo-haneda.com/flight/index.html" },
             61: { name: "Yahoo!路線情報", url: "https://transit.yahoo.co.jp/" },
             63: { name: "GO（ゴー）", url: "https://go.goinc.jp/" },
-
             66: { name: "ANA", url: "https://www.ana.co.jp/ja/jp/" },
             67: { name: "JAL", url: "https://www.jal.co.jp/jp/ja/" },
             73: { name: "ピーチ(LCC)", url: "https://www.flypeach.com/" },
-
             76: { name: "JTB", url: "https://www.jtb.co.jp/" },
             77: { name: "HIS", url: "https://www.his-j.com/Default.aspx" },
             78: { name: "楽天トラベル", url: "https://travel.rakuten.co.jp/" },
-
             79: { name: "一休.com", url: "https://www.ikyu.com/" },
             80: { name: "じゃらんnet", url: "https://www.jalan.net/" },
             81: { name: "Booking.com", url: "https://www.booking.com/index.ja.html" }
         };
 
         for (let i = 1; i <= 100; i++) {
-            let label = `No.${i}`;
-            let url = `link${i}.html`;
             let extraClass = "";
 
             if (i >= 1 && i <= 10) extraClass = " orange-btn";
@@ -182,12 +165,16 @@
             else if (i >= 63 && i <= 65) extraClass = " red-btn";
             else if (i >= 79 && i <= 81) extraClass = " tan-btn";
 
+            let nameLabel = "";
+            let url = `link${i}.html`;
+
             if (linkData[i]) {
-                label = `No.${i}<span class="btn-title">${linkData[i].name}</span>`;
+                nameLabel = `<span class="btn-title">${linkData[i].name}</span>`;
                 url = linkData[i].url;
             }
 
-            document.write(`<a href="${url}" class="link-btn${extraClass}" target="_blank">${label}</a>`);
+            // 必ず「No.i」を表示し、名前がある場合は追加する構造に修正
+            document.write(`<a href="${url}" class="link-btn${extraClass}" target="_blank">No.${i}${nameLabel}</a>`);
         }
     </script>
 </div>
