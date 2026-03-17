@@ -3,89 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Links Dashboard - Travel & Booking</title>
+    <title>Links Dashboard - Final Stable Edition</title>
     <style>
-        /* 背景：高級感のある抽象的なダークモード */
+        /* 背景：ダークモード */
         body { 
-            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; 
             margin: 0; 
             background: radial-gradient(circle at top right, #1e293b, #0f172a 60%);
             background-color: #020617; 
             background-attachment: fixed;
             text-align: center; 
             color: #f1f5f9; 
-            overflow-x: hidden;
-        }
-
-        /* 抽象的な光の演出 */
-        body::before {
-            content: "";
-            position: fixed;
-            top: -10%; left: -10%; width: 40%; height: 40%;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
-            z-index: -1;
-        }
-        body::after {
-            content: "";
-            position: fixed;
-            bottom: -10%; right: -10%; width: 50%; height: 50%;
-            background: radial-gradient(circle, rgba(219, 112, 147, 0.05) 0%, transparent 70%);
-            z-index: -1;
         }
 
         .header-container { 
-            position: relative; 
-            width: 100%; 
-            height: 12vh; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(15, 23, 42, 0.8);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+            width: 100%; height: 80px; display: flex; align-items: center; justify-content: center;
+            background: rgba(15, 23, 42, 0.8); border-bottom: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);
         }
 
-        .header-text h1 { 
-            margin: 0;
-            font-size: 1.8rem;
-            font-weight: 200;
-            letter-spacing: 0.3em;
-            color: #fff;
-            text-transform: uppercase;
-        }
+        .header-text h1 { margin: 0; font-size: 1.5rem; font-weight: 200; letter-spacing: 0.3em; color: #fff; }
         
         .link-grid { 
             display: grid; 
-            grid-template-columns: repeat(5, 1fr); 
-            gap: 15px; 
+            grid-template-columns: repeat(5, 1fr); /* 5列を均等に */
+            gap: 12px; 
             max-width: 1100px; 
-            margin: 40px auto; 
-            padding: 30px; 
-            background: rgba(255, 255, 255, 0.02); 
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+            margin: 30px auto; 
+            padding: 20px; 
+            box-sizing: border-box;
         }
 
         .link-btn {
             background: #fff;
             color: #007aff;
             border: 2px solid #007aff;
-            padding: 12px 5px;
+            padding: 10px 4px;
             border-radius: 12px;
             text-decoration: none;
-            font-size: 0.9em; /* 少し大きく調整 */
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            font-size: 0.75rem; /* No.i のサイズ */
             display: flex;
-            flex-direction: column;
+            flex-direction: column; /* 縦に並べる */
             align-items: center;
             justify-content: center;
-            min-height: 75px;
-            line-height: 1.4;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            height: 80px; /* 高さを統一 */
+            box-sizing: border-box;
+            transition: 0.3s;
+            overflow: hidden; /* はみ出し防止 */
         }
 
-        /* カテゴリ色設定 */
+        /* サイト名のスタイル */
+        .btn-title { 
+            font-size: 0.85rem; 
+            font-weight: bold; 
+            margin-top: 4px; 
+            display: block;
+            width: 100%;
+            white-space: nowrap; /* 1行に収める */
+            overflow: hidden;
+            text-overflow: ellipsis; /* 長い場合は「...」にする */
+        }
+
+        /* 各種カラー設定 */
         .orange-btn { background: #fff4e6; color: #d35400; border-color: #ffcc99; }
         .blue-btn { background: #e1f5fe; color: #0277bd; border-color: #0277bd; }
         .green-btn { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
@@ -96,25 +74,14 @@
         .red-btn { background: #ffebee; color: #c62828; border-color: #ef9a9a; }
         .tan-btn { background: #d7ccc8; color: #4e342e; border-color: #a1887f; }
 
-        .link-btn:hover { 
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
-            filter: brightness(1.05);
-        }
-        .btn-title { font-size: 0.95rem; font-weight: bold; display: block; margin-top: 2px; }
+        .link-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.4); }
 
-        .footer-nav { margin: 60px 0; }
-        .back-btn { 
-            padding: 14px 50px; 
-            background: transparent; 
-            color: rgba(255, 255, 255, 0.6); 
-            text-decoration: none; 
-            border-radius: 50px; 
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-        .back-btn:hover { color: #fff; border-color: #fff; background: rgba(255, 255, 255, 0.05); }
+        .footer-nav { margin: 40px 0; }
+        .back-btn { padding: 12px 40px; color: #ccc; text-decoration: none; border: 1px solid #444; border-radius: 30px; }
+
+        /* 画面幅が狭い場合の対応 */
+        @media (max-width: 900px) { .link-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 500px) { .link-grid { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body>
@@ -132,29 +99,18 @@
             36: { name: "自民党(X)", url: "https://x.com/jimin_koho" },
             46: { name: "ChatGPT", url: "https://chatgpt.com/" },
             47: { name: "Google Gemini", url: "https://gemini.google.com/app" },
-            48: { name: "Claude AI", url: "https://claude.ai/new" },
-            49: { name: "Perplexity", url: "https://www.perplexity.ai/" },
-            50: { name: "Copilot", url: "https://copilot.microsoft.com/" },
-            51: { name: "JRおでかけネット", url: "https://www.jr-odekake.net/railroad/" },
-            52: { name: "新幹線時刻表", url: "https://timetables.jreast.co.jp/" },
-            53: { name: "駅探 JR時刻表", url: "https://ekitan.com/timetable/railway" },
-            54: { name: "羽田空港(HND)", url: "https://tokyo-haneda.com/flight/index.html" },
-            61: { name: "Yahoo!路線情報", url: "https://transit.yahoo.co.jp/" },
+            51: { name: "JRおでかけネット", url: "https://www.jr-odekake.net/" },
+            54: { name: "羽田空港(HND)", url: "https://tokyo-haneda.com/" },
             63: { name: "GO（ゴー）", url: "https://go.goinc.jp/" },
-            66: { name: "ANA", url: "https://www.ana.co.jp/ja/jp/" },
-            67: { name: "JAL", url: "https://www.jal.co.jp/jp/ja/" },
-            73: { name: "ピーチ(LCC)", url: "https://www.flypeach.com/" },
+            66: { name: "ANA", url: "https://www.ana.co.jp/" },
+            67: { name: "JAL", url: "https://www.jal.co.jp/" },
             76: { name: "JTB", url: "https://www.jtb.co.jp/" },
-            77: { name: "HIS", url: "https://www.his-j.com/Default.aspx" },
-            78: { name: "楽天トラベル", url: "https://travel.rakuten.co.jp/" },
             79: { name: "一休.com", url: "https://www.ikyu.com/" },
-            80: { name: "じゃらんnet", url: "https://www.jalan.net/" },
-            81: { name: "Booking.com", url: "https://www.booking.com/index.ja.html" }
+            81: { name: "Booking.com", url: "https://www.booking.com/" }
         };
 
         for (let i = 1; i <= 100; i++) {
             let extraClass = "";
-
             if (i >= 1 && i <= 10) extraClass = " orange-btn";
             else if ((i >= 16 && i <= 25) || (i >= 66 && i <= 75)) extraClass = " blue-btn";
             else if (i >= 26 && i <= 35) extraClass = " green-btn";
@@ -173,7 +129,6 @@
                 url = linkData[i].url;
             }
 
-            // 必ず「No.i」を表示し、名前がある場合は追加する構造に修正
             document.write(`<a href="${url}" class="link-btn${extraClass}" target="_blank">No.${i}${nameLabel}</a>`);
         }
     </script>
