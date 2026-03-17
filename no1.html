@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Links Dashboard - Visual Edition</title>
+    <title>Links Dashboard - Fixed Layout</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body { 
-            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; 
             margin: 0; 
             background: radial-gradient(circle at top right, #1e293b, #0f172a 60%);
             background-color: #020617; 
@@ -17,44 +17,55 @@
             overflow-x: hidden;
         }
 
-        /* 抽象的な光の演出 */
-        body::before {
-            content: ""; position: fixed; top: -10%; left: -10%; width: 40%; height: 40%;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, transparent 70%); z-index: -1;
-        }
-        body::after {
-            content: ""; position: fixed; bottom: -10%; right: -10%; width: 50%; height: 50%;
-            background: radial-gradient(circle, rgba(219, 112, 147, 0.05) 0%, transparent 70%); z-index: -1;
-        }
-
         .header-container { 
-            position: relative; width: 100%; height: 12vh; display: flex; align-items: center; justify-content: center;
+            width: 100%; height: 80px; display: flex; align-items: center; justify-content: center;
             background: rgba(15, 23, 42, 0.8); border-bottom: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
         }
 
-        .header-text h1 { margin: 0; font-size: 1.8rem; font-weight: 200; letter-spacing: 0.3em; color: #fff; text-transform: uppercase; }
+        .header-text h1 { margin: 0; font-size: 1.5rem; font-weight: 200; letter-spacing: 0.2em; color: #fff; }
         
         .link-grid { 
-            display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; 
-            max-width: 1100px; margin: 40px auto; padding: 30px; 
-            background: rgba(255, 255, 255, 0.02); border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+            display: grid; 
+            grid-template-columns: repeat(5, 1fr); /* 5列固定 */
+            gap: 12px; 
+            max-width: 1200px; 
+            margin: 30px auto; 
+            padding: 20px; 
+            background: rgba(255, 255, 255, 0.02); 
+            border-radius: 20px;
         }
 
+        /* ボタンの構造を整理 */
         .link-btn {
-            background: #fff; color: #007aff; border: 2px solid #007aff;
-            padding: 12px 5px; border-radius: 12px; text-decoration: none; font-size: 0.8em;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: #fff; color: #333; border: 1.5px solid #ddd;
+            padding: 15px 5px; border-radius: 12px; text-decoration: none;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            min-height: 85px; line-height: 1.4; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            min-height: 90px; /* 高さを確保 */
+            box-sizing: border-box;
+            transition: transform 0.2s;
         }
 
-        /* アイコンのスタイル */
-        .link-btn i { font-size: 1.4rem; margin-bottom: 6px; opacity: 0.8; }
+        /* アイコンサイズ */
+        .link-btn i { font-size: 1.2rem; margin-bottom: 8px; }
 
-        /* カテゴリ色設定 */
+        /* No. 部分のテキスト */
+        .btn-no { font-size: 0.7rem; opacity: 0.7; margin-bottom: 2px; }
+
+        /* サイト名 */
+        .btn-title { 
+            font-size: 0.85rem; 
+            font-weight: bold; 
+            line-height: 1.2;
+            word-break: break-all; /* 長い単語で折返し */
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* 2行まで表示 */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* カテゴリカラー */
         .orange-btn { background: #fff4e6; color: #d35400; border-color: #ffcc99; }
-        .blue-btn { background: #e1f5fe; color: #0277bd; border-color: #0277bd; }
+        .blue-btn { background: #e1f5fe; color: #0277bd; border-color: #81d4fa; }
         .green-btn { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
         .yellow-btn { background: #fffde7; color: #827717; border-color: #fff176; }
         .purple-btn { background: #f3e5f5; color: #7b1fa2; border-color: #ce93d8; }
@@ -63,12 +74,18 @@
         .red-btn { background: #ffebee; color: #c62828; border-color: #ef9a9a; }
         .tan-btn { background: #d7ccc8; color: #4e342e; border-color: #a1887f; }
 
-        .link-btn:hover { transform: translateY(-5px); box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4); filter: brightness(1.05); }
-        .btn-title { font-size: 0.9rem; font-weight: bold; display: block; margin-top: 2px; }
+        .link-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
 
-        .footer-nav { margin: 60px 0; }
-        .back-btn { padding: 14px 50px; background: transparent; color: rgba(255, 255, 255, 0.6); text-decoration: none; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.2); font-size: 0.9rem; transition: 0.3s; }
-        .back-btn:hover { color: #fff; border-color: #fff; background: rgba(255, 255, 255, 0.05); }
+        .footer-nav { margin: 40px 0; }
+        .back-btn { padding: 12px 40px; color: #ccc; text-decoration: none; border: 1px solid #444; border-radius: 30px; }
+
+        /* スマホ対応（画面が狭いときは列を減らす） */
+        @media (max-width: 800px) {
+            .link-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 500px) {
+            .link-grid { grid-template-columns: repeat(2, 1fr); }
+        }
     </style>
 </head>
 <body>
@@ -80,16 +97,14 @@
 <div class="link-grid">
     <script>
         const linkData = {
-            // アイコン設定: iconプロパティを追加
             1: { name: "公式サイト", url: "https://sanseito.jp/", icon: "fa-solid fa-flag" },
             16: { name: "Yahoo Japan", url: "https://www.yahoo.co.jp/", icon: "fa-solid fa-newspaper" },
             26: { name: "自由民主党", url: "https://www.jimin.jp/", icon: "fa-solid fa-landmark" },
             46: { name: "ChatGPT", url: "https://chatgpt.com/", icon: "fa-solid fa-robot" },
             47: { name: "Google Gemini", url: "https://gemini.google.com/app", icon: "fa-solid fa-brain" },
             51: { name: "JRおでかけ", url: "https://www.jr-odekake.net/", icon: "fa-solid fa-train" },
-            52: { name: "新幹線時刻表", url: "https://timetables.jreast.co.jp/", icon: "fa-solid fa-train-subway" },
             54: { name: "羽田空港", url: "https://tokyo-haneda.com/", icon: "fa-solid fa-plane-arrival" },
-            63: { name: "GO（ゴー）", url: "https://go.goinc.jp/", icon: "fa-solid fa-taxi" },
+            63: { name: "GO", url: "https://go.goinc.jp/", icon: "fa-solid fa-taxi" },
             66: { name: "ANA", url: "https://www.ana.co.jp/", icon: "fa-solid fa-plane" },
             67: { name: "JAL", url: "https://www.jal.co.jp/", icon: "fa-solid fa-plane-up" },
             78: { name: "楽天トラベル", url: "https://travel.rakuten.co.jp/", icon: "fa-solid fa-suitcase-rolling" },
@@ -97,35 +112,55 @@
         };
 
         for (let i = 1; i <= 100; i++) {
-            let label = `No.${i}`;
-            let url = `link${i}.html`;
             let extraClass = "";
-            let iconHtml = '<i class="fa-solid fa-link"></i>'; // デフォルト
+            let iconClass = "fa-solid fa-link"; // デフォルトアイコン
 
+            // クラス割り当て
             if (i >= 1 && i <= 10) extraClass = " orange-btn";
-            else if ((i >= 16 && i <= 25) || (i >= 66 && i <= 75)) extraClass = " blue-btn";
+            else if ((i >= 16 && i <= 25) || (i >= 66 && i <= 75)) {
+                extraClass = " blue-btn";
+                iconClass = "fa-solid fa-plane"; // 航空会社はデフォルト飛行機
+            }
             else if (i >= 26 && i <= 35) extraClass = " green-btn";
             else if (i >= 36 && i <= 45) extraClass = " yellow-btn";
-            else if (i >= 46 && i <= 50) extraClass = " purple-btn";
-            else if ((i >= 51 && i <= 53) || (i >= 76 && i <= 78)) extraClass = " brown-btn";
-            else if (i >= 54 && i <= 62) extraClass = " deep-blue-btn";
-            else if (i >= 63 && i <= 65) extraClass = " red-btn";
-            else if (i >= 79 && i <= 81) extraClass = " tan-btn";
-
-            // 特定のカテゴリには自動でアイコンを割り当て（データがない場合）
-            if (i >= 66 && i <= 75) iconHtml = '<i class="fa-solid fa-plane"></i>';
-            if (i >= 63 && i <= 65) iconHtml = '<i class="fa-solid fa-taxi"></i>';
-            if (i >= 51 && i <= 53) iconHtml = '<i class="fa-solid fa-train"></i>';
-
-            if (linkData[i]) {
-                if (linkData[i].icon) iconHtml = `<i class="${linkData[i].icon}"></i>`;
-                label = `${iconHtml}No.${i}<span class="btn-title">${linkData[i].name}</span>`;
-                url = linkData[i].url;
-            } else {
-                label = `${iconHtml}No.${i}`;
+            else if (i >= 46 && i <= 50) {
+                extraClass = " purple-btn";
+                iconClass = "fa-solid fa-robot"; // AIはロボット
+            }
+            else if ((i >= 51 && i <= 53) || (i >= 76 && i <= 78)) {
+                extraClass = " brown-btn";
+                if (i <= 53) iconClass = "fa-solid fa-train";
+            }
+            else if (i >= 54 && i <= 62) {
+                extraClass = " deep-blue-btn";
+                iconClass = "fa-solid fa-plane-up";
+            }
+            else if (i >= 63 && i <= 65) {
+                extraClass = " red-btn";
+                iconClass = "fa-solid fa-taxi";
+            }
+            else if (i >= 79 && i <= 81) {
+                extraClass = " tan-btn";
+                iconClass = "fa-solid fa-bed";
             }
 
-            document.write(`<a href="${url}" class="link-btn${extraClass}" target="_blank">${label}</a>`);
+            let name = "";
+            let url = `link${i}.html`;
+
+            if (linkData[i]) {
+                name = linkData[i].name;
+                url = linkData[i].url;
+                if (linkData[i].icon) iconClass = linkData[i].icon;
+            }
+
+            // 出力
+            document.write(`
+                <a href="${url}" class="link-btn${extraClass}" target="_blank">
+                    <i class="${iconClass}"></i>
+                    <span class="btn-no">No.${i}</span>
+                    <span class="btn-title">${name}</span>
+                </a>
+            `);
         }
     </script>
 </div>
