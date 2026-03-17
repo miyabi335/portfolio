@@ -64,7 +64,7 @@
             -webkit-box-orient: vertical;
         }
 
-        /* カラーバリエーション */
+        /* カラー設定 */
         .orange-btn { background: #fff4e6; color: #d35400; border-color: #ffcc99; }
         .blue-btn { background: #e1f5fe; color: #0277bd; border-color: #0277bd; }
         .green-btn { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
@@ -74,7 +74,7 @@
         .deep-blue-btn { background: #e0f2f1; color: #00796b; border-color: #4db6ac; }
         .red-btn { background: #ffebee; color: #c62828; border-color: #ef9a9a; }
         .tan-btn { background: #d7ccc8; color: #4e342e; border-color: #a1887f; }
-        .black-btn { background: #333; color: #fff; border-color: #000; } /* 黒ボタン追加 */
+        .black-btn { background: #333; color: #fff; border-color: #000; }
 
         .link-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.4); }
 
@@ -132,7 +132,7 @@
             41: { name: "共産党(X)", url: "https://x.com/jcp_cc" },
             42: { name: "チームみらい(X)", url: "https://x.com/team_mirai_jp" },
             43: { name: "れいわ(X)", url: "https://x.com/reiwashinsen" },
-            44: { name: "保守党(X)", url: "https://hoshuto_jp" },
+            44: { name: "保守党(X)", url: "https://x.com/hoshuto_jp" },
             45: { name: "社民党(X)", url: "https://x.com/SDPJapan" },
             46: { name: "ChatGPT", url: "https://chatgpt.com/" },
             47: { name: "Google Gemini", url: "https://gemini.google.com/app" },
@@ -193,7 +193,7 @@
                 extraClass = " orange-btn";
             } else if ((i >= 16 && i <= 25) || (i >= 66 && i <= 75)) {
                 extraClass = " blue-btn";
-            } else if ((i >= 26 && i <= 35) || (i === 95)) { // 26-35 と 95 を緑に
+            } else if ((i >= 26 && i <= 35) || i === 95) { // 95を緑に
                 extraClass = " green-btn";
             } else if (i >= 36 && i <= 45) {
                 extraClass = " yellow-btn";
@@ -203,12 +203,12 @@
                 extraClass = " brown-btn";
             } else if (i >= 54 && i <= 62) {
                 extraClass = " deep-blue-btn";
-            } else if ((i >= 63 && i <= 65) || (i >= 82 && i <= 91)) { // 92はここから外す
+            } else if ((i >= 63 && i <= 65) || (i >= 82 && i <= 92)) { // 92を赤に含める
                 extraClass = " red-btn";
             } else if (i >= 79 && i <= 81) {
                 extraClass = " tan-btn";
-            } else if (i >= 92 && i <= 94) {
-                extraClass = " black-btn"; // 92-94 を黒に
+            } else if (i >= 93 && i <= 94) { // 93-94を黒に
+                extraClass = " black-btn";
             }
 
             let nameLabel = "";
