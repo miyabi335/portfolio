@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Links Dashboard - Travel & Booking</title>
+    <title>Links Dashboard - Visual Edition</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* 背景：高級感のある抽象的なダークモード */
         body { 
             font-family: 'Helvetica Neue', Arial, sans-serif; 
             margin: 0; 
@@ -19,71 +19,38 @@
 
         /* 抽象的な光の演出 */
         body::before {
-            content: "";
-            position: fixed;
-            top: -10%; left: -10%; width: 40%; height: 40%;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
-            z-index: -1;
+            content: ""; position: fixed; top: -10%; left: -10%; width: 40%; height: 40%;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, transparent 70%); z-index: -1;
         }
         body::after {
-            content: "";
-            position: fixed;
-            bottom: -10%; right: -10%; width: 50%; height: 50%;
-            background: radial-gradient(circle, rgba(219, 112, 147, 0.05) 0%, transparent 70%);
-            z-index: -1;
+            content: ""; position: fixed; bottom: -10%; right: -10%; width: 50%; height: 50%;
+            background: radial-gradient(circle, rgba(219, 112, 147, 0.05) 0%, transparent 70%); z-index: -1;
         }
 
         .header-container { 
-            position: relative; 
-            width: 100%; 
-            height: 12vh; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(15, 23, 42, 0.8);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+            position: relative; width: 100%; height: 12vh; display: flex; align-items: center; justify-content: center;
+            background: rgba(15, 23, 42, 0.8); border-bottom: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
         }
 
-        .header-text h1 { 
-            margin: 0;
-            font-size: 1.8rem;
-            font-weight: 200;
-            letter-spacing: 0.3em;
-            color: #fff;
-            text-transform: uppercase;
-        }
+        .header-text h1 { margin: 0; font-size: 1.8rem; font-weight: 200; letter-spacing: 0.3em; color: #fff; text-transform: uppercase; }
         
         .link-grid { 
-            display: grid; 
-            grid-template-columns: repeat(5, 1fr); 
-            gap: 15px; 
-            max-width: 1100px; 
-            margin: 40px auto; 
-            padding: 30px; 
-            background: rgba(255, 255, 255, 0.02); 
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; 
+            max-width: 1100px; margin: 40px auto; padding: 30px; 
+            background: rgba(255, 255, 255, 0.02); border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
         }
 
         .link-btn {
-            background: #fff;
-            color: #007aff;
-            border: 2px solid #007aff;
-            padding: 12px 5px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 0.8em;
+            background: #fff; color: #007aff; border: 2px solid #007aff;
+            padding: 12px 5px; border-radius: 12px; text-decoration: none; font-size: 0.8em;
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 75px;
-            line-height: 1.4;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            min-height: 85px; line-height: 1.4; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
+
+        /* アイコンのスタイル */
+        .link-btn i { font-size: 1.4rem; margin-bottom: 6px; opacity: 0.8; }
 
         /* カテゴリ色設定 */
         .orange-btn { background: #fff4e6; color: #d35400; border-color: #ffcc99; }
@@ -94,37 +61,14 @@
         .brown-btn { background: #efebe9; color: #5d4037; border-color: #bcaaa4; }
         .deep-blue-btn { background: #e0f2f1; color: #00796b; border-color: #4db6ac; }
         .red-btn { background: #ffebee; color: #c62828; border-color: #ef9a9a; }
+        .tan-btn { background: #d7ccc8; color: #4e342e; border-color: #a1887f; }
 
-        /* 新規：タンカラー (No.79-81) */
-        .tan-btn { 
-            background: #d7ccc8; 
-            color: #4e342e; 
-            border-color: #a1887f; 
-        }
-
-        .link-btn:hover { 
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
-            filter: brightness(1.05);
-        }
-        .btn-title { font-size: 0.95rem; font-weight: bold; display: block; margin-top: 2px; }
+        .link-btn:hover { transform: translateY(-5px); box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4); filter: brightness(1.05); }
+        .btn-title { font-size: 0.9rem; font-weight: bold; display: block; margin-top: 2px; }
 
         .footer-nav { margin: 60px 0; }
-        .back-btn { 
-            padding: 14px 50px; 
-            background: transparent; 
-            color: rgba(255, 255, 255, 0.6); 
-            text-decoration: none; 
-            border-radius: 50px; 
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-        .back-btn:hover {
-            color: #fff;
-            border-color: #fff;
-            background: rgba(255, 255, 255, 0.05);
-        }
+        .back-btn { padding: 14px 50px; background: transparent; color: rgba(255, 255, 255, 0.6); text-decoration: none; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.2); font-size: 0.9rem; transition: 0.3s; }
+        .back-btn:hover { color: #fff; border-color: #fff; background: rgba(255, 255, 255, 0.05); }
     </style>
 </head>
 <body>
@@ -136,43 +80,27 @@
 <div class="link-grid">
     <script>
         const linkData = {
-            1: { name: "公式サイト", url: "https://sanseito.jp/" },
-            16: { name: "Yahoo Japan", url: "https://www.yahoo.co.jp/" },
-            26: { name: "自由民主党", url: "https://www.jimin.jp/" },
-            36: { name: "自民党(X)", url: "https://x.com/jimin_koho" },
-            46: { name: "ChatGPT", url: "https://chatgpt.com/" },
-            47: { name: "Google Gemini", url: "https://gemini.google.com/app" },
-            48: { name: "Claude AI", url: "https://claude.ai/new" },
-            49: { name: "Perplexity", url: "https://www.perplexity.ai/" },
-            50: { name: "Copilot", url: "https://copilot.microsoft.com/" },
-
-            51: { name: "JRおでかけネット", url: "https://www.jr-odekake.net/railroad/" },
-            52: { name: "新幹線時刻表", url: "https://timetables.jreast.co.jp/" },
-            53: { name: "駅探 JR時刻表", url: "https://ekitan.com/timetable/railway" },
-
-            54: { name: "羽田空港(HND)", url: "https://tokyo-haneda.com/flight/index.html" },
-            61: { name: "Yahoo!路線情報", url: "https://transit.yahoo.co.jp/" },
-            63: { name: "GO（ゴー）", url: "https://go.goinc.jp/" },
-
-            66: { name: "ANA", url: "https://www.ana.co.jp/ja/jp/" },
-            67: { name: "JAL", url: "https://www.jal.co.jp/jp/ja/" },
-            73: { name: "ピーチ(LCC)", url: "https://www.flypeach.com/" },
-
-            // 76-78 (茶色)
-            76: { name: "JTB", url: "https://www.jtb.co.jp/" },
-            77: { name: "HIS", url: "https://www.his-j.com/Default.aspx" },
-            78: { name: "楽天トラベル", url: "https://travel.rakuten.co.jp/" },
-
-            // 79-81 (タンカラー)
-            79: { name: "一休.com", url: "https://www.ikyu.com/" },
-            80: { name: "じゃらんnet", url: "https://www.jalan.net/" },
-            81: { name: "Booking.com", url: "https://www.booking.com/index.ja.html" }
+            // アイコン設定: iconプロパティを追加
+            1: { name: "公式サイト", url: "https://sanseito.jp/", icon: "fa-solid fa-flag" },
+            16: { name: "Yahoo Japan", url: "https://www.yahoo.co.jp/", icon: "fa-solid fa-newspaper" },
+            26: { name: "自由民主党", url: "https://www.jimin.jp/", icon: "fa-solid fa-landmark" },
+            46: { name: "ChatGPT", url: "https://chatgpt.com/", icon: "fa-solid fa-robot" },
+            47: { name: "Google Gemini", url: "https://gemini.google.com/app", icon: "fa-solid fa-brain" },
+            51: { name: "JRおでかけ", url: "https://www.jr-odekake.net/", icon: "fa-solid fa-train" },
+            52: { name: "新幹線時刻表", url: "https://timetables.jreast.co.jp/", icon: "fa-solid fa-train-subway" },
+            54: { name: "羽田空港", url: "https://tokyo-haneda.com/", icon: "fa-solid fa-plane-arrival" },
+            63: { name: "GO（ゴー）", url: "https://go.goinc.jp/", icon: "fa-solid fa-taxi" },
+            66: { name: "ANA", url: "https://www.ana.co.jp/", icon: "fa-solid fa-plane" },
+            67: { name: "JAL", url: "https://www.jal.co.jp/", icon: "fa-solid fa-plane-up" },
+            78: { name: "楽天トラベル", url: "https://travel.rakuten.co.jp/", icon: "fa-solid fa-suitcase-rolling" },
+            79: { name: "一休.com", url: "https://www.ikyu.com/", icon: "fa-solid fa-hotel" }
         };
 
         for (let i = 1; i <= 100; i++) {
             let label = `No.${i}`;
             let url = `link${i}.html`;
             let extraClass = "";
+            let iconHtml = '<i class="fa-solid fa-link"></i>'; // デフォルト
 
             if (i >= 1 && i <= 10) extraClass = " orange-btn";
             else if ((i >= 16 && i <= 25) || (i >= 66 && i <= 75)) extraClass = " blue-btn";
@@ -184,9 +112,17 @@
             else if (i >= 63 && i <= 65) extraClass = " red-btn";
             else if (i >= 79 && i <= 81) extraClass = " tan-btn";
 
+            // 特定のカテゴリには自動でアイコンを割り当て（データがない場合）
+            if (i >= 66 && i <= 75) iconHtml = '<i class="fa-solid fa-plane"></i>';
+            if (i >= 63 && i <= 65) iconHtml = '<i class="fa-solid fa-taxi"></i>';
+            if (i >= 51 && i <= 53) iconHtml = '<i class="fa-solid fa-train"></i>';
+
             if (linkData[i]) {
-                label = `No.${i}<span class="btn-title">${linkData[i].name}</span>`;
+                if (linkData[i].icon) iconHtml = `<i class="${linkData[i].icon}"></i>`;
+                label = `${iconHtml}No.${i}<span class="btn-title">${linkData[i].name}</span>`;
                 url = linkData[i].url;
+            } else {
+                label = `${iconHtml}No.${i}`;
             }
 
             document.write(`<a href="${url}" class="link-btn${extraClass}" target="_blank">${label}</a>`);
