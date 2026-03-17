@@ -64,7 +64,7 @@
             -webkit-box-orient: vertical;
         }
 
-        /* カラー設定 */
+        /* 各カラーボタンの定義 */
         .orange-btn { background: #fff4e6; color: #d35400; border-color: #ffcc99; }
         .blue-btn { background: #e1f5fe; color: #0277bd; border-color: #0277bd; }
         .green-btn { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
@@ -72,15 +72,12 @@
         .purple-btn { background: #f3e5f5; color: #7b1fa2; border-color: #ce93d8; }
         .brown-btn { background: #efebe9; color: #5d4037; border-color: #bcaaa4; }
         .deep-blue-btn { background: #e0f2f1; color: #00796b; border-color: #4db6ac; }
-        .red-btn { background: #ffebee; color: #c62828; border-color: #ef9a9a; } /* 赤色 */
+        .red-btn { background: #ffebee; color: #c62828; border-color: #ef9a9a; }
         .tan-btn { background: #d7ccc8; color: #4e342e; border-color: #a1887f; }
 
         .link-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.4); }
 
-        @media (max-width: 900px) { 
-            .link-grid { grid-template-columns: repeat(3, 1fr); }
-            .btn-title { font-size: 0.95rem; }
-        }
+        @media (max-width: 900px) { .link-grid { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 500px) { .link-grid { grid-template-columns: repeat(2, 1fr); } }
 
         .footer-nav { margin: 40px 0; }
@@ -187,15 +184,27 @@
 
         for (let i = 1; i <= 100; i++) {
             let extraClass = "";
-            if (i >= 1 && i <= 10) extraClass = " orange-btn";
-            else if ((i >= 16 && i <= 25) || (i >= 66 && i <= 75)) extraClass = " blue-btn";
-            else if (i >= 26 && i <= 35) extraClass = " green-btn";
-            else if (i >= 36 && i <= 45) extraClass = " yellow-btn";
-            else if (i >= 46 && i <= 50) extraClass = " purple-btn";
-            else if ((i >= 51 && i <= 53) || (i >= 76 && i <= 78)) extraClass = " brown-btn";
-            else if (i >= 54 && i <= 62) extraClass = " deep-blue-btn";
-            else if ((i >= 63 && i <= 65) || (i >= 82 && i <= 92)) extraClass = " red-btn"; // No.92まで赤に
-            else if (i >= 79 && i <= 81) extraClass = " tan-btn";
+            
+            // 色分けの条件式をシンプルかつ確実に修正
+            if (i >= 1 && i <= 10) {
+                extraClass = " orange-btn";
+            } else if ((i >= 16 && i <= 25) || (i >= 66 && i <= 75)) {
+                extraClass = " blue-btn";
+            } else if (i >= 26 && i <= 35) {
+                extraClass = " green-btn";
+            } else if (i >= 36 && i <= 45) {
+                extraClass = " yellow-btn";
+            } else if (i >= 46 && i <= 50) {
+                extraClass = " purple-btn";
+            } else if ((i >= 51 && i <= 53) || (i >= 76 && i <= 78)) {
+                extraClass = " brown-btn";
+            } else if (i >= 54 && i <= 62) {
+                extraClass = " deep-blue-btn";
+            } else if ((i >= 63 && i <= 65) || (i >= 82 && i <= 92)) {
+                extraClass = " red-btn"; // 63-65 および 82-92 を確実に赤にする
+            } else if (i >= 79 && i <= 81) {
+                extraClass = " tan-btn";
+            }
 
             let nameLabel = "";
             let url = `link${i}.html`;
