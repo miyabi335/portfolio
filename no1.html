@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Links Dashboard</title>
+    <title>Links Dashboard - Stable Bold Edition</title>
     <style>
         body { 
             font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; 
@@ -13,6 +13,7 @@
             background-attachment: fixed;
             text-align: center; 
             color: #f1f5f9; 
+            -webkit-text-size-adjust: 100%; /* iOSでの文字サイズ自動調整を防止 */
         }
 
         .header-container { 
@@ -25,10 +26,10 @@
         .link-grid { 
             display: grid; 
             grid-template-columns: repeat(5, 1fr); 
-            gap: 12px; 
+            gap: 10px; /* 間隔を少し詰めて全体をタイトに */
             max-width: 1100px; 
             margin: 30px auto; 
-            padding: 20px; 
+            padding: 15px; 
             box-sizing: border-box;
         }
 
@@ -36,37 +37,39 @@
             background: #fff;
             color: #007aff;
             border: 2px solid #007aff;
-            padding: 10px 6px;
-            border-radius: 12px;
+            padding: 4px; /* 内側の余白を最小限に */
+            border-radius: 10px;
             text-decoration: none;
-            font-size: 0.75rem; /* No.の数字部分 */
+            font-size: 0.7rem; /* No.の数字 */
+            font-weight: bold;
             display: flex;
             flex-direction: column; 
             align-items: center;
             justify-content: center;
-            height: 95px; 
+            height: 100px; /* 高さを完全に固定してバラつきを防止 */
             box-sizing: border-box;
-            transition: 0.3s;
-            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            overflow: hidden; /* はみ出し防止 */
         }
 
         .btn-title { 
-            font-size: 1.05rem; /* タイトルを大きめで統一 */
-            font-weight: bold; 
-            margin-top: 4px; 
+            font-size: 1.05rem; /* 文字サイズは維持 */
+            font-weight: 900; /* ★文字を極太に */
+            margin-top: 2px; 
             display: block;
             width: 100%;
-            line-height: 1.2;
+            line-height: 1.1; /* 行間を詰め気味にして枠内に収める */
             word-break: break-all;
             display: -webkit-box;
             -webkit-line-clamp: 2; /* 2行まで */
             -webkit-box-orient: vertical;
             overflow: hidden;
+            letter-spacing: -0.02em; /* 文字間隔をわずかに詰めて見やすく */
         }
 
-        /* カラー設定 */
+        /* カラー設定 (文字を太くしたため、背景を少し濃くして白文字の視認性を確保) */
         .orange-btn { background: #fff4e6; color: #d35400; border-color: #ffcc99; }
-        .dark-orange-btn { background: #ffe0b2; color: #e65100; border-color: #fb8c00; font-weight: bold; }
+        .dark-orange-btn { background: #fb8c00; color: #fff !important; border-color: #ef6c00; } /* 白文字でくっきり */
         .blue-btn { background: #e1f5fe; color: #0277bd; border-color: #0277bd; }
         .green-btn { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
         .yellow-btn { background: #fffde7; color: #827717; border-color: #fff176; }
@@ -74,17 +77,26 @@
         .brown-btn { background: #efebe9; color: #5d4037; border-color: #bcaaa4; }
         .deep-blue-btn { background: #e0f2f1; color: #00796b; border-color: #4db6ac; }
         .red-btn { background: #ffebee; color: #c62828; border-color: #ef9a9a; }
-        .dark-red-btn { background: #ffcdd2; color: #b71c1c; border-color: #d32f2f; font-weight: bold; }
+        .dark-red-btn { background: #c62828; color: #fff !important; border-color: #b71c1c; } /* 白文字でくっきり */
         .tan-btn { background: #d7ccc8; color: #4e342e; border-color: #a1887f; }
-        .black-btn { background: #333; color: #fff !important; border-color: #000; }
+        .black-btn { background: #1a1a1a; color: #fff !important; border-color: #000; }
 
-        .link-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.4); }
+        .link-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 10px rgba(0,0,0,0.5); }
 
-        @media (max-width: 900px) { .link-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 500px) { .link-grid { grid-template-columns: repeat(2, 1fr); } }
+        /* タブレット・スマホ対応 (高さを少し低く調整) */
+        @media (max-width: 900px) { 
+            .link-grid { grid-template-columns: repeat(3, 1fr); gap: 8px;} 
+            .link-btn { height: 85px; }
+            .btn-title { font-size: 1rem; }
+        }
+        @media (max-width: 500px) { 
+            .link-grid { grid-template-columns: repeat(2, 1fr); gap: 6px;} 
+            .link-btn { height: 80px; }
+            .btn-title { font-size: 0.95rem; }
+        }
 
         .footer-nav { margin: 40px 0; }
-        .back-btn { padding: 12px 40px; color: #ccc; text-decoration: none; border: 1px solid #444; border-radius: 30px; }
+        .back-btn { padding: 12px 40px; color: #ccc; text-decoration: none; border: 1px solid #444; border-radius: 30px; font-weight: bold;}
     </style>
 </head>
 <body>
@@ -201,6 +213,7 @@
         for (let i = 1; i <= 100; i++) {
             let extraClass = "";
             
+            // 色分け判定（No.1-15は濃いオレンジ）
             if (i >= 1 && i <= 15) extraClass = " dark-orange-btn";
             else if (i === 92) extraClass = " red-btn";
             else if (i === 96) extraClass = " dark-red-btn";
