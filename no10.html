@@ -3,76 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>参政党＋出張便利リンク集</title>
+    <title>Miyabi's Portfolio Portal</title>
     <style>
-        body { font-family: 'Helvetica Neue', Arial, 'Meiryo', sans-serif; margin: 0; background: #020617; text-align: center; color: #f1f5f9; }
-        .header-container { width: 100%; height: 70px; display: flex; align-items: center; justify-content: center; background: rgba(15, 23, 42, 0.9); border-bottom: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
-        .header-text h1 { margin: 0; font-size: 1.2rem; letter-spacing: 0.2em; color: #fff; }
-        .link-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; max-width: 1200px; margin: 20px auto; padding: 10px; }
-        .link-btn { background: #fff; color: #333; border: 1px solid #ccc; padding: 5px; border-radius: 8px; text-decoration: none; font-size: 0.7rem; font-weight: bold; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 90px; transition: 0.2s; overflow: hidden; }
-        .btn-title { font-size: 0.95rem; font-weight: 900; margin-top: 3px; line-height: 1.1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        body { font-family: "Meiryo", sans-serif; margin: 0; background: #0f172a; text-align: center; color: #f1f5f9; }
+        .header-container { position: relative; width: 100%; height: 35vh; overflow: hidden; background: #333; }
+        .header-image { width: 100%; height: 100%; object-fit: cover; }
+        .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-shadow: 0 2px 15px rgba(0,0,0,0.8); width: 100%; }
+        .section-title { margin-top: 40px; padding: 12px; background: rgba(255,255,255,0.05); font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; }
 
-        /* カラー設定（引き継ぎ内容を反映） */
-        .dark-orange-btn { background: #fb8c00 !important; color: #fff !important; border-color: #ef6c00; }
-        .blue-btn { background: #e1f5fe; color: #0277bd; border-color: #0277bd; }
-        .green-btn { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
-        .yellow-btn { background: #fffde7; color: #827717; border-color: #fff176; }
-        .purple-btn { background: #f3e5f5; color: #7b1fa2; border-color: #ce93d8; }
-        .brown-btn { background: #efebe9; color: #5d4037; border-color: #bcaaa4; }
-        .deep-blue-btn { background: #e0f2f1; color: #00796b; border-color: #4db6ac; }
-        .red-btn { background: #ffebee; color: #c62828; border-color: #ef9a9a; }
-        .dark-red-btn { background: #c62828; color: #fff !important; border-color: #b71c1c; }
-        .tan-btn { background: #d7ccc8; color: #4e342e; border-color: #a1887f; }
-        .black-btn { background: #1a1a1a; color: #fff !important; border-color: #000; }
-        .orange-btn { background: #fff4e6; color: #d35400; border-color: #ffcc99; }
+        /* ナビゲーション */
+        .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
+        .nav-btn { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); color: #38bdf8; border: 1px solid #38bdf8; padding: 10px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85em; min-height: 45px; transition: 0.2s; }
+        
+        /* 通常ボタンのホバー */
+        .nav-btn:hover { background: rgba(56, 189, 248, 0.2); transform: translateY(-2px); }
 
-        .link-btn:hover { transform: translateY(-3px); filter: brightness(1.1); box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
-        .footer-nav { margin: 30px 0 50px; }
-        .back-btn { padding: 12px 40px; color: #94a3b8; text-decoration: none; border: 1px solid #334155; border-radius: 30px; font-weight: bold; transition: 0.3s; }
-        .back-btn:hover { background: #334155; color: #fff; }
+        /* No.10専用（オレンジ・リンクあり） */
+        .nav-link-special { background: #fb8c00 !important; color: #fff !important; border: 2px solid #fff !important; cursor: pointer; }
+        .nav-link-special:hover { background: #ef6c00 !important; }
 
-        @media (max-width: 900px) { .link-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 500px) { .link-grid { grid-template-columns: repeat(2, 1fr); } }
+        /* 参政党ボタン */
+        .sansei-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
+        .sansei-btn { background: #fb8c00; color: #fff; border: none; padding: 15px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8em; min-height: 50px; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+        .sansei-btn:hover { background: #ef6c00; transform: translateY(-2px); }
+
+        /* ギャラリー（8枚・2段） */
+        .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1100px; margin: 20px auto; padding: 0 15px; }
+        .item-wrapper { display: flex; flex-direction: column; align-items: center; }
+        .item-label { font-size: 0.75em; color: #fb8c00; margin-bottom: 5px; font-weight: bold; }
+        .thumb-media { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
+        .thumb-media:hover { transform: scale(1.05); border-color: #fb8c00; }
+
+        /* 動画オーバーレイ */
+        #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 9999; }
+        #overlay-content { width: 90%; max-width: 1000px; position: relative; display: flex; flex-direction: column; align-items: center; }
+        #overlay-video { width: 100%; aspect-ratio: 16/9; display: none; border-radius: 8px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+        .close-btn { margin-top: 20px; background: #ef4444; color: white; border: none; padding: 12px 40px; border-radius: 30px; cursor: pointer; font-weight: bold; font-size: 1rem; }
+
+        @media (max-width: 768px) { .nav-grid, .sansei-grid, .grid-container { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body>
-<header class="header-container">
-    <div class="header-text"><h1>参政党＋出張便利リンク</h1></div>
-</header>
-<div class="link-grid" id="main-grid"></div>
-<div class="footer-nav">
-    <a href="index.html" class="back-btn">ホーム画面へ戻る</a>
-</div>
-<script>
-    const linkData = {
-        1: { name: "公式サイト", url: "https://sanseito.jp/" },
-        2: { name: "最新ニュース", url: "https://sanseito.jp/news/" },
-        3: { name: "イベント", url: "https://info.sanseito.jp/" },
-        10: { name: "選挙ドットコム", url: "https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" },
-        16: { name: "Yahoo Japan", url: "https://www.yahoo.co.jp/" },
-        47: { name: "Google Gemini", url: "https://gemini.google.com/app" },
-        61: { name: "Yahoo!路線情報", url: "https://transit.yahoo.co.jp/" },
-        97: { name: "食べログ", url: "https://tabelog.com/" }
-    };
-    const grid = document.getElementById('main-grid');
-    for (let i = 1; i <= 100; i++) {
-        let cls = "";
-        if (i >= 1 && i <= 15) cls = " dark-orange-btn";
-        else if (i === 92) cls = " red-btn";
-        else if (i === 96) cls = " dark-red-btn";
-        else if (i >= 97 && i <= 100) cls = " orange-btn";
-        else if ((i >= 16 && i <= 25) || (i >= 66 && i <= 75)) cls = " blue-btn";
-        else if ((i >= 26 && i <= 35) || i === 95) cls = " green-btn";
-        else if (i >= 36 && i <= 45) cls = " yellow-btn";
-        else if (i >= 46 && i <= 50) cls = " purple-btn";
-        else if ((i >= 51 && i <= 53) || (i >= 76 && i <= 78)) cls = " brown-btn";
-        else if (i >= 54 && i <= 62) cls = " deep-blue-btn";
-        else if ((i >= 63 && i <= 65) || (i >= 82 && i <= 91)) cls = " red-btn";
-        else if (i >= 79 && i <= 81) cls = " tan-btn";
-        else if (i === 93 || i === 94) cls = " black-btn";
 
-        let info = linkData[i] || { name: `No.${i} 予備`, url: "#" };
-        grid.innerHTML += `<a href="${info.url}" class="link-btn${cls}" target="_blank">No.${i}<span class="btn-title">${info.name}</span></a>`;
+<header class="header-container">
+    <img src="fuji00001.jpg" alt="富士山" class="header-image">
+    <div class="header-text"><h1>MIYABI'S PORTAL</h1></div>
+</header>
+
+<div class="section-title">NAVIGATION MENU</div>
+<nav class="nav-grid">
+    <div class="nav-btn">No.1</div>
+    <div class="nav-btn">No.2</div>
+    <div class="nav-btn">No.3</div>
+    <div class="nav-btn">No.4</div>
+    <div class="nav-btn">No.5</div>
+    <div class="nav-btn">No.6</div>
+    <div class="nav-btn">No.7</div>
+    <div class="nav-btn">No.8</div>
+    <div class="nav-btn">No.9</div>
+    <a href="no10.html" class="nav-btn nav-link-special">Links集 (No.10)</a>
+</nav>
+
+<div class="section-title">SANSEITO LINKS</div>
+<div class="sansei-grid">
+    <a href="https://sanseito.jp/" target="_blank" class="sansei-btn">公式サイト</a>
+    <a href="https://sanseito.jp/news/" target="_blank" class="sansei-btn">ニュース</a>
+    <a href="https://info.sanseito.jp/" target="_blank" class="sansei-btn">イベント</a>
+    <a href="https://sanseito.jp/member/" target="_blank" class="sansei-btn">メンバー</a>
+    <a href="https://sanseito.jp/2020/candidate/" target="_blank" class="sansei-btn">候補予定者</a>
+    <a href="https://www.youtube.com/@sanseito-official" target="_blank" class="sansei-btn">YouTube</a>
+    <a href="https://x.com/sansei411" target="_blank" class="sansei-btn">X</a>
+    <a href="https://www.instagram.com/sanseito" target="_blank" class="sansei-btn">Instagram</a>
+    <a href="https://www.tiktok.com/@sanseito" target="_blank" class="sansei-btn">TikTok</a>
+    <a href="https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" target="_blank" class="sansei-btn">選挙ドットコム</a>
+</div>
+
+<div class="section-title">VIDEO ARCHIVE</div>
+<div class="grid-container">
+    <div class="item-wrapper"><div class="item-label">Video 1</div><img src="https://img.youtube.com/vi/G1hKzCkywM8/mqdefault.jpg" class="thumb-media" onclick="openVideo('G1hKzCkywM8')"></div>
+    <div class="item-wrapper"><div class="item-label">Video 2</div><img src="https://img.youtube.com/vi/a-8XiE7W7u4/mqdefault.jpg" class="thumb-media" onclick="openVideo('a-8XiE7W7u4')"></div>
+    <div class="item-wrapper"><div class="item-label">Video 3</div><img src="https://img.youtube.com/vi/q2_c2_WfJFg/mqdefault.jpg" class="thumb-media" onclick="openVideo('q2_c2_WfJFg')"></div>
+    <div class="item-wrapper"><div class="item-label">Video 4</div><img src="https://img.youtube.com/vi/BpITZk7sa8E/mqdefault.jpg" class="thumb-media" onclick="openVideo('BpITZk7sa8E')"></div>
+    <div class="item-wrapper"><div class="item-label">Video 5</div><img src="https://img.youtube.com/vi/UYmvFzDuO5k/mqdefault.jpg" class="thumb-media" onclick="openVideo('UYmvFzDuO5k')"></div>
+    <div class="item-wrapper"><div class="item-label">Video 6</div><img src="https://img.youtube.com/vi/G1hKzCkywM8/mqdefault.jpg" class="thumb-media" onclick="openVideo('G1hKzCkywM8')"></div>
+    <div class="item-wrapper"><div class="item-label">Video 7</div><img src="https://img.youtube.com/vi/a-8XiE7W7u4/mqdefault.jpg" class="thumb-media" onclick="openVideo('a-8XiE7W7u4')"></div>
+    <div class="item-wrapper"><div class="item-label">Video 8</div><img src="https://img.youtube.com/vi/q2_c2_WfJFg/mqdefault.jpg" class="thumb-media" onclick="openVideo('q2_c2_WfJFg')"></div>
+</div>
+
+<div id="overlay" onclick="closeOverlay()">
+    <div id="overlay-content" onclick="event.stopPropagation()">
+        <iframe id="overlay-video" src="" frameborder="0" allowfullscreen></iframe>
+        <button class="close-btn" onclick="closeOverlay()">× 閉じて戻る</button>
+    </div>
+</div>
+
+<script>
+    function openVideo(id) {
+        const video = document.getElementById('overlay-video');
+        video.src = "https://www.youtube.com/embed/" + id + "?autoplay=1";
+        video.style.display = 'block';
+        document.getElementById('overlay').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closeOverlay() {
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('overlay-video').src = '';
+        document.body.style.overflow = '';
     }
 </script>
 </body>
