@@ -8,167 +8,50 @@
         body { font-family: "Meiryo", sans-serif; margin: 0; background: #f5f5f7; text-align: center; color: #333; overflow-x: hidden; }
         .header-container { position: relative; width: 100%; height: 35vh; overflow: hidden; background: #333; }
         .header-image { width: 100%; height: 100%; object-fit: cover; }
-        .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
         
-        /* 共通グリッド（5列固定） */
-        .btn-grid { 
-            display: grid; 
-            grid-template-columns: repeat(5, 1fr); 
-            gap: 12px; 
-            max-width: 950px; 
-            margin: 0 auto; 
-            padding: 0 15px; 
+        /* クリック判定用の見出し */
+        .header-text { 
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+            color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.6); 
+            cursor: pointer; user-select: none; 
         }
-
-        /* メインボタン (No.1-10) */
-        .nav-container { margin-top: 25px; margin-bottom: 20px; }
-        .nav-btn { 
-            background: #fff; color: #007aff; border: 2px solid #007aff; 
-            padding: 15px 5px; 
-            border-radius: 15px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            font-size: 1.1em; 
-            transition: all 0.2s;
-            display: flex; align-items: center; justify-content: center;
-        }
+        
+        .btn-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; max-width: 950px; margin: 25px auto; padding: 0 15px; }
+        .nav-btn { background: #fff; color: #007aff; border: 2px solid #007aff; padding: 15px 5px; border-radius: 15px; text-decoration: none; font-weight: bold; font-size: 1.1em; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
         .nav-btn.special { background: #fb8c00; color: #fff; border-color: #ef6c00; }
         .nav-btn:hover { opacity: 0.8; transform: translateY(-1px); }
 
-        /* 参政党サブボタン */
-        .sub-nav-container { margin-bottom: 40px; gap: 10px; }
-        .sub-btn { 
-            background: transparent; 
-            color: #ef6c00; 
-            border: 2px solid #ffcc80; 
-            padding: 12px 0; 
-            border-radius: 12px; 
-            text-decoration: none; 
-            font-size: 0.9em; 
-            font-weight: bold; 
-            display: flex; align-items: center; justify-content: center;
-            white-space: nowrap;
-        }
-        .sub-btn:hover { background: #fff3e0; }
+        .sub-nav-container { margin-bottom: 40px; }
+        .sub-btn { background: #fff; color: #ef6c00; border: 2px solid #ffcc80; padding: 12px 0; border-radius: 12px; text-decoration: none; font-size: 0.9em; font-weight: bold; display: flex; align-items: center; justify-content: center; }
 
-        /* 見出し（参政党リンク・PHOTOS用） */
-        .section-title { margin: 30px 0 15px 0; padding: 10px; background: #fff; border-bottom: 1px solid #ddd; font-size: 0.9em; clear: both; }
+        .section-title { margin: 30px 0 15px 0; padding: 10px; background: #fff; border-bottom: 1px solid #ddd; font-size: 0.9em; }
 
-        /* 管理者用操作パネル */
+        /* --- 管理者パネル（初期は非表示） --- */
         .admin-panel {
-            margin: 20px auto;
-            padding: 15px;
-            max-width: 350px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            border: 1px solid #ddd;
+            display: none; /* ここで隠しています */
+            margin: 20px auto; padding: 15px; max-width: 350px;
+            background: #fff; border-radius: 10px; border: 2px dashed #ef6c00;
+            animation: fadeIn 0.5s ease;
         }
-        .admin-btn {
-            background: #333;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 0.9em;
-            transition: background 0.2s;
-            width: 100%; /* 幅をいっぱいにする */
-            box-sizing: border-box;
-        }
-        .admin-btn:hover { background: #555; }
-        .admin-status { font-size: 0.8em; color: #666; margin-top: 8px; }
+        .admin-btn { background: #ef6c00; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; }
 
-        /* PHOTOギャラリー（4列横並び） */
-        .photo-grid { 
-            display: grid; 
-            grid-template-columns: repeat(4, 1fr); /* 4列固定 */
-            gap: 20px; 
-            max-width: 1200px; 
-            margin: 20px auto 60px auto; 
-            padding: 0 15px; 
-        }
-        
-        /* 写真とタイトルを包むコンテナ */
-        .photo-item-wrapper {
-            display: none; /* 初期状態はすべて非表示 */
-            flex-direction: column; 
-            align-items: center;
-            transition: all 0.3s ease;
-            animation: fadeIn 0.5s ease; /* 表示時のアニメーション */
-        }
-        
-        /* 初期表示の4枚（wrapperの1番目から4番目）だけを表示 */
-        .photo-item-wrapper:nth-child(-n+4) {
-            display: flex;
-        }
+        .photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1200px; margin: 20px auto 60px auto; padding: 0 15px; }
+        .photo-item-wrapper { display: none; flex-direction: column; align-items: center; transition: 0.3s; animation: fadeIn 0.5s ease; }
+        .photo-item-wrapper:nth-child(-n+4) { display: flex; } /* 最初は4枚 */
 
-        /* 写真枠の上のテキスト */
-        .photo-text-above {
-            font-size: 0.85em;
-            font-weight: bold;
-            color: #ef6c00; 
-            margin-bottom: 8px; 
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100%;
-        }
-
-        .photo-item { 
-            width: 100%; 
-            aspect-ratio: 3/4; 
-            object-fit: cover; 
-            border-radius: 15px; 
-            cursor: pointer; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15); 
-        }
-        
-        /* ホバー効果 */
+        .photo-text-above { font-size: 0.85em; font-weight: bold; color: #ef6c00; margin-bottom: 8px; }
+        .photo-item { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 15px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         .photo-item-wrapper:hover { transform: scale(1.05); z-index: 10; }
-        .photo-item-wrapper:hover .photo-item { box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
 
-        /* ライトボックス（拡大表示画面） */
-        #lightbox { 
-            display: none; /* 通常は非表示 */
-            position: fixed; 
-            top: 0; left: 0; 
-            width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.9); /* 背景を暗く */
-            align-items: center; justify-content: center; 
-            z-index: 1000; /* 一番手前に表示 */
-            cursor: zoom-out; /* クリックで閉じるマーク */
-        }
-        #lightbox img { 
-            max-width: 90%; /* 画面幅の90%まで */
-            max-height: 90%; /* 画面高さの90%まで */
-            object-fit: contain; /* 画像全体を表示 */
-            border-radius: 10px; 
-            box-shadow: 0 0 30px rgba(255,255,255,0.2); 
-            animation: zoomIn 0.3s ease; /* ズームインアニメーション */
-        }
+        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; z-index: 1000; cursor: zoom-out; }
+        #lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 10px; animation: zoomIn 0.3s ease; }
 
-        /* アニメーション定義 */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-        @keyframes zoomIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        /* スマホ対応 */
         @media (max-width: 600px) {
-            .btn-grid { gap: 6px; padding: 0 8px; }
-            .nav-btn { font-size: 0.8em; padding: 12px 1px; border-radius: 10px; }
-            .sub-btn { font-size: 0.65em; padding: 10px 0; border-radius: 8px; }
-            
-            /* スマホでは2列×2段にする（見やすさ重視） */
-            .photo-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-            .photo-text-above { font-size: 0.75em; }
+            .btn-grid { grid-template-columns: repeat(2, 1fr); }
+            .photo-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -176,27 +59,19 @@
 
 <header class="header-container">
     <img src="fuji00001.jpg" alt="Header" class="header-image">
-    <div class="header-text"><h1>MY PORTFOLIO</h1></div>
+    <div class="header-text" onclick="handleSecretClick()"><h1>MY PORTFOLIO</h1></div>
 </header>
 
 <div class="nav-container btn-grid">
-    <a href="no1.html" class="nav-btn">No.1</a>
-    <a href="no2.html" class="nav-btn">No.2</a>
-    <a href="no3.html" class="nav-btn">No.3</a>
-    <a href="no4.html" class="nav-btn">No.4</a>
-    <a href="no5.html" class="nav-btn">No.5</a>
-    <a href="no6.html" class="nav-btn">No.6</a>
-    <a href="no7.html" class="nav-btn">No.7</a>
-    <a href="no8.html" class="nav-btn">No.8</a>
-    <a href="no9.html" class="nav-btn">No.9</a>
-    <a href="no10.html" class="nav-btn special">Links</a>
+    <a href="#" class="nav-btn">No.1</a><a href="#" class="nav-btn">No.2</a><a href="#" class="nav-btn">No.3</a><a href="#" class="nav-btn">No.4</a><a href="#" class="nav-btn">No.5</a>
+    <a href="#" class="nav-btn">No.6</a><a href="#" class="nav-btn">No.7</a><a href="#" class="nav-btn">No.8</a><a href="#" class="nav-btn">No.9</a><a href="#" class="nav-btn special">Links</a>
 </div>
 
 <div class="section-title"><h3>参政党リンク</h3></div>
 <div class="sub-nav-container btn-grid">
     <a href="https://sanseito.jp/" target="_blank" class="sub-btn">公式サイト</a>
     <a href="https://sanseito.jp/news/" target="_blank" class="sub-btn">最新ニュース</a>
-    <a href="https://info.sanseito.jp/" target="_btn" class="sub-btn">イベント</a>
+    <a href="https://info.sanseito.jp/" target="_blank" class="sub-btn">イベント</a>
     <a href="https://sanseito.jp/member/" target="_blank" class="sub-btn">メンバー</a>
     <a href="https://sanseito.jp/2020/candidate/" target="_blank" class="sub-btn">候補予定者</a>
     <a href="https://www.youtube.com/@sanseito-official" target="_blank" class="sub-btn">YouTube</a>
@@ -208,165 +83,65 @@
 
 <div class="section-title"><h3>MODEL GALLERY</h3></div>
 
-<div class="admin-panel">
+<div class="admin-panel" id="secret-admin">
     <button class="admin-btn" id="admin-toggle-btn" onclick="togglePhotos()">管理者：写真を追加 (＋4枚)</button>
-    <div class="admin-status" id="photo-status">現在：4枚 / 全20枚</div>
+    <div style="font-size:0.8em; color:#666; margin-top:8px;" id="photo-status">現在：4枚 / 全20枚</div>
 </div>
 
 <div class="photo-grid" id="photo-grid">
-    <div class="photo-item-wrapper">
-        <div class="photo-text-above">モデル：01</div>
-        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    </div>
-    <div class="photo-item-wrapper">
-        <div class="photo-text-above">モデル：02</div>
-        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    </div>
-    <div class="photo-item-wrapper">
-        <div class="photo-text-above">モデル：03</div>
-        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    </div>
-    <div class="photo-item-wrapper">
-        <div class="photo-text-above">モデル：04</div>
-        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
     </div>
 
-    <div class="photo-item-wrapper">
-        <div class="photo-text-above">モデル：05</div>
-        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    </div>
-    <div class="photo-item-wrapper">
-        <div class="photo-text-above">モデル：06</div>
-        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    </div>
-    <div class="photo-item-wrapper">
-        <div class="photo-text-above">モデル：07</div>
-        <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    </div>
-    <div class="photo-item-wrapper">
-        <div class="photo-text-above">モデル：08</div>
-        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    </div>
-
-    <div class="photo-item-wrapper">
-        <div class="photo-text-above">モデル：09</div>
-        <img src="https://images.unsplash.com/photo-1581382575275-97901c2635b7?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    </div>
-    <div class="photo-item-wrapper">
-        <div class="photo-text-above">モデル：10</div>
-        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    </div>
-    <div class="photo-item-wrapper">
-        <div class="photo-text-above">モデル：11</div>
-        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    </div>
-    <div class="photo-item-wrapper">
-        <div class="photo-text-above">モデル：12</div>
-        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    </div>
-
-    <div class="photo-item-wrapper">
-        <div class="photo-text-above">モデル：13</div>
-        <img src="https://images.unsplash.com/photo-1619897225754-006c6501810e?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    </div>
-    <div class="photo-item-wrapper">
-        <div class="photo-text-above">モデル：14</div>
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    </div>
-    <div class="photo-item-wrapper">
-        <div class="photo-text-above">モデル：15</div>
-        <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    </div>
-    <div class="photo-item-wrapper">
-        <div class="photo-text-above">モデル：16</div>
-        <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    </div>
-
-    <div class="photo-item-wrapper">
-        <div class="photo-text-above">モデル：17</div>
-        <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    </div>
-    <div class="photo-item-wrapper">
-        <div class="photo-text-above">モデル：18</div>
-        <img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    </div>
-    <div class="photo-item-wrapper">
-        <div class="photo-text-above">モデル：19</div>
-        <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    </div>
-    <div class="photo-item-wrapper">
-        <div class="photo-text-above">モデル：20</div>
-        <img src="https://images.unsplash.com/photo-1513094735237-8f2714d57c13?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    </div>
-    
-</div>
-
-<div id="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img" src="" alt="Enlarged Photo">
-</div>
+<div id="lightbox" onclick="closeLightbox()"><img id="lightbox-img" src=""></div>
 
 <script>
-    // ライトボックス機能
-    function openLightbox(imageSrc) {
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        lightboxImg.src = imageSrc; 
-        lightbox.style.display = 'flex'; 
-        document.body.style.overflow = 'hidden'; // 背面のスクロールを禁止
+    // 画像リスト（13枚目修正済み）
+    const images = [
+        "1494790108377-be9c29b29330", "1517841905240-472988babdf9", "1539571696357-5a69c17a67c6", "1524504388940-b1c1722653e1",
+        "1515886657613-9f3515b0c78f", "1529626455594-4ff0802cfb7e", "1488426862026-3ee34a7d66df", "1531746020798-e6953c6e8e04",
+        "1581382575275-97901c2635b7", "1544005313-94ddf0286df2", "1506794778202-cad84cf45f1d", "1500648767791-00dcc994a43e",
+        "1619897225754-006c6501810e", /* 13枚目修正 */ "1507003211169-0a1dd7228f2d", "1519345182560-3f2917c472ef", "1492562080023-ab3db95bfbce",
+        "1531123897727-8f129e1688ce", "1489424731084-a5d8b219a5bb", "1521119989659-a83eee488004", "1513094735237-8f2714d57c13"
+    ];
+
+    // グリッド生成
+    const grid = document.getElementById('photo-grid');
+    images.forEach((id, i) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'photo-item-wrapper';
+        wrap.innerHTML = `<div class="photo-text-above">モデル：${String(i+1).padStart(2,'0')}</div>
+                          <img src="https://images.unsplash.com/photo-${id}?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">`;
+        grid.appendChild(wrap);
+    });
+
+    // 隠しコマンド処理
+    let clickCount = 0;
+    function handleSecretClick() {
+        clickCount++;
+        if (clickCount === 3) {
+            document.getElementById('secret-admin').style.display = 'block';
+            clickCount = 0; // リセット
+        }
     }
 
-    function closeLightbox() {
-        const lightbox = document.getElementById('lightbox');
-        lightbox.style.display = 'none'; 
-        document.body.style.overflow = ''; // スクロール禁止を解除
-    }
-
-    // 写真追加＆リセット機能（管理者用・ロータリー式）
-    let currentShown = 4; // 現在表示されている枚数
-    const totalPhotos = 20; // 全枚数
-    const increment = 4; // 追加する枚数
-    const initialShown = 4; // 最初の枚数
-
+    // 写真展開（ロータリー式）
+    let currentShown = 4;
     function togglePhotos() {
         const wrappers = document.querySelectorAll('.photo-item-wrapper');
         const btn = document.getElementById('admin-toggle-btn');
-        const status = document.getElementById('photo-status');
-
-        if (currentShown < totalPhotos) {
-            // --- 写真を追加していく動作 ---
-            // 次の表示範囲を計算
-            let nextShown = currentShown + increment;
-            if (nextShown > totalPhotos) nextShown = totalPhotos;
-
-            // 写真を表示
-            for (let i = currentShown; i < nextShown; i++) {
-                if (wrappers[i]) wrappers[i].style.display = 'flex';
-            }
-
-            // 現在の枚数を更新
-            currentShown = nextShown;
-
-            // 20枚すべて表示されたらボタンの表示を「戻す」に変更
-            if (currentShown >= totalPhotos) {
-                btn.innerText = "管理者：1列目に戻す (4枚)";
-            } else {
-                btn.innerText = `管理者：写真を追加 (＋${increment}枚)`;
-            }
-
+        if (currentShown < 20) {
+            currentShown += 4;
+            wrappers.forEach((w, i) => { if(i < currentShown) w.style.display = 'flex'; });
+            if (currentShown === 20) btn.innerText = "管理者：1列目に戻す (4枚)";
         } else {
-            // --- 20枚表示の状態から最初の4枚に戻す動作（リセット） ---
-            for (let i = initialShown; i < totalPhotos; i++) {
-                if (wrappers[i]) wrappers[i].style.display = 'none';
-            }
-            // 枚数をリセット
-            currentShown = initialShown;
-            // ボタンの表示を元に戻す
-            btn.innerText = `管理者：写真を追加 (＋${increment}枚)`;
+            currentShown = 4;
+            wrappers.forEach((w, i) => { if(i >= 4) w.style.display = 'none'; });
+            btn.innerText = "管理者：写真を追加 (＋4枚)";
         }
-
-        // ステータス表示を更新
-        status.innerText = `現在：${currentShown}枚 / 全${totalPhotos}枚`;
+        document.getElementById('photo-status').innerText = `現在：${currentShown}枚 / 全20枚`;
     }
+
+    function openLightbox(s) { document.getElementById('lightbox-img').src = s; document.getElementById('lightbox').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+    function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; document.body.style.overflow = ''; }
 </script>
 
 </body>
