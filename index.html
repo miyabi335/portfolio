@@ -14,18 +14,19 @@
         
         .section-title { margin-top: 40px; padding: 12px; background: rgba(255,255,255,0.05); font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; }
 
-        /* ナビゲーション（重なり順を上げてクリックを確実にする） */
-        .nav-grid { position: relative; z-index: 10; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
+        /* ナビゲーション：z-indexを上げてクリックを最優先にする */
+        .nav-grid { position: relative; z-index: 999; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
         
-        /* 通常ボタン（No.1〜9：リンクなし） */
-        .nav-btn-static { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); color: #64748b; border: 1px solid rgba(255,255,255,0.1); padding: 10px 5px; border-radius: 8px; font-weight: bold; font-size: 0.85em; min-height: 45px; cursor: default; }
+        /* 通常ボタン（No.1〜9：リンクありに変更） */
+        .nav-btn { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); color: #38bdf8; border: 1px solid #38bdf8; padding: 10px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85em; min-height: 45px; transition: 0.2s; cursor: pointer; }
+        .nav-btn:hover { background: rgba(56, 189, 248, 0.2); transform: translateY(-2px); border-color: #fff; }
 
-        /* No.10専用リンク（オレンジ：リンクあり） */
-        .nav-link-active { display: flex; align-items: center; justify-content: center; background: #fb8c00; color: #fff; border: 2px solid #fff; padding: 10px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85em; min-height: 45px; transition: 0.2s; cursor: pointer; }
-        .nav-link-active:hover { background: #ef6c00; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(251, 140, 0, 0.4); }
+        /* No.10専用リンク（オレンジ） */
+        .nav-link-special { background: #fb8c00 !important; color: #fff !important; border: 2px solid #fff !important; z-index: 1000; }
+        .nav-link-special:hover { background: #ef6c00 !important; box-shadow: 0 4px 15px rgba(251, 140, 0, 0.4); }
 
-        /* 参政党ボタン */
-        .sansei-grid { position: relative; z-index: 10; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
+        /* 参政党リンク */
+        .sansei-grid { position: relative; z-index: 999; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
         .sansei-btn { background: #fb8c00; color: #fff; border: none; padding: 15px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8em; min-height: 50px; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
         .sansei-btn:hover { background: #ef6c00; transform: translateY(-2px); }
 
@@ -54,16 +55,16 @@
 
 <div class="section-title">NAVIGATION MENU</div>
 <nav class="nav-grid">
-    <div class="nav-btn-static">No.1</div>
-    <div class="nav-btn-static">No.2</div>
-    <div class="nav-btn-static">No.3</div>
-    <div class="nav-btn-static">No.4</div>
-    <div class="nav-btn-static">No.5</div>
-    <div class="nav-btn-static">No.6</div>
-    <div class="nav-btn-static">No.7</div>
-    <div class="nav-btn-static">No.8</div>
-    <div class="nav-btn-static">No.9</div>
-    <a href="no10.html" class="nav-link-active">Links集 (No.10)</a>
+    <a href="./no1.html" class="nav-btn">No.1</a>
+    <a href="./no2.html" class="nav-btn">No.2</a>
+    <a href="./no3.html" class="nav-btn">No.3</a>
+    <a href="./no4.html" class="nav-btn">No.4</a>
+    <a href="./no5.html" class="nav-btn">No.5</a>
+    <a href="./no6.html" class="nav-btn">No.6</a>
+    <a href="./no7.html" class="nav-btn">No.7</a>
+    <a href="./no8.html" class="nav-btn">No.8</a>
+    <a href="./no9.html" class="nav-btn">No.9</a>
+    <a href="./no10.html" class="nav-btn nav-link-special">Links集 (No.10)</a>
 </nav>
 
 <div class="section-title">SANSEITO LINKS</div>
