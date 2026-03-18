@@ -13,28 +13,30 @@
 
         /* ナビゲーション */
         .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
-        .nav-btn { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); color: #38bdf8; border: 1px solid #38bdf8; padding: 10px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85em; min-height: 45px; }
+        .nav-btn { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); color: #38bdf8; border: 1px solid #38bdf8; padding: 10px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85em; min-height: 45px; transition: 0.2s; }
+        .nav-btn:hover { background: rgba(56, 189, 248, 0.2); transform: translateY(-2px); border-color: #fff; }
         
-        /* No.10 リンク集ボタンを最優先で設定 */
-        .nav-link-special { background: #fb8c00 !important; color: #fff !important; border: 2px solid #fff !important; cursor: pointer; }
+        /* No.10 リンク集ボタン（特別色） */
+        .nav-link-special { background: #fb8c00 !important; color: #fff !important; border: 2px solid #fff !important; }
+        .nav-link-special:hover { background: #ef6c00 !important; }
 
         /* 参政党ボタン */
         .sansei-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
-        .sansei-btn { background: #fb8c00; color: #fff; border: none; padding: 15px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8em; min-height: 50px; display: flex; align-items: center; justify-content: center; }
+        .sansei-btn { background: #fb8c00; color: #fff; border: none; padding: 15px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8em; min-height: 50px; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+        .sansei-btn:hover { background: #ef6c00; transform: translateY(-2px); }
 
-        /* ギャラリー（4列固定） */
+        /* ギャラリー（4列固定・8枚で2段） */
         .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1100px; margin: 20px auto; padding: 0 15px; }
         .item-wrapper { display: flex; flex-direction: column; align-items: center; }
         .item-label { font-size: 0.75em; color: #fb8c00; margin-bottom: 5px; font-weight: bold; }
-        .thumb-media { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); }
-        .photo-thumb { aspect-ratio: 3/4; }
+        .thumb-media { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
+        .thumb-media:hover { transform: scale(1.05); border-color: #fb8c00; }
 
         /* オーバーレイ */
         #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 9999; }
         #overlay-content { width: 90%; max-width: 1000px; position: relative; display: flex; flex-direction: column; align-items: center; }
-        #overlay-img { max-height: 75vh; width: auto; max-width: 100%; border-radius: 5px; display: none; }
-        #overlay-video { width: 100%; aspect-ratio: 16/9; display: none; border-radius: 5px; }
-        .close-btn { margin-top: 20px; background: #ef4444; color: white; border: none; padding: 12px 40px; border-radius: 30px; cursor: pointer; font-weight: bold; }
+        #overlay-video { width: 100%; aspect-ratio: 16/9; display: none; border-radius: 8px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+        .close-btn { margin-top: 20px; background: #ef4444; color: white; border: none; padding: 12px 40px; border-radius: 30px; cursor: pointer; font-weight: bold; font-size: 1rem; }
 
         @media (max-width: 768px) { .nav-grid, .sansei-grid, .grid-container { grid-template-columns: repeat(2, 1fr); } }
     </style>
@@ -48,15 +50,15 @@
 
 <div class="section-title">NAVIGATION MENU</div>
 <nav class="nav-grid">
-    <div class="nav-btn">No.1</div>
-    <div class="nav-btn">No.2</div>
-    <div class="nav-btn">No.3</div>
-    <div class="nav-btn">No.4</div>
-    <div class="nav-btn">No.5</div>
-    <div class="nav-btn">No.6</div>
-    <div class="nav-btn">No.7</div>
-    <div class="nav-btn">No.8</div>
-    <div class="nav-btn">No.9</div>
+    <a href="index01.html" class="nav-btn">No.1</a>
+    <a href="index02.html" class="nav-btn">No.2</a>
+    <a href="index03.html" class="nav-btn">No.3</a>
+    <a href="index04.html" class="nav-btn">No.4</a>
+    <a href="index05.html" class="nav-btn">No.5</a>
+    <a href="index06.html" class="nav-btn">No.6</a>
+    <a href="index07.html" class="nav-btn">No.7</a>
+    <a href="index08.html" class="nav-btn">No.8</a>
+    <a href="index09.html" class="nav-btn">No.9</a>
     <a href="index10.html" class="nav-btn nav-link-special">Links集 (No.10)</a>
 </nav>
 
@@ -88,9 +90,8 @@
 
 <div id="overlay" onclick="closeOverlay()">
     <div id="overlay-content" onclick="event.stopPropagation()">
-        <img id="overlay-img" src="">
         <iframe id="overlay-video" src="" frameborder="0" allowfullscreen></iframe>
-        <button class="close-btn" onclick="closeOverlay()">× 閉じる</button>
+        <button class="close-btn" onclick="closeOverlay()">× 閉じて戻る</button>
     </div>
 </div>
 
@@ -99,12 +100,13 @@
         const video = document.getElementById('overlay-video');
         video.src = "https://www.youtube.com/embed/" + id + "?autoplay=1";
         video.style.display = 'block';
-        document.getElementById('overlay-img').style.display = 'none';
         document.getElementById('overlay').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
     }
     function closeOverlay() {
         document.getElementById('overlay').style.display = 'none';
         document.getElementById('overlay-video').src = '';
+        document.body.style.overflow = '';
     }
 </script>
 </body>
