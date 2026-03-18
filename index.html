@@ -28,22 +28,22 @@
             font-weight: bold; font-size: 0.85em; transition: all 0.2s;
             display: flex; align-items: center; justify-content: center;
         }
-        /* No.10専用（オレンジ） */
         .nav-btn.special { background: #fb8c00; color: #fff; border-color: #ef6c00; }
         .nav-btn:hover { opacity: 0.8; }
 
-        /* スリムな参政党ボタン（2段構成） */
+        /* スリムな参政党ボタン（2段構成・薄い橙色） */
         .sub-nav-container { margin-bottom: 30px; gap: 8px; }
         .sub-btn { 
             background: transparent; 
             color: #ef6c00; 
-            border: 1px solid #ffcc80; /* メインより薄い橙色 */
+            border: 1px solid #ffcc80; 
             padding: 6px 0; 
             border-radius: 4px; 
             text-decoration: none; 
-            font-size: 0.75em; 
+            font-size: 0.72em; 
             font-weight: normal;
             display: flex; align-items: center; justify-content: center;
+            white-space: nowrap;
         }
         .sub-btn:hover { background: #fff3e0; }
 
@@ -56,8 +56,8 @@
 
         @media (max-width: 600px) {
             .btn-grid { gap: 5px; padding: 0 5px; }
-            .nav-btn { font-size: 0.65em; padding: 10px 1px; }
-            .sub-btn { font-size: 0.55em; padding: 5px 0; }
+            .nav-btn { font-size: 0.6em; padding: 10px 1px; }
+            .sub-btn { font-size: 0.52em; padding: 5px 0; }
         }
     </style>
 </head>
@@ -69,29 +69,29 @@
 </header>
 
 <div class="nav-container btn-grid">
-    <a href="no1.html" class="nav-btn">仕事・開発</a>
-    <a href="no2.html" class="nav-btn">趣味・自転車</a>
-    <a href="no3.html" class="nav-btn">デザイン</a>
-    <a href="no4.html" class="nav-btn">写真ギャラリー</a>
-    <a href="no5.html" class="nav-btn">設定/予備</a>
+    <a href="no1.html" class="nav-btn">No.1</a>
+    <a href="no2.html" class="nav-btn">No.2</a>
+    <a href="no3.html" class="nav-btn">No.3</a>
+    <a href="no4.html" class="nav-btn">No.4</a>
+    <a href="no5.html" class="nav-btn">No.5</a>
     <a href="no6.html" class="nav-btn">No.6</a>
     <a href="no7.html" class="nav-btn">No.7</a>
     <a href="no8.html" class="nav-btn">No.8</a>
     <a href="no9.html" class="nav-btn">No.9</a>
-    <a href="no10.html" class="nav-btn special">メインリンク集</a>
+    <a href="no10.html" class="nav-btn special">Links</a>
 </div>
 
 <div class="sub-nav-container btn-grid">
-    <a href="https://www.sanseito.jp/" class="sub-btn">公式サイト</a>
-    <a href="#" class="sub-btn">参政党2</a>
-    <a href="#" class="sub-btn">参政党3</a>
-    <a href="#" class="sub-btn">参政党4</a>
-    <a href="#" class="sub-btn">参政党5</a>
-    <a href="#" class="sub-btn">参政党6</a>
-    <a href="#" class="sub-btn">参政党7</a>
-    <a href="#" class="sub-btn">参政党8</a>
-    <a href="#" class="sub-btn">参政党9</a>
-    <a href="#" class="sub-btn">参政党10</a>
+    <a href="https://sanseito.jp/" target="_blank" class="sub-btn">公式サイト</a>
+    <a href="https://sanseito.jp/news/" target="_blank" class="sub-btn">最新ニュース</a>
+    <a href="https://info.sanseito.jp/" target="_blank" class="sub-btn">イベント</a>
+    <a href="https://sanseito.jp/member/" target="_blank" class="sub-blank" class="sub-btn">メンバー</a>
+    <a href="https://sanseito.jp/2020/candidate/" target="_blank" class="sub-btn">候補予定者</a>
+    <a href="https://www.youtube.com/@sanseito-official" target="_blank" class="sub-btn">YouTube</a>
+    <a href="https://x.com/sansei411" target="_blank" class="sub-btn">X(Twitter)</a>
+    <a href="https://www.instagram.com/sanseito" target="_blank" class="sub-btn">Instagram</a>
+    <a href="https://www.tiktok.com/@sanseito" target="_blank" class="sub-btn">TikTok</a>
+    <a href="https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" target="_blank" class="sub-btn">選挙ドットコム</a>
 </div>
 
 <div class="section-title"><h3>PHOTOS</h3></div>
