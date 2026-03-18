@@ -6,56 +6,48 @@
     <title>Miyabi's Portfolio</title>
     <style>
         /* 全体設定 */
-        body { font-family: "Meiryo", "Hiragino Kaku Gothic ProN", sans-serif; margin: 0; background: #f5f5f7; text-align: center; color: #333; line-height: 1.6; }
+        body { font-family: "Meiryo", sans-serif; margin: 0; background: #f5f5f7; text-align: center; color: #333; }
         
         /* ヘッダー */
         .header-container { position: relative; width: 100%; height: 35vh; overflow: hidden; background: #333; }
         .header-image { width: 100%; height: 100%; object-fit: cover; }
         .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-shadow: 0 2px 15px rgba(0,0,0,0.8); width: 100%; }
-        .header-text h1 { font-size: 2.5em; margin: 0; letter-spacing: 0.15em; }
         
-        /* ナビゲーションボタン（5列） */
-        .btn-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; max-width: 950px; margin: 25px auto; padding: 0 15px; }
-        .nav-btn { background: #fff; color: #007aff; border: 2px solid #007aff; padding: 12px 5px; border-radius: 12px; text-decoration: none; font-weight: bold; display: flex; align-items: center; justify-content: center; font-size: 1em; transition: 0.2s; }
-        .nav-btn:hover { background: #007aff; color: #fff; transform: translateY(-2px); }
-        .nav-btn.special { background: #fb8c00; color: #fff; border-color: #ef6c00; }
+        /* ナビボタン */
+        .btn-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 900px; margin: 20px auto; padding: 0 15px; }
+        .nav-btn { background: #fff; color: #007aff; border: 2px solid #007aff; padding: 10px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 0.9em; }
 
-        /* セクション見出し */
-        .section-title { margin: 50px 0 10px 0; padding: 15px; background: #fff; border-top: 1px solid #eee; border-bottom: 1px solid #ddd; font-size: 1.1em; letter-spacing: 0.1em; color: #444; font-weight: bold; }
+        /* ギャラリー */
+        .section-title { margin-top: 40px; padding: 10px; background: #fff; font-weight: bold; border-bottom: 1px solid #ddd; }
+        .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1100px; margin: 20px auto; padding: 0 15px; }
+        .item-wrapper { display: flex; flex-direction: column; align-items: center; }
+        .item-label { font-size: 0.8em; color: #ef6c00; margin-bottom: 5px; font-weight: bold; }
+        .thumb-media { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 12px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .thumb-media:hover { transform: scale(1.03); }
 
-        /* ギャラリー（4列） */
-        .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1200px; margin: 20px auto 50px auto; padding: 0 15px; }
-        
-        /* 8枠表示の制御 */
-        .item-wrapper { display: none; flex-direction: column; align-items: center; }
-        .item-wrapper:nth-child(-n+8) { display: flex; } 
-
-        .item-label { font-size: 0.85em; font-weight: bold; color: #ef6c00; margin-bottom: 8px; }
-        .thumb-media { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 15px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; background: #ddd; }
-        .thumb-media:hover { transform: scale(1.03); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
-
-        /* ライトボックス（黒背景） */
-        #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.97); align-items: center; justify-content: center; z-index: 2000; }
-        
-        /* 💡 動画とボタンを包む箱（大きく設定） */
-        #overlay-content { width: 95%; max-width: 1100px; display: flex; flex-direction: column; align-items: center; position: relative; }
-        
-        /* メディア本体（大きく表示） */
-        #overlay-img, #overlay-video { width: 100%; border-radius: 12px; display: none; box-shadow: 0 0 50px rgba(0,0,0,0.8); background: #000; }
-        #overlay-video { aspect-ratio: 16/9; }
-        
-        /* 閉じボタン（スリムなサイズ感に調整） */
-        .close-bar { 
-            margin-top: 20px; width: auto; min-width: 180px; 
-            background: #ff5252; color: #fff; padding: 12px 30px; 
-            border-radius: 30px; font-weight: bold; cursor: pointer; 
-            text-align: center; transition: 0.2s; border: none; font-size: 1em; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
+        /* 💡 拡大画面（オーバーレイ） */
+        #overlay { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 3000; 
         }
-        .close-bar:hover { background: #ff1744; transform: scale(1.05); }
+        #overlay-content { 
+            width: 95%; max-width: 1000px; display: flex; flex-direction: column; align-items: center; 
+        }
+        
+        /* 写真と動画のサイズ制限（ボタンが隠れないように） */
+        #overlay-img { max-height: 75vh; width: auto; max-width: 100%; border-radius: 8px; display: none; }
+        #overlay-video { width: 100%; aspect-ratio: 16/9; border-radius: 8px; display: none; }
+        
+        /* 💡 閉じるボタン（写真でも動画でも必ず下に表示） */
+        .close-bar { 
+            margin-top: 25px; width: 200px; background: #ff5252; color: #fff; 
+            padding: 12px 0; border-radius: 30px; font-weight: bold; cursor: pointer; 
+            border: none; font-size: 1em; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            z-index: 3100;
+        }
+        .close-bar:hover { background: #ff1744; }
 
-        /* スマホ対応（2列） */
-        @media (max-width: 768px) { .grid-container, .btn-grid { grid-template-columns: repeat(2, 1fr); } .header-text h1 { font-size: 1.8em; } }
+        @media (max-width: 768px) { .grid-container, .btn-grid { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body>
@@ -67,7 +59,7 @@
 
 <nav class="btn-grid">
     <a href="#" class="nav-btn">No.1</a><a href="#" class="nav-btn">No.2</a><a href="#" class="nav-btn">No.3</a><a href="#" class="nav-btn">No.4</a><a href="#" class="nav-btn">No.5</a>
-    <a href="#" class="nav-btn">No.6</a><a href="#" class="nav-btn">No.7</a><a href="#" class="nav-btn">No.8</a><a href="#" class="nav-btn">No.9</a><a href="#" class="nav-btn special">Links</a>
+    <a href="#" class="nav-btn">No.6</a><a href="#" class="nav-btn">No.7</a><a href="#" class="nav-btn">No.8</a><a href="#" class="nav-btn">No.9</a><a href="#" class="nav-btn special" style="background:#fb8c00;color:#fff;">Links</a>
 </nav>
 
 <div class="section-title">PHOTO SELECTION</div>
@@ -80,22 +72,19 @@
     <div id="overlay-content" onclick="event.stopPropagation()">
         <img id="overlay-img" src="">
         <iframe id="overlay-video" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        <button class="close-bar" onclick="closeOverlay()">× 閉じてギャラリーに戻る</button>
+        <button class="close-bar" onclick="closeOverlay()">× 閉じて戻る</button>
     </div>
 </div>
 
 <script>
-    // 写真リスト（8枚）
     const photoIds = ["1494790108377-be9c29b29330", "1517841905240-472988babdf9", "1539571696357-5a69c17a67c6", "1524504388940-b1c1722653e1", "1515886657613-9f3515b0c78f", "1529626455594-4ff0802cfb7e", "1488426862026-3ee34a7d66df", "1531746020798-e6953c6e8e04"];
-
-    // 動画リスト（8本：YouTube ID）
     const videoIds = ["G1hKzCkywM8", "a-8XiE7W7u4", "q2_c2_WfJFg", "BpITZk7sa8E", "UYmvFzDuO5k", "G1hKzCkywM8", "a-8XiE7W7u4", "q2_c2_WfJFg"];
 
     const pGrid = document.getElementById('photo-grid');
     photoIds.forEach((id, i) => {
         const div = document.createElement('div');
         div.className = 'item-wrapper';
-        div.innerHTML = `<div class="item-label">Photo：${String(i+1).padStart(2,'0')}</div>
+        div.innerHTML = `<div class="item-label">Photo ${i+1}</div>
                          <img src="https://images.unsplash.com/photo-${id}?w=600&h=800&fit=crop" class="thumb-media" onclick="openPhoto(this.src)">`;
         pGrid.appendChild(div);
     });
@@ -104,7 +93,7 @@
     videoIds.forEach((id, i) => {
         const div = document.createElement('div');
         div.className = 'item-wrapper';
-        div.innerHTML = `<div class="item-label">Video：${String(i+1).padStart(2,'0')}</div>
+        div.innerHTML = `<div class="item-label">Video ${i+1}</div>
                          <img src="https://img.youtube.com/vi/${id}/mqdefault.jpg" class="thumb-media" onclick="openVideo('${id}')">`;
         vGrid.appendChild(div);
     });
