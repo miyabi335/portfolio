@@ -3,133 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miyabi's Portfolio</title>
+    <title>Miyabi's Portfolio Portal</title>
     <style>
-        /* 基本設定 */
-        body { font-family: "Meiryo", sans-serif; margin: 0; background: #f5f5f7; text-align: center; color: #333; }
-        
-        /* ヘッダー */
+        body { font-family: "Meiryo", sans-serif; margin: 0; background: #0f172a; text-align: center; color: #f1f5f9; }
         .header-container { position: relative; width: 100%; height: 35vh; overflow: hidden; background: #333; }
         .header-image { width: 100%; height: 100%; object-fit: cover; }
         .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-shadow: 0 2px 15px rgba(0,0,0,0.8); width: 100%; }
-        .header-text h1 { font-size: 2.2em; letter-spacing: 0.1em; }
+        .section-title { margin-top: 40px; padding: 12px; background: rgba(255,255,255,0.05); font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; }
 
-        /* セクション共通設定 */
-        .section-title { margin-top: 40px; padding: 12px; background: #fff; font-weight: bold; border-bottom: 1px solid #ddd; letter-spacing: 0.1em; }
-
-        /* 上部ナビボタン（5列×2段 = 10個） */
         .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
-        .nav-btn { background: #fff; color: #007aff; border: 2px solid #007aff; padding: 10px 5px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 0.85em; transition: 0.2s; display: flex; align-items: center; justify-content: center; }
-        .nav-btn:hover { background: #007aff; color: #fff; }
+        .nav-btn { background: rgba(255,255,255,0.1); color: #38bdf8; border: 1px solid #38bdf8; padding: 10px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85em; transition: 0.2s; }
+        .nav-btn:hover { background: #38bdf8; color: #0f172a; }
 
-        /* 参政党ボタン（オレンジ） */
         .sansei-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
-        .sansei-btn { background: #ff8c00; color: #fff; border: none; padding: 15px 5px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 0.8em; transition: 0.2s; box-shadow: 0 3px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; min-height: 50px; }
-        .sansei-btn:hover { background: #e67e00; transform: translateY(-2px); }
+        .sansei-btn { background: #fb8c00; color: #fff; border: none; padding: 15px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8em; transition: 0.2s; min-height: 50px; display: flex; align-items: center; justify-content: center; }
+        .sansei-btn:hover { background: #ef6c00; transform: translateY(-2px); }
 
-        /* ギャラリー */
         .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1100px; margin: 20px auto; padding: 0 15px; }
         .item-wrapper { display: flex; flex-direction: column; align-items: center; }
-        .item-label { font-size: 0.8em; color: #ef6c00; margin-bottom: 5px; font-weight: bold; }
-        .thumb-media { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 12px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .thumb-media:hover { transform: scale(1.03); }
+        .item-label { font-size: 0.75em; color: #fb8c00; margin-bottom: 5px; }
+        .thumb-media { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 10px; cursor: pointer; transition: 0.3s; border: 1px solid rgba(255,255,255,0.1); }
+        .thumb-media:hover { transform: scale(1.03); border-color: #fb8c00; }
 
-        /* 拡大画面（オーバーレイ） */
-        #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.96); align-items: center; justify-content: center; z-index: 3000; }
-        #overlay-content { width: 95%; max-width: 1100px; display: flex; flex-direction: column; align-items: center; }
-        #overlay-img { max-height: 70vh; width: auto; max-width: 100%; border-radius: 8px; display: none; }
-        #overlay-video { width: 100%; aspect-ratio: 16/9; border-radius: 8px; display: none; }
-        .close-bar { margin-top: 25px; width: 220px; background: #ff5252; color: #fff; padding: 14px 0; border-radius: 30px; font-weight: bold; cursor: pointer; border: none; font-size: 1.1em; box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
+        #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 9999; }
+        #overlay-content { width: 90%; max-width: 1000px; position: relative; }
+        #overlay-img { max-height: 80vh; width: auto; max-width: 100%; border-radius: 5px; display: none; margin: auto; }
+        .close-btn { margin-top: 20px; background: #ef4444; color: white; border: none; padding: 12px 30px; border-radius: 25px; cursor: pointer; font-weight: bold; }
 
-        /* スマホ対応 */
         @media (max-width: 768px) { .nav-grid, .sansei-grid, .grid-container { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body>
-
 <header class="header-container">
-    <img src="fuji00001.jpg" alt="Header" class="header-image">
+    <img src="fuji00001.jpg" alt="富士山" class="header-image">
     <div class="header-text"><h1>MIYABI'S PORTAL</h1></div>
 </header>
-
 <div class="section-title">NAVIGATION MENU</div>
 <nav class="nav-grid">
     <a href="#" class="nav-btn">No.1</a><a href="#" class="nav-btn">No.2</a><a href="#" class="nav-btn">No.3</a><a href="#" class="nav-btn">No.4</a><a href="#" class="nav-btn">No.5</a>
     <a href="#" class="nav-btn">No.6</a><a href="#" class="nav-btn">No.7</a><a href="#" class="nav-btn">No.8</a><a href="#" class="nav-btn">No.9</a>
-    <a href="index10.html" class="nav-btn" style="border-color:#fb8c00; background:#fff9f2;">Links集</a>
+    <a href="index10.html" class="nav-btn" style="border-color:#fb8c00; color:#fb8c00;">Links集 (No.10)</a>
 </nav>
-
-<div class="section-title">PROJECT ARCHIVE (参政党)</div>
+<div class="section-title">SANSEITO LINKS</div>
 <div class="sansei-grid">
     <a href="https://sanseito.jp/" target="_blank" class="sansei-btn">公式サイト</a>
-    <a href="https://sanseito.jp/news/" target="_blank" class="sansei-btn">最新ニュース</a>
+    <a href="https://sanseito.jp/news/" target="_blank" class="sansei-btn">ニュース</a>
     <a href="https://info.sanseito.jp/" target="_blank" class="sansei-btn">イベント</a>
     <a href="https://sanseito.jp/member/" target="_blank" class="sansei-btn">メンバー</a>
     <a href="https://sanseito.jp/2020/candidate/" target="_blank" class="sansei-btn">候補予定者</a>
     <a href="https://www.youtube.com/@sanseito-official" target="_blank" class="sansei-btn">YouTube</a>
-    <a href="https://x.com/sansei411" target="_blank" class="sansei-btn">X (Twitter)</a>
+    <a href="https://x.com/sansei411" target="_blank" class="sansei-btn">X</a>
     <a href="https://www.instagram.com/sanseito" target="_blank" class="sansei-btn">Instagram</a>
     <a href="https://www.tiktok.com/@sanseito" target="_blank" class="sansei-btn">TikTok</a>
     <a href="https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" target="_blank" class="sansei-btn">選挙ドットコム</a>
 </div>
-
 <div class="section-title">PHOTO SELECTION</div>
 <div class="grid-container" id="photo-grid"></div>
-
-<div class="section-title">VIDEO ARCHIVE</div>
-<div class="grid-container" id="video-grid"></div>
-
 <div id="overlay" onclick="closeOverlay()">
     <div id="overlay-content" onclick="event.stopPropagation()">
         <img id="overlay-img" src="">
-        <iframe id="overlay-video" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        <button class="close-bar" onclick="closeOverlay()">× 閉じて戻る</button>
+        <br><button class="close-btn" onclick="closeOverlay()">閉じる</button>
     </div>
 </div>
-
 <script>
-    const photoIds = ["1494790108377-be9c29b29330", "1517841905240-472988babdf9", "1539571696357-5a69c17a67c6", "1524504388940-b1c1722653e1", "1515886657613-9f3515b0c78f", "1529626455594-4ff0802cfb7e", "1488426862026-3ee34a7d66df", "1531746020798-e6953c6e8e04"];
-    const videoIds = ["G1hKzCkywM8", "a-8XiE7W7u4", "q2_c2_WfJFg", "BpITZk7sa8E", "UYmvFzDuO5k", "G1hKzCkywM8", "a-8XiE7W7u4", "q2_c2_WfJFg"];
-
+    const photoIds = ["1494790108377-be9c29b29330", "1517841905240-472988babdf9", "1539571696357-5a69c17a67c6", "1524504388940-b1c1722653e1"];
     const pGrid = document.getElementById('photo-grid');
     photoIds.forEach((id, i) => {
         const div = document.createElement('div');
         div.className = 'item-wrapper';
-        div.innerHTML = `<div class="item-label">Photo ${i+1}</div>
-                         <img src="https://images.unsplash.com/photo-${id}?w=600&h=800&fit=crop" class="thumb-media" onclick="openPhoto(this.src)">`;
+        const imgUrl = `https://images.unsplash.com/photo-${id}?w=600&h=800&fit=crop`;
+        div.innerHTML = `<div class="item-label">Photo ${i+1}</div><img src="${imgUrl}" class="thumb-media" onclick="openPhoto('${imgUrl}')">`;
         pGrid.appendChild(div);
     });
-
-    const vGrid = document.getElementById('video-grid');
-    videoIds.forEach((id, i) => {
-        const div = document.createElement('div');
-        div.className = 'item-wrapper';
-        div.innerHTML = `<div class="item-label">Video ${i+1}</div>
-                         <img src="https://img.youtube.com/vi/${id}/mqdefault.jpg" class="thumb-media" onclick="openVideo('${id}')">`;
-        vGrid.appendChild(div);
-    });
-
     function openPhoto(src) {
         document.getElementById('overlay-img').src = src;
         document.getElementById('overlay-img').style.display = 'block';
-        document.getElementById('overlay-video').style.display = 'none';
         document.getElementById('overlay').style.display = 'flex';
-        document.body.style.overflow = 'hidden';
     }
-
-    function openVideo(id) {
-        document.getElementById('overlay-video').src = `https://www.youtube.com/embed/${id}?autoplay=1`;
-        document.getElementById('overlay-video').style.display = 'block';
-        document.getElementById('overlay-img').style.display = 'none';
-        document.getElementById('overlay').style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeOverlay() {
-        document.getElementById('overlay').style.display = 'none';
-        document.getElementById('overlay-video').src = '';
-        document.body.style.overflow = '';
-    }
+    function closeOverlay() { document.getElementById('overlay').style.display = 'none'; }
 </script>
 </body>
 </html>
