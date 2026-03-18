@@ -5,49 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miyabi's Portfolio</title>
     <style>
-        /* 全体設定 */
+        /* 基本設定 */
         body { font-family: "Meiryo", sans-serif; margin: 0; background: #f5f5f7; text-align: center; color: #333; }
         
         /* ヘッダー */
         .header-container { position: relative; width: 100%; height: 35vh; overflow: hidden; background: #333; }
         .header-image { width: 100%; height: 100%; object-fit: cover; }
         .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-shadow: 0 2px 15px rgba(0,0,0,0.8); width: 100%; }
-        
-        /* ナビボタン */
-        .btn-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 900px; margin: 20px auto; padding: 0 15px; }
-        .nav-btn { background: #fff; color: #007aff; border: 2px solid #007aff; padding: 10px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 0.9em; }
+        .header-text h1 { font-size: 2.2em; letter-spacing: 0.1em; }
 
-        /* ギャラリー */
-        .section-title { margin-top: 40px; padding: 10px; background: #fff; font-weight: bold; border-bottom: 1px solid #ddd; }
+        /* セクション共通設定 */
+        .section-title { margin-top: 40px; padding: 12px; background: #fff; font-weight: bold; border-bottom: 1px solid #ddd; letter-spacing: 0.1em; }
+
+        /* 上部ナビボタン（5列×2段 = 10個） */
+        .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
+        .nav-btn { background: #fff; color: #007aff; border: 2px solid #007aff; padding: 10px 5px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 0.9em; transition: 0.2s; }
+        .nav-btn:hover { background: #007aff; color: #fff; }
+
+        /* 参政党ボタン（5列×2段 = 10個） */
+        .sansei-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
+        .sansei-btn { background: #ff8c00; color: #fff; border: none; padding: 15px 5px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 0.9em; transition: 0.2s; box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
+        .sansei-btn:hover { background: #e67e00; transform: translateY(-2px); }
+
+        /* ギャラリー（4列） */
         .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1100px; margin: 20px auto; padding: 0 15px; }
         .item-wrapper { display: flex; flex-direction: column; align-items: center; }
         .item-label { font-size: 0.8em; color: #ef6c00; margin-bottom: 5px; font-weight: bold; }
         .thumb-media { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 12px; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .thumb-media:hover { transform: scale(1.03); }
 
-        /* 💡 拡大画面（オーバーレイ） */
-        #overlay { 
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 3000; 
-        }
-        #overlay-content { 
-            width: 95%; max-width: 1000px; display: flex; flex-direction: column; align-items: center; 
-        }
-        
-        /* 写真と動画のサイズ制限（ボタンが隠れないように） */
-        #overlay-img { max-height: 75vh; width: auto; max-width: 100%; border-radius: 8px; display: none; }
+        /* 拡大画面（オーバーレイ） */
+        #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.96); align-items: center; justify-content: center; z-index: 3000; }
+        #overlay-content { width: 95%; max-width: 1100px; display: flex; flex-direction: column; align-items: center; }
+        #overlay-img { max-height: 70vh; width: auto; max-width: 100%; border-radius: 8px; display: none; }
         #overlay-video { width: 100%; aspect-ratio: 16/9; border-radius: 8px; display: none; }
         
-        /* 💡 閉じるボタン（写真でも動画でも必ず下に表示） */
-        .close-bar { 
-            margin-top: 25px; width: 200px; background: #ff5252; color: #fff; 
-            padding: 12px 0; border-radius: 30px; font-weight: bold; cursor: pointer; 
-            border: none; font-size: 1em; box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            z-index: 3100;
-        }
+        /* 閉じるボタン */
+        .close-bar { margin-top: 25px; width: 220px; background: #ff5252; color: #fff; padding: 14px 0; border-radius: 30px; font-weight: bold; cursor: pointer; border: none; font-size: 1.1em; box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
         .close-bar:hover { background: #ff1744; }
 
-        @media (max-width: 768px) { .grid-container, .btn-grid { grid-template-columns: repeat(2, 1fr); } }
+        /* スマホ対応（2列） */
+        @media (max-width: 768px) { .nav-grid, .sansei-grid, .grid-container { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body>
@@ -57,10 +55,17 @@
     <div class="header-text"><h1>MIYABI'S PORTAL</h1></div>
 </header>
 
-<nav class="btn-grid">
+<div class="section-title">NAVIGATION MENU</div>
+<nav class="nav-grid">
     <a href="#" class="nav-btn">No.1</a><a href="#" class="nav-btn">No.2</a><a href="#" class="nav-btn">No.3</a><a href="#" class="nav-btn">No.4</a><a href="#" class="nav-btn">No.5</a>
-    <a href="#" class="nav-btn">No.6</a><a href="#" class="nav-btn">No.7</a><a href="#" class="nav-btn">No.8</a><a href="#" class="nav-btn">No.9</a><a href="#" class="nav-btn special" style="background:#fb8c00;color:#fff;">Links</a>
+    <a href="#" class="nav-btn">No.6</a><a href="#" class="nav-btn">No.7</a><a href="#" class="nav-btn">No.8</a><a href="#" class="nav-btn">No.9</a><a href="https://miyabi335.github.io/" class="nav-btn" style="border-color:#fb8c00;">My Site</a>
 </nav>
+
+<div class="section-title">PROJECT ARCHIVE (参政党)</div>
+<div class="sansei-grid">
+    <a href="#" class="sansei-btn">参政党 01</a><a href="#" class="sansei-btn">参政党 02</a><a href="#" class="sansei-btn">参政党 03</a><a href="#" class="sansei-btn">参政党 04</a><a href="#" class="sansei-btn">参政党 05</a>
+    <a href="#" class="sansei-btn">参政党 06</a><a href="#" class="sansei-btn">参政党 07</a><a href="#" class="sansei-btn">参政党 08</a><a href="#" class="sansei-btn">参政党 09</a><a href="#" class="sansei-btn">参政党 10</a>
+</div>
 
 <div class="section-title">PHOTO SELECTION</div>
 <div class="grid-container" id="photo-grid"></div>
@@ -77,9 +82,11 @@
 </div>
 
 <script>
+    // データ定義
     const photoIds = ["1494790108377-be9c29b29330", "1517841905240-472988babdf9", "1539571696357-5a69c17a67c6", "1524504388940-b1c1722653e1", "1515886657613-9f3515b0c78f", "1529626455594-4ff0802cfb7e", "1488426862026-3ee34a7d66df", "1531746020798-e6953c6e8e04"];
     const videoIds = ["G1hKzCkywM8", "a-8XiE7W7u4", "q2_c2_WfJFg", "BpITZk7sa8E", "UYmvFzDuO5k", "G1hKzCkywM8", "a-8XiE7W7u4", "q2_c2_WfJFg"];
 
+    // 写真生成
     const pGrid = document.getElementById('photo-grid');
     photoIds.forEach((id, i) => {
         const div = document.createElement('div');
@@ -89,6 +96,7 @@
         pGrid.appendChild(div);
     });
 
+    // 動画生成
     const vGrid = document.getElementById('video-grid');
     videoIds.forEach((id, i) => {
         const div = document.createElement('div');
@@ -98,22 +106,19 @@
         vGrid.appendChild(div);
     });
 
+    // 表示関数
     function openPhoto(src) {
-        const img = document.getElementById('overlay-img');
-        const vid = document.getElementById('overlay-video');
-        img.src = src;
-        img.style.display = 'block';
-        vid.style.display = 'none';
+        document.getElementById('overlay-img').src = src;
+        document.getElementById('overlay-img').style.display = 'block';
+        document.getElementById('overlay-video').style.display = 'none';
         document.getElementById('overlay').style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
 
     function openVideo(id) {
-        const img = document.getElementById('overlay-img');
-        const vid = document.getElementById('overlay-video');
-        vid.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
-        vid.style.display = 'block';
-        img.style.display = 'none';
+        document.getElementById('overlay-video').src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+        document.getElementById('overlay-video').style.display = 'block';
+        document.getElementById('overlay-img').style.display = 'none';
         document.getElementById('overlay').style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
