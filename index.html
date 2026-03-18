@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -10,26 +11,23 @@
         .header-image { width: 100%; height: 100%; object-fit: cover; }
         .section-title { margin-top: 40px; padding: 12px; background: rgba(255,255,255,0.05); color: #94a3b8; font-weight: bold; }
 
-        /* ナビゲーション設定 */
         .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
         
-        /* リンクボタン共通 */
+        /* リンクを確実に反応させるスタイル */
         .nav-link { 
-            display: flex; align-items: center; justify-content: center; 
-            min-height: 45px; border-radius: 8px; font-weight: bold; font-size: 0.85em;
-            text-decoration: none; transition: 0.2s;
+            display: block; /* 範囲いっぱいに広げる */
+            line-height: 45px;
+            text-decoration: none; 
+            border-radius: 8px; font-weight: bold; font-size: 0.85em;
             background: rgba(255,255,255,0.1); color: #38bdf8; border: 1px solid #38bdf8;
+            transition: 0.2s;
         }
-        .nav-link:hover { background: rgba(56, 189, 248, 0.2); transform: translateY(-2px); border-color: #fff; }
-
-        /* No.10だけ目立つオレンジにする */
+        .nav-link:hover { background: rgba(56, 189, 248, 0.2); border-color: #fff; }
         .special-link { background: #fb8c00 !important; color: #fff !important; border: 2px solid #fff !important; }
 
-        /* 参政党エリア */
         .sansei-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
-        .sansei-btn { background: #fb8c00; color: #fff; border: none; padding: 12px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8em; min-height: 50px; display: flex; align-items: center; justify-content: center; }
+        .sansei-btn { background: #fb8c00; color: #fff; border: none; padding: 15px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8em; display: block; }
 
-        /* 画像ギャラリー */
         .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1100px; margin: 20px auto; padding: 0 15px; }
         .thumb-media { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; }
 
@@ -44,16 +42,16 @@
 
 <div class="section-title">NAVIGATION MENU</div>
 <nav class="nav-grid">
-    <a href="no1.html" class="nav-link">No.1</a>
-    <a href="no2.html" class="nav-link">No.2</a>
-    <a href="no3.html" class="nav-link">No.3</a>
-    <a href="no4.html" class="nav-link">No.4</a>
-    <a href="no5.html" class="nav-link">No.5</a>
-    <a href="no6.html" class="nav-link">No.6</a>
-    <a href="no7.html" class="nav-link">No.7</a>
-    <a href="no8.html" class="nav-link">No.8</a>
-    <a href="no9.html" class="nav-link">No.9</a>
-    <a href="no10.html" class="nav-link special-link">Links集 (No.10)</a>
+    <a href="./no1.html" class="nav-link">No.1</a>
+    <a href="./no2.html" class="nav-link">No.2</a>
+    <a href="./no3.html" class="nav-link">No.3</a>
+    <a href="./no4.html" class="nav-link">No.4</a>
+    <a href="./no5.html" class="nav-link">No.5</a>
+    <a href="./no6.html" class="nav-link">No.6</a>
+    <a href="./no7.html" class="nav-link">No.7</a>
+    <a href="./no8.html" class="nav-link">No.8</a>
+    <a href="./no9.html" class="nav-link">No.9</a>
+    <a href="./no10.html" class="nav-link special-link">Links集 (No.10)</a>
 </nav>
 
 <div class="section-title">SANSEITO LINKS</div>
@@ -61,8 +59,6 @@
     <a href="https://sanseito.jp/" target="_blank" class="sansei-btn">公式サイト</a>
     <a href="https://www.youtube.com/@sanseito-official" target="_blank" class="sansei-btn">YouTube</a>
     <a href="https://x.com/sansei411" target="_blank" class="sansei-btn">X</a>
-    <a href="https://www.instagram.com/sanseito" target="_blank" class="sansei-btn">Instagram</a>
-    <a href="https://www.tiktok.com/@sanseito" target="_blank" class="sansei-btn">TikTok</a>
 </div>
 
 <div class="section-title">VIDEO ARCHIVE</div>
