@@ -63,16 +63,47 @@
             margin: 20px auto 50px auto; 
             padding: 0 15px; 
         }
+        
+        /* 写真とタイトルを包むコンテナ（追加） */
+        .photo-container {
+            position: relative; /* タイトルを絶対配置するための基準 */
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        /* 写真上のタイトル（追加） */
+        .photo-title {
+            position: absolute;
+            top: 10px; /* 上からの位置 */
+            left: 10px; /* 左からの位置 */
+            background: rgba(255, 255, 255, 0.85); /* 白背景（少し透過） */
+            color: #ef6c00; /* 参政党ボタンと同じ橙色 */
+            border: 1.5px solid #ffcc80; /* 橙色の枠線 */
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 0.75em;
+            font-weight: bold;
+            z-index: 10; /* 写真より上に表示 */
+            pointer-events: none; /* タイトルがクリックを邪魔しないように */
+            white-space: nowrap; /* 改行しない */
+            overflow: hidden;
+            text-overflow: ellipsis; /* 文字が長すぎる場合は「...」にする */
+            max-width: calc(100% - 30px); /* 枠からはみ出さないように */
+        }
+
         .photo-item { 
             width: 100%; 
             aspect-ratio: 3/4; 
             object-fit: cover; 
             border-radius: 15px; 
             cursor: pointer; 
-            transition: all 0.3s ease; 
             box-shadow: 0 5px 15px rgba(0,0,0,0.15); 
+            display: block; /* 下の隙間をなくす */
         }
-        .photo-item:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+        
+        /* ホバー効果をコンテナ全体に適用（修正） */
+        .photo-container:hover { transform: scale(1.05); z-index: 20; }
+        .photo-container:hover .photo-item { box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
 
         /* ライトボックス（拡大表示画面） */
         #lightbox { 
@@ -103,6 +134,7 @@
             .nav-btn { font-size: 0.8em; padding: 12px 1px; border-radius: 10px; }
             .sub-btn { font-size: 0.65em; padding: 10px 0; border-radius: 8px; }
             .photo-grid { grid-template-columns: repeat(2, 1fr); }
+            .photo-title { font-size: 0.6em; padding: 3px 6px; top: 8px; left: 8px; } /* スマホでは少し小さく */
         }
     </style>
 </head>
@@ -142,26 +174,42 @@
 
 <div class="section-title"><h3>MODEL GALLERY</h3></div>
 <div class="photo-grid">
-    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
-    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
+    <div class="photo-container">
+        <div class="photo-title">モデル：アリス（10文字以内）</div>
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
+    </div>
+    
+    <div class="photo-container">
+        <div class="photo-title">モデル：ベティ（10文字以内）</div>
+        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
+    </div>
+    
+    <div class="photo-container">
+        <div class="photo-title">モデル：キャロル（10文字以内）</div>
+        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
+    </div>
+    
+    <div class="photo-container">
+        <div class="photo-title">モデル：ダイアナ（10文字以内）</div>
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
+    </div>
+    
 </div>
 
-<div id="lightbox" onclick="closeLightbox()">
+<div id="lb" onclick="closeLightbox()">
     <img id="lightbox-img" src="">
 </div>
 
 <script>
     function openLightbox(s) {
-        const lb = document.getElementById('lightbox');
+        const lb = document.getElementById('lb');
         const img = document.getElementById('lightbox-img');
         img.src = s;
         lb.style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
     function closeLightbox() {
-        document.getElementById('lightbox').style.display = 'none';
+        document.getElementById('lb').style.display = 'none';
         document.body.style.overflow = '';
     }
 </script>
