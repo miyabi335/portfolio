@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -5,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miyabi's Portal</title>
     <style>
-        body { font-family: "Meiryo", sans-serif; margin: 0; background: #f5f5f7; text-align: center; color: #333; overflow-x: hidden; }
+        body { font-family: "Meiryo", "Hiragino Kaku Gothic ProN", sans-serif; margin: 0; background: #f5f5f7; text-align: center; color: #333; overflow-x: hidden; }
         .header-container { position: relative; width: 100%; height: 35vh; overflow: hidden; background: #333; }
         .header-image { width: 100%; height: 100%; object-fit: cover; }
         
-        /* クリック判定用の見出し */
+        /* タイトル見出し */
         .header-text { 
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
             color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.6); 
-            cursor: pointer; user-select: none; 
+            user-select: none; 
         }
         
         .btn-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; max-width: 950px; margin: 25px auto; padding: 0 15px; }
@@ -26,18 +27,18 @@
 
         .section-title { margin: 30px 0 15px 0; padding: 10px; background: #fff; border-bottom: 1px solid #ddd; font-size: 0.9em; }
 
-        /* --- 管理者パネル（初期は非表示） --- */
-        .admin-panel {
-            display: none; /* ここで隠しています */
+        /* 一般公開用：写真展開パネル */
+        #photo-expand-panel {
             margin: 20px auto; padding: 15px; max-width: 350px;
-            background: #fff; border-radius: 10px; border: 2px dashed #ef6c00;
-            animation: fadeIn 0.5s ease;
+            background: #fff; border-radius: 10px; border: 2px solid #ddd;
         }
-        .admin-btn { background: #ef6c00; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; }
+        .expand-btn { background: #333; color: #fff; border: none; padding: 12px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; transition: background 0.2s; }
+        .expand-btn:hover { background: #555; }
 
+        /* 写真グリッド */
         .photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1200px; margin: 20px auto 60px auto; padding: 0 15px; }
         .photo-item-wrapper { display: none; flex-direction: column; align-items: center; transition: 0.3s; animation: fadeIn 0.5s ease; }
-        .photo-item-wrapper:nth-child(-n+4) { display: flex; } /* 最初は4枚 */
+        .photo-item-wrapper:nth-child(-n+4) { display: flex; } /* 初期4枚 */
 
         .photo-text-above { font-size: 0.85em; font-weight: bold; color: #ef6c00; margin-bottom: 8px; }
         .photo-item { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 15px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
@@ -46,7 +47,7 @@
         #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; z-index: 1000; cursor: zoom-out; }
         #lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 10px; animation: zoomIn 0.3s ease; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
         @media (max-width: 600px) {
@@ -59,12 +60,12 @@
 
 <header class="header-container">
     <img src="fuji00001.jpg" alt="Header" class="header-image">
-    <div class="header-text" onclick="handleSecretClick()"><h1>MY PORTFOLIO</h1></div>
+    <div class="header-text"><h1>MY PORTFOLIO</h1></div>
 </header>
 
 <div class="nav-container btn-grid">
-    <a href="#" class="nav-btn">No.1</a><a href="#" class="nav-btn">No.2</a><a href="#" class="nav-btn">No.3</a><a href="#" class="nav-btn">No.4</a><a href="#" class="nav-btn">No.5</a>
-    <a href="#" class="nav-btn">No.6</a><a href="#" class="nav-btn">No.7</a><a href="#" class="nav-btn">No.8</a><a href="#" class="nav-btn">No.9</a><a href="#" class="nav-btn special">Links</a>
+    <a href="no1.html" class="nav-btn">No.1</a><a href="no2.html" class="nav-btn">No.2</a><a href="no3.html" class="nav-btn">No.3</a><a href="no4.html" class="nav-btn">No.4</a><a href="no5.html" class="nav-btn">No.5</a>
+    <a href="no6.html" class="nav-btn">No.6</a><a href="no7.html" class="nav-btn">No.7</a><a href="no8.html" class="nav-btn">No.8</a><a href="no9.html" class="nav-btn">No.9</a><a href="no10.html" class="nav-btn special">Links</a>
 </div>
 
 <div class="section-title"><h3>参政党リンク</h3></div>
@@ -83,64 +84,53 @@
 
 <div class="section-title"><h3>MODEL GALLERY</h3></div>
 
-<div class="admin-panel" id="secret-admin">
-    <button class="admin-btn" id="admin-toggle-btn" onclick="togglePhotos()">管理者：写真を追加 (＋4枚)</button>
-    <div style="font-size:0.8em; color:#666; margin-top:8px;" id="photo-status">現在：4枚 / 全20枚</div>
+<div id="photo-expand-panel">
+    <button class="expand-btn" id="toggle-btn" onclick="togglePhotos()">もっと写真を見る (＋4枚)</button>
+    <div style="font-size:0.8em; color:#666; margin-top:8px;" id="status">現在：4枚 / 全20枚</div>
 </div>
 
-<div class="photo-grid" id="photo-grid">
-    </div>
+<div class="photo-grid" id="photo-grid"></div>
 
-<div id="lightbox" onclick="closeLightbox()"><img id="lightbox-img" src=""></div>
+<div id="lightbox" onclick="closeLightbox()"><img id="lb-img" src=""></div>
 
 <script>
-    // 画像リスト（13枚目修正済み）
-    const images = [
+    // 修正済みの画像IDリスト
+    const ids = [
         "1494790108377-be9c29b29330", "1517841905240-472988babdf9", "1539571696357-5a69c17a67c6", "1524504388940-b1c1722653e1",
         "1515886657613-9f3515b0c78f", "1529626455594-4ff0802cfb7e", "1488426862026-3ee34a7d66df", "1531746020798-e6953c6e8e04",
         "1581382575275-97901c2635b7", "1544005313-94ddf0286df2", "1506794778202-cad84cf45f1d", "1500648767791-00dcc994a43e",
-        "1619897225754-006c6501810e", /* 13枚目修正 */ "1507003211169-0a1dd7228f2d", "1519345182560-3f2917c472ef", "1492562080023-ab3db95bfbce",
+        "1534522259664-735d7a5c93a0", "1507003211169-0a1dd7228f2d", "1519345182560-3f2917c472ef", "1492562080023-ab3db95bfbce",
         "1531123897727-8f129e1688ce", "1489424731084-a5d8b219a5bb", "1521119989659-a83eee488004", "1513094735237-8f2714d57c13"
     ];
 
-    // グリッド生成
     const grid = document.getElementById('photo-grid');
-    images.forEach((id, i) => {
-        const wrap = document.createElement('div');
-        wrap.className = 'photo-item-wrapper';
-        wrap.innerHTML = `<div class="photo-text-above">モデル：${String(i+1).padStart(2,'0')}</div>
-                          <img src="https://images.unsplash.com/photo-${id}?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">`;
-        grid.appendChild(wrap);
+    ids.forEach((id, i) => {
+        const div = document.createElement('div');
+        div.className = 'photo-item-wrapper';
+        div.innerHTML = `<div class="photo-text-above">モデル：${String(i+1).padStart(2,'0')}</div>
+                         <img src="https://images.unsplash.com/photo-${id}?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">`;
+        grid.appendChild(div);
     });
 
-    // 隠しコマンド処理
-    let clickCount = 0;
-    function handleSecretClick() {
-        clickCount++;
-        if (clickCount === 3) {
-            document.getElementById('secret-admin').style.display = 'block';
-            clickCount = 0; // リセット
-        }
-    }
-
-    // 写真展開（ロータリー式）
-    let currentShown = 4;
+    let current = 4;
     function togglePhotos() {
-        const wrappers = document.querySelectorAll('.photo-item-wrapper');
-        const btn = document.getElementById('admin-toggle-btn');
-        if (currentShown < 20) {
-            currentShown += 4;
-            wrappers.forEach((w, i) => { if(i < currentShown) w.style.display = 'flex'; });
-            if (currentShown === 20) btn.innerText = "管理者：1列目に戻す (4枚)";
-        } else {
-            currentShown = 4;
-            wrappers.forEach((w, i) => { if(i >= 4) w.style.display = 'none'; });
-            btn.innerText = "管理者：写真を追加 (＋4枚)";
+        const items = document.querySelectorAll('.photo-item-wrapper');
+        const btn = document.getElementById('toggle-btn');
+        const expandPanel = document.getElementById('photo-expand-panel');
+
+        if (current < 20) {
+            current += 4;
+            items.forEach((item, i) => { if(i < current) item.style.display = 'flex'; });
+            if (current === 20) {
+                btn.innerText = "すべての写真が表示されました";
+                btn.style.background = "#ccc"; // ボタンを無効化する代わりにグレーアウト
+                btn.disabled = true; // クリックできないようにする
+            }
         }
-        document.getElementById('photo-status').innerText = `現在：${currentShown}枚 / 全20枚`;
+        document.getElementById('status').innerText = `現在：${current}枚 / 全20枚`;
     }
 
-    function openLightbox(s) { document.getElementById('lightbox-img').src = s; document.getElementById('lightbox').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+    function openLightbox(s) { document.getElementById('lb-img').src = s; document.getElementById('lightbox').style.display = 'flex'; document.body.style.overflow = 'hidden'; }
     function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; document.body.style.overflow = ''; }
 </script>
 
