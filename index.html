@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -7,29 +6,29 @@
     <title>Miyabi's Portal</title>
     <style>
         body { font-family: "Meiryo", sans-serif; margin: 0; background: #0f172a; text-align: center; color: #f1f5f9; }
-        .header-container { position: relative; width: 100%; height: 35vh; background: #333; overflow: hidden; }
+        .header-container { position: relative; width: 100%; height: 30vh; background: #333; overflow: hidden; }
         .header-image { width: 100%; height: 100%; object-fit: cover; }
-        .section-title { margin-top: 40px; padding: 12px; background: rgba(255,255,255,0.05); color: #94a3b8; font-weight: bold; }
+        .section-title { margin-top: 30px; padding: 10px; background: rgba(255,255,255,0.05); color: #94a3b8; font-weight: bold; font-size: 0.9em; }
 
-        .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
-        
-        /* リンクを確実に反応させるスタイル */
+        /* ナビゲーション（No.1〜10） */
+        .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 900px; margin: 20px auto; padding: 0 15px; }
         .nav-link { 
-            display: block; /* 範囲いっぱいに広げる */
-            line-height: 45px;
-            text-decoration: none; 
-            border-radius: 8px; font-weight: bold; font-size: 0.85em;
-            background: rgba(255,255,255,0.1); color: #38bdf8; border: 1px solid #38bdf8;
-            transition: 0.2s;
+            display: block; line-height: 45px; text-decoration: none; border-radius: 8px; 
+            font-weight: bold; font-size: 0.8em; background: rgba(255,255,255,0.1); color: #38bdf8; border: 1px solid #38bdf8; 
         }
         .nav-link:hover { background: rgba(56, 189, 248, 0.2); border-color: #fff; }
         .special-link { background: #fb8c00 !important; color: #fff !important; border: 2px solid #fff !important; }
 
-        .sansei-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
-        .sansei-btn { background: #fb8c00; color: #fff; border: none; padding: 15px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8em; display: block; }
+        /* 参政党ボタンエリア（ここが独立していることが重要） */
+        .sansei-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 900px; margin: 20px auto; padding: 0 15px; }
+        .sansei-btn { 
+            display: block; line-height: 45px; background: #fb8c00; color: #fff; 
+            border: none; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.75em; 
+        }
+        .sansei-btn:hover { background: #ef6c00; transform: translateY(-1px); }
 
-        .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1100px; margin: 20px auto; padding: 0 15px; }
-        .thumb-media { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; }
+        .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1000px; margin: 20px auto; padding: 0 15px; }
+        .thumb-media { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; }
 
         @media (max-width: 768px) { .nav-grid, .sansei-grid { grid-template-columns: repeat(2, 1fr); } }
     </style>
@@ -40,25 +39,27 @@
     <img src="fuji00001.jpg" alt="富士山" class="header-image">
 </header>
 
-<div class="section-title">NAVIGATION MENU</div>
+<div class="section-title">PORTFOLIO MENU</div>
 <nav class="nav-grid">
-    <a href="./no1.html" class="nav-link">No.1</a>
-    <a href="./no2.html" class="nav-link">No.2</a>
-    <a href="./no3.html" class="nav-link">No.3</a>
-    <a href="./no4.html" class="nav-link">No.4</a>
-    <a href="./no5.html" class="nav-link">No.5</a>
-    <a href="./no6.html" class="nav-link">No.6</a>
-    <a href="./no7.html" class="nav-link">No.7</a>
-    <a href="./no8.html" class="nav-link">No.8</a>
-    <a href="./no9.html" class="nav-link">No.9</a>
-    <a href="./no10.html" class="nav-link special-link">Links集 (No.10)</a>
+    <a href="no1.html" class="nav-link">No.1</a>
+    <a href="no2.html" class="nav-link">No.2</a>
+    <a href="no3.html" class="nav-link">No.3</a>
+    <a href="no4.html" class="nav-link">No.4</a>
+    <a href="no5.html" class="nav-link">No.5</a>
+    <a href="no6.html" class="nav-link">No.6</a>
+    <a href="no7.html" class="nav-link">No.7</a>
+    <a href="no8.html" class="nav-link">No.8</a>
+    <a href="no9.html" class="nav-link">No.9</a>
+    <a href="no10.html" class="nav-link special-link">Links集(No.10)</a>
 </nav>
 
-<div class="section-title">SANSEITO LINKS</div>
+<div class="section-title">SANSEITO OFFICIAL LINKS</div>
 <div class="sansei-grid">
     <a href="https://sanseito.jp/" target="_blank" class="sansei-btn">公式サイト</a>
     <a href="https://www.youtube.com/@sanseito-official" target="_blank" class="sansei-btn">YouTube</a>
     <a href="https://x.com/sansei411" target="_blank" class="sansei-btn">X</a>
+    <a href="https://www.instagram.com/sanseito" target="_blank" class="sansei-btn">Instagram</a>
+    <a href="https://www.tiktok.com/@sanseito" target="_blank" class="sansei-btn">TikTok</a>
 </div>
 
 <div class="section-title">VIDEO ARCHIVE</div>
