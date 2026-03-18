@@ -3,39 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miyabi's Portal</title>
+    <title>Miyabi's Hobby Space</title>
     <style>
-        body { font-family: "Meiryo", sans-serif; margin: 0; background: #f5f5f7; text-align: center; color: #333; }
+        body { font-family: "Meiryo", "Hiragino Kaku Gothic ProN", sans-serif; margin: 0; background: #f5f5f7; text-align: center; color: #333; }
         .header-container { position: relative; width: 100%; height: 35vh; overflow: hidden; background: #333; }
         .header-image { width: 100%; height: 100%; object-fit: cover; }
-        .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.6); cursor: pointer; user-select: none; }
+        .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
         
+        /* ナビゲーションボタン */
         .btn-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; max-width: 950px; margin: 25px auto; padding: 0 15px; }
-        .nav-btn { background: #fff; color: #007aff; border: 2px solid #007aff; padding: 15px 5px; border-radius: 15px; text-decoration: none; font-weight: bold; display: flex; align-items: center; justify-content: center; font-size: 1.1em; transition: 0.2s; }
+        .nav-btn { background: #fff; color: #007aff; border: 2px solid #007aff; padding: 15px 5px; border-radius: 12px; text-decoration: none; font-weight: bold; display: flex; align-items: center; justify-content: center; font-size: 1.1em; transition: 0.2s; }
+        .nav-btn:hover { background: #007aff; color: #fff; }
         .nav-btn.special { background: #fb8c00; color: #fff; border-color: #ef6c00; }
 
-        .section-title { margin: 30px 0 15px 0; padding: 10px; background: #fff; border-bottom: 1px solid #ddd; font-size: 0.9em; }
+        .section-title { margin: 40px 0 10px 0; padding: 10px; background: #fff; border-bottom: 1px solid #ddd; font-size: 0.9em; letter-spacing: 0.1em; }
 
-        /* 管理者パネル（テスト用） */
-        #admin-panel { 
-            display: none; position: sticky; top: 10px; z-index: 100;
-            margin: 20px auto; padding: 15px; max-width: 400px; 
-            background: rgba(255,255,255,0.95); border: 2px solid #ef6c00; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        .admin-btn { background: #ef6c00; color: #fff; border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 48%; margin: 1%; }
-        .admin-btn.publish { background: #28a745; width: 98%; margin-top: 10px; }
-
+        /* フォトグリッド設定 */
         .photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1200px; margin: 20px auto 60px auto; padding: 0 15px; }
-        .photo-item-wrapper { display: none; flex-direction: column; align-items: center; animation: fadeIn 0.5s ease; }
-        .photo-item-wrapper:nth-child(-n+4) { display: flex; }
+        
+        /* 💡 ここで「8枚」に制限しています */
+        .photo-item-wrapper { display: none; flex-direction: column; align-items: center; }
+        .photo-item-wrapper:nth-child(-n+8) { display: flex; } 
 
         .photo-text-above { font-size: 0.85em; font-weight: bold; color: #ef6c00; margin-bottom: 8px; }
-        .photo-item { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 15px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .photo-item { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 15px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; }
+        .photo-item:hover { transform: scale(1.03); }
 
-        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; z-index: 1000; }
-        #lightbox img { max-width: 90%; max-height: 90%; border-radius: 10px; }
+        /* ライトボックス */
+        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; z-index: 1000; cursor: pointer; }
+        #lightbox img { max-width: 90%; max-height: 90%; border-radius: 10px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         @media (max-width: 600px) { .btn-grid, .photo-grid { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
@@ -43,76 +40,52 @@
 
 <header class="header-container">
     <img src="fuji00001.jpg" alt="Header" class="header-image">
-    <div class="header-text" id="main-title" onclick="handleSecretClick()"><h1>MY PORTFOLIO</h1></div>
+    <div class="header-text"><h1>MY PORTFOLIO</h1></div>
 </header>
 
-<div class="nav-container btn-grid">
+<nav class="btn-grid">
     <a href="#" class="nav-btn">No.1</a><a href="#" class="nav-btn">No.2</a><a href="#" class="nav-btn">No.3</a><a href="#" class="nav-btn">No.4</a><a href="#" class="nav-btn">No.5</a>
     <a href="#" class="nav-btn">No.6</a><a href="#" class="nav-btn">No.7</a><a href="#" class="nav-btn">No.8</a><a href="#" class="nav-btn">No.9</a><a href="#" class="nav-btn special">Links</a>
-</div>
+</nav>
 
-<div class="section-title"><h3>MODEL GALLERY</h3></div>
-
-<div id="admin-panel">
-    <p style="font-weight: bold; color: #ef6c00; margin: 0 0 10px 0;">テストモード実行中</p>
-    <button class="admin-btn" onclick="addPhotos()">＋4枚追加</button>
-    <button class="admin-btn" style="background:#666;" onclick="resetPhotos()">4枚に戻す</button>
-    <button class="admin-btn publish" onclick="publishNow()">この枚数で確定（パネルを隠す）</button>
-    <p id="status" style="font-size:12px; margin-top:10px;">現在：4枚表示中</p>
-</div>
+<div class="section-title"><h3>MODEL GALLERY (Selection)</h3></div>
 
 <div class="photo-grid" id="photo-grid"></div>
 
 <div id="lightbox" onclick="this.style.display='none'"><img id="lb-img" src=""></div>
 
 <script>
-    const ids = ["1494790108377-be9c29b29330", "1517841905240-472988babdf9", "1539571696357-5a69c17a67c6", "1524504388940-b1c1722653e1", "1515886657613-9f3515b0c78f", "1529626455594-4ff0802cfb7e", "1488426862026-3ee34a7d66df", "1531746020798-e6953c6e8e04", "1581382575275-97901c2635b7", "1544005313-94ddf0286df2", "1506794778202-cad84cf45f1d", "1500648767791-00dcc994a43e", "1534522259664-735d7a5c93a0", "1507003211169-0a1dd7228f2d", "1519345182560-3f2917c472ef", "1492562080023-ab3db95bfbce", "1531123897727-8f129e1688ce", "1489424731084-a5d8b219a5bb", "1521119989659-a83eee488004", "1513094735237-8f2714d57c13"];
+    // 18枚のストック（モデル13修正済み）
+    const ids = [
+        "1494790108377-be9c29b29330", "1517841905240-472988babdf9", 
+        "1539571696357-5a69c17a67c6", "1524504388940-b1c1722653e1",
+        "1515886657613-9f3515b0c78f", "1529626455594-4ff0802cfb7e", 
+        "1488426862026-3ee34a7d66df", "1531746020798-e6953c6e8e04",
+        "1581382575275-97901c2635b7", "1544005313-94ddf0286df2", 
+        "1506794778202-cad84cf45f1d", "1500648767791-00dcc994a43e",
+        "1534522259664-735d7a5c93a0", // 修正済みモデル13
+        "1507003211169-0a1dd7228f2d", "1519345182560-3f2917c472ef", 
+        "1492562080023-ab3db95bfbce", "1531123897727-8f129e1688ce", 
+        "1489424731084-a5d8b219a5bb"
+    ];
 
     const grid = document.getElementById('photo-grid');
     ids.forEach((id, i) => {
         const div = document.createElement('div');
         div.className = 'photo-item-wrapper';
-        div.innerHTML = `<div class="photo-text-above">モデル：${String(i+1).padStart(2,'0')}</div>
-                         <img src="https://images.unsplash.com/photo-${id}?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">`;
+        div.innerHTML = `
+            <div class="photo-text-above">モデル：${String(i+1).padStart(2,'0')}</div>
+            <img src="https://images.unsplash.com/photo-${id}?w=600&h=800&fit=crop" 
+                 class="photo-item" 
+                 onclick="openLightbox(this.src)"
+                 onerror="this.src='https://via.placeholder.com/600x800?text=Image+Error'">`;
         grid.appendChild(div);
     });
 
-    let clicks = 0;
-    let isLocked = false; // 公開確定フラグ
-
-    function handleSecretClick() {
-        if (isLocked) return; // 確定後は反応しない
-        clicks++;
-        if (clicks === 3) { document.getElementById('admin-panel').style.display = 'block'; clicks = 0; }
+    function openLightbox(s) { 
+        document.getElementById('lb-img').src = s; 
+        document.getElementById('lightbox').style.display = 'flex'; 
     }
-
-    let current = 4;
-    function addPhotos() {
-        current = Math.min(current + 4, 20);
-        updateDisplay();
-    }
-
-    function resetPhotos() {
-        current = 4;
-        updateDisplay();
-    }
-
-    function updateDisplay() {
-        document.querySelectorAll('.photo-item-wrapper').forEach((el, i) => { 
-            el.style.display = (i < current) ? 'flex' : 'none'; 
-        });
-        document.getElementById('status').innerText = `現在：${current}枚表示中`;
-    }
-
-    function publishNow() {
-        if(confirm(`現在表示されている${current}枚で確定し、管理者パネルを隠します。よろしいですか？`)) {
-            document.getElementById('admin-panel').style.display = 'none';
-            isLocked = true; // 隠しコマンドを無効化
-            alert("公開状態に移行しました。ブラウザを閉じるまでこの枚数が維持されます。");
-        }
-    }
-
-    function openLightbox(s) { document.getElementById('lb-img').src = s; document.getElementById('lightbox').style.display = 'flex'; }
 </script>
 </body>
 </html>
