@@ -19,15 +19,15 @@
 
         /* 上部ナビボタン（5列×2段 = 10個） */
         .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
-        .nav-btn { background: #fff; color: #007aff; border: 2px solid #007aff; padding: 10px 5px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 0.9em; transition: 0.2s; }
+        .nav-btn { background: #fff; color: #007aff; border: 2px solid #007aff; padding: 10px 5px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 0.85em; transition: 0.2s; display: flex; align-items: center; justify-content: center; }
         .nav-btn:hover { background: #007aff; color: #fff; }
 
-        /* 参政党ボタン（5列×2段 = 10個） */
+        /* 参政党ボタン（オレンジ） */
         .sansei-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
-        .sansei-btn { background: #ff8c00; color: #fff; border: none; padding: 15px 5px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 0.9em; transition: 0.2s; box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
+        .sansei-btn { background: #ff8c00; color: #fff; border: none; padding: 15px 5px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 0.8em; transition: 0.2s; box-shadow: 0 3px 6px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; min-height: 50px; }
         .sansei-btn:hover { background: #e67e00; transform: translateY(-2px); }
 
-        /* ギャラリー（4列） */
+        /* ギャラリー */
         .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1100px; margin: 20px auto; padding: 0 15px; }
         .item-wrapper { display: flex; flex-direction: column; align-items: center; }
         .item-label { font-size: 0.8em; color: #ef6c00; margin-bottom: 5px; font-weight: bold; }
@@ -39,12 +39,9 @@
         #overlay-content { width: 95%; max-width: 1100px; display: flex; flex-direction: column; align-items: center; }
         #overlay-img { max-height: 70vh; width: auto; max-width: 100%; border-radius: 8px; display: none; }
         #overlay-video { width: 100%; aspect-ratio: 16/9; border-radius: 8px; display: none; }
-        
-        /* 閉じるボタン */
         .close-bar { margin-top: 25px; width: 220px; background: #ff5252; color: #fff; padding: 14px 0; border-radius: 30px; font-weight: bold; cursor: pointer; border: none; font-size: 1.1em; box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
-        .close-bar:hover { background: #ff1744; }
 
-        /* スマホ対応（2列） */
+        /* スマホ対応 */
         @media (max-width: 768px) { .nav-grid, .sansei-grid, .grid-container { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
@@ -58,13 +55,22 @@
 <div class="section-title">NAVIGATION MENU</div>
 <nav class="nav-grid">
     <a href="#" class="nav-btn">No.1</a><a href="#" class="nav-btn">No.2</a><a href="#" class="nav-btn">No.3</a><a href="#" class="nav-btn">No.4</a><a href="#" class="nav-btn">No.5</a>
-    <a href="#" class="nav-btn">No.6</a><a href="#" class="nav-btn">No.7</a><a href="#" class="nav-btn">No.8</a><a href="#" class="nav-btn">No.9</a><a href="https://miyabi335.github.io/" class="nav-btn" style="border-color:#fb8c00;">My Site</a>
+    <a href="#" class="nav-btn">No.6</a><a href="#" class="nav-btn">No.7</a><a href="#" class="nav-btn">No.8</a><a href="#" class="nav-btn">No.9</a>
+    <a href="https://miyabi335.github.io/" class="nav-btn" style="border-color:#fb8c00; background:#fff9f2;">My Portal</a>
 </nav>
 
 <div class="section-title">PROJECT ARCHIVE (参政党)</div>
 <div class="sansei-grid">
-    <a href="#" class="sansei-btn">参政党 01</a><a href="#" class="sansei-btn">参政党 02</a><a href="#" class="sansei-btn">参政党 03</a><a href="#" class="sansei-btn">参政党 04</a><a href="#" class="sansei-btn">参政党 05</a>
-    <a href="#" class="sansei-btn">参政党 06</a><a href="#" class="sansei-btn">参政党 07</a><a href="#" class="sansei-btn">参政党 08</a><a href="#" class="sansei-btn">参政党 09</a><a href="#" class="sansei-btn">参政党 10</a>
+    <a href="https://sanseito.jp/" target="_blank" class="sansei-btn">公式サイト</a>
+    <a href="https://sanseito.jp/news/" target="_blank" class="sansei-btn">最新ニュース</a>
+    <a href="https://info.sanseito.jp/" target="_blank" class="sansei-btn">イベント</a>
+    <a href="https://sanseito.jp/member/" target="_blank" class="sansei-btn">メンバー</a>
+    <a href="https://sanseito.jp/2020/candidate/" target="_blank" class="sansei-btn">候補予定者</a>
+    <a href="https://www.youtube.com/@sanseito-official" target="_blank" class="sansei-btn">YouTube</a>
+    <a href="https://x.com/sansei411" target="_blank" class="sansei-btn">X (Twitter)</a>
+    <a href="https://www.instagram.com/sanseito" target="_blank" class="sansei-btn">Instagram</a>
+    <a href="https://www.tiktok.com/@sanseito" target="_blank" class="sansei-btn">TikTok</a>
+    <a href="https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" target="_blank" class="sansei-btn">選挙ドットコム</a>
 </div>
 
 <div class="section-title">PHOTO SELECTION</div>
@@ -82,11 +88,9 @@
 </div>
 
 <script>
-    // データ定義
     const photoIds = ["1494790108377-be9c29b29330", "1517841905240-472988babdf9", "1539571696357-5a69c17a67c6", "1524504388940-b1c1722653e1", "1515886657613-9f3515b0c78f", "1529626455594-4ff0802cfb7e", "1488426862026-3ee34a7d66df", "1531746020798-e6953c6e8e04"];
     const videoIds = ["G1hKzCkywM8", "a-8XiE7W7u4", "q2_c2_WfJFg", "BpITZk7sa8E", "UYmvFzDuO5k", "G1hKzCkywM8", "a-8XiE7W7u4", "q2_c2_WfJFg"];
 
-    // 写真生成
     const pGrid = document.getElementById('photo-grid');
     photoIds.forEach((id, i) => {
         const div = document.createElement('div');
@@ -96,7 +100,6 @@
         pGrid.appendChild(div);
     });
 
-    // 動画生成
     const vGrid = document.getElementById('video-grid');
     videoIds.forEach((id, i) => {
         const div = document.createElement('div');
@@ -106,7 +109,6 @@
         vGrid.appendChild(div);
     });
 
-    // 表示関数
     function openPhoto(src) {
         document.getElementById('overlay-img').src = src;
         document.getElementById('overlay-img').style.display = 'block';
