@@ -10,10 +10,10 @@
         .header-image { width: 100%; height: 100%; object-fit: cover; }
         .section-title { margin-top: 40px; padding: 12px; background: rgba(255,255,255,0.05); color: #94a3b8; font-weight: bold; }
 
-        /* ナビゲーション：aタグ自体をボタンにする（二重構造を廃止） */
+        /* ナビゲーション設定 */
         .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
         
-        /* 全ボタン共通：aタグに直接スタイルを当てる */
+        /* リンクボタン共通 */
         .nav-link { 
             display: flex; align-items: center; justify-content: center; 
             min-height: 45px; border-radius: 8px; font-weight: bold; font-size: 0.85em;
@@ -22,20 +22,16 @@
         }
         .nav-link:hover { background: rgba(56, 189, 248, 0.2); transform: translateY(-2px); border-color: #fff; }
 
-        /* No.10専用：オレンジ色（!importantで強制適用） */
-        .special-link { 
-            background: #fb8c00 !important; 
-            color: #fff !important; 
-            border: 2px solid #fff !important; 
-        }
+        /* No.10だけ目立つオレンジにする */
+        .special-link { background: #fb8c00 !important; color: #fff !important; border: 2px solid #fff !important; }
 
-        /* 参政党リンク */
+        /* 参政党エリア */
         .sansei-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
-        .sansei-btn { background: #fb8c00; color: #fff; border: none; padding: 15px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8em; min-height: 50px; display: flex; align-items: center; justify-content: center; }
+        .sansei-btn { background: #fb8c00; color: #fff; border: none; padding: 12px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8em; min-height: 50px; display: flex; align-items: center; justify-content: center; }
 
-        /* 動画エリア */
+        /* 画像ギャラリー */
         .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1100px; margin: 20px auto; padding: 0 15px; }
-        .thumb-media { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; cursor: pointer; }
+        .thumb-media { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; }
 
         @media (max-width: 768px) { .nav-grid, .sansei-grid { grid-template-columns: repeat(2, 1fr); } }
     </style>
