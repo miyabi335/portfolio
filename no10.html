@@ -1,20 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>参政党＋リンク集</title>
+    <title>参政党＋出張便利リンク集</title>
     <style>
         body { 
-            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; 
+            font-family: 'Helvetica Neue', Arial, 'Meiryo', sans-serif; 
             margin: 0; 
             background: radial-gradient(circle at top right, #1e293b, #0f172a 60%);
             background-color: #020617; 
             background-attachment: fixed;
             text-align: center; 
             color: #f1f5f9; 
-            -webkit-text-size-adjust: 100%;
         }
 
         .header-container { 
@@ -70,7 +68,7 @@
 
         /* カラー設定 */
         .orange-btn { background: #fff4e6; color: #d35400; border-color: #ffcc99; }
-        .dark-orange-btn { background: #fb8c00; color: #fff !important; border-color: #ef6c00; }
+        .dark-orange-btn { background: #fb8c00 !important; color: #fff !important; border-color: #ef6c00; }
         .blue-btn { background: #e1f5fe; color: #0277bd; border-color: #0277bd; }
         .green-btn { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
         .yellow-btn { background: #fffde7; color: #827717; border-color: #fff176; }
@@ -84,16 +82,8 @@
 
         .link-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 10px rgba(0,0,0,0.5); }
 
-        @media (max-width: 900px) { 
-            .link-grid { grid-template-columns: repeat(3, 1fr); gap: 8px;} 
-            .link-btn { height: 85px; }
-            .btn-title { font-size: 1rem; }
-        }
-        @media (max-width: 500px) { 
-            .link-grid { grid-template-columns: repeat(2, 1fr); gap: 6px;} 
-            .link-btn { height: 80px; }
-            .btn-title { font-size: 0.95rem; }
-        }
+        @media (max-width: 900px) { .link-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 500px) { .link-grid { grid-template-columns: repeat(2, 1fr); } }
 
         .footer-nav { margin: 40px 0; }
         .back-btn { padding: 12px 40px; color: #ccc; text-decoration: none; border: 1px solid #444; border-radius: 30px; font-weight: bold;}
@@ -118,11 +108,7 @@
             8: { name: "Instagram", url: "https://www.instagram.com/sanseito" },
             9: { name: "TikTok", url: "https://www.tiktok.com/@sanseito" },
             10: { name: "選挙ドットコム", url: "https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" },
-            11: { name: "（予備）", url: "link11.html" },
-            12: { name: "（予備）", url: "link12.html" },
-            13: { name: "（予備）", url: "link13.html" },
-            14: { name: "（予備）", url: "link14.html" },
-            15: { name: "（予備）", url: "link15.html" },
+            11: { name: "（予備）", url: "#" }, 12: { name: "（予備）", url: "#" }, 13: { name: "（予備）", url: "#" }, 14: { name: "（予備）", url: "#" }, 15: { name: "（予備）", url: "#" },
             16: { name: "Yahoo Japan", url: "https://www.yahoo.co.jp/" },
             17: { name: "読売新聞", url: "https://www.yomiuri.co.jp/" },
             18: { name: "産経新聞", url: "https://www.sankei.com/" },
@@ -213,11 +199,11 @@
         for (let i = 1; i <= 100; i++) {
             let extraClass = "";
             
-            // 色分け判定
-            if (i >= 1 && i <= 15) extraClass = " dark-orange-btn"; // 参政党：濃いオレンジ
+            // 色分けの完全再現ロジック
+            if (i >= 1 && i <= 15) extraClass = " dark-orange-btn";
             else if (i === 92) extraClass = " red-btn";
             else if (i === 96) extraClass = " dark-red-btn";
-            else if (i >= 97 && i <= 100) extraClass = " orange-btn"; // グルメ：薄いオレンジに修正
+            else if (i >= 97 && i <= 100) extraClass = " orange-btn";
             else if ((i >= 16 && i <= 25) || (i >= 66 && i <= 75)) extraClass = " blue-btn";
             else if ((i >= 26 && i <= 35) || i === 95) extraClass = " green-btn";
             else if (i >= 36 && i <= 45) extraClass = " yellow-btn";
@@ -228,7 +214,7 @@
             else if (i >= 79 && i <= 81) extraClass = " tan-btn";
             else if (i === 93 || i === 94) extraClass = " black-btn";
 
-            let nameLabel = "";
+            let nameLabel = `<span class="btn-title">予備 No.${i}</span>`;
             let url = `link${i}.html`;
 
             if (linkData[i]) {
