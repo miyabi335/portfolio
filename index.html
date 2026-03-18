@@ -6,30 +6,38 @@
     <title>Miyabi's Portfolio Portal</title>
     <style>
         body { font-family: "Meiryo", sans-serif; margin: 0; background: #0f172a; text-align: center; color: #f1f5f9; }
-        .header-container { position: relative; width: 100%; height: 35vh; overflow: hidden; background: #333; }
+        
+        /* ヘッダー */
+        .header-container { position: relative; width: 100%; height: 35vh; overflow: hidden; background: #333; z-index: 1; }
         .header-image { width: 100%; height: 100%; object-fit: cover; }
         .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-shadow: 0 2px 15px rgba(0,0,0,0.8); width: 100%; }
+        
         .section-title { margin-top: 40px; padding: 12px; background: rgba(255,255,255,0.05); font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; }
 
-        .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
-        .nav-btn { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); color: #38bdf8; border: 1px solid #38bdf8; padding: 10px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85em; min-height: 45px; transition: 0.2s; }
-        .nav-btn:hover { background: rgba(56, 189, 248, 0.2); transform: translateY(-2px); border-color: #fff; }
+        /* ナビゲーション（重なり順を上げてクリックを確実にする） */
+        .nav-grid { position: relative; z-index: 10; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
         
-        /* No.10専用（オレンジ） */
-        .nav-link-special { background: #fb8c00 !important; color: #fff !important; border: 2px solid #fff !important; }
-        .nav-link-special:hover { background: #ef6c00 !important; }
+        /* 通常ボタン（No.1〜9：リンクなし） */
+        .nav-btn-static { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); color: #64748b; border: 1px solid rgba(255,255,255,0.1); padding: 10px 5px; border-radius: 8px; font-weight: bold; font-size: 0.85em; min-height: 45px; cursor: default; }
 
-        .sansei-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
+        /* No.10専用リンク（オレンジ：リンクあり） */
+        .nav-link-active { display: flex; align-items: center; justify-content: center; background: #fb8c00; color: #fff; border: 2px solid #fff; padding: 10px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85em; min-height: 45px; transition: 0.2s; cursor: pointer; }
+        .nav-link-active:hover { background: #ef6c00; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(251, 140, 0, 0.4); }
+
+        /* 参政党ボタン */
+        .sansei-grid { position: relative; z-index: 10; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
         .sansei-btn { background: #fb8c00; color: #fff; border: none; padding: 15px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8em; min-height: 50px; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
         .sansei-btn:hover { background: #ef6c00; transform: translateY(-2px); }
 
+        /* 動画ギャラリー */
         .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1100px; margin: 20px auto; padding: 0 15px; }
         .item-wrapper { display: flex; flex-direction: column; align-items: center; }
         .item-label { font-size: 0.75em; color: #fb8c00; margin-bottom: 5px; font-weight: bold; }
         .thumb-media { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
         .thumb-media:hover { transform: scale(1.05); border-color: #fb8c00; }
 
-        #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 9999; }
+        /* 動画オーバーレイ */
+        #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 10000; }
         #overlay-content { width: 90%; max-width: 1000px; position: relative; display: flex; flex-direction: column; align-items: center; }
         #overlay-video { width: 100%; aspect-ratio: 16/9; display: none; border-radius: 8px; }
         .close-btn { margin-top: 20px; background: #ef4444; color: white; border: none; padding: 12px 40px; border-radius: 30px; cursor: pointer; font-weight: bold; }
@@ -46,16 +54,16 @@
 
 <div class="section-title">NAVIGATION MENU</div>
 <nav class="nav-grid">
-    <a href="no1.html" class="nav-btn">No.1</a>
-    <a href="no2.html" class="nav-btn">No.2</a>
-    <a href="no3.html" class="nav-btn">No.3</a>
-    <a href="no4.html" class="nav-btn">No.4</a>
-    <a href="no5.html" class="nav-btn">No.5</a>
-    <a href="no6.html" class="nav-btn">No.6</a>
-    <a href="no7.html" class="nav-btn">No.7</a>
-    <a href="no8.html" class="nav-btn">No.8</a>
-    <a href="no9.html" class="nav-btn">No.9</a>
-    <a href="no10.html" class="nav-btn nav-link-special">Links集 (No.10)</a>
+    <div class="nav-btn-static">No.1</div>
+    <div class="nav-btn-static">No.2</div>
+    <div class="nav-btn-static">No.3</div>
+    <div class="nav-btn-static">No.4</div>
+    <div class="nav-btn-static">No.5</div>
+    <div class="nav-btn-static">No.6</div>
+    <div class="nav-btn-static">No.7</div>
+    <div class="nav-btn-static">No.8</div>
+    <div class="nav-btn-static">No.9</div>
+    <a href="no10.html" class="nav-link-active">Links集 (No.10)</a>
 </nav>
 
 <div class="section-title">SANSEITO LINKS</div>
