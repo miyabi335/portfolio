@@ -41,11 +41,21 @@
         #overlay-content { width: 90%; max-width: 800px; display: flex; flex-direction: column; align-items: center; position: relative; }
         
         /* メディア本体 */
-        #overlay-img, #overlay-video { width: 100%; border-radius: 12px 12px 0 0; display: none; box-shadow: 0 0 30px rgba(0,0,0,0.5); background: #000; }
+        #overlay-img, #overlay-video { width: 100%; border-radius: 12px; display: none; box-shadow: 0 0 30px rgba(0,0,0,0.5); background: #000; }
         #overlay-video { aspect-ratio: 16/9; }
         
-        /* 💡 動画・画像のすぐ下にピッタリくっつく赤いボタン */
-        .close-bar { width: 100%; background: #ff5252; color: #fff; padding: 16px 0; border-radius: 0 0 12px 12px; font-weight: bold; cursor: pointer; text-align: center; transition: 0.2s; border: none; font-size: 1.2em; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        /* 💡 閉じるボタン（リサイズ版） */
+        .close-bar { 
+            margin-top: 15px;             /* 上の余白を少し縮めた */
+            width: auto;                  /* 幅を自動（文字に合わせる） */
+            min-width: 150px;             /* 最低限の幅を設定 */
+            background: #ff5252; color: #fff; 
+            padding: 8px 20px;            /* 上下をスリムに、左右に少し広げた */
+            border-radius: 20px;          /* 丸みを強くした */
+            font-weight: bold; cursor: pointer; text-align: center; 
+            transition: 0.2s; border: none; font-size: 0.9em; /* 文字を小さくした */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+        }
         .close-bar:hover { background: #ff1744; }
 
         /* スマホ対応 */
@@ -61,70 +71,4 @@
 
 <nav class="btn-grid">
     <a href="#" class="nav-btn">No.1</a><a href="#" class="nav-btn">No.2</a><a href="#" class="nav-btn">No.3</a><a href="#" class="nav-btn">No.4</a><a href="#" class="nav-btn">No.5</a>
-    <a href="#" class="nav-btn">No.6</a><a href="#" class="nav-btn">No.7</a><a href="#" class="nav-btn">No.8</a><a href="#" class="nav-btn">No.9</a><a href="#" class="nav-btn special">Links</a>
-</nav>
-
-<div class="section-title">PHOTO SELECTION</div>
-<div class="grid-container" id="photo-grid"></div>
-
-<div class="section-title">VIDEO ARCHIVE</div>
-<div class="grid-container" id="video-grid"></div>
-
-<div id="overlay" onclick="closeOverlay()">
-    <div id="overlay-content" onclick="event.stopPropagation()">
-        <img id="overlay-img" src="">
-        <iframe id="overlay-video" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        <button class="close-bar" onclick="closeOverlay()">× 閉じてギャラリーに戻る</button>
-    </div>
-</div>
-
-<script>
-    // 写真リスト（8枚表示）
-    const photoIds = ["1494790108377-be9c29b29330", "1517841905240-472988babdf9", "1539571696357-5a69c17a67c6", "1524504388940-b1c1722653e1", "1515886657613-9f3515b0c78f", "1529626455594-4ff0802cfb7e", "1488426862026-3ee34a7d66df", "1531746020798-e6953c6e8e04"];
-
-    // 動画リスト（8本表示）
-    const videoIds = ["G1hKzCkywM8", "a-8XiE7W7u4", "q2_c2_WfJFg", "BpITZk7sa8E", "UYmvFzDuO5k", "G1hKzCkywM8", "a-8XiE7W7u4", "q2_c2_WfJFg"];
-
-    // 生成
-    const pGrid = document.getElementById('photo-grid');
-    photoIds.forEach((id, i) => {
-        const div = document.createElement('div');
-        div.className = 'item-wrapper';
-        div.innerHTML = `<div class="item-label">Photo：${String(i+1).padStart(2,'0')}</div>
-                         <img src="https://images.unsplash.com/photo-${id}?w=600&h=800&fit=crop" class="thumb-media" onclick="openPhoto(this.src)">`;
-        pGrid.appendChild(div);
-    });
-
-    const vGrid = document.getElementById('video-grid');
-    videoIds.forEach((id, i) => {
-        const div = document.createElement('div');
-        div.className = 'item-wrapper';
-        div.innerHTML = `<div class="item-label">Video：${String(i+1).padStart(2,'0')}</div>
-                         <img src="https://img.youtube.com/vi/${id}/mqdefault.jpg" class="thumb-media" onclick="openVideo('${id}')">`;
-        vGrid.appendChild(div);
-    });
-
-    function openPhoto(src) {
-        document.getElementById('overlay-img').src = src;
-        document.getElementById('overlay-img').style.display = 'block';
-        document.getElementById('overlay-video').style.display = 'none';
-        document.getElementById('overlay').style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-
-    function openVideo(id) {
-        document.getElementById('overlay-video').src = `https://www.youtube.com/embed/${id}?autoplay=1`;
-        document.getElementById('overlay-video').style.display = 'block';
-        document.getElementById('overlay-img').style.display = 'none';
-        document.getElementById('overlay').style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeOverlay() {
-        document.getElementById('overlay').style.display = 'none';
-        document.getElementById('overlay-video').src = '';
-        document.body.style.overflow = '';
-    }
-</script>
-</body>
-</html>
+    <a href
