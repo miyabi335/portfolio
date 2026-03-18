@@ -3,31 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miyabi's Portfolio Portal</title>
+    <title>Miyabi's Portal - 完全版</title>
     <style>
         body { font-family: "Meiryo", sans-serif; margin: 0; background: #0f172a; text-align: center; color: #f1f5f9; }
         
-        /* ヘッダー：富士山を復活 */
-        .header-container { position: relative; width: 100%; height: 35vh; overflow: hidden; background: #333; }
+        /* ヘッダー：富士山の写真を確実に表示 */
+        .header-container { position: relative; width: 100%; height: 35vh; background: #333; overflow: hidden; }
         .header-image { width: 100%; height: 100%; object-fit: cover; }
-        .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-shadow: 0 2px 15px rgba(0,0,0,0.8); width: 100%; }
-        .header-text h1 { margin: 0; font-size: 2.2rem; }
+        .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-shadow: 0 2px 15px rgba(0,0,0,0.8); width: 100%; font-size: 1.5rem; }
 
-        .section-title { margin-top: 40px; padding: 12px; background: rgba(255,255,255,0.05); font-weight: bold; color: #94a3b8; }
+        .section-title { margin-top: 30px; padding: 10px; background: rgba(255,255,255,0.05); color: #94a3b8; font-weight: bold; font-size: 0.9rem; }
 
-        /* ナビゲーション */
-        .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
-        .nav-btn { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); color: #38bdf8; border: 1px solid #38bdf8; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85em; min-height: 45px; transition: 0.2s; }
-        .nav-btn:hover { background: rgba(56, 189, 248, 0.2); transform: translateY(-2px); }
+        /* ナビゲーション（No.1〜10） */
+        .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; max-width: 950px; margin: 15px auto; padding: 0 10px; }
+        .nav-btn { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); color: #38bdf8; border: 1px solid #38bdf8; border-radius: 6px; text-decoration: none; font-size: 0.75rem; min-height: 40px; }
+        .special-link { background: #fb8c00 !important; color: #fff !important; border: 1px solid #fff !important; }
 
-        /* No.10専用：オレンジ色 */
-        .special-link { background: #fb8c00 !important; color: #fff !important; border: 2px solid #fff !important; }
+        /* ★参政党ボタン：5個×2列（計10個）に固定 */
+        .sansei-grid { 
+            display: grid; 
+            grid-template-columns: repeat(5, 1fr); /* 5列固定 */
+            gap: 10px; 
+            max-width: 950px; 
+            margin: 15px auto; 
+            padding: 0 15px; 
+        }
+        .sansei-btn { 
+            background: #fb8c00; color: #fff; text-decoration: none; border-radius: 8px; 
+            font-weight: bold; font-size: 0.7rem; min-height: 50px;
+            display: flex; align-items: center; justify-content: center; padding: 5px;
+        }
 
-        /* 動画ギャラリー復活 */
-        .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1100px; margin: 20px auto; padding: 0 15px; }
-        .thumb-media { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); }
+        /* ★動画：2列に並べる */
+        .video-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); /* 2列固定 */
+            gap: 15px; 
+            max-width: 900px; 
+            margin: 15px auto; 
+            padding: 0 15px; 
+        }
+        .video-thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; border: 1px solid #333; }
 
-        @media (max-width: 768px) { .nav-grid, .grid-container { grid-template-columns: repeat(2, 1fr); } }
+        /* スマホでの調整（ボタンが小さくなりすぎるのを防ぐ） */
+        @media (max-width: 600px) {
+            .nav-grid { grid-template-columns: repeat(2, 1fr); }
+            .sansei-grid { grid-template-columns: repeat(2, 1fr); } /* スマホは2列の方が見やすいですが、5列にしたい場合はここを消してください */
+        }
     </style>
 </head>
 <body>
@@ -37,7 +59,7 @@
     <div class="header-text"><h1>MIYABI'S PORTAL</h1></div>
 </header>
 
-<div class="section-title">NAVIGATION MENU</div>
+<div class="section-title">CONTENTS</div>
 <nav class="nav-grid">
     <a href="#" class="nav-btn">No.1</a>
     <a href="#" class="nav-btn">No.2</a>
@@ -48,18 +70,32 @@
     <a href="#" class="nav-btn">No.7</a>
     <a href="#" class="nav-btn">No.8</a>
     <a href="#" class="nav-btn">No.9</a>
-    <a href="no10.html" class="nav-btn special-link">Links集 (No.10)</a>
+    <a href="no10.html" class="nav-btn special-link">Links (No.10)</a>
 </nav>
 
-<div class="section-title">VIDEO ARCHIVE</div>
-<div class="grid-container">
-    <img src="https://img.youtube.com/vi/G1hKzCkywM8/mqdefault.jpg" class="thumb-media">
-    <img src="https://img.youtube.com/vi/a-8XiE7W7u4/mqdefault.jpg" class="thumb-media">
-    <img src="https://img.youtube.com/vi/q2_c2_WfJFg/mqdefault.jpg" class="thumb-media">
-    <img src="https://img.youtube.com/vi/BpITZk7sa8E/mqdefault.jpg" class="thumb-media">
+<div class="section-title">SANSEITO LINKS (10 Buttons)</div>
+<div class="sansei-grid">
+    <a href="https://sanseito.jp/" target="_blank" class="sansei-btn">公式サイト</a>
+    <a href="https://www.youtube.com/@sanseito-official" target="_blank" class="sansei-btn">YouTube</a>
+    <a href="https://x.com/sansei411" target="_blank" class="sansei-btn">公式X</a>
+    <a href="https://www.instagram.com/sanseito" target="_blank" class="sansei-btn">Instagram</a>
+    <a href="https://www.tiktok.com/@sanseito" target="_blank" class="sansei-btn">TikTok</a>
+    <a href="https://sanseito.jp/news/" target="_blank" class="sansei-btn">ニュース</a>
+    <a href="https://info.sanseito.jp/" target="_blank" class="sansei-btn">イベント</a>
+    <a href="https://sanseito.jp/member/" target="_blank" class="sansei-btn">メンバー</a>
+    <a href="https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" target="_blank" class="sansei-btn">選挙ドットコム</a>
+    <a href="https://sanseito.jp/2020/candidate/" target="_blank" class="sansei-btn">候補予定者</a>
 </div>
 
-<p style="margin-top: 50px; color: #475569; font-size: 0.8rem;">&copy; 2026 Miyabi's Hobby Space</p>
+<div class="section-title">VIDEO ARCHIVE (2 columns)</div>
+<div class="video-grid">
+    <img src="https://img.youtube.com/vi/G1hKzCkywM8/mqdefault.jpg" class="video-thumb">
+    <img src="https://img.youtube.com/vi/a-8XiE7W7u4/mqdefault.jpg" class="video-thumb">
+    <img src="https://img.youtube.com/vi/q2_c2_WfJFg/mqdefault.jpg" class="video-thumb">
+    <img src="https://img.youtube.com/vi/BpITZk7sa8E/mqdefault.jpg" class="video-thumb">
+</div>
+
+<p style="margin-top: 40px; color: #475569; font-size: 0.7rem;">&copy; 2026 Miyabi's Hobby Space</p>
 
 </body>
 </html>
