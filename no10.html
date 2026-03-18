@@ -3,101 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>参政党 ＆ 出張便利リンク集</title>
+    <title>Links ARCHIVE</title>
     <style>
-        /* 崩れないための基本設定：これがないとめちゃくちゃになります */
-        body { font-family: "Meiryo", "Hiragino Kaku Gothic ProN", sans-serif; margin: 0; background: #0f172a; text-align: center; color: #f1f5f9; padding-bottom: 80px; }
+        * { box-sizing: border-box; }
+        body { font-family: "Meiryo", sans-serif; background: #0f172a; color: #fff; text-align: center; margin: 0; padding-bottom: 50px; }
+        .orange-bar { background: #fb8c00; padding: 25px; font-weight: bold; font-size: 1.5rem; margin-bottom: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         
-        /* ヘッダー：リンク集としての差別化 */
-        .page-header { background: #fb8c00; color: #fff; padding: 25px; margin-bottom: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
-        .page-header h1 { margin: 0; font-size: 1.6rem; }
+        .container { max-width: 600px; margin: 0 auto; padding: 0 20px; }
+        .sub-title { text-align: left; color: #fb8c00; margin: 30px 0 10px; font-weight: bold; border-left: 4px solid #fb8c00; padding-left: 10px; }
 
-        /* セクションタイトル：オレンジの線で見やすく */
-        .section-title { margin-top: 50px; margin-bottom: 20px; color: #fb8c00; font-weight: bold; font-size: 1.2rem; border-left: 6px solid #fb8c00; display: inline-block; padding-left: 12px; width: 90%; text-align: left; }
+        /* 絶対に崩れない縦並びボタン */
+        .link-item { 
+            display: block; width: 100%; padding: 18px; margin-bottom: 12px;
+            background: #fff; color: #fb8c00; text-decoration: none;
+            border-radius: 12px; font-weight: bold; border: 3px solid #fb8c00;
+            font-size: 1.1rem; transition: 0.2s;
+        }
+        .link-item:hover { background: #fb8c00; color: #fff; transform: scale(1.02); }
 
-        /* リンクボタンのグリッド：崩れないための最強の設定 */
-        .link-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
-            gap: 20px; 
-            max-width: 950px; 
-            margin: 0 auto; 
-            padding: 0 25px; 
-        }
-        
-        /* ボタンのデザイン：白ベースで押しやすく */
-        .link-btn { 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            min-height: 70px; 
-            background: #ffffff; 
-            color: #fb8c00; 
-            text-decoration: none; 
-            border-radius: 15px; 
-            font-weight: bold; 
-            border: 3px solid #fb8c00; 
-            transition: all 0.2s ease;
-            box-shadow: 0 6px 10px rgba(0,0,0,0.2);
-            font-size: 1rem;
-            padding: 10px;
-            box-sizing: border-box; /* パディングを含めたサイズ計算 */
-        }
-        
-        /* ホバー（マウスを乗せた時） */
-        .link-btn:hover { background: #fb8c00; color: #fff; transform: translateY(-4px); box-shadow: 0 8px 20px rgba(251, 140, 0, 0.4); }
-
-        /* 「戻る」ボタン：目立つように下部に配置 */
-        .back-home { 
-            display: inline-block; 
-            margin-top: 80px; 
-            padding: 18px 60px; 
-            background: #475569; 
-            color: #fff; 
-            text-decoration: none; 
-            border-radius: 50px; 
-            font-weight: bold; 
-            font-size: 1.1rem;
-            transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-        .back-home:hover { background: #1e293b; box-shadow: 0 6px 15px rgba(0,0,0,0.4); }
-
-        /* スマホ対応（2列にする） */
-        @media (max-width: 500px) {
-            .link-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-            .link-btn { font-size: 0.9rem; min-height: 60px; }
-            .page-header h1 { font-size: 1.3rem; }
-        }
+        .back-home { display: inline-block; margin-top: 40px; padding: 12px 40px; background: #475569; color: #fff; text-decoration: none; border-radius: 50px; font-weight: bold; }
     </style>
 </head>
 <body>
+    <div class="orange-bar">参政党 ＆ 便利リンク (No.10)</div>
+    
+    <div class="container">
+        <div class="sub-title">参政党 公式</div>
+        <a href="https://sanseito.jp/" target="_blank" class="link-item">公式サイト</a>
+        <a href="https://www.youtube.com/@sanseito-official" target="_blank" class="link-item">YouTube</a>
+        <a href="https://x.com/sansei411" target="_blank" class="link-item">公式X</a>
 
-    <header class="page-header">
-        <h1>LINKS ARCHIVE (No.10)</h1>
-    </header>
-
-    <div class="section-title">参政党 オフィシャルリンク</div>
-    <div class="link-grid">
-        <a href="https://sanseito.jp/" target="_blank" class="link-btn">公式サイト</a>
-        <a href="https://www.youtube.com/@sanseito-official" target="_blank" class="link-btn">YouTube</a>
-        <a href="https://x.com/sansei411" target="_blank" class="link-btn">公式X</a>
-        <a href="https://www.instagram.com/sanseito" target="_blank" class="link-btn">Instagram</a>
-        <a href="https://www.tiktok.com/@sanseito" target="_blank" class="link-btn">TikTok</a>
-        <a href="https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" target="_blank" class="link-btn">選挙ドットコム</a>
+        <div class="sub-title">出張・便利</div>
+        <a href="https://www.ekinet.com/" target="_blank" class="link-item">えきねっと</a>
+        <a href="https://www.jalan.net/" target="_blank" class="link-item">じゃらんnet</a>
+        <a href="https://www.google.co.jp/maps" target="_blank" class="link-item">Googleマップ</a>
     </div>
 
-    <div class="section-title">出張・お出かけ便利リンク</div>
-    <div class="link-grid">
-        <a href="https://www.ekinet.com/" target="_blank" class="link-btn">えきねっと</a>
-        <a href="https://www.jalan.net/" target="_blank" class="link-btn">じゃらんnet</a>
-        <a href="https://weather.yahoo.co.jp/weather/" target="_blank" class="link-btn">Yahoo!天気</a>
-        <a href="https://www.google.co.jp/maps" target="_blank" class="link-btn">Googleマップ</a>
-        <a href="https://transit.yahoo.co.jp/" target="_blank" class="link-btn">乗換案内</a>
-        <a href="https://www.booking.com/" target="_blank" class="link-btn">Booking.com</a>
-    </div>
-
-    <a href="index.html" class="back-home">← メインホームへ戻る</a>
-
+    <a href="index.html" class="back-home">← ホーム画面に戻る</a>
 </body>
 </html>
