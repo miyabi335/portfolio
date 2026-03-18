@@ -18,77 +18,36 @@
         /* ナビゲーション */
         .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
         .nav-btn { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); color: #38bdf8; border: 1px solid #38bdf8; border-radius: 8px; text-decoration: none; font-size: 0.8rem; min-height: 45px; transition: 0.2s; font-weight: bold; }
-        .nav-btn:hover { background: rgba(56, 189, 248, 0.2); transform: translateY(-2px); }
         .special-link { background: #fb8c00 !important; color: #fff !important; border: 2px solid #fff !important; }
 
         /* 参政党ボタン：5個×2列 */
         .sansei-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
         .sansei-btn { background: #fb8c00; color: #fff; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 0.7rem; min-height: 50px; display: flex; align-items: center; justify-content: center; transition: 0.2s; padding: 5px; }
-        .sansei-btn:hover { background: #ef6c00; transform: translateY(-2px); }
 
         /* ギャラリー共通：4枚×2列 */
         .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1100px; margin: 20px auto; padding: 0 15px; }
         
-        /* ★サムネイル修正：全体が入るように (contain) */
+        /* サムネイル：全体が表示されるように設定 (contain) */
         .thumb-img, .thumb-video { 
             width: 100%; 
             aspect-ratio: 16/9; 
             object-fit: contain; /* 全体を表示 */
-            background: #000; /* 余白を黒に */
+            background: #000; /* 切れる代わりに余白を黒にする */
             border-radius: 12px; 
             border: 2px solid rgba(255,255,255,0.1); 
             cursor: pointer; 
             transition: 0.3s; 
         }
-        .thumb-img:hover, .thumb-video:hover { transform: scale(1.05); border-color: #fb8c00; box-shadow: 0 0 15px rgba(251, 140, 0, 0.5); }
+        .thumb-img:hover, .thumb-video:hover { transform: scale(1.05); border-color: #fb8c00; }
 
-        /* ★モーダル修正：画像を大きく表示 */
+        /* モーダル */
         #modal-overlay { 
-            display: none; 
-            position: fixed; 
-            top: 0; left: 0; 
-            width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.95); 
-            z-index: 10000; 
-            align-items: center; 
-            justify-content: center; 
-            flex-direction: column; 
-            padding: 20px;
-            box-sizing: border-box;
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.95); z-index: 10000; align-items: center; justify-content: center; flex-direction: column; 
         }
-        
-        /* 拡大画像：画面いっぱいに */
-        #modal-content { 
-            max-width: 100%; 
-            max-height: 90vh; /* 画面の高さの90%まで */
-            object-fit: contain; /* アスペクト比を維持 */
-            border-radius: 8px; 
-            box-shadow: 0 0 30px rgba(251, 140, 0, 0.3);
-        }
-        
-        /* 動画：大きく */
-        #modal-video { 
-            width: 90%; 
-            max-width: 1200px;
-            aspect-ratio: 16/9; 
-            display: none; 
-            border-radius: 8px;
-            box-shadow: 0 0 30px rgba(251, 140, 0, 0.3);
-        }
-        
-        .close-btn { 
-            margin-top: 15px; 
-            background: #ef4444; 
-            color: white; 
-            border: none; 
-            padding: 12px 40px; 
-            border-radius: 30px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            font-size: 1rem;
-            transition: 0.2s;
-        }
-        .close-btn:hover { background: #dc2626; }
+        #modal-content { max-width: 95%; max-height: 85vh; object-fit: contain; border-radius: 8px; }
+        #modal-video { width: 90%; max-width: 1000px; aspect-ratio: 16/9; display: none; border-radius: 8px; }
+        .close-btn { margin-top: 15px; background: #ef4444; color: white; border: none; padding: 12px 40px; border-radius: 30px; cursor: pointer; font-weight: bold; }
 
         @media (max-width: 768px) { .nav-grid, .sansei-grid, .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
     </style>
@@ -102,15 +61,8 @@
 
 <div class="section-title">CONTENTS</div>
 <nav class="nav-grid">
-    <a href="#" class="nav-btn">No.1</a>
-    <a href="#" class="nav-btn">No.2</a>
-    <a href="#" class="nav-btn">No.3</a>
-    <a href="#" class="nav-btn">No.4</a>
-    <a href="#" class="nav-btn">No.5</a>
-    <a href="#" class="nav-btn">No.6</a>
-    <a href="#" class="nav-btn">No.7</a>
-    <a href="#" class="nav-btn">No.8</a>
-    <a href="#" class="nav-btn">No.9</a>
+    <a href="#" class="nav-btn">No.1</a><a href="#" class="nav-btn">No.2</a><a href="#" class="nav-btn">No.3</a><a href="#" class="nav-btn">No.4</a><a href="#" class="nav-btn">No.5</a>
+    <a href="#" class="nav-btn">No.6</a><a href="#" class="nav-btn">No.7</a><a href="#" class="nav-btn">No.8</a><a href="#" class="nav-btn">No.9</a>
     <a href="no10.html" class="nav-btn special-link">Links (No.10)</a>
 </nav>
 
@@ -128,74 +80,56 @@
     <a href="https://sanseito.jp/2020/candidate/" target="_blank" class="sansei-btn">候補予定者</a>
 </div>
 
-<div class="section-title">PHOTO GALLERY (4x2 - Click to Zoom)</div>
+<div class="section-title">PHOTO GALLERY (Models & Views)</div>
 <div class="gallery-grid">
-    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1200" class="thumb-img" onclick="openPhoto(this.src)">
-    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200" class="thumb-img" onclick="openPhoto(this.src)">
-    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1200" class="thumb-img" onclick="openPhoto(this.src)">
-    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=1200" class="thumb-img" onclick="openPhoto(this.src)">
-    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=1200" class="thumb-img" onclick="openPhoto(this.src)">
-    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=1200" class="thumb-img" onclick="openPhoto(this.src)">
-    <img src="https://images.unsplash.com/photo-1488161628813-04466f872be2?w=1200" class="thumb-img" onclick="openPhoto(this.src)">
-    <img src="https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=1200" class="thumb-img" onclick="openPhoto(this.src)">
+    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1000" class="thumb-img" onclick="openPhoto(this.src)">
+    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1000" class="thumb-img" onclick="openPhoto(this.src)">
+    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1000" class="thumb-img" onclick="openPhoto(this.src)">
+    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=1000" class="thumb-img" onclick="openPhoto(this.src)">
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1000" class="thumb-img" onclick="openPhoto(this.src)">
+    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1000" class="thumb-img" onclick="openPhoto(this.src)">
+    <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1000" class="thumb-img" onclick="openPhoto(this.src)">
+    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1000" class="thumb-img" onclick="openPhoto(this.src)">
 </div>
 
-<div class="section-title">VIDEO ARCHIVE (4x2 - Click to Play)</div>
+<div class="section-title">VIDEO ARCHIVE (8 Different Videos)</div>
 <div class="gallery-grid">
-    <img src="https://img.youtube.com/vi/G1hKzCkyM8/maxresdefault.jpg" class="thumb-video" onclick="openVideo('G1hKzCkyM8')">
-    <img src="https://img.youtube.com/vi/a-8XiE7W7u4/maxresdefault.jpg" class="thumb-video" onclick="openVideo('a-8XiE7W7u4')">
-    <img src="https://img.youtube.com/vi/q2_c2_WfJFg/maxresdefault.jpg" class="thumb-video" onclick="openVideo('q2_c2_WfJFg')">
-    <img src="https://img.youtube.com/vi/BpITZk7sa8E/maxresdefault.jpg" class="thumb-video" onclick="openVideo('BpITZk7sa8E')">
-    <img src="https://img.youtube.com/vi/UYmvFzDuO5k/maxresdefault.jpg" class="thumb-video" onclick="openVideo('UYmvFzDuO5k')">
-    <img src="https://img.youtube.com/vi/G1hKzCkyM8/maxresdefault.jpg" class="thumb-video" onclick="openVideo('G1hKzCkyM8')">
-    <img src="https://img.youtube.com/vi/a-8XiE7W7u4/maxresdefault.jpg" class="thumb-video" onclick="openVideo('a-8XiE7W7u4')">
-    <img src="https://img.youtube.com/vi/q2_c2_WfJFg/maxresdefault.jpg" class="thumb-video" onclick="openVideo('q2_c2_WfJFg')">
+    <img src="https://img.youtube.com/vi/G1hKzCkywM8/mqdefault.jpg" class="thumb-video" onclick="openVideo('G1hKzCkywM8')">
+    <img src="https://img.youtube.com/vi/a-8XiE7W7u4/mqdefault.jpg" class="thumb-video" onclick="openVideo('a-8XiE7W7u4')">
+    <img src="https://img.youtube.com/vi/q2_c2_WfJFg/mqdefault.jpg" class="thumb-video" onclick="openVideo('q2_c2_WfJFg')">
+    <img src="https://img.youtube.com/vi/BpITZk7sa8E/mqdefault.jpg" class="thumb-video" onclick="openVideo('BpITZk7sa8E')">
+    <img src="https://img.youtube.com/vi/UYmvFzDuO5k/mqdefault.jpg" class="thumb-video" onclick="openVideo('UYmvFzDuO5k')">
+    <img src="https://img.youtube.com/vi/5_X9T86fI4Y/mqdefault.jpg" class="thumb-video" onclick="openVideo('5_X9T86fI4Y')">
+    <img src="https://img.youtube.com/vi/TshIHeV9W_E/mqdefault.jpg" class="thumb-video" onclick="openVideo('TshIHeV9W_E')">
+    <img src="https://img.youtube.com/vi/R7_vXWv_r_U/mqdefault.jpg" class="thumb-video" onclick="openVideo('R7_vXWv_r_U')">
 </div>
 
 <div id="modal-overlay" onclick="closeModal()">
     <img id="modal-content" src="">
     <iframe id="modal-video" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-    <button class="close-btn" onclick="closeModal()">× 閉じて戻る</button>
+    <button class="close-btn" onclick="closeModal()">× 閉じる</button>
 </div>
 
 <script>
-    // 写真を開く
     function openPhoto(src) {
-        // 高画質な画像を取得するためにURLを調整（w=1200）
-        const highResSrc = src.replace('w=400', 'w=1200');
         document.getElementById('modal-overlay').style.display = 'flex';
         document.getElementById('modal-content').style.display = 'block';
         document.getElementById('modal-video').style.display = 'none';
-        document.getElementById('modal-content').src = highResSrc;
-        document.body.style.overflow = 'hidden'; // 背後のスクロールを禁止
+        document.getElementById('modal-content').src = src;
+        document.body.style.overflow = 'hidden';
     }
-    
-    // 動画を開く
     function openVideo(id) {
         document.getElementById('modal-overlay').style.display = 'flex';
         document.getElementById('modal-content').style.display = 'none';
         document.getElementById('modal-video').style.display = 'block';
-        // ★動画リンクの修正：正しい埋め込み形式
-        document.getElementById('modal-video').src = "https://www.youtube.com/embed/" + id + "?autoplay=1&rel=0";
-        document.body.style.overflow = 'hidden'; // 背後のスクロールを禁止
+        document.getElementById('modal-video').src = "https://www.youtube.com/embed/" + id + "?autoplay=1";
+        document.body.style.overflow = 'hidden';
     }
-    
-    // モーダルを閉じる
     function closeModal() {
         document.getElementById('modal-overlay').style.display = 'none';
-        document.getElementById('modal-video').src = ""; // 動画を停止
-        document.body.style.overflow = ''; // スクロールを許可
+        document.getElementById('modal-video').src = "";
+        document.body.style.overflow = '';
     }
-
-    // エラーハンドリング：サムネイルがない場合は中解像度にフォールバック
-    document.querySelectorAll('.thumb-video').forEach(img => {
-        img.onerror = function() {
-            if (this.src.includes('maxresdefault.jpg')) {
-                this.src = this.src.replace('maxresdefault.jpg', 'mqdefault.jpg');
-            }
-        };
-    });
 </script>
-
 </body>
 </html>
