@@ -3,71 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Managed Portfolio Manual</title>
+    <title>Miyabi's Portal & Portfolio</title>
     <style>
         body { font-family: sans-serif; margin: 0; background: #f5f5f7; text-align: center; color: #333; }
         .header-container { position: relative; width: 100%; height: 40vh; overflow: hidden; background: #333; }
         .header-image { width: 100%; height: 100%; object-fit: cover; }
         .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
         
-        .nav-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 900px; margin: 20px auto; padding: 0 15px; }
-        .nav-btn { background: #fff; color: #007aff; border: 2px solid #007aff; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8em; }
-        
-        .section-title { margin-top: 40px; padding: 15px; background: #fff; border-bottom: 1px solid #ddd; }
-
-        /* グリッド設定：5列に固定 */
-        .grid-5col { 
+        /* ナビゲーション：5列2段の整列 */
+        .nav-container { 
             display: grid; 
             grid-template-columns: repeat(5, 1fr); 
             gap: 10px; 
-            padding: 15px; 
-            max-width: 1200px; 
-            margin: 0 auto;
+            max-width: 900px; 
+            margin: 20px auto; 
+            padding: 0 15px; 
         }
+        .nav-btn { 
+            background: #fff; 
+            color: #007aff; 
+            border: 2px solid #007aff; 
+            padding: 12px 5px; 
+            border-radius: 8px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 0.85em; 
+            transition: all 0.2s;
+        }
+        .nav-btn:hover { background: #007aff; color: #fff; }
+        
+        /* No.10をメイン（オレンジ）に設定 */
+        .nav-btn.special { background: #fb8c00; color: #fff; border-color: #ef6c00; }
 
-        /* 写真スタイル */
+        .section-title { margin-top: 40px; padding: 15px; background: #fff; border-bottom: 1px solid #ddd; }
+        .grid-5col { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; padding: 15px; max-width: 1200px; margin: 0 auto; }
         .grid-5col img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; cursor: pointer; background: #eee; }
         
-        /* 動画カードスタイル */
         .v-card { background: #000; border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; }
         iframe { width: 100%; height: 100%; border: none; }
-
+        
+        /* ライトボックス（画像拡大表示） */
         #lb { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); align-items:center; justify-content:center; z-index:999; }
         #lb img { max-width:95%; max-height:95%; object-fit: contain; }
+
+        @media (max-width: 600px) {
+            .nav-container { grid-template-columns: repeat(2, 1fr); }
+            .grid-5col { grid-template-columns: repeat(2, 1fr); }
+        }
     </style>
 </head>
 <body>
 
 <header class="header-container">
-    <img src="p1.jpg" alt="Header" class="header-image">
+    <img src="fuji00001.jpg" alt="Header" class="header-image">
     <div class="header-text"><h1>MY PORTFOLIO</h1></div>
 </header>
 
 <div class="nav-container">
-    <a href="no1.html" class="nav-btn">No.1(Links)</a>
-    <a href="no2.html" class="nav-btn">No.2</a><a href="no3.html" class="nav-btn">No.3</a>
-    <a href="no4.html" class="nav-btn">No.4</a><a href="no5.html" class="nav-btn">No.5</a>
-    <a href="no6.html" class="nav-btn">No.6</a><a href="no7.html" class="nav-btn">No.7</a>
-    <a href="no8.html" class="nav-btn">No.8</a><a href="no9.html" class="nav-btn">No.9</a>
-    <a href="no10.html" class="nav-btn">No.10</a>
+    <a href="no1.html" class="nav-btn">No.1</a>
+    <a href="no2.html" class="nav-btn">No.2</a>
+    <a href="no3.html" class="nav-btn">No.3</a>
+    <a href="no4.html" class="nav-btn">No.4</a>
+    <a href="no5.html" class="nav-btn">No.5</a>
+    <a href="no6.html" class="nav-btn">No.6</a>
+    <a href="no7.html" class="nav-btn">No.7</a>
+    <a href="no8.html" class="nav-btn">No.8</a>
+    <a href="no9.html" class="nav-btn">No.9</a>
+    <a href="no10.html" class="nav-btn special">No.10(Links)</a>
 </div>
 
-<div class="section-title"><h2>PHOTOS (50)</h2></div>
+<div class="section-title"><h2>PHOTOS</h2></div>
 <div class="grid-5col">
-    <script>
-        for (let i = 1; i <= 50; i++) {
-            document.write(`<img src="p${i}.jpg" onclick="openLb(this.src)">`);
-        }
-    </script>
-</div>
+    <img src="fuji00001.jpg" onclick="openLb(this.src)">
+    </div>
 
-<div class="section-title"><h2>VIDEOS (40)</h2></div>
+<div class="section-title"><h2>VIDEOS</h2></div>
 <div class="grid-5col">
-    <script>
-        for (let i = 1; i <= 40; i++) {
-            document.write(`<div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID${i}"></iframe></div>`);
-        }
-    </script>
+    <div class="v-card"><iframe src="https://www.youtube.com/embed/動画ID"></iframe></div>
 </div>
 
 <div id="lb" onclick="this.style.display='none'"><img id="lbi" src=""></div>
