@@ -10,7 +10,7 @@
         .header-image { width: 100%; height: 100%; object-fit: cover; }
         .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
         
-        /* 共通グリッド（ボタン用：5列） */
+        /* 共通グリッド（5列固定） */
         .btn-grid { 
             display: grid; 
             grid-template-columns: repeat(5, 1fr); 
@@ -24,81 +24,85 @@
         .nav-container { margin-top: 25px; margin-bottom: 20px; }
         .nav-btn { 
             background: #fff; color: #007aff; border: 2px solid #007aff; 
-            padding: 15px 5px; border-radius: 15px; text-decoration: none; 
-            font-weight: bold; font-size: 1.1em; transition: all 0.2s;
+            padding: 15px 5px; 
+            border-radius: 15px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 1.1em; 
+            transition: all 0.2s;
             display: flex; align-items: center; justify-content: center;
         }
         .nav-btn.special { background: #fb8c00; color: #fff; border-color: #ef6c00; }
         .nav-btn:hover { opacity: 0.8; transform: translateY(-1px); }
 
-        /* スリムな参政党ボタン（2段構成・薄い橙色） */
+        /* 参政党サブボタン */
         .sub-nav-container { margin-bottom: 40px; gap: 10px; }
         .sub-btn { 
-            background: transparent; color: #ef6c00; border: 2px solid #ffcc80; 
-            padding: 12px 0; border-radius: 12px; text-decoration: none; 
-            font-size: 0.9em; font-weight: bold; 
+            background: transparent; 
+            color: #ef6c00; 
+            border: 2px solid #ffcc80; 
+            padding: 12px 0; 
+            border-radius: 12px; 
+            text-decoration: none; 
+            font-size: 0.9em; 
+            font-weight: bold; 
             display: flex; align-items: center; justify-content: center;
             white-space: nowrap;
         }
         .sub-btn:hover { background: #fff3e0; }
 
-        /* セクションタイトルの共通デザイン */
-        .section-title { margin-top: 30px; padding: 10px; background: #fff; border-bottom: 1px solid #ddd; font-size: 0.9em; clear: both; }
-        
-        /* PHOTOSグリッド（女性モデル4枚横並び） */
+        /* 見出し（参政党リンク・PHOTOS用） */
+        .section-title { margin: 30px 0 15px 0; padding: 10px; background: #fff; border-bottom: 1px solid #ddd; font-size: 0.9em; clear: both; }
+
+        /* PHOTOギャラリー（4枚横並び） */
         .photo-grid { 
             display: grid; 
-            grid-template-columns: repeat(4, 1fr); /* 4列固定 */
-            gap: 15px; /* 写真同士の間隔を少し広く */
-            max-width: 1200px; /* 最大横幅 */
-            margin: 25px auto 50px auto; /* 上下の余白 */
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 15px; 
+            max-width: 1200px; 
+            margin: 20px auto 50px auto; 
             padding: 0 15px; 
         }
         .photo-item { 
             width: 100%; 
-            aspect-ratio: 3/4; /* 女性モデルが見やすい縦長の比率 */
-            object-fit: cover; /* 画像を枠いっぱいにトリミング表示 */
-            border-radius: 15px; /* 角を少し丸く */
-            cursor: pointer; /* マウスを乗せると指マークに */
-            transition: all 0.3s ease; /* ホバー時のアニメーション */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15); /* 少し強めの影 */
+            aspect-ratio: 3/4; 
+            object-fit: cover; 
+            border-radius: 15px; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15); 
         }
-        .photo-item:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(0,0,0,0.2); } /* ホバーで少し大きく */
-        
+        .photo-item:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+
         /* ライトボックス（拡大表示画面） */
         #lightbox { 
-            display: none; /* 通常は非表示 */
+            display: none; 
             position: fixed; 
             top: 0; left: 0; 
             width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.9); /* 背景を暗く */
+            background: rgba(0,0,0,0.9); 
             align-items: center; justify-content: center; 
-            z-index: 1000; /* 一番手前に表示 */
-            cursor: zoom-out; /* クリックで閉じるマーク */
+            z-index: 1000; 
+            cursor: zoom-out; 
         }
         #lightbox img { 
-            max-width: 90%; /* 画面幅の90%まで */
-            max-height: 90%; /* 画面高さの90%まで */
-            object-fit: contain; /* 画像全体を表示 */
+            max-width: 90%; 
+            max-height: 90%; 
+            object-fit: contain; 
             border-radius: 10px; 
-            box-shadow: 0 0 30px rgba(255,255,255,0.2); 
-            animation: zoomIn 0.3s ease; /* ズームインアニメーション */
+            animation: zoomIn 0.3s ease; 
         }
 
-        /* アニメーション定義 */
         @keyframes zoomIn {
             from { transform: scale(0.8); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
 
-        /* スマホ対応 */
         @media (max-width: 600px) {
             .btn-grid { gap: 6px; padding: 0 8px; }
             .nav-btn { font-size: 0.8em; padding: 12px 1px; border-radius: 10px; }
             .sub-btn { font-size: 0.65em; padding: 10px 0; border-radius: 8px; }
-            
-            /* スマホでは2列×2段にする（見やすさ重視） */
-            .photo-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .photo-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -123,8 +127,7 @@
 </div>
 
 <div class="section-title"><h3>参政党リンク</h3></div>
-
-<div class="sub-nav-container btn-grid" style="margin-top: 20px;">
+<div class="sub-nav-container btn-grid">
     <a href="https://sanseito.jp/" target="_blank" class="sub-btn">公式サイト</a>
     <a href="https://sanseito.jp/news/" target="_blank" class="sub-btn">最新ニュース</a>
     <a href="https://info.sanseito.jp/" target="_blank" class="sub-btn">イベント</a>
@@ -139,31 +142,27 @@
 
 <div class="section-title"><h3>MODEL GALLERY</h3></div>
 <div class="photo-grid">
-    <img src="model01.jpg" alt="Model 1" class="photo-item" onclick="openLightbox(this.src)">
-    <img src="model02.jpg" alt="Model 2" class="photo-item" onclick="openLightbox(this.src)">
-    <img src="model03.jpg" alt="Model 3" class="photo-item" onclick="openLightbox(this.src)">
-    <img src="model04.jpg" alt="Model 4" class="photo-item" onclick="openLightbox(this.src)">
+    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
+    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
+    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
+    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&h=800&fit=crop" class="photo-item" onclick="openLightbox(this.src)">
 </div>
 
 <div id="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img" src="" alt="Enlarged Photo">
+    <img id="lightbox-img" src="">
 </div>
 
 <script>
-    // ライトボックスを開く関数
-    function openLightbox(imageSrc) {
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        lightboxImg.src = imageSrc; // クリックされた画像のURLをセット
-        lightbox.style.display = 'flex'; // ライトボックスを表示
-        document.body.style.overflow = 'hidden'; // 背面のスクロールを禁止
+    function openLightbox(s) {
+        const lb = document.getElementById('lightbox');
+        const img = document.getElementById('lightbox-img');
+        img.src = s;
+        lb.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
     }
-
-    // ライトボックスを閉じる関数
     function closeLightbox() {
-        const lightbox = document.getElementById('lightbox');
-        lightbox.style.display = 'none'; // ライトボックスを非表示
-        document.body.style.overflow = ''; // スクロール禁止を解除
+        document.getElementById('lightbox').style.display = 'none';
+        document.body.style.overflow = '';
     }
 </script>
 
