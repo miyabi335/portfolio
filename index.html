@@ -11,32 +11,28 @@
         .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-shadow: 0 2px 15px rgba(0,0,0,0.8); width: 100%; }
         .section-title { margin-top: 40px; padding: 12px; background: rgba(255,255,255,0.05); font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; }
 
-        /* ナビゲーション */
         .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
         .nav-btn { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); color: #38bdf8; border: 1px solid #38bdf8; padding: 10px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85em; min-height: 45px; transition: 0.2s; }
         .nav-btn:hover { background: rgba(56, 189, 248, 0.2); transform: translateY(-2px); border-color: #fff; }
         
-        /* 特別ボタン（No.5 と No.10） */
+        /* No.10専用（オレンジ） */
         .nav-link-special { background: #fb8c00 !important; color: #fff !important; border: 2px solid #fff !important; }
         .nav-link-special:hover { background: #ef6c00 !important; }
 
-        /* 参政党ボタン */
         .sansei-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
         .sansei-btn { background: #fb8c00; color: #fff; border: none; padding: 15px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8em; min-height: 50px; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
         .sansei-btn:hover { background: #ef6c00; transform: translateY(-2px); }
 
-        /* ギャラリー（8枚・2段） */
         .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1100px; margin: 20px auto; padding: 0 15px; }
         .item-wrapper { display: flex; flex-direction: column; align-items: center; }
         .item-label { font-size: 0.75em; color: #fb8c00; margin-bottom: 5px; font-weight: bold; }
         .thumb-media { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
         .thumb-media:hover { transform: scale(1.05); border-color: #fb8c00; }
 
-        /* 動画オーバーレイ */
         #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 9999; }
         #overlay-content { width: 90%; max-width: 1000px; position: relative; display: flex; flex-direction: column; align-items: center; }
-        #overlay-video { width: 100%; aspect-ratio: 16/9; display: none; border-radius: 8px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
-        .close-btn { margin-top: 20px; background: #ef4444; color: white; border: none; padding: 12px 40px; border-radius: 30px; cursor: pointer; font-weight: bold; font-size: 1rem; }
+        #overlay-video { width: 100%; aspect-ratio: 16/9; display: none; border-radius: 8px; }
+        .close-btn { margin-top: 20px; background: #ef4444; color: white; border: none; padding: 12px 40px; border-radius: 30px; cursor: pointer; font-weight: bold; }
 
         @media (max-width: 768px) { .nav-grid, .sansei-grid, .grid-container { grid-template-columns: repeat(2, 1fr); } }
     </style>
@@ -50,16 +46,16 @@
 
 <div class="section-title">NAVIGATION MENU</div>
 <nav class="nav-grid">
-    <a href="index01.html" class="nav-btn">No.1</a>
-    <a href="index02.html" class="nav-btn">No.2</a>
-    <a href="index03.html" class="nav-btn">No.3</a>
-    <a href="index04.html" class="nav-btn">No.4</a>
-    <a href="index10.html" class="nav-btn nav-link-special">Links集 (No.5)</a>
-    <a href="index06.html" class="nav-btn">No.6</a>
-    <a href="index07.html" class="nav-btn">No.7</a>
-    <a href="index08.html" class="nav-btn">No.8</a>
-    <a href="index09.html" class="nav-btn">No.9</a>
-    <a href="index10.html" class="nav-btn nav-link-special">Links集 (No.10)</a>
+    <a href="no1.html" class="nav-btn">No.1</a>
+    <a href="no2.html" class="nav-btn">No.2</a>
+    <a href="no3.html" class="nav-btn">No.3</a>
+    <a href="no4.html" class="nav-btn">No.4</a>
+    <a href="no5.html" class="nav-btn">No.5</a>
+    <a href="no6.html" class="nav-btn">No.6</a>
+    <a href="no7.html" class="nav-btn">No.7</a>
+    <a href="no8.html" class="nav-btn">No.8</a>
+    <a href="no9.html" class="nav-btn">No.9</a>
+    <a href="no10.html" class="nav-btn nav-link-special">Links集 (No.10)</a>
 </nav>
 
 <div class="section-title">SANSEITO LINKS</div>
@@ -76,7 +72,7 @@
     <a href="https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" target="_blank" class="sansei-btn">選挙ドットコム</a>
 </div>
 
-<div class="section-title">VIDEO ARCHIVE (8枚・2段)</div>
+<div class="section-title">VIDEO ARCHIVE</div>
 <div class="grid-container">
     <div class="item-wrapper"><div class="item-label">Video 1</div><img src="https://img.youtube.com/vi/G1hKzCkywM8/mqdefault.jpg" class="thumb-media" onclick="openVideo('G1hKzCkywM8')"></div>
     <div class="item-wrapper"><div class="item-label">Video 2</div><img src="https://img.youtube.com/vi/a-8XiE7W7u4/mqdefault.jpg" class="thumb-media" onclick="openVideo('a-8XiE7W7u4')"></div>
@@ -91,7 +87,7 @@
 <div id="overlay" onclick="closeOverlay()">
     <div id="overlay-content" onclick="event.stopPropagation()">
         <iframe id="overlay-video" src="" frameborder="0" allowfullscreen></iframe>
-        <button class="close-btn" onclick="closeOverlay()">× 閉じて戻る</button>
+        <button class="close-btn" onclick="closeOverlay()">× 閉じる</button>
     </div>
 </div>
 
