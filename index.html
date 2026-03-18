@@ -14,8 +14,8 @@
         .btn-grid { 
             display: grid; 
             grid-template-columns: repeat(5, 1fr); 
-            gap: 12px; /* 間隔を少し広く */
-            max-width: 950px; /* 横幅を少し広く */
+            gap: 12px; 
+            max-width: 950px; 
             margin: 0 auto; 
             padding: 0 15px; 
         }
@@ -24,29 +24,28 @@
         .nav-container { margin-top: 25px; margin-bottom: 20px; }
         .nav-btn { 
             background: #fff; color: #007aff; border: 2px solid #007aff; 
-            padding: 15px 5px; /* 高さを出す */
-            border-radius: 12px; /* 丸みを強く */
+            padding: 15px 5px; 
+            border-radius: 15px; /* 丸みを強く */
             text-decoration: none; 
             font-weight: bold; 
-            font-size: 1.0em; /* 文字を大きく */
+            font-size: 1.1em; /* 文字を大きく */
             transition: all 0.2s;
             display: flex; align-items: center; justify-content: center;
         }
-        /* No.10専用（オレンジ） */
         .nav-btn.special { background: #fb8c00; color: #fff; border-color: #ef6c00; }
         .nav-btn:hover { opacity: 0.8; transform: translateY(-1px); }
 
-        /* スリムな参政党ボタン（2段構成・薄い橙色） */
+        /* 参政党サブボタン（2段構成・薄い橙色） */
         .sub-nav-container { margin-bottom: 40px; gap: 10px; }
         .sub-btn { 
             background: transparent; 
             color: #ef6c00; 
-            border: 1.5px solid #ffcc80; /* 枠線を少し太く */
-            padding: 10px 0; /* 高さを出す */
-            border-radius: 10px; /* 丸みを持たせる */
+            border: 2px solid #ffcc80; /* 枠線を少し太く */
+            padding: 12px 0; 
+            border-radius: 12px; /* 丸みを持たせる */
             text-decoration: none; 
-            font-size: 0.85em; /* 文字を大きく */
-            font-weight: bold; /* 文字を太く */
+            font-size: 0.9em; /* 文字を大きく */
+            font-weight: bold; 
             display: flex; align-items: center; justify-content: center;
             white-space: nowrap;
         }
@@ -59,11 +58,10 @@
         #lb { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); align-items:center; justify-content:center; z-index:999; }
         #lb img { max-width:95%; max-height:95%; object-fit: contain; }
 
-        /* スマホ対応 */
         @media (max-width: 600px) {
             .btn-grid { gap: 6px; padding: 0 8px; }
-            .nav-btn { font-size: 0.75em; padding: 12px 1px; border-radius: 8px; }
-            .sub-btn { font-size: 0.65em; padding: 8px 0; border-radius: 6px; }
+            .nav-btn { font-size: 0.8em; padding: 12px 1px; border-radius: 10px; }
+            .sub-btn { font-size: 0.65em; padding: 10px 0; border-radius: 8px; }
         }
     </style>
 </head>
@@ -91,7 +89,8 @@
     <a href="https://sanseito.jp/" target="_blank" class="sub-btn">公式サイト</a>
     <a href="https://sanseito.jp/news/" target="_blank" class="sub-btn">最新ニュース</a>
     <a href="https://info.sanseito.jp/" target="_blank" class="sub-btn">イベント</a>
-    <a href="https://sanseito.jp/member/" target="_blank" class="sub-btn">メンバー</a> <a href="https://sanseito.jp/2020/candidate/" target="_blank" class="sub-btn">候補予定者</a>
+    <a href="https://sanseito.jp/member/" target="_blank" class="sub-btn">メンバー</a>
+    <a href="https://sanseito.jp/2020/candidate/" target="_blank" class="sub-btn">候補予定者</a>
     <a href="https://www.youtube.com/@sanseito-official" target="_blank" class="sub-btn">YouTube</a>
     <a href="https://x.com/sansei411" target="_blank" class="sub-btn">X(Twitter)</a>
     <a href="https://www.instagram.com/sanseito" target="_blank" class="sub-btn">Instagram</a>
