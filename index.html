@@ -21,25 +21,29 @@
         }
 
         /* メインボタン (No.1-10) */
-        .nav-container { margin-top: 20px; margin-bottom: 10px; }
+        .nav-container { margin-top: 20px; margin-bottom: 15px; }
         .nav-btn { 
             background: #fff; color: #007aff; border: 2px solid #007aff; 
             padding: 12px 5px; border-radius: 8px; text-decoration: none; 
             font-weight: bold; font-size: 0.85em; transition: all 0.2s;
+            display: flex; align-items: center; justify-content: center;
         }
+        /* No.10専用（オレンジ） */
         .nav-btn.special { background: #fb8c00; color: #fff; border-color: #ef6c00; }
+        .nav-btn:hover { opacity: 0.8; }
 
-        /* スリムな参政党ボタン（2列構成） */
+        /* スリムな参政党ボタン（2段構成） */
         .sub-nav-container { margin-bottom: 30px; gap: 8px; }
         .sub-btn { 
             background: transparent; 
             color: #ef6c00; 
             border: 1px solid #ffcc80; /* メインより薄い橙色 */
-            padding: 4px 0; 
+            padding: 6px 0; 
             border-radius: 4px; 
             text-decoration: none; 
             font-size: 0.75em; 
-            line-height: 1.2;
+            font-weight: normal;
+            display: flex; align-items: center; justify-content: center;
         }
         .sub-btn:hover { background: #fff3e0; }
 
@@ -50,11 +54,10 @@
         #lb { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); align-items:center; justify-content:center; z-index:999; }
         #lb img { max-width:95%; max-height:95%; object-fit: contain; }
 
-        /* スマホでも5列を維持してスリムに見せる */
         @media (max-width: 600px) {
-            .btn-grid { gap: 4px; padding: 0 5px; }
-            .nav-btn { font-size: 0.65em; padding: 8px 1px; }
-            .sub-btn { font-size: 0.55em; padding: 3px 0; }
+            .btn-grid { gap: 5px; padding: 0 5px; }
+            .nav-btn { font-size: 0.65em; padding: 10px 1px; }
+            .sub-btn { font-size: 0.55em; padding: 5px 0; }
         }
     </style>
 </head>
@@ -66,29 +69,29 @@
 </header>
 
 <div class="nav-container btn-grid">
-    <a href="no1.html" class="nav-btn">No.1</a>
-    <a href="no2.html" class="nav-btn">No.2</a>
-    <a href="no3.html" class="nav-btn">No.3</a>
-    <a href="no4.html" class="nav-btn">No.4</a>
-    <a href="no5.html" class="nav-btn">No.5</a>
+    <a href="no1.html" class="nav-btn">仕事・開発</a>
+    <a href="no2.html" class="nav-btn">趣味・自転車</a>
+    <a href="no3.html" class="nav-btn">デザイン</a>
+    <a href="no4.html" class="nav-btn">写真ギャラリー</a>
+    <a href="no5.html" class="nav-btn">設定/予備</a>
     <a href="no6.html" class="nav-btn">No.6</a>
     <a href="no7.html" class="nav-btn">No.7</a>
     <a href="no8.html" class="nav-btn">No.8</a>
     <a href="no9.html" class="nav-btn">No.9</a>
-    <a href="no10.html" class="nav-btn special">No.10</a>
+    <a href="no10.html" class="nav-btn special">メインリンク集</a>
 </div>
 
 <div class="sub-nav-container btn-grid">
-    <a href="#" class="sub-btn">参政1</a>
-    <a href="#" class="sub-btn">参政2</a>
-    <a href="#" class="sub-btn">参政3</a>
-    <a href="#" class="sub-btn">参政4</a>
-    <a href="#" class="sub-btn">参政5</a>
-    <a href="#" class="sub-btn">参政6</a>
-    <a href="#" class="sub-btn">参政7</a>
-    <a href="#" class="sub-btn">参政8</a>
-    <a href="#" class="sub-btn">参政9</a>
-    <a href="#" class="sub-btn">参政10</a>
+    <a href="https://www.sanseito.jp/" class="sub-btn">公式サイト</a>
+    <a href="#" class="sub-btn">参政党2</a>
+    <a href="#" class="sub-btn">参政党3</a>
+    <a href="#" class="sub-btn">参政党4</a>
+    <a href="#" class="sub-btn">参政党5</a>
+    <a href="#" class="sub-btn">参政党6</a>
+    <a href="#" class="sub-btn">参政党7</a>
+    <a href="#" class="sub-btn">参政党8</a>
+    <a href="#" class="sub-btn">参政党9</a>
+    <a href="#" class="sub-btn">参政党10</a>
 </div>
 
 <div class="section-title"><h3>PHOTOS</h3></div>
