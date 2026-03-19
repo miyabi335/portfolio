@@ -27,19 +27,26 @@
         .sansei-btn { background: #fb8c00; color: #fff; border: none; padding: 15px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8em; min-height: 50px; display: flex; align-items: center; justify-content: center; transition: 0.2s; box-sizing: border-box; }
         .sansei-btn:hover { background: #ef6c00; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(251, 140, 0, 0.3); }
 
+        /* フォトギャラリー */
+        .photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 1100px; margin: 20px auto; padding: 0 15px; }
+        .photo-item { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); }
+
         /* 動画ギャラリー */
         .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 1100px; margin: 20px auto; padding: 0 15px; }
         .thumb-media { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: 0.3s; }
         .thumb-media:hover { transform: scale(1.03); border-color: #fb8c00; }
 
-        /* オーバーレイ */
+        /* 動画オーバーレイ（再生ウィンドウ） */
         #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 9999; }
         #overlay-content { width: 90%; max-width: 1000px; position: relative; text-align: center; }
-        #overlay-video { width: 100%; aspect-ratio: 16/9; border-radius: 8px; }
-        .close-btn { margin-top: 20px; background: #ef4444; color: white; border: none; padding: 12px 40px; border-radius: 30px; cursor: pointer; font-weight: bold; }
+        #overlay-video { width: 100%; aspect-ratio: 16/9; display: none; border-radius: 8px; border: 2px solid #333; }
+        .close-btn { margin-top: 20px; background: #ef4444; color: white; border: none; padding: 12px 40px; border-radius: 30px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+        .close-btn:hover { background: #dc2626; transform: scale(1.05); }
 
+        /* モバイル対応 */
         @media (max-width: 768px) { 
-            .nav-grid, .sansei-grid, .grid-container { grid-template-columns: repeat(2, 1fr); } 
+            .nav-grid, .sansei-grid, .photo-grid, .grid-container { grid-template-columns: repeat(2, 1fr); } 
+            .header-text h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -75,39 +82,51 @@
     <a href="https://www.youtube.com/@sanseito-official" target="_blank" class="sansei-btn">YouTube</a>
 </div>
 
+<div class="section-title">PHOTO GALLERY</div>
+<div class="photo-grid">
+    <img src="photo1.jpg" class="photo-item" alt="Photo 1">
+    <img src="photo2.jpg" class="photo-item" alt="Photo 2">
+    <img src="photo3.jpg" class="photo-item" alt="Photo 3">
+    <img src="photo4.jpg" class="photo-item" alt="Photo 4">
+</div>
+
 <div class="section-title">VIDEO GALLERY (YouTube)</div>
 <div class="grid-container">
-    <img src="https://img.youtube.com/vi/av8FzH-rl_0/mqdefault.jpg" class="thumb-media" onclick="openVideo('av8FzH-rl_0')">
-    <img src="https://img.youtube.com/vi/anwipaF_gLU/mqdefault.jpg" class="thumb-media" onclick="openVideo('anwipaF_gLU')">
-    <img src="https://img.youtube.com/vi/78uHp5bLyto/mqdefault.jpg" class="thumb-media" onclick="openVideo('78uHp5bLyto')">
-    <img src="https://img.youtube.com/vi/kcyuEbUb8/mqdefault.jpg" class="thumb-media" onclick="openVideo('kcyuEbUb8')">
+    <img src="https://img.youtube.com/vi/av8FzH-rl_0/mqdefault.jpg" class="thumb-media" onclick="openVideo('av8FzH-rl_0')" alt="希望のヒカリ">
+    <img src="https://img.youtube.com/vi/anwipaF_gLU/mqdefault.jpg" class="thumb-media" onclick="openVideo('anwipaF_gLU')" alt="僕らは日本をあきらめない">
+    <img src="https://img.youtube.com/vi/78uHp5bLyto/mqdefault.jpg" class="thumb-media" onclick="openVideo('78uHp5bLyto')" alt="ヒーローは現れない">
+    <img src="https://img.youtube.com/vi/kcyuEbUbSr8/mqdefault.jpg" class="thumb-media" onclick="openVideo('kcyuEbUbSr8')" alt="橙の焔">
 </div>
 
 <div id="overlay" onclick="closeOverlay()">
     <div id="overlay-content" onclick="event.stopPropagation()">
         <iframe id="overlay-video" src="" frameborder="0" allowfullscreen></iframe><br>
-        <button class="close-btn" onclick="closeOverlay()">× 閉じる</button>
+        <button class="close-btn" onclick="closeOverlay()">× 閉じて戻る</button>
     </div>
 </div>
 
 <script>
     function openVideo(id) {
         const video = document.getElementById('overlay-video');
+        // YouTubeの埋め込みURLを作成し、自動再生オンにする
         video.src = "https://www.youtube.com/embed/" + id + "?autoplay=1";
-        video.style.display = 'block';
-        document.getElementById('overlay').style.display = 'flex';
-        document.body.style.overflow = 'hidden';
+        video.style.display = 'block'; // iframeを表示
+        document.getElementById('overlay').style.display = 'flex'; // オーバーレイを表示
+        document.body.style.overflow = 'hidden'; // 背景スクロールを禁止
     }
+    
     function closeOverlay() {
-        document.getElementById('overlay').style.display = 'none';
-        document.getElementById('overlay-video').src = '';
-        document.body.style.overflow = '';
+        document.getElementById('overlay').style.display = 'none'; // オーバーレイを非表示
+        document.getElementById('overlay-video').src = ''; // 動画をストップ（URLを空にする）
+        document.body.style.overflow = ''; // スクロールを許可
     }
 </script>
 
-<footer style="margin-top: 60px; padding: 20px; color: #64748b; font-size: 0.8rem;">
+<footer style="margin-top: 80px; padding: 20px; color: #64748b; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05);">
     &copy; 2026 MIYABI'S PORTAL All Rights Reserved.
 </footer>
+
+<div style="margin-bottom: 50px;"></div>
 
 </body>
 </html>
