@@ -1,45 +1,61 @@
 
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miyabi's Portfolio Portal</title>
+    <style>
+        body { font-family: "Meiryo", sans-serif; margin: 0; background: #0f172a; text-align: center; color: #f1f5f9; }
+        
+        /* ヘッダー */
+        .header-container { position: relative; width: 100%; height: 35vh; overflow: hidden; background: #333; z-index: 1; }
+        .header-image { width: 100%; height: 100%; object-fit: cover; }
+        .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-shadow: 0 2px 15px rgba(0,0,0,0.8); width: 100%; }
+        
         .section-title { margin-top: 40px; padding: 12px; background: rgba(255,255,255,0.05); font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; }
 
-        /* ナビゲーション（重なり順を上げてクリックを確実にする） */
-        .nav-grid { position: relative; z-index: 10; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
         /* ナビゲーション：z-indexを上げてクリックを最優先にする */
         .nav-grid { position: relative; z-index: 999; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
-
-        /* 通常ボタン（No.1〜9：リンクなし） */
-        .nav-btn-static { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); color: #64748b; border: 1px solid rgba(255,255,255,0.1); padding: 10px 5px; border-radius: 8px; font-weight: bold; font-size: 0.85em; min-height: 45px; cursor: default; }
+        
         /* 通常ボタン（No.1〜9：リンクありに変更） */
         .nav-btn { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); color: #38bdf8; border: 1px solid #38bdf8; padding: 10px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85em; min-height: 45px; transition: 0.2s; cursor: pointer; }
         .nav-btn:hover { background: rgba(56, 189, 248, 0.2); transform: translateY(-2px); border-color: #fff; }
 
-        /* No.10専用リンク（オレンジ：リンクあり） */
-        .nav-link-active { display: flex; align-items: center; justify-content: center; background: #fb8c00; color: #fff; border: 2px solid #fff; padding: 10px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85em; min-height: 45px; transition: 0.2s; cursor: pointer; }
-        .nav-link-active:hover { background: #ef6c00; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(251, 140, 0, 0.4); }
         /* No.10専用リンク（オレンジ） */
         .nav-link-special { background: #fb8c00 !important; color: #fff !important; border: 2px solid #fff !important; z-index: 1000; }
         .nav-link-special:hover { background: #ef6c00 !important; box-shadow: 0 4px 15px rgba(251, 140, 0, 0.4); }
 
-        /* 参政党ボタン */
-        .sansei-grid { position: relative; z-index: 10; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
         /* 参政党リンク */
         .sansei-grid { position: relative; z-index: 999; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
         .sansei-btn { background: #fb8c00; color: #fff; border: none; padding: 15px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8em; min-height: 50px; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
         .sansei-btn:hover { background: #ef6c00; transform: translateY(-2px); }
 
-@@ -54,16 +55,16 @@
+        /* 動画ギャラリー */
+        .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1100px; margin: 20px auto; padding: 0 15px; }
+        .item-wrapper { display: flex; flex-direction: column; align-items: center; }
+        .item-label { font-size: 0.75em; color: #fb8c00; margin-bottom: 5px; font-weight: bold; }
+        .thumb-media { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
+        .thumb-media:hover { transform: scale(1.05); border-color: #fb8c00; }
+
+        /* 動画オーバーレイ */
+        #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 10000; }
+        #overlay-content { width: 90%; max-width: 1000px; position: relative; display: flex; flex-direction: column; align-items: center; }
+        #overlay-video { width: 100%; aspect-ratio: 16/9; display: none; border-radius: 8px; }
+        .close-btn { margin-top: 20px; background: #ef4444; color: white; border: none; padding: 12px 40px; border-radius: 30px; cursor: pointer; font-weight: bold; }
+
+        @media (max-width: 768px) { .nav-grid, .sansei-grid, .grid-container { grid-template-columns: repeat(2, 1fr); } }
+    </style>
+</head>
+<body>
+
+<header class="header-container">
+    <img src="fuji00001.jpg" alt="富士山" class="header-image">
+    <div class="header-text"><h1>MIYABI'S PORTAL</h1></div>
+</header>
 
 <div class="section-title">NAVIGATION MENU</div>
 <nav class="nav-grid">
-    <div class="nav-btn-static">No.1</div>
-    <div class="nav-btn-static">No.2</div>
-    <div class="nav-btn-static">No.3</div>
-    <div class="nav-btn-static">No.4</div>
-    <div class="nav-btn-static">No.5</div>
-    <div class="nav-btn-static">No.6</div>
-    <div class="nav-btn-static">No.7</div>
-    <div class="nav-btn-static">No.8</div>
-    <div class="nav-btn-static">No.9</div>
-    <a href="no10.html" class="nav-link-active">Links集 (No.10)</a>
     <a href="./no1.html" class="nav-btn">No.1</a>
     <a href="./no2.html" class="nav-btn">No.2</a>
     <a href="./no3.html" class="nav-btn">No.3</a>
@@ -53,3 +69,51 @@
 </nav>
 
 <div class="section-title">SANSEITO LINKS</div>
+<div class="sansei-grid">
+    <a href="https://sanseito.jp/" target="_blank" class="sansei-btn">公式サイト</a>
+    <a href="https://sanseito.jp/news/" target="_blank" class="sansei-btn">ニュース</a>
+    <a href="https://info.sanseito.jp/" target="_blank" class="sansei-btn">イベント</a>
+    <a href="https://sanseito.jp/member/" target="_blank" class="sansei-btn">メンバー</a>
+    <a href="https://sanseito.jp/2020/candidate/" target="_blank" class="sansei-btn">候補予定者</a>
+    <a href="https://www.youtube.com/@sanseito-official" target="_blank" class="sansei-btn">YouTube</a>
+    <a href="https://x.com/sansei411" target="_blank" class="sansei-btn">X</a>
+    <a href="https://www.instagram.com/sanseito" target="_blank" class="sansei-btn">Instagram</a>
+    <a href="https://www.tiktok.com/@sanseito" target="_blank" class="sansei-btn">TikTok</a>
+    <a href="https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" target="_blank" class="sansei-btn">選挙ドットコム</a>
+</div>
+
+<div class="section-title">VIDEO ARCHIVE</div>
+<div class="grid-container">
+    <div class="item-wrapper"><div class="item-label">Video 1</div><img src="https://img.youtube.com/vi/G1hKzCkywM8/mqdefault.jpg" class="thumb-media" onclick="openVideo('G1hKzCkywM8')"></div>
+    <div class="item-wrapper"><div class="item-label">Video 2</div><img src="https://img.youtube.com/vi/a-8XiE7W7u4/mqdefault.jpg" class="thumb-media" onclick="openVideo('a-8XiE7W7u4')"></div>
+    <div class="item-wrapper"><div class="item-label">Video 3</div><img src="https://img.youtube.com/vi/q2_c2_WfJFg/mqdefault.jpg" class="thumb-media" onclick="openVideo('q2_c2_WfJFg')"></div>
+    <div class="item-wrapper"><div class="item-label">Video 4</div><img src="https://img.youtube.com/vi/BpITZk7sa8E/mqdefault.jpg" class="thumb-media" onclick="openVideo('BpITZk7sa8E')"></div>
+    <div class="item-wrapper"><div class="item-label">Video 5</div><img src="https://img.youtube.com/vi/UYmvFzDuO5k/mqdefault.jpg" class="thumb-media" onclick="openVideo('UYmvFzDuO5k')"></div>
+    <div class="item-wrapper"><div class="item-label">Video 6</div><img src="https://img.youtube.com/vi/G1hKzCkywM8/mqdefault.jpg" class="thumb-media" onclick="openVideo('G1hKzCkywM8')"></div>
+    <div class="item-wrapper"><div class="item-label">Video 7</div><img src="https://img.youtube.com/vi/a-8XiE7W7u4/mqdefault.jpg" class="thumb-media" onclick="openVideo('a-8XiE7W7u4')"></div>
+    <div class="item-wrapper"><div class="item-label">Video 8</div><img src="https://img.youtube.com/vi/q2_c2_WfJFg/mqdefault.jpg" class="thumb-media" onclick="openVideo('q2_c2_WfJFg')"></div>
+</div>
+
+<div id="overlay" onclick="closeOverlay()">
+    <div id="overlay-content" onclick="event.stopPropagation()">
+        <iframe id="overlay-video" src="" frameborder="0" allowfullscreen></iframe>
+        <button class="close-btn" onclick="closeOverlay()">× 閉じる</button>
+    </div>
+</div>
+
+<script>
+    function openVideo(id) {
+        const video = document.getElementById('overlay-video');
+        video.src = "https://www.youtube.com/embed/" + id + "?autoplay=1";
+        video.style.display = 'block';
+        document.getElementById('overlay').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closeOverlay() {
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('overlay-video').src = '';
+        document.body.style.overflow = '';
+    }
+</script>
+</body>
+</html>
