@@ -3,113 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miyabi's Portfolio Portal</title>
+    <title>参政党＋リンク集</title>
     <style>
-        body { font-family: "Meiryo", sans-serif; margin: 0; background: #0f172a; text-align: center; color: #f1f5f9; }
-        .header-container { position: relative; width: 100%; height: 35vh; overflow: hidden; background: #333; }
-        .header-image { width: 100%; height: 100%; object-fit: cover; }
-        .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-shadow: 0 2px 15px rgba(0,0,0,0.8); width: 100%; }
-        .section-title { margin-top: 40px; padding: 12px; background: rgba(255,255,255,0.05); font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; }
+        body { 
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; 
+            margin: 0; 
+            background: radial-gradient(circle at top right, #1e293b, #0f172a 60%);
+            background-color: #020617; 
+            background-attachment: fixed;
+            text-align: center; 
+            color: #f1f5f9; 
+            -webkit-text-size-adjust: 100%;
+        }
 
-        /* ナビゲーション */
-        .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
-        .nav-btn { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); color: #38bdf8; border: 1px solid #38bdf8; padding: 10px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85em; min-height: 45px; transition: 0.2s; }
+        .header-container { 
+            width: 100%; height: 80px; display: flex; align-items: center; justify-content: center;
+            background: rgba(15, 23, 42, 0.8); border-bottom: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);
+        }
+
+        .header-text h1 { margin: 0; font-size: 1.5rem; font-weight: 200; letter-spacing: 0.3em; color: #fff; }
         
-        /* 通常ボタンのホバー */
-        .nav-btn:hover { background: rgba(56, 189, 248, 0.2); transform: translateY(-2px); }
+        .link-grid { 
+            display: grid; 
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 10px; 
+            max-width: 1100px; 
+            margin: 30px auto; 
+            padding: 15px; 
+            box-sizing: border-box;
+        }
 
-        /* No.10専用（オレンジ・リンクあり） */
-        .nav-link-special { background: #fb8c00 !important; color: #fff !important; border: 2px solid #fff !important; cursor: pointer; }
-        .nav-link-special:hover { background: #ef6c00 !important; }
+        .link-btn {
+            background: #fff;
+            color: #007aff;
+            border: 2px solid #007aff;
+            padding: 4px; 
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.7rem; 
+            font-weight: bold;
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            justify-content: center;
+            height: 100px; 
+            box-sizing: border-box;
+            transition: transform 0.2s, box-shadow 0.2s;
+            overflow: hidden;
+        }
 
-        /* 参政党ボタン */
-        .sansei-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
-        .sansei-btn { background: #fb8c00; color: #fff; border: none; padding: 15px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8em; min-height: 50px; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
-        .sansei-btn:hover { background: #ef6c00; transform: translateY(-2px); }
+        .btn-title { 
+            font-size: 1.05rem; 
+            font-weight: 900; 
+            margin-top: 2px; 
+            display: block;
+            width: 100%;
+            line-height: 1.1;
+            word-break: break-all;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            letter-spacing: -0.02em;
+        }
 
-        /* ギャラリー（8枚・2段） */
-        .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1100px; margin: 20px auto; padding: 0 15px; }
-        .item-wrapper { display: flex; flex-direction: column; align-items: center; }
-        .item-label { font-size: 0.75em; color: #fb8c00; margin-bottom: 5px; font-weight: bold; }
-        .thumb-media { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
-        .thumb-media:hover { transform: scale(1.05); border-color: #fb8c00; }
+        /* カラー設定 */
+        .orange-btn { background: #fff4e6; color: #d35400; border-color: #ffcc99; }
+        .dark-orange-btn { background: #fb8c00; color: #fff !important; border-color: #ef6c00; }
+        .blue-btn { background: #e1f5fe; color: #0277bd; border-color: #0277bd; }
+        .green-btn { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
+        .yellow-btn { background: #fffde7; color: #827717; border-color: #fff176; }
+        .purple-btn { background: #f3e5f5; color: #7b1fa2; border-color: #ce93d8; }
+        .brown-btn { background: #efebe9; color: #5d4037; border-color: #bcaaa4; }
+        .deep-blue-btn { background: #e0f2f1; color: #00796b; border-color: #4db6ac; }
+        .red-btn { background: #ffebee; color: #c62828; border-color: #ef9a9a; }
+        .dark-red-btn { background: #c62828; color: #fff !important; border-color: #b71c1c; }
+        .tan-btn { background: #d7ccc8; color: #4e342e; border-color: #a1887f; }
+        .black-btn { background: #1a1a1a; color: #fff !important; border-color: #000; }
 
-        /* 動画オーバーレイ */
-        #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 9999; }
-        #overlay-content { width: 90%; max-width: 1000px; position: relative; display: flex; flex-direction: column; align-items: center; }
-        #overlay-video { width: 100%; aspect-ratio: 16/9; display: none; border-radius: 8px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
-        .close-btn { margin-top: 20px; background: #ef4444; color: white; border: none; padding: 12px 40px; border-radius: 30px; cursor: pointer; font-weight: bold; font-size: 1rem; }
+        .link-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 10px rgba(0,0,0,0.5); }
 
-        @media (max-width: 768px) { .nav-grid, .sansei-grid, .grid-container { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 900px) { 
+            .link-grid { grid-template-columns: repeat(3, 1fr); gap: 8px;} 
+            .link-btn { height: 85px; }
+            .btn-title { font-size: 1rem; }
+        }
+        @media (max-width: 500px) { 
+            .link-grid { grid-template-columns: repeat(2, 1fr); gap: 6px;} 
+            .link-btn { height: 80px; }
+            .btn-title { font-size: 0.95rem; }
+        }
+
+        .footer-nav { margin: 40px 0; }
+        .back-btn { padding: 12px 40px; color: #ccc; text-decoration: none; border: 1px solid #444; border-radius: 30px; font-weight: bold;}
     </style>
 </head>
 <body>
 
 <header class="header-container">
-    <img src="fuji00001.jpg" alt="富士山" class="header-image">
-    <div class="header-text"><h1>MIYABI'S PORTAL</h1></div>
+    <div class="header-text"><h1>参政党＋出張便利リンク</h1></div>
 </header>
 
-<div class="section-title">NAVIGATION MENU</div>
-<nav class="nav-grid">
-    <div class="nav-btn">No.1</div>
-    <div class="nav-btn">No.2</div>
-    <div class="nav-btn">No.3</div>
-    <div class="nav-btn">No.4</div>
-    <div class="nav-btn">No.5</div>
-    <div class="nav-btn">No.6</div>
-    <div class="nav-btn">No.7</div>
-    <div class="nav-btn">No.8</div>
-    <div class="nav-btn">No.9</div>
-    <a href="no10.html" class="nav-btn nav-link-special">Links集 (No.10)</a>
-</nav>
+<div class="link-grid">
+    <script>
+        const linkData = {
+            1: { name: "公式サイト", url: "https://sanseito.jp/" },
+            2: { name: "最新ニュース", url: "https://sanseito.jp/news/" },
+            3: { name: "イベント", url: "https://info.sanseito.jp/" },
+            4: { name: "メンバー", url: "https://sanseito.jp/member/" },
+            5: { name: "候補予定者", url: "https://sanseito.jp/2020/candidate/" },
+            6: { name: "YouTube", url: "https://www.youtube.com/@sanseito-official" },
+            7: { name: "ｘ", url: "https://x.com/sansei411" },
+            8: { name: "Instagram", url: "https://www.instagram.com/sanseito" },
+            9: { name: "TikTok", url: "https://www.tiktok.com/@sanseito" },
+            10: { name: "選挙ドットコム", url: "https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" },
+            11: { name: "（予備）", url: "link11.html" },
+            12: { name: "（予備）", url: "link12.html" },
+            13: { name: "（予備）", url: "link13.html" },
+            14: { name: "（予備）", url: "link14.html" },
+            15: { name: "（予備）", url: "link15.html" },
+            16: { name: "Yahoo Japan", url: "https://www.yahoo.co.jp/" },
+            17: { name: "読売新聞", url: "https://www.yomiuri.co.jp/" },
+            18: { name: "産経新聞", url: "https://www.sankei.com/" },
+            19: { name: "朝日新聞", url: "https://www.asahi.com/" },
+            20: { name: "毎日新聞", url: "https://mainichi.jp/" },
+            21: { name: "NHKニュース", url: "https://news.web.nhk/newsweb" },
+            22: { name: "日本経済新聞", url: "https://www.nikkei.com/" },
+            23: { name: "ロイター", url: "https://jp.reuters.com/" },
+            24: { name: "CNN.co.jp", url: "https://www.cnn.co.jp/" },
+            25: { name: "BBC ニュース", url: "https://www.bbc.com/japanese" },
+            26: { name: "自由民主党", url: "https://www.jimin.jp/" },
+            27: { name: "日本維新の会", url: "https://o-ishin.jp/" },
+            28: { name: "中道改革連合", url: "https://craj.jp/" },
+            29: { name: "国民民主党", url: "https://new-kokumin.jp/" },
+            30: { name: "参政党", url: "https://sanseito.jp/" },
+            31: { name: "日本共産党", url: "https://www.jcp.or.jp/" },
+            32: { name: "チームみらい", url: "https://team-mir.ai/" },
+            33: { name: "れいわ新選組", url: "https://reiwa-shinsengumi.com/" },
+            34: { name: "日本保守党", url: "https://hoshuto.jp/" },
+            35: { name: "社会民主党", url: "https://sdp.or.jp/" },
+            36: { name: "自民党 (X)", url: "https://x.com/jimin_koho" },
+            37: { name: "維新の会 (X)", url: "https://x.com/osaka_ishin" },
+            38: { name: "改革連合 (X)", url: "https://x.com/CRAJ2026" },
+            39: { name: "国民民主 (X)", url: "https://x.com/kokumin_koho" },
+            40: { name: "参政党 (X)", url: "https://x.com/sansei411" },
+            41: { name: "日本共産 (X)", url: "https://x.com/jcp_cc" },
+            42: { name: "チームみらい(X)", url: "https://x.com/team_mirai_jp" },
+            43: { name: "れいわ (X)", url: "https://x.com/reiwashinsen" },
+            44: { name: "日本保守党 (X)", url: "https://x.com/hoshuto_jp" },
+            45: { name: "社民党 (X)", url: "https://x.com/SDPJapan" },
+            46: { name: "ChatGPT", url: "https://chatgpt.com/" },
+            47: { name: "Google Gemini", url: "https://gemini.google.com/app" },
+            48: { name: "Claude AI", url: "https://claude.ai/new" },
+            49: { name: "Perplexity", url: "https://www.perplexity.ai/" },
+            50: { name: "Copilot", url: "https://copilot.microsoft.com/" },
+            51: { name: "JR西日本", url: "https://www.jr-odekake.net/railroad/" },
+            52: { name: "新幹線時刻表", url: "https://timetables.jreast.co.jp/" },
+            53: { name: "駅探 時刻表", url: "https://ekitan.com/timetable/railway" },
+            54: { name: "羽田空港 (HND)", url: "https://tokyo-haneda.com/flight/index.html" },
+            55: { name: "成田空港 (NRT)", url: "https://www.narita-airport.jp/ja/flight/" },
+            56: { name: "関西空港 (KIX)", url: "https://www.kansai-airport.or.jp/flight/search" },
+            57: { name: "大阪空港 (伊丹)", url: "https://www.osaka-airport.co.jp/flight/search" },
+            58: { name: "新千歳空港", url: "https://www.hokkaido-airports.com/ja/new-chitose/airport/fis/" },
+            59: { name: "セントレア", url: "https://www.centrair.jp/flight/index.html" },
+            60: { name: "福岡空港", url: "https://www.fukuoka-airport.jp/flight/" },
+            61: { name: "Yahoo!路線情報", url: "https://transit.yahoo.co.jp/" },
+            62: { name: "NAVITIME空路", url: "https://www.navitime.co.jp/air/" },
+            63: { name: "GO タクシー", url: "https://go.goinc.jp/" },
+            64: { name: "S.RIDE", url: "https://www.sride.jp/jp/" },
+            65: { name: "Uber Taxi", url: "https://www.uber.com/jp/ja/ride/ubertaxi/" },
+            66: { name: "ANA 航空", url: "https://www.ana.co.jp/ja/jp/" },
+            67: { name: "JAL 航空", url: "https://www.jal.co.jp/jp/ja/" },
+            68: { name: "スカイマーク", url: "https://www.skymark.co.jp/ja/" },
+            69: { name: "スターフライヤー", url: "https://www.starflyer.jp/" },
+            70: { name: "ソラシドエア", url: "https://www.solaseedair.jp/" },
+            71: { name: "AIRDO", url: "https://www.airdo.jp/" },
+            72: { name: "FDA 航空", url: "https://www.fujidream.co.jp/search_reserve/" },
+            73: { name: "Peach ピーチ", url: "https://www.flypeach.com/" },
+            74: { name: "ジェットスター", url: "https://www.jetstar.com/jp/ja/home" },
+            75: { name: "ZIPAIR", url: "https://www.zipair.net/ja" },
+            76: { name: "JTB 旅行", url: "https://www.jtb.co.jp/" },
+            77: { name: "HIS 旅行", url: "https://www.his-j.com/Default.aspx" },
+            78: { name: "楽天トラベル", url: "https://travel.rakuten.co.jp/" },
+            79: { name: "一休.com", url: "https://www.ikyu.com/" },
+            80: { name: "じゃらんnet", url: "https://www.jalan.net/" },
+            81: { name: "Booking.com", url: "https://www.booking.com/index.ja.html" },
+            82: { name: "トヨタレンタカー", url: "https://rent.toyota.co.jp/" },
+            83: { name: "ニッポンレンタ", url: "https://www.nipponrentacar.co.jp/" },
+            84: { name: "タイムズカー", url: "https://www.timescar-rental.com/en/" },
+            85: { name: "オリックスレンタ", url: "https://car.orix.co.jp/" },
+            86: { name: "日産レンタカー", url: "https://nissan-rentacar.com/" },
+            87: { name: "たびらいレンタ", url: "https://www.tabirai.net/car/" },
+            88: { name: "楽天レンタカー", url: "https://travel.rakuten.co.jp/cars/" },
+            89: { name: "じゃらんレンタ", url: "https://www.jalan.net/rentacar/" },
+            90: { name: "スカイチケット", url: "https://skyticket.jp/rentacar/" },
+            91: { name: "ニコニコレンタ", url: "https://www.2525r.com/" },
+            92: { name: "駅レンタカー", url: "https://www.ekiren.co.jp/" },
+            93: { name: "NEXCO東日本", url: "https://www.driveplaza.com/" },
+            94: { name: "NEXCO西日本", url: "https://www.w-nexco.co.jp/" },
+            95: { name: "道の駅 検索", url: "https://www.michi-no-eki.jp/" },
+            96: { name: "JAFナビ優待", url: "https://jafnavi.jp/" },
+            97: { name: "食べログ", url: "https://tabelog.com/" },
+            98: { name: "ホットペッパー", url: "https://www.hotpepper.jp/" },
+            99: { name: "Retty レッティ", url: "https://retty.me/" },
+            100: { name: "楽天ぐるなび", url: "https://gurunavi.com/ja" }
+        };
 
-<div class="section-title">SANSEITO LINKS</div>
-<div class="sansei-grid">
-    <a href="https://sanseito.jp/" target="_blank" class="sansei-btn">公式サイト</a>
-    <a href="https://sanseito.jp/news/" target="_blank" class="sansei-btn">ニュース</a>
-    <a href="https://info.sanseito.jp/" target="_blank" class="sansei-btn">イベント</a>
-    <a href="https://sanseito.jp/member/" target="_blank" class="sansei-btn">メンバー</a>
-    <a href="https://sanseito.jp/2020/candidate/" target="_blank" class="sansei-btn">候補予定者</a>
-    <a href="https://www.youtube.com/@sanseito-official" target="_blank" class="sansei-btn">YouTube</a>
-    <a href="https://x.com/sansei411" target="_blank" class="sansei-btn">X</a>
-    <a href="https://www.instagram.com/sanseito" target="_blank" class="sansei-btn">Instagram</a>
-    <a href="https://www.tiktok.com/@sanseito" target="_blank" class="sansei-btn">TikTok</a>
-    <a href="https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" target="_blank" class="sansei-btn">選挙ドットコム</a>
+        for (let i = 1; i <= 100; i++) {
+            let extraClass = "";
+            
+            // 色分け判定
+            if (i >= 1 && i <= 15) extraClass = " dark-orange-btn"; // 参政党：濃いオレンジ
+            else if (i === 92) extraClass = " red-btn";
+            else if (i === 96) extraClass = " dark-red-btn";
+            else if (i >= 97 && i <= 100) extraClass = " orange-btn"; // グルメ：薄いオレンジに修正
+            else if ((i >= 16 && i <= 25) || (i >= 66 && i <= 75)) extraClass = " blue-btn";
+            else if ((i >= 26 && i <= 35) || i === 95) extraClass = " green-btn";
+            else if (i >= 36 && i <= 45) extraClass = " yellow-btn";
+            else if (i >= 46 && i <= 50) extraClass = " purple-btn";
+            else if ((i >= 51 && i <= 53) || (i >= 76 && i <= 78)) extraClass = " brown-btn";
+            else if (i >= 54 && i <= 62) extraClass = " deep-blue-btn";
+            else if ((i >= 63 && i <= 65) || (i >= 82 && i <= 91)) extraClass = " red-btn";
+            else if (i >= 79 && i <= 81) extraClass = " tan-btn";
+            else if (i === 93 || i === 94) extraClass = " black-btn";
+
+            let nameLabel = "";
+            let url = `link${i}.html`;
+
+            if (linkData[i]) {
+                nameLabel = `<span class="btn-title">${linkData[i].name}</span>`;
+                url = linkData[i].url;
+            }
+
+            document.write(`<a href="${url}" class="link-btn${extraClass}" target="_blank">No.${i}${nameLabel}</a>`);
+        }
+    </script>
 </div>
 
-<div class="section-title">VIDEO ARCHIVE</div>
-<div class="grid-container">
-    <div class="item-wrapper"><div class="item-label">Video 1</div><img src="https://img.youtube.com/vi/G1hKzCkywM8/mqdefault.jpg" class="thumb-media" onclick="openVideo('G1hKzCkywM8')"></div>
-    <div class="item-wrapper"><div class="item-label">Video 2</div><img src="https://img.youtube.com/vi/a-8XiE7W7u4/mqdefault.jpg" class="thumb-media" onclick="openVideo('a-8XiE7W7u4')"></div>
-    <div class="item-wrapper"><div class="item-label">Video 3</div><img src="https://img.youtube.com/vi/q2_c2_WfJFg/mqdefault.jpg" class="thumb-media" onclick="openVideo('q2_c2_WfJFg')"></div>
-    <div class="item-wrapper"><div class="item-label">Video 4</div><img src="https://img.youtube.com/vi/BpITZk7sa8E/mqdefault.jpg" class="thumb-media" onclick="openVideo('BpITZk7sa8E')"></div>
-    <div class="item-wrapper"><div class="item-label">Video 5</div><img src="https://img.youtube.com/vi/UYmvFzDuO5k/mqdefault.jpg" class="thumb-media" onclick="openVideo('UYmvFzDuO5k')"></div>
-    <div class="item-wrapper"><div class="item-label">Video 6</div><img src="https://img.youtube.com/vi/G1hKzCkywM8/mqdefault.jpg" class="thumb-media" onclick="openVideo('G1hKzCkywM8')"></div>
-    <div class="item-wrapper"><div class="item-label">Video 7</div><img src="https://img.youtube.com/vi/a-8XiE7W7u4/mqdefault.jpg" class="thumb-media" onclick="openVideo('a-8XiE7W7u4')"></div>
-    <div class="item-wrapper"><div class="item-label">Video 8</div><img src="https://img.youtube.com/vi/q2_c2_WfJFg/mqdefault.jpg" class="thumb-media" onclick="openVideo('q2_c2_WfJFg')"></div>
+<div class="footer-nav">
+    <a href="index.html" class="back-btn">ホーム画面へ戻る</a>
 </div>
 
-<div id="overlay" onclick="closeOverlay()">
-    <div id="overlay-content" onclick="event.stopPropagation()">
-        <iframe id="overlay-video" src="" frameborder="0" allowfullscreen></iframe>
-        <button class="close-btn" onclick="closeOverlay()">× 閉じて戻る</button>
-    </div>
-</div>
-
-<script>
-    function openVideo(id) {
-        const video = document.getElementById('overlay-video');
-        video.src = "https://www.youtube.com/embed/" + id + "?autoplay=1";
-        video.style.display = 'block';
-        document.getElementById('overlay').style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-    function closeOverlay() {
-        document.getElementById('overlay').style.display = 'none';
-        document.getElementById('overlay-video').src = '';
-        document.body.style.overflow = '';
-    }
-</script>
 </body>
 </html>
