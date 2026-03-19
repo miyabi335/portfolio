@@ -3,141 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miyabi's Home</title>
+    <title>Miyabi's Hobby Space</title>
     <style>
-        /* 背景画像や全体の雰囲気 */
+        /* MIYABIさん専用：ダーク・テックデザイン */
         body {
             margin: 0;
             padding: 0;
-            background: #222; /* 仮の背景色：実際は画像URLなどに書き換えてください */
-            color: white;
-            font-family: sans-serif;
+            background-color: #0d1117; /* GitHub風の深い黒 */
+            color: #c9d1d9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
         }
 
-        /* アイコンが並ぶグリッドレイアウト */
-        .home-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2列に並べる */
-            gap: 20px;
-            padding: 40px 20px;
+        .header {
             width: 100%;
-            max-width: 360px;
+            padding: 30px 0 20px;
+            text-align: center;
+            background: linear-gradient(180deg, #161b22 0%, transparent 100%);
         }
 
-        /* 各ボタン（アイコン）の基本スタイル */
-        .icon-btn {
+        h1 {
+            margin: 0;
+            font-size: 26px;
+            color: #58a6ff;
+            text-shadow: 0 0 15px rgba(88, 166, 255, 0.4);
+        }
+
+        /* メインメニューのグリッド（2列レイアウト） */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            width: 90%;
+            max-width: 400px;
+            margin-top: 20px;
+        }
+
+        /* 5番目のボタンなど、1列使いたい場合の調整 */
+        .full-width {
+            grid-column: span 2;
+        }
+
+        .menu-button {
+            padding: 20px 10px;
+            background-color: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            text-decoration: none;
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-decoration: none;
+            gap: 8px;
+        }
+
+        .menu-button:hover {
+            background-color: #30363d;
+            border-color: #8b949e;
+            transform: translateY(-2px);
+        }
+
+        .menu-button:active {
+            transform: scale(0.95);
+        }
+
+        .icon { font-size: 24px; }
+
+        /* Google検索セクション */
+        .search-section {
+            width: 90%;
+            max-width: 400px;
+            margin: 30px 0;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 8px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border-radius: 25px;
+            border: 1px solid #30363d;
+            background-color: #0d1117;
             color: white;
-            background: none;
+            outline: none;
+        }
+
+        .search-input:focus { border-color: #58a6ff; }
+
+        .search-btn {
+            padding: 10px 20px;
+            border-radius: 25px;
             border: none;
+            background-color: #238636; /* 成功・実行の緑 */
+            color: white;
+            font-weight: bold;
             cursor: pointer;
         }
 
-        /* アイコンの見た目（Photoshopで作った画像があれば背景に指定） */
-        .icon-image {
-            width: 70px;
-            height: 70px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            margin-bottom: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            transition: transform 0.2s;
-        }
-
-        .icon-btn:active .icon-image { transform: scale(0.9); }
-
-        /* おみくじボタン（5番）の特別スタイル */
-        #omikuji-btn .icon-image {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-        }
-
-        /* おみくじの結果が浮かび上がるポップアップ */
-        .omikuji-overlay {
+        /* フッターナビゲーション */
+        .footer-nav {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 280px;
-            background: white;
-            color: #333;
-            padding: 20px;
-            border-radius: 20px;
-            text-align: center;
-            display: none; /* 最初は隠す */
-            z-index: 100;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            bottom: 0;
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            background-color: #161b22;
+            border-top: 1px solid #30363d;
         }
 
-        /* アニメーション用 */
-        .shake { animation: shake-animation 0.5s; }
-        @keyframes shake-animation {
-            0% { transform: rotate(0deg); }
-            25% { transform: rotate(-10deg); }
-            50% { transform: rotate(10deg); }
-            75% { transform: rotate(-5deg); }
-            100% { transform: rotate(0deg); }
+        .nav-item {
+            color: #8b949e;
+            text-decoration: none;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
         }
     </style>
 </head>
 <body>
 
-    <div class="home-grid">
-        <a href="activity.html" class="icon-btn"><div class="icon-image">📝</div><span>No.1</span></a>
-        <a href="landscape.html" class="icon-btn"><div class="icon-image">🚴</div><span>No.2</span></a>
-        <a href="movies.html" class="icon-btn"><div class="icon-image">🎥</div><span>No.3</span></a>
-        <a href="bbs.html" class="icon-btn"><div class="icon-image">💬</div><span>No.4</span></a>
-
-        <button id="omikuji-btn" class="icon-btn" onclick="playOmikuji()">
-            <div class="icon-image">🌸</div>
-            <span>おみくじ</span>
-        </button>
+    <div class="header">
+        <h1>Miyabi's Hobby Space</h1>
     </div>
 
-    <div id="omikuji-popup" class="omikuji-overlay" onclick="this.style.display='none'">
-        <div id="omikuji-content"></div>
-        <p style="font-size: 12px; color: #999; margin-top: 15px;">タップで閉じる</p>
+    <div class="menu-grid">
+        <a href="activity.html" class="menu-button">
+            <span class="icon">📝</span> No.1：活動記録
+        </a>
+        <a href="photo.html" class="menu-button">
+            <span class="icon">📷</span> No.2：本日の風景
+        </a>
+        <a href="movie.html" class="menu-button">
+            <span class="icon">🎬</span> No.3：おすすめ動画
+        </a>
+        <a href="bbs.html" class="menu-button">
+            <span class="icon">💬</span> No.4：掲示板
+        </a>
+        <a href="settings.html" class="menu-button full-width">
+            <span class="icon">⚙️</span> No.5：システム設定・ツール
+        </a>
     </div>
 
-    <audio id="sound-shake" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3"></audio>
+    <div class="search-section">
+        <form action="https://www.google.com/search" method="get" target="_blank" class="search-form">
+            <input type="text" name="q" class="search-input" placeholder="Googleで検索...">
+            <button type="submit" class="search-btn">検索</button>
+        </form>
+    </div>
 
-    <script>
-        function playOmikuji() {
-            const icon = document.querySelector('#omikuji-btn .icon-image');
-            const popup = document.getElementById('omikuji-popup');
-            const content = document.getElementById('omikuji-content');
-            const sound = document.getElementById('sound-shake');
+    <div class="footer-nav">
+        <a href="https://www.google.co.jp/maps" class="nav-item" target="_blank">
+            <span>📍</span> MAP
+        </a>
+        <a href="https://github.com/miyabi335" class="nav-item" target="_blank">
+            <span>🐙</span> GitHub
+        </a>
+        <a href="photoshop-tool.html" class="nav-item">
+            <span>🎨</span> PS Tool
+        </a>
+    </div>
 
-            icon.classList.add('shake');
-            if(sound) sound.play().catch(()=>{});
-
-            setTimeout(() => {
-                icon.classList.remove('shake');
-                const r = Math.floor(Math.random() * 100);
-                let res;
-
-                if (r < 10) { 
-                    res = { t: "🌸 はなまる 🌸", m: "今日は一歩前進できる日。<br>応援が誰かの力になります✨", i: "入浴剤" };
-                } else if (r < 40) { 
-                    res = { t: "✨ だいきち ✨", m: "素敵なニュースが飛び込むかも！<br>笑顔で過ごしてね🌸", i: "季節のお花" };
-                } else { 
-                    res = { t: "🍀 ちゅうきち 🍀", m: "いつも頑張るあなたへ。<br>甘いご褒美を🍰", i: "美味しい紅茶" };
-                }
-
-                content.innerHTML = `<h2 style="color:#d81b60">${res.t}</h2><p>${res.m}</p><p style="color:#8d6e63; font-size:0.9em;">✨アイテム: ${res.i}</p>`;
-                popup.style.display = 'block';
-            }, 500);
-        }
-    </script>
 </body>
 </html>
