@@ -13,36 +13,29 @@
 
         /* ナビゲーション */
         .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
-        
-        /* すべてのナビボタンをオレンジ色・白枠に変更 */
-        .nav-btn { 
-            display: flex; align-items: center; justify-content: center; 
-            background: #fb8c00; color: #fff; border: 2px solid #fff; 
-            padding: 10px 5px; border-radius: 8px; text-decoration: none; 
-            font-weight: bold; font-size: 0.85em; min-height: 45px; 
-            transition: 0.2s; box-sizing: border-box; cursor: pointer;
-        }
-        .nav-btn:hover { background: #ef6c00; transform: translateY(-2px); }
+        .nav-btn { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); color: #38bdf8; border: 1px solid #38bdf8; padding: 10px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85em; min-height: 45px; transition: 0.2s; }
+        .nav-btn:hover { background: rgba(56, 189, 248, 0.2); transform: translateY(-2px); }
+        .nav-link-special { background: #fb8c00 !important; color: #fff !important; border: 2px solid #fff !important; }
 
-        /* 参政党ボタン */
-        .sansei-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
-        .sansei-btn { background: #fb8c00; color: #fff; border: none; padding: 15px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.8em; min-height: 50px; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
-        .sansei-btn:hover { background: #ef6c00; transform: translateY(-2px); }
+        /* --- 写真ギャラリー (4枚×2列) --- */
+        .photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 1100px; margin: 20px auto; padding: 0 15px; }
+        .photo-item { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
+        .photo-item:hover { transform: scale(1.03); border-color: #38bdf8; }
 
-        /* ギャラリー */
+        /* 動画ギャラリー */
         .grid-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 1100px; margin: 20px auto; padding: 0 15px; }
         .item-wrapper { display: flex; flex-direction: column; align-items: center; }
         .item-label { font-size: 0.75em; color: #fb8c00; margin-bottom: 5px; font-weight: bold; }
         .thumb-media { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
         .thumb-media:hover { transform: scale(1.05); border-color: #fb8c00; }
 
-        /* 動画オーバーレイ */
+        /* オーバーレイ省略... */
         #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 9999; }
         #overlay-content { width: 90%; max-width: 1000px; position: relative; display: flex; flex-direction: column; align-items: center; }
-        #overlay-video { width: 100%; aspect-ratio: 16/9; display: none; border-radius: 8px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
-        .close-btn { margin-top: 20px; background: #ef4444; color: white; border: none; padding: 12px 40px; border-radius: 30px; cursor: pointer; font-weight: bold; font-size: 1rem; }
+        #overlay-video { width: 100%; aspect-ratio: 16/9; display: none; border-radius: 8px; }
+        .close-btn { margin-top: 20px; background: #ef4444; color: white; border: none; padding: 12px 40px; border-radius: 30px; cursor: pointer; font-weight: bold; }
 
-        @media (max-width: 768px) { .nav-grid, .sansei-grid, .grid-container { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .nav-grid, .photo-grid, .grid-container { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body>
@@ -54,30 +47,28 @@
 
 <div class="section-title">NAVIGATION MENU</div>
 <nav class="nav-grid">
-    <a href="no1.html" class="nav-btn">No.1</a>
-    <a href="no2.html" class="nav-btn">No.2</a>
-    <a href="no3.html" class="nav-btn">No.3</a>
-    <a href="no4.html" class="nav-btn">No.4</a>
-    <a href="no5.html" class="nav-btn">No.5</a>
-    <a href="no6.html" class="nav-btn">No.6</a>
-    <a href="no7.html" class="nav-btn">No.7</a>
-    <a href="no8.html" class="nav-btn">No.8</a>
-    <a href="no9.html" class="nav-btn">No.9</a>
-    <a href="no10.html" class="nav-btn">Links集 (No.10)</a>
+    <div class="nav-btn">No.1</div>
+    <div class="nav-btn">No.2</div>
+    <div class="nav-btn">No.3</div>
+    <div class="nav-btn">No.4</div>
+    <div class="nav-btn">No.5</div>
+    <div class="nav-btn">No.6</div>
+    <div class="nav-btn">No.7</div>
+    <div class="nav-btn">No.8</div>
+    <div class="nav-btn">No.9</div>
+    <a href="no10.html" class="nav-btn nav-link-special">Links集 (No.10)</a>
 </nav>
 
-<div class="section-title">SANSEITO LINKS</div>
-<div class="sansei-grid">
-    <a href="https://sanseito.jp/" target="_blank" class="sansei-btn">公式サイト</a>
-    <a href="https://sanseito.jp/news/" target="_blank" class="sansei-btn">ニュース</a>
-    <a href="https://info.sanseito.jp/" target="_blank" class="sansei-btn">イベント</a>
-    <a href="https://sanseito.jp/member/" target="_blank" class="sansei-btn">メンバー</a>
-    <a href="https://sanseito.jp/2020/candidate/" target="_blank" class="sansei-btn">候補予定者</a>
-    <a href="https://www.youtube.com/@sanseito-official" target="_blank" class="sansei-btn">YouTube</a>
-    <a href="https://x.com/sansei411" target="_blank" class="sansei-btn">X</a>
-    <a href="https://www.instagram.com/sanseito" target="_blank" class="sansei-btn">Instagram</a>
-    <a href="https://www.tiktok.com/@sanseito" target="_blank" class="sansei-btn">TikTok</a>
-    <a href="https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" target="_blank" class="sansei-btn">選挙ドットコム</a>
+<div class="section-title">PHOTO GALLERY</div>
+<div class="photo-grid">
+    <img src="photo1.jpg" class="photo-item" alt="Photo 1">
+    <img src="photo2.jpg" class="photo-item" alt="Photo 2">
+    <img src="photo3.jpg" class="photo-item" alt="Photo 3">
+    <img src="photo4.jpg" class="photo-item" alt="Photo 4">
+    <img src="photo5.jpg" class="photo-item" alt="Photo 5">
+    <img src="photo6.jpg" class="photo-item" alt="Photo 6">
+    <img src="photo7.jpg" class="photo-item" alt="Photo 7">
+    <img src="photo8.jpg" class="photo-item" alt="Photo 8">
 </div>
 
 <div class="section-title">VIDEO ARCHIVE</div>
