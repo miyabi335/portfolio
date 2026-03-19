@@ -27,36 +27,48 @@
         .search-submit, .map-btn { background: #fb8c00; color: white; border: none; padding: 0 25px; height: 48px; border-radius: 25px; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.2s; white-space: nowrap; display: flex; align-items: center; justify-content: center; }
         .search-submit:hover, .map-btn:hover { background: #ef6c00; transform: translateY(-2px); }
 
-        /* グリッド設定 */
-        .link-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 1100px; margin: 20px auto; padding: 15px; box-sizing: border-box; }
+        /* --- 【重要】グリッドとボタンの視認性アップ --- */
+        .link-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; max-width: 1200px; margin: 20px auto; padding: 15px; box-sizing: border-box; }
         .link-btn {
-            background: #fff; color: #007aff; border: 2px solid #007aff; padding: 4px; border-radius: 10px;
-            text-decoration: none; font-size: 0.7rem; font-weight: bold; display: flex; flex-direction: column; 
-            align-items: center; justify-content: center; height: 100px; box-sizing: border-box; transition: 0.2s; overflow: hidden;
+            background: #fff; color: #007aff; border: 2px solid #007aff; padding: 10px 5px; border-radius: 12px;
+            text-decoration: none; font-size: 0.8rem; font-weight: normal; display: flex; flex-direction: column; 
+            align-items: center; justify-content: center; min-height: 110px; /* 高さを少し拡大 */
+            box-sizing: border-box; transition: 0.2s; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
+        /* タイトル部分を大きく */
         .btn-title { 
-            font-size: 0.95rem; font-weight: 900; margin-top: 2px; display: block; width: 100%; line-height: 1.1; 
-            word-break: break-all; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+            font-size: 1.15rem; /* サイズアップ */
+            font-weight: 900; 
+            margin-top: 5px; 
+            display: block; 
+            width: 100%; 
+            line-height: 1.2; 
+            word-break: break-all; 
+            display: -webkit-box; 
+            -webkit-line-clamp: 2; 
+            -webkit-box-orient: vertical; 
+            overflow: hidden;
+            letter-spacing: -0.01em; /* 詰めて見やすく */
         }
 
-        /* カラーバリエーション */
-        .orange-btn { background: #fff4e6; color: #d35400; border-color: #ffcc99; }
+        /* 各種カラー（色の濃さを微調整して文字を見やすく） */
+        .orange-btn { background: #fff4e6; color: #d35400 !important; border-color: #ffcc99; }
         .dark-orange-btn { background: #fb8c00; color: #fff !important; border-color: #ef6c00; }
-        .blue-btn { background: #e1f5fe; color: #0277bd; border-color: #0277bd; }
-        .green-btn { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
-        .yellow-btn { background: #fffde7; color: #827717; border-color: #fff176; }
-        .purple-btn { background: #f3e5f5; color: #7b1fa2; border-color: #ce93d8; }
-        .brown-btn { background: #efebe9; color: #5d4037; border-color: #bcaaa4; }
-        .deep-blue-btn { background: #e0f2f1; color: #00796b; border-color: #4db6ac; }
-        .red-btn { background: #ffebee; color: #c62828; border-color: #ef9a9a; }
+        .blue-btn { background: #e1f5fe; color: #0277bd !important; border-color: #0277bd; }
+        .green-btn { background: #e8f5e9; color: #2e7d32 !important; border-color: #a5d6a7; }
+        .yellow-btn { background: #fffde7; color: #827717 !important; border-color: #fff176; }
+        .purple-btn { background: #f3e5f5; color: #7b1fa2 !important; border-color: #ce93d8; }
+        .brown-btn { background: #efebe9; color: #5d4037 !important; border-color: #bcaaa4; }
+        .deep-blue-btn { background: #e0f2f1; color: #00796b !important; border-color: #4db6ac; }
+        .red-btn { background: #ffebee; color: #c62828 !important; border-color: #ef9a9a; }
         .dark-red-btn { background: #c62828; color: #fff !important; border-color: #b71c1c; }
-        .tan-btn { background: #d7ccc8; color: #4e342e; border-color: #a1887f; }
+        .tan-btn { background: #d7ccc8; color: #4e342e !important; border-color: #a1887f; }
         .black-btn { background: #1a1a1a; color: #fff !important; border-color: #000; }
 
-        .link-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 10px rgba(0,0,0,0.5); }
+        .link-btn:hover { transform: translateY(-4px); box-shadow: 0 8px 15px rgba(0,0,0,0.4); border-color: #fff; }
 
-        @media (max-width: 900px) { .link-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 600px) { .link-grid { grid-template-columns: repeat(2, 1fr); } .search-form { flex-wrap: wrap; } .search-input { width: 100%; } }
+        @media (max-width: 900px) { .link-grid { grid-template-columns: repeat(3, 1fr); } .btn-title { font-size: 1.05rem; } }
+        @media (max-width: 600px) { .link-grid { grid-template-columns: repeat(2, 1fr); } .search-form { flex-wrap: wrap; } .search-input { width: 100%; } .link-btn { min-height: 100px; } }
         .footer-nav { margin: 40px 0; }
         .back-btn { padding: 12px 40px; color: #ccc; text-decoration: none; border: 1px solid #444; border-radius: 30px; font-weight: bold;}
     </style>
@@ -75,6 +87,7 @@
 
 <div class="link-grid" id="mainGrid">
 <script>
+    // --- リンクデータ全件 ---
     const linkData = {
         1: { name: "公式サイト", url: "https://sanseito.jp/" },
         2: { name: "最新ニュース", url: "https://sanseito.jp/news/" },
@@ -82,7 +95,7 @@
         4: { name: "メンバー", url: "https://sanseito.jp/member/" },
         5: { name: "候補予定者", url: "https://sanseito.jp/2020/candidate/" },
         6: { name: "YouTube", url: "https://www.youtube.com/@sanseito-official" },
-        7: { name: "ｘ", url: "https://x.com/sansei411" },
+        7: { name: "Ｘ (Twitter)", url: "https://x.com/sansei411" },
         8: { name: "Instagram", url: "https://www.instagram.com/sanseito" },
         9: { name: "TikTok", url: "https://www.tiktok.com/@sanseito" },
         10: { name: "選挙ドットコム", url: "https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" },
@@ -176,6 +189,7 @@
     const grid = document.getElementById('mainGrid');
     for (let i = 1; i <= 100; i++) {
         let extraClass = "";
+        // 元の色分け条件
         if (i >= 1 && i <= 15) extraClass = " dark-orange-btn"; 
         else if (i === 92) extraClass = " red-btn";
         else if (i === 96) extraClass = " dark-red-btn";
@@ -190,19 +204,19 @@
         else if (i >= 79 && i <= 81) extraClass = " tan-btn";
         else if (i === 93 || i === 94) extraClass = " black-btn";
 
-        const data = linkData[i] || { name: "（予備）", url: `link${i}.html` };
+        const data = linkData[i] || { name: "（未設定）", url: "#" };
         const a = document.createElement('a');
         a.href = data.url;
         a.className = "link-btn" + extraClass;
         a.target = "_blank";
-        a.innerHTML = `No.${i}<span class="btn-title">${data.name}</span>`;
+        a.innerHTML = `<span style="opacity: 0.6; font-size: 0.7rem;">No.${i}</span><span class="btn-title">${data.name}</span>`;
         grid.appendChild(a);
     }
 </script>
 </div>
 
 <div class="footer-nav">
-    <a href="index.html" class="back-btn">ホーム画面へ戻る</a>
+    <a href="index.html" class="back-btn">ホームへ戻る</a>
 </div>
 
 </body>
