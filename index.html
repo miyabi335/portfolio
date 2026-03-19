@@ -5,136 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MIYABI'S PORTAL</title>
     <style>
-        body { font-family: "Meiryo", sans-serif; margin: 0; background: #0f172a; text-align: center; color: #f1f5f9; min-height: 100vh; padding-top: 56.25vw; /* 固定動画のスペースを確保(16:9) */ }
-        
-        /* モバイル以外では固定動画の数値を調整 */
-        @media (min-width: 769px) {
-            body { padding-top: 450px; /* PCでの固定動画の高さを指定 */ }
+        /* 全体の基本設定 */
+        body { 
+            font-family: "Meiryo", sans-serif; 
+            margin: 0; 
+            background: #0f172a; 
+            text-align: center; 
+            color: #f1f5f9; 
         }
 
-        /* --- 【新規】最上部固定動画エリア --- */
-        .fixed-video-container { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
+        /* --- 1. ヘッダー：富士山を復活 --- */
+        .header-container { 
+            position: relative; 
             width: 100%; 
-            height: 56.25vw; /* 16:9 の比率 */
-            max-height: 450px; /* PCでの最大高さ */
-            background: #000; 
-            z-index: 1000; /* 最前面に配置 */
+            height: 250px; /* 重ならないよう高さを確保 */
             overflow: hidden; 
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5); 
-            border-bottom: 3px solid #fb8c00; /* オレンジのアクセント */
+            background: #1e293b; 
         }
-        
-        .fixed-video-thumb { 
+        .header-image { 
             width: 100%; 
             height: 100%; 
-            object-fit: cover; 
-            cursor: pointer; 
-            transition: 0.3s; 
+            object-fit: cover; /* 画面一杯に綺麗に広げる */
+            display: block;
         }
-        .fixed-video-thumb:hover { transform: scale(1.02); }
-
-        /* 動画上のテキストオーバーレイ */
-        .video-overlay-text { 
+        .header-text { 
             position: absolute; 
-            bottom: 10px; 
-            left: 10px; 
-            background: rgba(0,0,0,0.7); 
-            color: #fb8c00; 
-            padding: 5px 15px; 
-            border-radius: 5px; 
-            font-weight: bold; 
-            font-size: 0.9rem; 
-            pointer-events: none; /* テキストはクリック不可 */
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            width: 100%; 
+        }
+        .header-text h1 { 
+            font-size: 2.5rem; 
+            letter-spacing: 0.2em; 
+            margin: 0; 
+            color: #fff;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.9); 
         }
 
-        /* --- スクロールエリアのスタイル --- */
-        
-        /* 以前のヘッダーは固定動画の下に配置 */
-        .header-container { position: relative; width: 100%; height: 25vh; overflow: hidden; background: #333; margin-top: 10px; }
-        .header-image { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
-        .header-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; text-shadow: 0 2px 15px rgba(0,0,0,0.8); width: 100%; }
-        .header-text h1 { font-size: 2.0rem; letter-spacing: 0.2em; margin: 0; }
+        /* セクション見出し */
+        .section-title { 
+            margin-top: 40px; 
+            padding: 15px; 
+            background: rgba(255,255,255,0.05); 
+            font-weight: bold; 
+            border-bottom: 2px solid #38bdf8; 
+            color: #38bdf8; 
+        }
+        .section-title.sansei { 
+            border-bottom: 2px solid #fb8c00; 
+            color: #fb8c00; 
+        }
 
-        .section-title { margin-top: 30px; padding: 10px; background: rgba(255,255,255,0.05); font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1); color: #94a3b8; letter-spacing: 0.1em; font-size: 0.9rem; }
-
-        /* ナビゲーション */
-        .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; max-width: 950px; margin: 15px auto; padding: 0 10px; }
-        .nav-btn { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); color: #38bdf8; border: 1px solid #38bdf8; padding: 8px 4px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.8rem; min-height: 40px; transition: 0.2s; box-sizing: border-box; }
-        .nav-btn:hover { background: rgba(56, 189, 248, 0.2); transform: translateY(-2px); }
+        /* ナビゲーション (5列) */
+        .nav-grid { 
+            display: grid; 
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 10px; 
+            max-width: 1000px; 
+            margin: 20px auto; 
+            padding: 0 15px; 
+        }
+        .nav-btn { 
+            display: flex; align-items: center; justify-content: center; 
+            background: rgba(255,255,255,0.08); color: #38bdf8; 
+            border: 1px solid #38bdf8; padding: 12px 5px; border-radius: 8px; 
+            text-decoration: none; font-weight: bold; font-size: 0.8rem; min-height: 50px; 
+        }
         .nav-link-special { background: #fb8c00 !important; color: #fff !important; border: 1px solid #fff !important; }
 
-        /* 参政党ボタン */
-        .sansei-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; max-width: 950px; margin: 15px auto; padding: 0 10px; }
-        .sansei-btn { background: #fb8c00; color: #fff; border: none; padding: 10px 4px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.75rem; min-height: 45px; display: flex; align-items: center; justify-content: center; transition: 0.2s; box-sizing: border-box; }
-        .sansei-btn:hover { background: #ef6c00; transform: translateY(-2px); }
-
-        /* --- 【大幅変更】フォトギャラリー（2段8枚） --- */
-        .photo-grid { 
+        /* --- 2. 参政党ボタン (10個：5列×2段) --- */
+        .sansei-grid { 
             display: grid; 
-            grid-template-columns: repeat(4, 1fr); /* PCでは4列 */
+            grid-template-columns: repeat(5, 1fr); 
             gap: 10px; 
-            max-width: 1100px; 
+            max-width: 1000px; 
             margin: 20px auto; 
             padding: 0 15px; 
         }
-        .photo-item { 
-            width: 100%; 
-            aspect-ratio: 1/1; /* 正方形 */
-            object-fit: cover; 
-            border-radius: 8px; 
-            border: 1px solid rgba(255,255,255,0.1); 
-            transition: 0.3s;
+        .sansei-btn { 
+            background: #fb8c00; color: #fff; border: none; 
+            padding: 14px 5px; border-radius: 8px; text-decoration: none; 
+            font-weight: bold; font-size: 0.8rem; display: flex; 
+            align-items: center; justify-content: center; min-height: 50px; 
         }
-        .photo-item:hover { transform: scale(1.03); border-color: #38bdf8; }
 
-        /* --- 【大幅変更】動画ギャラリー（2段8つ） --- */
-        .grid-container { 
+        /* ギャラリー共通 (4列) */
+        .grid-4col { 
             display: grid; 
-            grid-template-columns: repeat(4, 1fr); /* PCでは4列 */
-            gap: 10px; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 15px; 
             max-width: 1100px; 
             margin: 20px auto; 
-            padding: 0 15px; 
+            padding: 0 20px; 
         }
-        .item-wrapper { display: flex; flex-direction: column; align-items: center; }
-        .item-label { font-size: 0.7rem; color: #fb8c00; margin-bottom: 3px; font-weight: bold; }
-        .thumb-media { 
-            width: 100%; 
-            aspect-ratio: 16/9; /* 16:9 */
-            object-fit: cover; 
-            border-radius: 8px; 
-            border: 1px solid rgba(255,255,255,0.1); 
-            cursor: pointer; 
-            transition: 0.3s; 
-        }
-        .thumb-media:hover { transform: scale(1.03); border-color: #fb8c00; }
+        .photo-item { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); }
+        .video-item { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; }
+        .video-item:hover { border-color: #fb8c00; transform: scale(1.02); transition: 0.2s; }
+        .video-item.general:hover { border-color: #38bdf8; }
 
-        /* 動画オーバーレイ */
-        #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 9999; }
-        #overlay-content { width: 90%; max-width: 1000px; position: relative; text-align: center; }
-        #overlay-video { width: 100%; aspect-ratio: 16/9; display: none; border-radius: 8px; border: 2px solid #333; }
-        .close-btn { margin-top: 20px; background: #ef4444; color: white; border: none; padding: 12px 40px; border-radius: 30px; cursor: pointer; font-weight: bold; transition: 0.2s; }
-        .close-btn:hover { background: #dc2626; transform: scale(1.05); }
+        /* 再生オーバーレイ */
+        #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 10000; }
+        #overlay-content { width: 95%; max-width: 900px; text-align: center; }
+        #overlay-video { width: 100%; aspect-ratio: 16/9; border-radius: 12px; }
+        .close-btn { margin-top: 20px; background: #ef4444; color: white; border: none; padding: 15px 50px; border-radius: 40px; cursor: pointer; font-weight: bold; }
 
-        /* モバイル対応 */
-        @media (max-width: 768px) { 
-            /* 固定動画の高さを確保するためのpadding-topはbodyのスタイルで指定済み */
-            .nav-grid, .sansei-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; } 
-            .photo-grid, .grid-container { grid-template-columns: repeat(2, 1fr); gap: 8px; } /* スマホでは2列 */
+        @media (max-width: 768px) {
+            .nav-grid, .sansei-grid, .grid-4col { grid-template-columns: repeat(2, 1fr); }
+            .header-container { height: 150px; }
             .header-text h1 { font-size: 1.5rem; }
-            .header-container { height: 15vh; }
         }
     </style>
 </head>
 <body>
-
-<div class="fixed-video-container">
-    <img src="https://img.youtube.com/vi/kcyuEbUbSr8/maxresdefault.jpg" class="fixed-video-thumb" onclick="openVideo('kcyuEbUbSr8')" alt="最新動画: 橙の焔">
-    <div class="video-overlay-text">LATEST VIDEO: 橙の焔</div>
-</div>
 
 <header class="header-container">
     <img src="fuji00001.jpg" alt="富士山" class="header-image">
@@ -148,52 +131,54 @@
     <div class="nav-btn">No.3</div>
     <a href="no4.html" class="nav-btn">Music</a>
     <div class="nav-btn">No.5</div>
-    
-    <a href="https://www.gov-online.go.jp/governmentlinks/" target="_blank" class="nav-btn">官公庁サイト</a>
+    <a href="https://www.gov-online.go.jp/governmentlinks/" target="_blank" class="nav-btn">官公庁</a>
     <a href="https://www.j-lis.go.jp/spd/map-search/cms_1069.html" target="_blank" class="nav-btn">自治体マップ</a>
     <a href="https://uub.jp/map/kyoto/" target="_blank" class="nav-btn">都道府県地図</a>
-    
     <div class="nav-btn">No.9</div>
     <a href="no10.html" class="nav-btn nav-link-special">Links集(No.10)</a>
 </nav>
 
-<div class="section-title">SANSEITO LINKS</div>
+<div class="section-title sansei">SANSEITO AREA (10 Buttons & 4 Videos)</div>
 <div class="sansei-grid">
     <a href="https://sanseito.jp/" target="_blank" class="sansei-btn">公式サイト</a>
     <a href="https://sanseito.jp/news/" target="_blank" class="sansei-btn">ニュース</a>
     <a href="https://info.sanseito.jp/" target="_blank" class="sansei-btn">イベント</a>
     <a href="https://sanseito.jp/member/" target="_blank" class="sansei-btn">メンバー</a>
     <a href="https://www.youtube.com/@sanseito-official" target="_blank" class="sansei-btn">YouTube</a>
+    <a href="#" class="sansei-btn">支部検索</a>
+    <a href="#" class="sansei-btn">政策一覧</a>
+    <a href="#" class="sansei-btn">入党案内</a>
+    <a href="#" class="sansei-btn">寄付はこちら</a>
+    <a href="#" class="sansei-btn">メルマガ登録</a>
+</div>
+
+<div class="grid-4col">
+    <img src="https://img.youtube.com/vi/av8FzH-rl_0/mqdefault.jpg" class="video-item" onclick="openVideo('av8FzH-rl_0')" alt="動画1">
+    <img src="https://img.youtube.com/vi/anwipaF_gLU/mqdefault.jpg" class="video-item" onclick="openVideo('anwipaF_gLU')" alt="動画2">
+    <img src="https://img.youtube.com/vi/78uHp5bLyto/mqdefault.jpg" class="video-item" onclick="openVideo('78uHp5bLyto')" alt="動画3">
+    <img src="https://img.youtube.com/vi/kcyuEbUbSr8/mqdefault.jpg" class="video-item" onclick="openVideo('kcyuEbUbSr8')" alt="動画4">
 </div>
 
 <div class="section-title">PHOTO GALLERY (8 Photos)</div>
-<div class="photo-grid">
-    <img src="photo1.jpg" class="photo-item" alt="Photo 1">
-    <img src="photo2.jpg" class="photo-item" alt="Photo 2">
-    <img src="photo3.jpg" class="photo-item" alt="Photo 3">
-    <img src="photo4.jpg" class="photo-item" alt="Photo 4">
-    <img src="photo5.jpg" class="photo-item" alt="Photo 5">
-    <img src="photo6.jpg" class="photo-item" alt="Photo 6">
-    <img src="photo7.jpg" class="photo-item" alt="Photo 7">
-    <img src="photo8.jpg" class="photo-item" alt="Photo 8">
+<div class="grid-4col">
+    <img src="photo1.jpg" class="photo-item"><img src="photo2.jpg" class="photo-item">
+    <img src="photo3.jpg" class="photo-item"><img src="photo4.jpg" class="photo-item">
+    <img src="photo5.jpg" class="photo-item"><img src="photo6.jpg" class="photo-item">
+    <img src="photo7.jpg" class="photo-item"><img src="photo8.jpg" class="photo-item">
 </div>
 
-<div class="section-title">VIDEO ARCHIVE (8 Videos)</div>
-<div class="grid-container">
-    <div class="item-wrapper"><div class="item-label">Video 1</div><img src="https://img.youtube.com/vi/av8FzH-rl_0/mqdefault.jpg" class="thumb-media" onclick="openVideo('av8FzH-rl_0')" alt="希望のヒカリ"></div>
-    <div class="item-wrapper"><div class="item-label">Video 2</div><img src="https://img.youtube.com/vi/anwipaF_gLU/mqdefault.jpg" class="thumb-media" onclick="openVideo('anwipaF_gLU')" alt="僕らは日本をあきらめない"></div>
-    <div class="item-wrapper"><div class="item-label">Video 3</div><img src="https://img.youtube.com/vi/78uHp5bLyto/mqdefault.jpg" class="thumb-media" onclick="openVideo('78uHp5bLyto')" alt="ヒーローは現れない"></div>
-    <div class="item-wrapper"><div class="item-label">Video 4</div><img src="https://img.youtube.com/vi/kcyuEbUbSr8/mqdefault.jpg" class="thumb-media" onclick="openVideo('kcyuEbUbSr8')" alt="橙の焔"></div>
-    <div class="item-wrapper"><div class="item-label">Video 5</div><img src="https://img.youtube.com/vi/G1hKzCkywM8/mqdefault.jpg" class="thumb-media" onclick="openVideo('G1hKzCkywM8')" alt="Video 5"></div>
-    <div class="item-wrapper"><div class="item-label">Video 6</div><img src="https://img.youtube.com/vi/a-8XiE7W7u4/mqdefault.jpg" class="thumb-media" onclick="openVideo('a-8XiE7W7u4')" alt="Video 6"></div>
-    <div class="item-wrapper"><div class="item-label">Video 7</div><img src="https://img.youtube.com/vi/q2_c2_WfJFg/mqdefault.jpg" class="thumb-media" onclick="openVideo('q2_c2_WfJFg')" alt="Video 7"></div>
-    <div class="item-wrapper"><div class="item-label">Video 8</div><img src="https://img.youtube.com/vi/BpITZk7sa8E/mqdefault.jpg" class="thumb-media" onclick="openVideo('BpITZk7sa8E')" alt="Video 8"></div>
+<div class="section-title">GENERAL VIDEO ARCHIVE (別枠)</div>
+<div class="grid-4col">
+    <img src="https://img.youtube.com/vi/G1hKzCkywM8/mqdefault.jpg" class="video-item general" onclick="openVideo('G1hKzCkywM8')">
+    <img src="https://img.youtube.com/vi/a-8XiE7W7u4/mqdefault.jpg" class="video-item general" onclick="openVideo('a-8XiE7W7u4')">
+    <img src="https://img.youtube.com/vi/q2_c2_WfJFg/mqdefault.jpg" class="video-item general" onclick="openVideo('q2_c2_WfJFg')">
+    <img src="https://img.youtube.com/vi/BpITZk7sa8E/mqdefault.jpg" class="video-item general" onclick="openVideo('BpITZk7sa8E')">
 </div>
 
 <div id="overlay" onclick="closeOverlay()">
     <div id="overlay-content" onclick="event.stopPropagation()">
         <iframe id="overlay-video" src="" frameborder="0" allowfullscreen></iframe><br>
-        <button class="close-btn" onclick="closeOverlay()">× 閉じて戻る</button>
+        <button class="close-btn" onclick="closeOverlay()">× 閉じる</button>
     </div>
 </div>
 
@@ -201,20 +186,18 @@
     function openVideo(id) {
         const video = document.getElementById('overlay-video');
         video.src = "https://www.youtube.com/embed/" + id + "?autoplay=1";
-        video.style.display = 'block';
         document.getElementById('overlay').style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // 背景スクロールを禁止
+        document.body.style.overflow = 'hidden';
     }
-    
     function closeOverlay() {
         document.getElementById('overlay').style.display = 'none';
-        document.getElementById('overlay-video').src = ''; // 動画をストップ
-        document.body.style.overflow = ''; // スクロールを許可
+        document.getElementById('overlay-video').src = '';
+        document.body.style.overflow = '';
     }
 </script>
 
-<footer style="margin-top: 50px; padding: 20px; color: #64748b; font-size: 0.7rem; border-top: 1px solid rgba(255,255,255,0.05);">
-    &copy; 2026 MIYABI'S PORTAL All Rights Reserved.
+<footer style="margin: 80px 0 50px; color: #64748b; font-size: 0.8rem;">
+    &copy; 2026 MIYABI'S PORTAL
 </footer>
 
 </body>
