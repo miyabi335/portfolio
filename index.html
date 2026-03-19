@@ -3,55 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miyabi's Portfolio</title>
+    <title>Miyabi's Hobby Space</title>
     <style>
-        /* 全体の基本デザイン（MIYABIさんの既存スタイルに合わせて調整してください） */
+        /* 基本の背景とフォント */
         body {
-            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-            background-color: #fdf5f7;
-            color: #4a4a4a;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f0f2f5; /* 少し落ち着いた背景色 */
+            margin: 0;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
         }
 
+        h1 { color: #333; margin-bottom: 20px; }
+
+        /* ボタン全体のコンテナ */
         .menu-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
             width: 100%;
             max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
-        /* 共通ボタンのスタイル */
+        /* 共通ボタンデザイン */
         .menu-button {
+            width: 100%;
             padding: 15px;
-            font-size: 16px;
+            font-size: 17px;
             font-weight: bold;
             border: none;
-            border-radius: 30px;
+            border-radius: 12px;
+            background: #ffffff;
+            color: #333;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .menu-button:active { transform: scale(0.98); }
+
+        /* おみくじボタンだけ特別色（女性受け・華やか） */
+        #omikuji-btn {
             background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
             color: white;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
         }
 
-        .menu-button:active {
-            transform: scale(0.95);
-        }
-
-        /* --- おみくじ専用のスタイル --- */
-        .omikuji-container {
+        /* 下部のサブボタン（MAP・検索） */
+        .sub-container {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            max-width: 400px;
             margin-top: 10px;
-            text-align: center;
+        }
+        .sub-button {
+            flex: 1;
+            padding: 12px;
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
         }
 
-        /* ボタンがガタガタ揺れる動き */
-        .shake {
-            animation: shake-animation 0.5s ease-in-out;
-        }
+        /* --- おみくじの演出用 --- */
+        .shake { animation: shake-animation 0.5s ease-in-out; }
         @keyframes shake-animation {
             0% { transform: translate(0, 0); }
             25% { transform: translate(-4px, 0) rotate(-2deg); }
@@ -60,42 +78,19 @@
             100% { transform: translate(0, 0); }
         }
 
-        /* 結果カードのデザイン */
         .omikuji-card {
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 20px;
-            background-color: #ffffff;
-            border: 2.5px dashed #ffb6c1; /* 可愛いピンクの点線 */
-            box-shadow: 0 8px 20px rgba(255, 182, 193, 0.3);
-            display: none; /* 最初は隠す */
-            transform: translateY(20px);
-            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            line-height: 1.7;
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 15px;
+            background-color: #fffafb;
+            border: 2px dashed #ffb6c1;
+            display: none;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
-
-        .show-card {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .omikuji-title {
-            font-size: 1.4em;
-            font-weight: bold;
-            color: #e91e63;
-            margin-bottom: 10px;
-        }
-
-        .omikuji-item {
-            font-size: 0.9em;
-            color: #795548;
-            background-color: #fff0f5;
-            padding: 5px 10px;
-            border-radius: 10px;
-            display: inline-block;
-            margin-top: 12px;
-        }
+        .show-card { display: block; }
+        .omikuji-title { font-size: 1.3em; font-weight: bold; color: #d81b60; margin-bottom: 5px; }
+        .omikuji-item { font-size: 0.9em; color: #8d6e63; margin-top: 8px; }
     </style>
 </head>
 <body>
@@ -103,19 +98,22 @@
     <h1>MIYABI's Space</h1>
 
     <div class="menu-container">
-        <button class="menu-button">No.1：活動記録 (準備中)</button>
-        <button class="menu-button">No.2：本日の風景 (釣り・チャリ)</button>
-        <button class="menu-button">No.3：おすすめ動画</button>
-        <button class="menu-button">No.4：掲示板 (考え中)</button>
+        <button class="menu-button" onclick="location.href='activity.html'">No.1：活動記録</button>
+        <button class="menu-button" onclick="location.href='landscape.html'">No.2：本日の風景</button>
+        <button class="menu-button" onclick="location.href='movies.html'">No.3：おすすめ動画</button>
+        <button class="menu-button" onclick="location.href='bbs.html'">No.4：掲示板 (準備中)</button>
 
-        <div class="omikuji-container">
+        <div style="width: 100%;">
             <button id="omikuji-btn" class="menu-button" onclick="playOmikuji()">
-                🌸 今日の応援おみくじを引く 🌸
+                🌸 今日の応援おみくじ 🌸
             </button>
-            
-            <div id="omikuji-result" class="omikuji-card">
-                </div>
+            <div id="omikuji-result" class="omikuji-card"></div>
         </div>
+    </div>
+
+    <div class="sub-container">
+        <button class="sub-button">MAP</button>
+        <button class="sub-button">検索</button>
     </div>
 
     <audio id="sound-shake" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3"></audio>
@@ -128,46 +126,36 @@
             const soundShake = document.getElementById('sound-shake');
             const soundFanfare = document.getElementById('sound-fanfare');
 
-            // 1. 演出開始
             btn.classList.add('shake');
-            if(soundShake) soundShake.play().catch(e => console.log("Audio play blocked"));
-            
-            // 前の結果を消して引っ込める
+            if(soundShake) soundShake.play().catch(()=>{});
             resultDiv.classList.remove('show-card');
 
-            // 2. 0.5秒の「タメ」のあとに結果発表
             setTimeout(() => {
                 btn.classList.remove('shake');
-                
-                // 確率の重み付け (0-99)
                 const r = Math.floor(Math.random() * 100);
                 let res;
 
-                if (r < 10) { // 10%
+                if (r < 10) { 
                     res = { title: "🌸 はなまる 🌸", msg: "今日は一歩前進できる日。<br>あなたの応援が誰かの力になります✨", item: "お気に入りの入浴剤" };
-                } else if (r < 35) { // 25%
+                } else if (r < 35) { 
                     res = { title: "✨ だいきち ✨", msg: "素敵なニュースが飛び込んでくるかも！<br>笑顔で過ごしてね🌸", item: "季節のお花" };
-                } else if (r < 60) { // 25%
+                } else if (r < 60) { 
                     res = { title: "🍀 ちゅうきち 🍀", msg: "いつも頑張るあなたへ。<br>今日は自分にちょっと甘いご褒美を🍰", item: "美味しい紅茶" };
-                } else if (r < 85) { // 25%
+                } else if (r < 85) { 
                     res = { title: "🌷 小きち 🌷", msg: "足元を整えると運気アップ。<br>お散歩に出かけてリフレッシュ！", item: "歩きやすい靴" };
-                } else { // 15%
+                } else { 
                     res = { title: "🌙 すえきち 🌙", msg: "ゆっくり進むのが一番の近道。<br>夜は早めに休んでね🌙", item: "ふわふわのタオル" };
                 }
 
-                // 3. 画面に表示
                 resultDiv.innerHTML = `
                     <div class="omikuji-title">${res.title}</div>
                     <div>${res.msg}</div>
-                    <div class="omikuji-item">✨ラッキーアイテム：${res.item}✨</div>
+                    <div class="omikuji-item">✨ラッキーアイテム：${res.item}</div>
                 `;
-                
                 resultDiv.classList.add('show-card');
-                if(soundFanfare) soundFanfare.play().catch(e => console.log("Audio play blocked"));
-                
+                if(soundFanfare) soundFanfare.play().catch(()=>{});
             }, 500);
         }
     </script>
-
 </body>
 </html>
