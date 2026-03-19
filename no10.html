@@ -22,13 +22,45 @@
         }
 
         .header-text h1 { margin: 0; font-size: 1.5rem; font-weight: 200; letter-spacing: 0.3em; color: #fff; }
+
+        /* --- Google検索窓エリア（追加） --- */
+        .search-area {
+            max-width: 600px;
+            margin: 30px auto 10px;
+            padding: 0 15px;
+        }
+        .search-form {
+            display: flex;
+            gap: 8px;
+        }
+        .search-input {
+            flex: 1;
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 2px solid #fb8c00;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            outline: none;
+        }
+        .search-submit {
+            background: #fb8c00;
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .search-submit:hover { background: #ef6c00; }
+        /* ------------------------------ */
         
         .link-grid { 
             display: grid; 
             grid-template-columns: repeat(5, 1fr); 
             gap: 10px; 
             max-width: 1100px; 
-            margin: 30px auto; 
+            margin: 20px auto; 
             padding: 15px; 
             box-sizing: border-box;
         }
@@ -63,6 +95,7 @@
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
+            -webkit-box-orient: vertical;
             overflow: hidden;
             letter-spacing: -0.02em;
         }
@@ -92,6 +125,8 @@
             .link-grid { grid-template-columns: repeat(2, 1fr); gap: 6px;} 
             .link-btn { height: 80px; }
             .btn-title { font-size: 0.95rem; }
+            .search-form { flex-direction: column; } /* モバイル時は縦並びに */
+            .search-submit { padding: 10px; }
         }
 
         .footer-nav { margin: 40px 0; }
@@ -103,6 +138,13 @@
 <header class="header-container">
     <div class="header-text"><h1>参政党＋出張便利リンク</h1></div>
 </header>
+
+<div class="search-area">
+    <form action="https://www.google.com/search" method="get" target="_blank" class="search-form">
+        <input type="text" name="q" class="search-input" placeholder="Google で検索..." required>
+        <button type="submit" class="search-submit">検索</button>
+    </form>
+</div>
 
 <div class="link-grid">
     <script>
@@ -213,10 +255,10 @@
             let extraClass = "";
             
             // 色分け判定
-            if (i >= 1 && i <= 15) extraClass = " dark-orange-btn"; // 参政党：濃いオレンジ
+            if (i >= 1 && i <= 15) extraClass = " dark-orange-btn"; 
             else if (i === 92) extraClass = " red-btn";
             else if (i === 96) extraClass = " dark-red-btn";
-            else if (i >= 97 && i <= 100) extraClass = " orange-btn"; // グルメ：薄いオレンジに修正
+            else if (i >= 97 && i <= 100) extraClass = " orange-btn"; 
             else if ((i >= 16 && i <= 25) || (i >= 66 && i <= 75)) extraClass = " blue-btn";
             else if ((i >= 26 && i <= 35) || i === 95) extraClass = " green-btn";
             else if (i >= 36 && i <= 45) extraClass = " yellow-btn";
