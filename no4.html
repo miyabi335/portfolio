@@ -23,7 +23,7 @@
         /* リストコンテナ */
         .video-list { padding: 15px; max-width: 1000px; margin: 0 auto; }
 
-        /* 動画1行分（左：画像、右：テキスト） */
+        /* 動画1行分 */
         .video-row {
             display: flex; 
             align-items: stretch; 
@@ -32,7 +32,6 @@
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.08);
-            transition: 0.3s;
         }
 
         /* 左側：サムネイル */
@@ -51,7 +50,7 @@
             object-fit: cover;
         }
 
-        /* 再生アイコン（オレンジ） */
+        /* 再生アイコン */
         .play-icon {
             position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%);
@@ -76,37 +75,22 @@
         .comment-artist { font-size: 0.95rem; color: #38bdf8; margin-bottom: 8px; font-weight: bold; }
         .comment-text { font-size: 0.85rem; line-height: 1.5; color: #94a3b8; }
 
-        /* --- 動画再生オーバーレイ（超大画面設定） --- */
+        /* 動画再生オーバーレイ（超大画面） */
         #overlay { 
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0.98); align-items: center; justify-content: center; z-index: 10000; 
         }
         #overlay-content { 
-            width: 100%; 
-            height: 100%; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center; 
+            width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; 
         }
-        #overlay-video-container {
-            width: 100%; /* 横幅いっぱい */
-            max-width: 1280px; /* PCでの見過ぎ防止 */
-            aspect-ratio: 16/9;
-        }
-        #overlay-video { 
-            width: 100%; 
-            height: 100%; 
-            border: none;
-            box-shadow: 0 0 40px rgba(0,0,0,1);
-        }
+        #overlay-video-container { width: 100%; max-width: 1280px; aspect-ratio: 16/9; }
+        #overlay-video { width: 100%; height: 100%; border: none; }
         .close-btn { 
             margin-top: 25px; background: #ef4444; color: #fff; border: none;
             padding: 15px 70px; border-radius: 50px; cursor: pointer; 
             font-weight: bold; font-size: 1.3rem;
         }
 
-        /* スマホ用微調整 */
         @media (max-width: 480px) {
             .comment-title { font-size: 1rem; }
             .comment-artist { font-size: 0.85rem; }
@@ -127,49 +111,49 @@
 
     <div class="video-row">
         <div class="video-thumb-container" onclick="openVideo('av8FzH-rl_0')">
-            <img src="https://img.youtube.com/vi/av8FzH-rl_0/maxresdefault.jpg" class="video-thumb">
+            <img src="https://img.youtube.com/vi/av8FzH-rl_0/hqdefault.jpg" class="video-thumb">
             <div class="play-icon">▶</div>
         </div>
         <div class="video-comment">
-            <div class="comment-title">希望のヒカリ</div>
+            <div class="comment-title">『希望のヒカリ』参政党テーマソングMV</div>
             <div class="comment-artist">山口 光貴</div>
-            <div class="comment-text">参政党テーマソングMV。心に響く力強い歌声が特徴です。</div>
+            <div class="comment-text">参政党の志を歌ったメインテーマ。心に響くメロディです。</div>
         </div>
     </div>
 
     <div class="video-row">
         <div class="video-thumb-container" onclick="openVideo('anwipaF_gLU')">
-            <img src="https://img.youtube.com/vi/anwipaF_gLU/maxresdefault.jpg" class="video-thumb">
+            <img src="https://img.youtube.com/vi/anwipaF_gLU/hqdefault.jpg" class="video-thumb">
             <div class="play-icon">▶</div>
         </div>
         <div class="video-comment">
             <div class="comment-title">日本をあきらめない</div>
             <div class="comment-artist">ザ・マスミサイル</div>
-            <div class="comment-text">魂を揺さぶるパンクロック。真っ直ぐなメッセージが届きます。</div>
+            <div class="comment-text">熱いメッセージが込められた、魂の応援歌。</div>
         </div>
     </div>
 
     <div class="video-row">
         <div class="video-thumb-container" onclick="openVideo('78uHp5bLyto')">
-            <img src="https://img.youtube.com/vi/78uHp5bLyto/maxresdefault.jpg" class="video-thumb">
+            <img src="https://img.youtube.com/vi/78uHp5bLyto/hqdefault.jpg" class="video-thumb">
             <div class="play-icon">▶</div>
         </div>
         <div class="video-comment">
             <div class="comment-title">ヒーローは現れない</div>
             <div class="comment-artist">ザ・マスミサイル</div>
-            <div class="comment-text">自分たちが立ち上がる勇気をくれる名曲です。</div>
+            <div class="comment-text">自分たち一人一人が主人公であることを思い出させてくれます。</div>
         </div>
     </div>
 
     <div class="video-row">
         <div class="video-thumb-container" onclick="openVideo('kcyuEbUbSr8')">
-            <img src="https://img.youtube.com/vi/kcyuEbUbSr8/maxresdefault.jpg" class="video-thumb">
+            <img src="https://img.youtube.com/vi/kcyuEbUbSr8/hqdefault.jpg" class="video-thumb">
             <div class="play-icon">▶</div>
         </div>
         <div class="video-comment">
             <div class="comment-title">橙の焔</div>
             <div class="comment-artist">ザ・マスミサイル</div>
-            <div class="comment-text">参政党のカラーである橙を象徴する、熱い一曲。</div>
+            <div class="comment-text">参政党のイメージカラー「橙」を冠した力強い一曲。</div>
         </div>
     </div>
 
@@ -187,15 +171,14 @@
 <script>
     function openVideo(id) {
         const video = document.getElementById('overlay-video');
-        // 自動再生を有効にする設定
         video.src = "https://www.youtube.com/embed/" + id + "?autoplay=1&rel=0";
         document.getElementById('overlay').style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // 背景のスクロールを止める
+        document.body.style.overflow = 'hidden';
     }
     function closeOverlay() {
         document.getElementById('overlay').style.display = 'none';
-        document.getElementById('overlay-video').src = ''; // 動画をリセットして停止
-        document.body.style.overflow = ''; // スクロール再開
+        document.getElementById('overlay-video').src = '';
+        document.body.style.overflow = '';
     }
 </script>
 
