@@ -6,88 +6,120 @@
     <title>MUSIC ARCHIVE - MIYABI'S PORTAL</title>
     <style>
         body { 
-            font-family: "Helvetica Neue", Arial, sans-serif;
-            margin: 0; background: #0f172a; color: #f1f5f9; 
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", sans-serif;
+            margin: 0; background: #020617; color: #f1f5f9; 
+            padding-bottom: 50px;
         }
 
         /* ヘッダー */
         .header {
-            padding: 20px; background: #1e293b; text-align: center;
+            padding: 20px; background: rgba(15, 23, 42, 0.95); text-align: center;
             border-bottom: 2px solid #fb8c00; position: sticky; top: 0; z-index: 100;
+            backdrop-filter: blur(10px);
         }
-        .header h1 { font-size: 1.5rem; margin: 0; letter-spacing: 0.1em; color: #fb8c00; }
-        .back-link { color: #38bdf8; text-decoration: none; font-size: 0.9rem; font-weight: bold; }
+        .header h1 { font-size: 1.4rem; margin: 0; letter-spacing: 0.1em; color: #fb8c00; }
+        .back-link { color: #38bdf8; text-decoration: none; font-size: 0.9rem; font-weight: bold; margin-bottom: 8px; display: inline-block; }
 
-        /* 動画リストコンテナ */
+        /* リストコンテナ */
         .video-list { padding: 15px; max-width: 1000px; margin: 0 auto; }
 
-        /* 動画1行分のスタイル */
+        /* 動画1行分（左：画像、右：テキスト） */
         .video-row {
-            display: flex; /* 横並び */
-            align-items: flex-start;
-            background: rgba(255,255,255,0.05);
+            display: flex; 
+            align-items: stretch; 
+            background: rgba(255,255,255,0.03);
             margin-bottom: 15px;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: 0.3s;
         }
 
-        /* 左側：サムネイル（クリックで再生） */
+        /* 左側：サムネイル */
         .video-thumb-container {
-            width: 45%; /* 画面の約半分を画像に */
+            width: 45%; 
             position: relative;
             cursor: pointer;
+            overflow: hidden;
+            background: #000;
         }
         .video-thumb {
             width: 100%;
+            height: 100%;
             display: block;
             aspect-ratio: 16/9;
             object-fit: cover;
         }
-        /* 再生アイコンを重ねる */
+
+        /* 再生アイコン（オレンジ） */
         .play-icon {
             position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            background: rgba(0,0,0,0.6); border-radius: 50%;
-            padding: 10px; width: 30px; height: 30px;
+            background: #fb8c00; border-radius: 50%;
+            width: 44px; height: 44px;
             display: flex; align-items: center; justify-content: center;
+            color: #fff; font-size: 1.3rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
-        /* 右側：コメントスペース */
+        /* 右側：テキストスペース */
         .video-comment {
-            width: 55%; /* 残りのスペース */
-            padding: 10px 15px;
+            width: 55%; 
+            padding: 15px;
             box-sizing: border-box;
             text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
         }
-        .comment-title { font-weight: bold; color: #fb8c00; font-size: 1rem; margin-bottom: 5px; }
-        .comment-text { font-size: 0.85rem; line-height: 1.4; color: #cbd5e1; }
+        .comment-title { font-weight: bold; color: #fff; font-size: 1.1rem; margin-bottom: 4px; line-height: 1.3; }
+        .comment-artist { font-size: 0.95rem; color: #38bdf8; margin-bottom: 8px; font-weight: bold; }
+        .comment-text { font-size: 0.85rem; line-height: 1.5; color: #94a3b8; }
 
-        /* 動画再生オーバーレイ（巨大） */
+        /* --- 動画再生オーバーレイ（超大画面設定） --- */
         #overlay { 
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0.98); align-items: center; justify-content: center; z-index: 10000; 
         }
-        #overlay-content { width: 95%; max-width: 1200px; text-align: center; }
-        #overlay-video { width: 100%; aspect-ratio: 16/9; border: 1px solid #333; }
+        #overlay-content { 
+            width: 100%; 
+            height: 100%; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; 
+        }
+        #overlay-video-container {
+            width: 100%; /* 横幅いっぱい */
+            max-width: 1280px; /* PCでの見過ぎ防止 */
+            aspect-ratio: 16/9;
+        }
+        #overlay-video { 
+            width: 100%; 
+            height: 100%; 
+            border: none;
+            box-shadow: 0 0 40px rgba(0,0,0,1);
+        }
         .close-btn { 
-            margin-top: 20px; background: #ef4444; color: #fff; border: none;
-            padding: 12px 40px; border-radius: 30px; cursor: pointer; font-weight: bold;
+            margin-top: 25px; background: #ef4444; color: #fff; border: none;
+            padding: 15px 70px; border-radius: 50px; cursor: pointer; 
+            font-weight: bold; font-size: 1.3rem;
         }
 
-        /* さらにスマホで文字を読みやすく調整 */
+        /* スマホ用微調整 */
         @media (max-width: 480px) {
-            .video-row { margin-bottom: 10px; }
-            .comment-title { font-size: 0.9rem; }
+            .comment-title { font-size: 1rem; }
+            .comment-artist { font-size: 0.85rem; }
             .comment-text { font-size: 0.75rem; }
-            .video-comment { padding: 8px; }
+            .video-comment { padding: 10px; }
+            .play-icon { width: 35px; height: 35px; font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
 <header class="header">
-    <a href="index.html" class="back-link">← BACK TO PORTAL</a>
+    <a href="index.html" class="back-link">← PORTALへ戻る</a>
     <h1>MUSIC ARCHIVE</h1>
 </header>
 
@@ -95,74 +127,77 @@
 
     <div class="video-row">
         <div class="video-thumb-container" onclick="openVideo('av8FzH-rl_0')">
-            <img src="https://img.youtube.com/vi/av8FzH-rl_0/mqdefault.jpg" class="video-thumb">
+            <img src="https://img.youtube.com/vi/av8FzH-rl_0/maxresdefault.jpg" class="video-thumb">
             <div class="play-icon">▶</div>
         </div>
         <div class="video-comment">
             <div class="comment-title">希望のヒカリ</div>
-            <div class="comment-text">ここにこの動画に関する解説や思い出、歌詞の一部などを自由に書き込めます。</div>
+            <div class="comment-artist">山口 光貴</div>
+            <div class="comment-text">参政党テーマソングMV。心に響く力強い歌声が特徴です。</div>
         </div>
     </div>
 
     <div class="video-row">
         <div class="video-thumb-container" onclick="openVideo('anwipaF_gLU')">
-            <img src="https://img.youtube.com/vi/anwipaF_gLU/mqdefault.jpg" class="video-thumb">
+            <img src="https://img.youtube.com/vi/anwipaF_gLU/maxresdefault.jpg" class="video-thumb">
             <div class="play-icon">▶</div>
         </div>
         <div class="video-comment">
             <div class="comment-title">日本をあきらめない</div>
-            <div class="comment-text">右側のスペースが広いので、長文のコメントを入れても縦に伸びて綺麗に表示されます。</div>
+            <div class="comment-artist">ザ・マスミサイル</div>
+            <div class="comment-text">魂を揺さぶるパンクロック。真っ直ぐなメッセージが届きます。</div>
         </div>
     </div>
 
     <div class="video-row">
         <div class="video-thumb-container" onclick="openVideo('78uHp5bLyto')">
-            <img src="https://img.youtube.com/vi/78uHp5bLyto/mqdefault.jpg" class="video-thumb">
+            <img src="https://img.youtube.com/vi/78uHp5bLyto/maxresdefault.jpg" class="video-thumb">
             <div class="play-icon">▶</div>
         </div>
         <div class="video-comment">
             <div class="comment-title">ヒーローは現れない</div>
-            <div class="comment-text">動画を増やしたいときは、この「video-row」のブロックをコピーして下に増やすだけです。</div>
+            <div class="comment-artist">ザ・マスミサイル</div>
+            <div class="comment-text">自分たちが立ち上がる勇気をくれる名曲です。</div>
         </div>
     </div>
 
     <div class="video-row">
         <div class="video-thumb-container" onclick="openVideo('kcyuEbUbSr8')">
-            <img src="https://img.youtube.com/vi/kcyuEbUbSr8/mqdefault.jpg" class="video-thumb">
+            <img src="https://img.youtube.com/vi/kcyuEbUbSr8/maxresdefault.jpg" class="video-thumb">
             <div class="play-icon">▶</div>
         </div>
         <div class="video-comment">
             <div class="comment-title">橙の焔</div>
-            <div class="comment-text">左にサムネイルがあることで、どの動画のコメントかが一目でわかります。</div>
+            <div class="comment-artist">ザ・マスミサイル</div>
+            <div class="comment-text">参政党のカラーである橙を象徴する、熱い一曲。</div>
         </div>
     </div>
 
-    </div>
+</div>
 
 <div id="overlay" onclick="closeOverlay()">
     <div id="overlay-content" onclick="event.stopPropagation()">
-        <iframe id="overlay-video" src="" frameborder="0" allowfullscreen></iframe><br>
-        <button class="close-btn" onclick="closeOverlay()">CLOSE</button>
+        <div id="overlay-video-container">
+            <iframe id="overlay-video" src="" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+        </div>
+        <button class="close-btn" onclick="closeOverlay()">× 閉じる</button>
     </div>
 </div>
 
 <script>
     function openVideo(id) {
         const video = document.getElementById('overlay-video');
-        video.src = "https://www.youtube.com/embed/" + id + "?autoplay=1";
+        // 自動再生を有効にする設定
+        video.src = "https://www.youtube.com/embed/" + id + "?autoplay=1&rel=0";
         document.getElementById('overlay').style.display = 'flex';
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden'; // 背景のスクロールを止める
     }
     function closeOverlay() {
         document.getElementById('overlay').style.display = 'none';
-        document.getElementById('overlay-video').src = '';
-        document.body.style.overflow = '';
+        document.getElementById('overlay-video').src = ''; // 動画をリセットして停止
+        document.body.style.overflow = ''; // スクロール再開
     }
 </script>
-
-<footer style="padding: 40px; text-align: center; color: #475569; font-size: 0.8rem;">
-    &copy; 2026 MIYABI'S PORTAL
-</footer>
 
 </body>
 </html>
