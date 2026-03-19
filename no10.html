@@ -7,50 +7,33 @@
     <style>
         body { font-family: "Meiryo", sans-serif; margin: 0; background: #0f172a; text-align: center; color: #f1f5f9; padding-bottom: 50px; }
         
-        /* ヘッダー */
         .page-header { background: #1e293b; padding: 20px 0; border-bottom: 2px solid #38bdf8; margin-bottom: 20px; }
         .page-header h1 { margin: 0; font-size: 1.5rem; color: #38bdf8; }
 
-        /* Google検索窓：より頑丈なデザイン */
-        .search-container { max-width: 600px; margin: 20px auto 30px; padding: 0 15px; }
-        .search-form { display: flex; align-items: center; background: #1e293b; border: 2px solid #38bdf8; border-radius: 50px; padding: 5px 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
-        .search-input { flex: 1; background: transparent; border: none; color: white; padding: 12px; font-size: 1rem; outline: none; min-width: 100px; }
-        .search-btn { background: #38bdf8; border: none; color: #0f172a; padding: 10px 20px; border-radius: 40px; font-weight: bold; cursor: pointer; white-space: nowrap; }
+        .section-title { margin-top: 30px; padding: 10px; background: rgba(255,255,255,0.05); color: #94a3b8; font-weight: bold; font-size: 0.9rem; border-left: 4px solid #fb8c00; text-align: left; max-width: 950px; margin-left: auto; margin-right: auto; }
 
-        .section-title { margin: 30px auto 15px; padding: 10px; background: rgba(255,255,255,0.05); color: #94a3b8; font-weight: bold; font-size: 0.9rem; text-align: left; max-width: 950px; border-left: 4px solid #fb8c00; }
-
-        /* ★ボタンエリア：確実に表示されるよう設定 */
+        /* 5列×20行（計100個）でも崩れないグリッド */
         .link-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 画面に合わせて自動調整 */
-            gap: 12px; 
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 10px; 
             max-width: 950px; 
-            margin: 0 auto 30px; 
+            margin: 15px auto; 
             padding: 0 15px; 
         }
 
-        /* 共通ボタンボタン */
-        .btn-base { 
-            display: flex; align-items: center; justify-content: center; 
-            text-decoration: none; border-radius: 8px; font-weight: bold; 
-            font-size: 0.8rem; min-height: 55px; padding: 10px; transition: 0.2s; 
-        }
-
-        /* オレンジ（参政党） */
-        .sansei-btn { background: #fb8c00; color: #fff; }
+        /* 参政党ボタン（オレンジ） */
+        .sansei-btn { background: #fb8c00; color: #fff; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 0.75rem; min-height: 55px; display: flex; align-items: center; justify-content: center; padding: 5px; transition: 0.2s; }
         .sansei-btn:hover { background: #ef6c00; transform: translateY(-2px); }
 
-        /* ブルー（便利リンク） */
-        .utility-btn { background: #334155; color: #38bdf8; border: 1px solid #38bdf8; }
+        /* 便利リンクボタン（ブルー） */
+        .utility-btn { background: #334155; color: #38bdf8; border: 1px solid #38bdf8; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 0.75rem; min-height: 55px; display: flex; align-items: center; justify-content: center; padding: 5px; transition: 0.2s; }
         .utility-btn:hover { background: #1e293b; color: #fff; transform: translateY(-2px); }
 
-        /* 戻るボタン */
-        .back-btn { display: inline-block; margin-top: 40px; padding: 12px 40px; background: #475569; color: white; text-decoration: none; border-radius: 30px; font-weight: bold; }
+        .back-btn { display: inline-block; margin-top: 40px; padding: 12px 40px; background: #475569; color: white; text-decoration: none; border-radius: 30px; font-weight: bold; transition: 0.2s; }
+        .back-btn:hover { background: #64748b; }
 
-        /* スマホ用：2列をキープ */
-        @media (max-width: 480px) {
-            .link-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-        }
+        @media (max-width: 768px) { .link-grid { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body>
@@ -59,40 +42,28 @@
     <h1>LINK COLLECTION (No.10)</h1>
 </div>
 
-<div class="search-container">
-    <form action="https://www.google.com/search" method="get" target="_blank" class="search-form">
-        <input type="text" name="q" class="search-input" placeholder="Google で検索..." required>
-        <button type="submit" class="search-btn">検索</button>
-    </form>
-</div>
-
 <div class="section-title">SANSEITO OFFICIAL LINKS</div>
 <div class="link-grid">
-    <a href="https://sanseito.jp/" target="_blank" class="btn-base sansei-btn">公式サイト</a>
-    <a href="https://www.youtube.com/@sanseito-official" target="_blank" class="btn-base sansei-btn">YouTube</a>
-    <a href="https://x.com/sansei411" target="_blank" class="btn-base sansei-btn">公式X</a>
-    <a href="https://www.instagram.com/sanseito" target="_blank" class="btn-base sansei-btn">Instagram</a>
-    <a href="https://www.tiktok.com/@sanseito" target="_blank" class="btn-base sansei-btn">TikTok</a>
-    <a href="https://sanseito.jp/news/" target="_blank" class="btn-base sansei-btn">ニュース</a>
-    <a href="https://info.sanseito.jp/" target="_blank" class="btn-base sansei-btn">イベント</a>
-    <a href="https://sanseito.jp/member/" target="_blank" class="btn-base sansei-btn">メンバー</a>
-    <a href="https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" target="_blank" class="btn-base sansei-btn">選挙ドットコム</a>
-    <a href="https://sanseito.jp/2020/candidate/" target="_blank" class="btn-base sansei-btn">候補予定者</a>
+    <a href="https://sanseito.jp/" target="_blank" class="sansei-btn">公式サイト</a>
+    <a href="https://www.youtube.com/@sanseito-official" target="_blank" class="sansei-btn">YouTube</a>
+    <a href="https://x.com/sansei411" target="_blank" class="sansei-btn">公式X</a>
+    <a href="https://www.instagram.com/sanseito" target="_blank" class="sansei-btn">Instagram</a>
+    <a href="https://www.tiktok.com/@sanseito" target="_blank" class="sansei-btn">TikTok</a>
+    <a href="https://sanseito.jp/news/" target="_blank" class="sansei-btn">ニュース</a>
+    <a href="https://info.sanseito.jp/" target="_blank" class="sansei-btn">イベント</a>
+    <a href="https://sanseito.jp/member/" target="_blank" class="sansei-btn">メンバー</a>
+    <a href="https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" target="_blank" class="sansei-btn">選挙ドットコム</a>
+    <a href="https://sanseito.jp/2020/candidate/" target="_blank" class="sansei-btn">候補予定者</a>
 </div>
 
-<div class="section-title">UTILITY LINKS</div>
+<div class="section-title">UTILITY LINKS (100 Buttons Area)</div>
 <div class="link-grid">
-    <a href="https://www.google.com" target="_blank" class="btn-base utility-btn">Google</a>
-    <a href="https://www.yahoo.co.jp" target="_blank" class="btn-base utility-btn">Yahoo!</a>
-    <a href="https://www.youtube.com" target="_blank" class="btn-base utility-btn">YouTube</a>
-    <a href="https://www.amazon.co.jp" target="_blank" class="btn-base utility-btn">Amazon</a>
-    <a href="https://www.rakuten.co.jp" target="_blank" class="btn-base utility-btn">楽天</a>
-    <a href="https://map.google.co.jp" target="_blank" class="btn-base utility-btn">Google Map</a>
-    <a href="https://weather.yahoo.co.jp/weather/" target="_blank" class="btn-base utility-btn">天気予報</a>
-    <a href="https://transit.yahoo.co.jp/" target="_blank" class="btn-base utility-btn">乗換案内</a>
-    <a href="https://www.eki-net.com/" target="_blank" class="btn-base utility-btn">えきねっと</a>
-    <a href="https://www.post.japanpost.jp/zipcode/" target="_blank" class="btn-base utility-btn">郵便番号</a>
-</div>
+    <a href="https://www.google.com" target="_blank" class="utility-btn">Google</a>
+    <a href="https://www.yahoo.co.jp" target="_blank" class="utility-btn">Yahoo!</a>
+    <a href="https://www.youtube.com" target="_blank" class="utility-btn">YouTube</a>
+    <a href="https://www.amazon.co.jp" target="_blank" class="utility-btn">Amazon</a>
+    <a href="https://www.rakuten.co.jp" target="_blank" class="utility-btn">楽天</a>
+    </div>
 
 <a href="index.html" class="back-btn">← ホームへ戻る</a>
 
