@@ -13,11 +13,13 @@
 
         /* ナビゲーション */
         .nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; max-width: 950px; margin: 20px auto; padding: 0 15px; }
-        .nav-btn { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); color: #38bdf8; border: 1px solid #38bdf8; padding: 10px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85em; min-height: 45px; transition: 0.2s; }
-        .nav-btn:hover { background: rgba(56, 189, 248, 0.2); transform: translateY(-2px); }
+        
+        /* 共通のボタン・リンクスタイル */
+        .nav-btn, .nav-link-special { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1); color: #38bdf8; border: 1px solid #38bdf8; padding: 10px 5px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.85em; min-height: 45px; transition: 0.2s; cursor: pointer; }
+        .nav-btn:hover, .nav-link-special:hover { background: rgba(56, 189, 248, 0.2); transform: translateY(-2px); }
 
-        /* No.10専用（オレンジ・リンク有効化） */
-        .nav-link-special { background: #fb8c00 !important; color: #fff !important; border: 2px solid #fff !important; cursor: pointer; text-decoration: none; }
+        /* No.10専用（オレンジ・リンクあり） */
+        .nav-link-special { background: #fb8c00 !important; color: #fff !important; border: 2px solid #fff !important; }
         .nav-link-special:hover { background: #ef6c00 !important; }
 
         /* 参政党ボタン */
@@ -59,7 +61,7 @@
     <div class="nav-btn">No.7</div>
     <div class="nav-btn">No.8</div>
     <div class="nav-btn">No.9</div>
-    <a href="no10.html" class="nav-btn nav-link-special">Links集 (No.10)</a>
+    <a href="no10.html" class="nav-link-special">Links集 (No.10)</a>
 </nav>
 
 <div class="section-title">SANSEITO LINKS</div>
@@ -90,7 +92,7 @@
 
 <div id="overlay" onclick="closeOverlay()">
     <div id="overlay-content" onclick="event.stopPropagation()">
-        <iframe id="overlay-video" src="" frameborder="0" allowfullscreen></iframe>
+        <iframe id="overlay-video" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         <button class="close-btn" onclick="closeOverlay()">× 閉じて戻る</button>
     </div>
 </div>
