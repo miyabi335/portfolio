@@ -5,23 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>川さん - MIYABI'S PORTAL</title>
     <style>
-        /* ホーム画面のスタイルを完全継承 */
         body { 
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", sans-serif;
             margin: 0; background: #020617; text-align: center; color: #e2e8f0; 
         }
 
-        /* ヘッダー： sa003.png を確実に読み込む設定 */
+        /* ヘッダー：背景を黒にして画像を引き立てる */
         .header-container { 
             position: relative; width: 100%; height: 450px; 
-            overflow: hidden; background: #1e293b; /* 読み込み前の背景色 */
+            overflow: hidden; background: #000;
         }
         .header-image { 
             width: 100%; height: 100%; 
             object-fit: cover;
             object-position: center; 
-            opacity: 0.8;
-            display: block; /* 隙間をなくす */
+            opacity: 0.85; /* 画像を見やすく */
+            display: block;
         }
         .header-text { 
             position: absolute; bottom: 40px; right: 40px; text-align: right;
@@ -34,7 +33,6 @@
 
         .main-wrapper { max-width: 1400px; margin: 0 auto; padding: 0 20px; text-align: left; }
 
-        /* セクション見出し */
         .section-title { 
             margin-top: 70px; padding: 15px 0; font-weight: bold; font-size: 1.5rem;
             color: #f8fafc; letter-spacing: 0.1em;
@@ -42,7 +40,6 @@
             margin-bottom: 30px;
         }
 
-        /* 戻るボタン：大きく、押しやすく */
         .back-btn {
             display: inline-block; margin-top: 20px; padding: 15px 40px;
             background: rgba(56, 189, 248, 0.1); color: #38bdf8;
@@ -51,28 +48,26 @@
             font-weight: 900; font-size: 1.1rem;
             transition: 0.3s;
         }
-        .back-btn:hover { background: rgba(56, 189, 248, 0.2); border-color: #38bdf8; transform: translateX(-5px); }
+        .back-btn:hover { background: rgba(56, 189, 248, 0.2); transform: translateX(-5px); }
 
         .content-box {
             background: rgba(255,255,255,0.03);
-            padding: 30px;
-            border-radius: 12px;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #cbd5e1;
+            padding: 30px; border-radius: 12px;
+            font-size: 1.2rem; line-height: 1.8; color: #cbd5e1;
         }
 
         @media (max-width: 1024px) {
             .header-container { height: 350px; }
             .header-text h1 { font-size: 2.2rem; }
-            .back-btn { padding: 12px 30px; font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
 <header class="header-container">
-    <img src="sa003.png" alt="川さん" class="header-image">
+    <img src="sa003.png" 
+         onerror="this.src='sa003.PNG'" 
+         alt="川さん" class="header-image">
     <div class="header-text"><h1>川さん</h1></div>
 </header>
 
@@ -82,10 +77,9 @@
     <div class="section-title">川さんのアーカイブ</div>
     
     <div class="content-box">
-        ここに川さんに関連する写真、動画、または詳細な説明文を自由に追加できます。<br>
-        ポータル全体の統一感を維持しながら、ボタンや文字の見やすさを最大限に高めています。
+        ポータルの統一デザインを維持したまま、ヘッダーに指定の画像を表示させました。<br>
+        ここからさらに動画リストや写真ギャラリーを増やしていくことが可能です。
     </div>
-
 </div>
 
 <footer style="margin: 100px 0 50px; color: #475569; font-size: 1rem; text-align: center;">
