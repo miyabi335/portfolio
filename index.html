@@ -10,7 +10,7 @@
             margin: 0; background: #020617; text-align: center; color: #e2e8f0; 
         }
 
-        /* --- ヘッダー：富士山をダイナミックに --- */
+        /* ヘッダー：富士山 */
         .header-container { 
             position: relative; width: 100%; height: 450px; 
             overflow: hidden; background: #000;
@@ -38,19 +38,15 @@
         }
         .section-title.sansei { color: #fb8c00; border-bottom: 1px solid rgba(251, 140, 0, 0.4); }
 
-        /* --- ボタンのサイズ・文字を大きく --- */
+        /* ボタン・ナビゲーション */
         .grid-5col { 
             display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-bottom: 30px; 
         }
         .nav-btn, .sansei-btn { 
             display: flex; align-items: center; justify-content: center; 
-            padding: 20px 10px; 
-            border-radius: 8px; text-decoration: none; 
-            font-weight: 900; 
-            font-size: 1.1rem; 
-            transition: 0.3s;
-            box-sizing: border-box;
-            min-height: 70px; 
+            padding: 20px 10px; border-radius: 8px; text-decoration: none; 
+            font-weight: 900; font-size: 1.1rem; transition: 0.3s;
+            box-sizing: border-box; min-height: 70px; 
         }
         
         .nav-btn { 
@@ -58,52 +54,27 @@
             border: 2px solid rgba(56, 189, 248, 0.3);
         }
         .nav-btn:hover { background: rgba(56, 189, 248, 0.2); border-color: #38bdf8; transform: translateY(-3px); }
-        .nav-link-special { 
-            background: rgba(251, 140, 0, 0.15) !important; 
-            color: #fb8c00 !important; 
-            border-color: #fb8c00 !important; 
-        }
+        .nav-link-special { background: rgba(251, 140, 0, 0.15) !important; color: #fb8c00 !important; border-color: #fb8c00 !important; }
 
-        .sansei-btn { 
-            background: #fb8c00; color: #fff; border: none; 
-            box-shadow: 0 4px 0 #c2410c;
-        }
+        .sansei-btn { background: #fb8c00; color: #fff; border: none; box-shadow: 0 4px 0 #c2410c; }
         .sansei-btn:hover { background: #f97316; transform: translateY(-2px); box-shadow: 0 2px 0 #c2410c; }
 
+        /* ギャラリー */
         .grid-4col { 
             display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 40px;
         }
-        .photo-item { 
-            width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px; 
-            transition: 0.4s;
-        }
-        .video-item { 
-            width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; 
-            cursor: pointer; transition: 0.3s;
-        }
+        .photo-item { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px; transition: 0.4s; }
+        .video-item { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; cursor: pointer; transition: 0.3s; }
         .video-item:hover { transform: scale(1.04); box-shadow: 0 10px 30px rgba(0,0,0,0.7); }
 
-        /* --- 動画再生オーバーレイ（巨大化） --- */
+        /* 動画再生オーバーレイ（巨大） */
         #overlay { 
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 10000; 
         }
-        #overlay-content { 
-            width: 95%; 
-            max-width: 1600px; 
-            text-align: center; 
-        }
-        #overlay-video { 
-            width: 100%; 
-            aspect-ratio: 16/9; 
-            box-shadow: 0 0 50px rgba(0,0,0,1);
-            border: 1px solid #333;
-        }
-        .close-btn { 
-            margin-top: 30px; background: #ef4444; color: #fff; border: none;
-            padding: 15px 60px; border-radius: 50px; cursor: pointer; 
-            font-weight: bold; font-size: 1.2rem; transition: 0.3s;
-        }
+        #overlay-content { width: 95%; max-width: 1600px; text-align: center; }
+        #overlay-video { width: 100%; aspect-ratio: 16/9; box-shadow: 0 0 50px rgba(0,0,0,1); border: 1px solid #333; }
+        .close-btn { margin-top: 30px; background: #ef4444; color: #fff; border: none; padding: 15px 60px; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1.2rem; }
 
         @media (max-width: 1024px) {
             .grid-5col { grid-template-columns: repeat(2, 1fr); }
@@ -129,7 +100,7 @@
         <div class="nav-btn">No.2</div>
         <div class="nav-btn">No.3</div>
         <a href="no4.html" class="nav-btn">Music</a>
-        <div class="nav-btn">No.5</div>
+        <a href="no5.html" class="nav-btn">川さん</a>
         <a href="https://www.gov-online.go.jp/governmentlinks/" target="_blank" class="nav-btn">官公庁サイト</a>
         <a href="https://www.j-lis.go.jp/spd/map-search/cms_1069.html" target="_blank" class="nav-btn">自治体マップ</a>
         <a href="https://uub.jp/map/kyoto/" target="_blank" class="nav-btn">47都道府県地図</a>
@@ -177,7 +148,6 @@
         <img src="https://img.youtube.com/vi/L0MK7qz13bU/mqdefault.jpg" class="video-item" onclick="openVideo('L0MK7qz13bU')">
         <img src="https://img.youtube.com/vi/oHg5SJYRHA0/mqdefault.jpg" class="video-item" onclick="openVideo('oHg5SJYRHA0')">
     </div>
-
 </div>
 
 <div id="overlay" onclick="closeOverlay()">
