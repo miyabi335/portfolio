@@ -10,18 +10,29 @@
             margin: 0; background: #020617; text-align: center; color: #e2e8f0; 
         }
 
-        /* ヘッダー：背景を黒にして画像を引き立てる */
+        /* ヘッダーの枠組み（富士山と同じ高さ450pxを維持） */
         .header-container { 
             position: relative; width: 100%; height: 450px; 
             overflow: hidden; background: #000;
+            display: flex; align-items: center; justify-content: center; /* 画像を中央に */
         }
+
+        /* --- 【川さんの画像専用の調整】 --- */
         .header-image { 
-            width: 100%; height: 100%; 
-            object-fit: cover;
-            object-position: center; 
-            opacity: 0.85; /* 画像を見やすく */
+            /* 横幅いっぱいにせず、高さに合わせてサイズを抑える */
+            height: 80%;      /* ヘッダーの高さの80%に縮小 */
+            width: auto;      /* 横幅は比率を保って自動調整 */
+            max-width: 90%;   /* スマホでもはみ出さない */
+            
+            /* 画質をクッキリさせる設定 */
+            object-fit: contain; 
+            image-rendering: -webkit-optimize-contrast; 
+            image-rendering: crisp-edges;
+
+            opacity: 1.0;     /* 荒く見えないよう透明度をなくしてハッキリさせる */
             display: block;
         }
+
         .header-text { 
             position: absolute; bottom: 40px; right: 40px; text-align: right;
             z-index: 10;
@@ -41,24 +52,19 @@
         }
 
         .back-btn {
-            display: inline-block; margin-top: 20px; padding: 15px 40px;
+            display: inline-block; margin-top: 20px; padding: 12px 35px;
             background: rgba(56, 189, 248, 0.1); color: #38bdf8;
             border: 2px solid rgba(56, 189, 248, 0.3);
             border-radius: 50px; text-decoration: none; 
-            font-weight: 900; font-size: 1.1rem;
+            font-weight: bold; font-size: 1rem;
             transition: 0.3s;
         }
         .back-btn:hover { background: rgba(56, 189, 248, 0.2); transform: translateX(-5px); }
 
-        .content-box {
-            background: rgba(255,255,255,0.03);
-            padding: 30px; border-radius: 12px;
-            font-size: 1.2rem; line-height: 1.8; color: #cbd5e1;
-        }
-
         @media (max-width: 1024px) {
-            .header-container { height: 350px; }
-            .header-text h1 { font-size: 2.2rem; }
+            .header-container { height: 320px; }
+            .header-text h1 { font-size: 2rem; }
+            .header-image { height: 75%; } /* スマホでもさらに少し小さくして画質維持 */
         }
     </style>
 </head>
@@ -76,15 +82,11 @@
 
     <div class="section-title">川さんのアーカイブ</div>
     
-    <div class="content-box">
-        ポータルの統一デザインを維持したまま、ヘッダーに指定の画像を表示させました。<br>
-        ここからさらに動画リストや写真ギャラリーを増やしていくことが可能です。
+    <div style="background: rgba(255,255,255,0.03); padding: 30px; border-radius: 12px; font-size: 1.1rem; line-height: 1.8; color: #cbd5e1;">
+        ヘッダーの「川さん」画像を引き伸ばさず、本来の画質を活かして表示するように調整しました。<br>
+        富士山（ホーム画面）のレイアウトは一切変えていません。
     </div>
 </div>
-
-<footer style="margin: 100px 0 50px; color: #475569; font-size: 1rem; text-align: center;">
-    &copy; 2026 MIYABI'S PORTAL
-</footer>
 
 </body>
 </html>
