@@ -10,17 +10,26 @@
             margin: 0; background: #020617; text-align: center; color: #e2e8f0; 
         }
 
-        /* ヘッダー：富士山 */
+        /* --- ヘッダー：富士山の形を維持しつつボケを防止 --- */
         .header-container { 
             position: relative; width: 100%; height: 450px; 
-            overflow: hidden; background: #000;
+            overflow: hidden; background: #000; /* 背景を黒にして余白を馴染ませる */
+            display: flex; align-items: center; justify-content: center;
         }
         .header-image { 
-            width: 100%; height: 100%; object-fit: cover;
-            object-position: center 30%; opacity: 0.8;
+            /* 引き延ばしを抑え、本来の画質を維持する設定 */
+            height: 90%; 
+            width: auto; 
+            max-width: 95%; 
+            object-fit: contain;
+            image-rendering: -webkit-optimize-contrast; 
+            image-rendering: crisp-edges;
+            opacity: 1.0; 
+            display: block;
         }
         .header-text { 
             position: absolute; bottom: 40px; right: 40px; text-align: right;
+            z-index: 10;
         }
         .header-text h1 { 
             font-size: 3.5rem; letter-spacing: 0.3em; margin: 0; color: #fff;
@@ -29,7 +38,7 @@
 
         .main-wrapper { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
 
-        /* セクション見出し */
+        /* セクション見出し：形は維持 */
         .section-title { 
             margin-top: 70px; padding: 15px 0; font-weight: bold; font-size: 1.5rem;
             color: #f8fafc; letter-spacing: 0.1em;
@@ -38,7 +47,7 @@
         }
         .section-title.sansei { color: #fb8c00; border-bottom: 1px solid rgba(251, 140, 0, 0.4); }
 
-        /* ボタン・ナビゲーション */
+        /* ボタン・ナビゲーション：形を絶対に変えない設定 */
         .grid-5col { 
             display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-bottom: 30px; 
         }
@@ -59,7 +68,7 @@
         .sansei-btn { background: #fb8c00; color: #fff; border: none; box-shadow: 0 4px 0 #c2410c; }
         .sansei-btn:hover { background: #f97316; transform: translateY(-2px); box-shadow: 0 2px 0 #c2410c; }
 
-        /* ギャラリー */
+        /* ギャラリー：そのまま */
         .grid-4col { 
             display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 40px;
         }
@@ -67,7 +76,7 @@
         .video-item { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; cursor: pointer; transition: 0.3s; }
         .video-item:hover { transform: scale(1.04); box-shadow: 0 10px 30px rgba(0,0,0,0.7); }
 
-        /* 動画再生オーバーレイ（巨大） */
+        /* 動画再生オーバーレイ */
         #overlay { 
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 10000; 
@@ -82,6 +91,7 @@
             .header-container { height: 350px; }
             .header-text h1 { font-size: 2.2rem; }
             .nav-btn, .sansei-btn { font-size: 1rem; padding: 15px 5px; }
+            .header-image { height: 80%; }
         }
     </style>
 </head>
@@ -122,6 +132,7 @@
         <a href="https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" target="_blank" class="sansei-btn">選挙ドットコム</a>
     </div>
 
+    <div class="section-title">FEATURED VIDEOS</div>
     <div class="grid-4col">
         <img src="https://img.youtube.com/vi/av8FzH-rl_0/mqdefault.jpg" class="video-item" onclick="openVideo('av8FzH-rl_0')">
         <img src="https://img.youtube.com/vi/anwipaF_gLU/mqdefault.jpg" class="video-item" onclick="openVideo('anwipaF_gLU')">
@@ -152,7 +163,8 @@
 
 <div id="overlay" onclick="closeOverlay()">
     <div id="overlay-content" onclick="event.stopPropagation()">
-        <iframe id="overlay-video" src="" frameborder="0" allowfullscreen></iframe><br>
+        <iframe id="overlay-video" src="" frameborder="0" allowfullscreen></iframe>
+        <br>
         <button class="close-btn" onclick="closeOverlay()">× CLOSE</button>
     </div>
 </div>
