@@ -77,13 +77,24 @@
             transform: scale(1.05); box-shadow: 0 10px 30px rgba(0,0,0,0.7); border-color: #38bdf8; 
         }
 
-        /* オーバーレイ */
+        /* --- オーバーレイ（動画・写真共通） --- */
         #overlay { 
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 10000; 
+            cursor: pointer; /* 黒背景クリックで閉じる */
         }
-        #overlay-content { width: 95%; max-width: 1200px; text-align: center; }
-        #overlay-video { width: 100%; aspect-ratio: 16/9; box-shadow: 0 0 50px rgba(0,0,0,1); border: 1px solid #333; }
+        #overlay-content { width: 95%; max-width: 1200px; text-align: center; position: relative; cursor: default; }
+        
+        /* 動画用（初期状態） */
+        #overlay-video { width: 100%; aspect-ratio: 16/9; box-shadow: 0 0 50px rgba(0,0,0,1); border: 1px solid #333; display: none; }
+        
+        /* --- 【新規】写真用拡大スタイル --- */
+        #overlay-image { 
+            max-width: 100%; max-height: 90vh; /* 画面の高さの90%までに制限 */
+            border-radius: 8px; border: 4px solid #fff; box-shadow: 0 0 50px rgba(0,0,0,1); 
+            display: none; object-fit: contain; /* 縦横比を維持 */
+        }
+
         .close-btn { margin-top: 30px; background: #ef4444; color: #fff; border: none; padding: 15px 60px; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1.2rem; }
 
         .back-btn {
@@ -99,6 +110,7 @@
             .profile-flex { flex-direction: column-reverse; padding: 30px; gap: 30px; }
             .profile-photo-container { flex: none; width: 100%; max-width: 350px; margin: 0 auto; }
             .grid-4col { grid-template-columns: repeat(2, 1fr); }
+            #overlay-content { max-width: 100%; }
         }
     </style>
 </head>
@@ -138,7 +150,7 @@
             </ul>
         </div>
         <div class="profile-photo-container">
-            <img src="photosa/kawa002.jpg" alt="川 裕一郎" class="profile-photo" onerror="this.src='photosa/kawa002.JPG'">
+            <img src="photosa/kawa002.jpg" alt="川 裕一郎" class="profile-photo" onclick="openPhoto(this.src)" onerror="this.src='photosa/kawa002.JPG'">
         </div>
     </div>
 
@@ -163,18 +175,18 @@
     <div class="section-title">PHOTO GALLERY (12)</div>
     <div class="grid-wrapper">
         <div class="grid-4col">
-            <img src="photosa/kawa/kawa_1.jpg" class="photo-item-v" alt="No.1">
-            <img src="photosa/kawa/kawa_2.jpg" class="photo-item-v" alt="No.2">
-            <img src="photosa/kawa/kawa_3.jpg" class="photo-item-v" alt="No.3">
-            <img src="photosa/kawa/kawa_4.jpg" class="photo-item-v" alt="No.4">
-            <img src="photosa/kawa/kawa_5.jpg" class="photo-item-v" alt="No.5">
-            <img src="photosa/kawa/kawa_6.jpg" class="photo-item-v" alt="No.6">
-            <img src="photosa/kawa/kawa_7.jpg" class="photo-item-v" alt="No.7">
-            <img src="photosa/kawa/kawa_8.jpg" class="photo-item-v" alt="No.8">
-            <img src="photosa/kawa/kawa_9.jpg" class="photo-item-v" alt="No.9">
-            <img src="photosa/kawa/kawa_10.jpg" class="photo-item-v" alt="No.10">
-            <img src="photosa/kawa/kawa_11.jpg" class="photo-item-v" alt="No.11">
-            <img src="photosa/kawa/kawa_12.jpg" class="photo-item-v" alt="No.12">
+            <img src="photosa/kawa/kawa_1.jpg" class="photo-item-v" onclick="openPhoto(this.src)" alt="No.1">
+            <img src="photosa/kawa/kawa_2.jpg" class="photo-item-v" onclick="openPhoto(this.src)" alt="No.2">
+            <img src="photosa/kawa/kawa_3.jpg" class="photo-item-v" onclick="openPhoto(this.src)" alt="No.3">
+            <img src="photosa/kawa/kawa_4.jpg" class="photo-item-v" onclick="openPhoto(this.src)" alt="No.4">
+            <img src="photosa/kawa/kawa_5.jpg" class="photo-item-v" onclick="openPhoto(this.src)" alt="No.5">
+            <img src="photosa/kawa/kawa_6.jpg" class="photo-item-v" onclick="openPhoto(this.src)" alt="No.6">
+            <img src="photosa/kawa/kawa_7.jpg" class="photo-item-v" onclick="openPhoto(this.src)" alt="No.7">
+            <img src="photosa/kawa/kawa_8.jpg" class="photo-item-v" onclick="openPhoto(this.src)" alt="No.8">
+            <img src="photosa/kawa/kawa_9.jpg" class="photo-item-v" onclick="openPhoto(this.src)" alt="No.9">
+            <img src="photosa/kawa/kawa_10.jpg" class="photo-item-v" onclick="openPhoto(this.src)" alt="No.10">
+            <img src="photosa/kawa/kawa_11.jpg" class="photo-item-v" onclick="openPhoto(this.src)" alt="No.11">
+            <img src="photosa/kawa/kawa_12.jpg" class="photo-item-v" onclick="openPhoto(this.src)" alt="No.12">
         </div>
     </div>
 </div>
@@ -182,20 +194,47 @@
 <div id="overlay" onclick="closeOverlay()">
     <div id="overlay-content" onclick="event.stopPropagation()">
         <iframe id="overlay-video" src="" frameborder="0" allowfullscreen></iframe>
+        <img id="overlay-image" src="" alt="拡大写真">
         <br><button class="close-btn" onclick="closeOverlay()">× CLOSE</button>
     </div>
 </div>
 
 <script>
+    // 動画用
     function openVideo(id) {
         const video = document.getElementById('overlay-video');
+        const image = document.getElementById('overlay-image');
+        
+        // 動画を表示、写真を非表示
+        image.style.display = 'none';
+        video.style.display = 'block';
+        
         video.src = "https://www.youtube.com/embed/" + id + "?autoplay=1";
         document.getElementById('overlay').style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
+
+    // 【新規】写真用
+    function openPhoto(src) {
+        const video = document.getElementById('overlay-video');
+        const image = document.getElementById('overlay-image');
+        
+        // 写真を表示、動画を非表示
+        video.style.display = 'none';
+        image.style.display = 'block';
+        
+        image.src = src; // クリックされた写真のパスを設定
+        document.getElementById('overlay').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    // 閉じる処理（共通）
     function closeOverlay() {
         document.getElementById('overlay').style.display = 'none';
+        
+        // リセット
         document.getElementById('overlay-video').src = '';
+        document.getElementById('overlay-image').src = '';
         document.body.style.overflow = '';
     }
 </script>
