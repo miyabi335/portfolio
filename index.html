@@ -3,58 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIYABI'S PORTAL - HOME</title>
+    <title>MIYABI'S PORTAL</title>
     <style>
-        body { 
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", sans-serif;
-            margin: 0; background: #020617; color: #e2e8f0; text-align: center;
-        }
+        /* --- オリジナル・ベーススタイル（維持） --- */
+        body { font-family: Arial, sans-serif; margin: 0; background-color: #f0f0f0; text-align: center; }
+        header { background-color: #333; color: #fff; padding: 25px 0; border-bottom: 3px solid #db2777; }
         
-        /* ヘッダー */
-        header { padding: 40px 20px; background: linear-gradient(180deg, #0f172a 0%, #020617 100%); }
-        h1 { margin: 0; font-size: 2.5rem; letter-spacing: 0.2em; color: #fff; text-shadow: 0 0 20px rgba(244, 114, 182, 0.4); }
-
-        /* 【追加】メインフィーチャー動画セクション */
-        .hero-video-section {
-            max-width: 1000px; margin: 0 auto 30px; padding: 0 20px;
+        /* --- 【大画面化】注目動画セクション --- */
+        .featured-video-area {
+            width: 100%; /* 横幅いっぱい */
+            max-width: 100%;
+            margin: 0; /* 余白をなくしてダイレクトに繋げる */
+            background: #000;
+            position: relative;
         }
-        .video-container {
-            position: relative; width: 100%; padding-top: 56.25%; /* 16:9比率 */
-            border-radius: 15px; overflow: hidden;
-            box-shadow: 0 0 30px rgba(219, 39, 119, 0.2);
-            border: 1px solid rgba(244, 114, 182, 0.3);
+        .video-aspect-ratio {
+            position: relative;
+            width: 100%;
+            /* PCでは高さを出し、スマホでも迫力を維持する比率 */
+            padding-top: 45%; 
+            background: #000;
+            overflow: hidden;
         }
-        .video-container iframe {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
-        }
-        .video-caption {
-            margin-top: 15px; color: #f472b6; font-weight: bold; font-size: 1.1rem;
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-        }
-
-        /* ナビゲーションメニュー */
-        nav { margin-bottom: 50px; }
-        .nav-menu { display: flex; justify-content: center; gap: 20px; padding: 0; list-style: none; }
-        .nav-item a { 
-            text-decoration: none; color: #94a3b8; font-weight: bold; font-size: 1rem;
-            padding: 10px 20px; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
-            transition: 0.3s;
-        }
-        .nav-item a:hover { color: #fff; background: rgba(244, 114, 182, 0.2); border-color: #f472b6; }
-
-        /* コンテンツエリア */
-        .container { max-width: 1100px; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-        .card { 
-            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 20px; padding: 30px; text-decoration: none; color: inherit; transition: 0.3s;
-        }
-        .card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.05); border-color: #f472b6; }
-        .card h2 { color: #f472b6; margin-top: 0; }
-
         @media (max-width: 768px) {
-            .container { grid-template-columns: 1fr; }
-            h1 { font-size: 1.8rem; }
-            .video-caption { font-size: 0.9rem; padding: 0 10px; }
+            .video-aspect-ratio { padding-top: 56.25%; /* スマホは標準比率で大きく */ }
+        }
+        .video-aspect-ratio iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .video-label-bar {
+            background: linear-gradient(90deg, #333 0%, #db2777 50%, #333 100%);
+            color: #fff;
+            padding: 10px 0;
+            font-weight: bold;
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* --- オリジナル・ナビゲーション（維持） --- */
+        nav { background-color: #444; color: #fff; padding: 15px 0; }
+        nav ul { list-style-type: none; padding: 0; margin: 0; display: flex; justify-content: center; }
+        nav ul li { margin: 0 20px; }
+        nav ul li a { text-decoration: none; color: #fff; font-weight: bold; font-size: 18px; transition: 0.3s; }
+        nav ul li a:hover { color: #ffcc00; text-shadow: 0 0 10px rgba(255,204,0,0.5); }
+
+        /* --- オリジナル・コンテンツカード（維持） --- */
+        .container { display: flex; flex-wrap: wrap; justify-content: center; padding: 30px 10px; }
+        .card { 
+            background-color: #fff; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.1); 
+            margin: 15px; padding: 25px; width: 320px; text-align: left; transition: 0.3s; 
+            border-top: 4px solid #444;
+        }
+        .card:hover { transform: translateY(-8px); border-top-color: #db2777; }
+        .card h2 { color: #333; margin-top: 0; font-size: 1.4rem; }
+        .card p { color: #666; font-size: 15px; line-height: 1.6; }
+        .card a { display: block; margin-top: 20px; text-decoration: none; color: #db2777; font-weight: bold; }
+        
+        footer { padding: 50px 0; color: #888; font-size: 0.9rem; background: #333; color: #ccc; margin-top: 50px; }
+
+        /* スマホ用最適化 */
+        @media (max-width: 600px) {
+            .card { width: 90%; }
+            nav ul { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 10px; }
+            nav ul li { margin: 5px 10px; }
         }
     </style>
 </head>
@@ -64,49 +81,58 @@
     <h1>MIYABI'S PORTAL</h1>
 </header>
 
-<section class="hero-video-section">
-    <div class="video-container">
+<section class="featured-video-area">
+    <div class="video-aspect-ratio">
         <iframe 
-            src="https://www.youtube.com/embed/UvdvU_bHKM0?autoplay=1&mute=1&rel=0" 
+            src="https://www.youtube.com/embed/UvdvU_bHKM0?autoplay=1&mute=1&rel=0&controls=1&modestbranding=1" 
+            title="注目動画" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
             allowfullscreen>
         </iframe>
     </div>
-    <div class="video-caption">
-        <span>🔥</span> 今、最も注目すべき国会質疑：神谷宗幣 議員
+    <div class="video-label-bar">
+        PICK UP: 神谷宗幣 議員 国会質疑 (令和8年3月17日)
     </div>
 </section>
 
 <nav>
-    <ul class="nav-menu">
-        <li class="nav-item"><a href="index.html">Home</a></li>
-        <li class="nav-item"><a href="no1.html">Tools</a></li>
-        <li class="nav-item"><a href="no4.html">Music</a></li>
-        <li class="nav-item"><a href="#">Profile</a></li>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="no1.html">Tools</a></li>
+        <li><a href="no4.html">Music</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Contact</a></li>
     </ul>
 </nav>
 
 <div class="container">
-    <a href="no1.html" class="card">
+    <div class="card">
         <h2>Smart Tools</h2>
-        <p>Photoshopショートカットや最新の便利ツールに素早くアクセス。</p>
-    </a>
-    <a href="no4.html" class="card">
-        <h2>Music Gallery</h2>
-        <p>癒やしのsayaさんカバー曲と最新ヒットチャート20選。</p>
-    </a>
-    <div class="card">
-        <h2>Latest News</h2>
-        <p>日々更新される情報のアーカイブ。最新トピックをチェック。</p>
+        <p>Photoshopの効率化や自作Pythonツールのアーカイブ。制作を支える心強い相棒たちをまとめています。</p>
+        <a href="no1.html">Toolsを開く →</a>
     </div>
+
     <div class="card">
-        <h2>Contact</h2>
-        <p>ポータルサイトに関するお問い合わせや、制作依頼はこちらから。</p>
+        <h2>Music Gallery</h2>
+        <p>癒やしのsayaさんカバーと、最新チャート20曲をセレクト。高音質な音楽体験をポータルから。</p>
+        <a href="no4.html">Musicを開く →</a>
+    </div>
+
+    <div class="card">
+        <h2>Political Insight</h2>
+        <p>国政の動向や重要な議論をピックアップ。市民として知っておくべき情報をキュレーションしています。</p>
+        <a href="#">Newsをチェック →</a>
+    </div>
+
+    <div class="card">
+        <h2>Hobby Portal</h2>
+        <p>ミニベロのカスタマイズやアマチュア無線の記録など、多趣味な活動のポートフォリオです。</p>
+        <a href="#">Profileを見る →</a>
     </div>
 </div>
 
 <footer>
-    <p style="margin: 60px 0 40px; color: #475569; font-size: 0.9rem;">&copy; 2026 MIYABI'S PORTAL</p>
+    &copy; 2026 MIYABI'S PORTAL
 </footer>
 
 </body>
