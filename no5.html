@@ -31,35 +31,20 @@
         }
         .main-wrapper { max-width: 1400px; margin: 0 auto; padding: 0 20px; text-align: left; }
 
-        /* プロフィールセクション（横並び） */
+        /* プロフィールセクション */
         .profile-flex {
-            display: flex;
-            /* --- 【修正点】上下中央揃えに変更 --- */
-            align-items: center; 
-            gap: 60px; /* 間隔を少し広く */
-            margin-top: 50px;
-            margin-bottom: 50px;
-            background: rgba(255,255,255,0.03);
-            padding: 50px; /* 内側の余白を少し広く */
-            border-radius: 12px;
-            border: 1px solid rgba(56, 189, 248, 0.1);
+            display: flex; align-items: center; gap: 60px;
+            margin-top: 50px; margin-bottom: 50px;
+            background: rgba(255,255,255,0.03); padding: 50px;
+            border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.1);
         }
         .profile-text-container { flex: 1; }
-
-        /* 写真エリア */
-        .profile-photo-container { 
-            /* --- 【修正点】写真の横幅を少し大きく調整 --- */
-            flex: 0 0 450px; 
-        }
+        .profile-photo-container { flex: 0 0 450px; }
         .profile-photo {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 2px solid rgba(255,255,255,0.1);
+            width: 100%; height: auto; border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 2px solid rgba(255,255,255,0.1);
         }
 
-        /* テキスト装飾 */
         .profile-name { font-size: 2.5rem; letter-spacing: 0.1em; color: #fff; margin: 0 0 20px 0; }
         .profile-basic-info { font-size: 1.1rem; line-height: 1.8; color: #cbd5e1; margin-bottom: 30px; }
         .info-h3 { font-size: 1.3rem; color: #38bdf8; border-left: 4px solid #38bdf8; padding-left: 15px; margin-top: 40px; margin-bottom: 20px; }
@@ -69,27 +54,52 @@
         .info-list a { color: #38bdf8; text-decoration: none; transition: 0.3s; }
         .info-list a:hover { text-decoration: underline; color: #fff; }
 
+        /* ギャラリーセクション共通 */
+        .section-title { 
+            margin-top: 70px; padding: 15px 0; font-weight: bold; font-size: 1.5rem;
+            color: #f8fafc; letter-spacing: 0.1em; border-bottom: 1px solid rgba(56, 189, 248, 0.2); 
+            text-align: left; margin-bottom: 30px;
+        }
+        .grid-wrapper {
+            background: rgba(255,255,255,0.02); padding: 30px;
+            border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 50px;
+        }
+        /* 4列グリッドに変更（12個並べるため） */
+        .grid-4col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+        .video-item-v, .photo-item-v { 
+            width: 100%; border-radius: 8px; cursor: pointer; transition: 0.3s; 
+            border: 1px solid rgba(255,255,255,0.1); object-fit: cover;
+        }
+        .video-item-v { aspect-ratio: 16/9; }
+        .photo-item-v { aspect-ratio: 4/3; }
+        
+        .video-item-v:hover, .photo-item-v:hover { 
+            transform: scale(1.05); box-shadow: 0 10px 30px rgba(0,0,0,0.7); border-color: #38bdf8; 
+        }
+
+        /* オーバーレイ */
+        #overlay { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 10000; 
+        }
+        #overlay-content { width: 95%; max-width: 1200px; text-align: center; }
+        #overlay-video { width: 100%; aspect-ratio: 16/9; box-shadow: 0 0 50px rgba(0,0,0,1); border: 1px solid #333; }
+        .close-btn { margin-top: 30px; background: #ef4444; color: #fff; border: none; padding: 15px 60px; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1.2rem; }
+
         .back-btn {
             display: inline-block; margin-top: 20px; padding: 12px 35px;
             background: rgba(56, 189, 248, 0.1); color: #38bdf8;
-            border: 2px solid rgba(56, 189, 248, 0.3);
-            border-radius: 50px; text-decoration: none; 
-            font-weight: bold; font-size: 1rem;
-            transition: 0.3s;
+            border: 2px solid rgba(56, 189, 248, 0.3); border-radius: 50px; 
+            text-decoration: none; font-weight: bold; transition: 0.3s;
         }
         .back-btn:hover { background: rgba(56, 189, 248, 0.2); transform: translateX(-5px); }
+        footer { margin: 100px 0 50px; color: #475569; font-size: 1rem; text-align: center; }
 
-        /* スマホ対応 */
         @media (max-width: 1024px) {
-            .header-container { height: 320px; }
-            .header-text h1 { font-size: 2rem; }
-            .profile-flex { 
-                flex-direction: column-reverse; /* スマホでは縦並び、写真を上に */
-                padding: 30px; 
-                gap: 30px; 
-            }
+            .profile-flex { flex-direction: column-reverse; padding: 30px; gap: 30px; }
             .profile-photo-container { flex: none; width: 100%; max-width: 350px; margin: 0 auto; }
-            .profile-name { font-size: 2rem; }
+            .grid-4col { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -104,48 +114,94 @@
     <a href="index.html" class="back-btn">← 戻る</a>
 
     <div class="profile-flex">
-        
         <div class="profile-text-container">
             <h2 class="profile-name">川 裕一郎</h2>
-            
             <div class="profile-basic-info">
                 昭和46年10月27日 金沢市生まれ O型<br>
                 趣味／愛犬と散歩、ゴルフ、旅行、映画鑑賞<br>
                 地元企業役員を経て、弱い立場の人に光が当たらない現状を変えるため政治の道を志す。
             </div>
-
             <h3 class="info-h3">主な役職</h3>
             <ul class="info-list">
-                <li>参政党石川第1区国政改革委員</li>
-                <li>参政党副幹事長兼副事務局長</li>
-                <li>救う会石川 幹事長</li>
-                <li>金沢市南倫理法人会会員</li>
-                <li>石川盛徳会会員・志命塾会員</li>
-                <li>崎浦地区町会連合会相談役</li>
-                <li>崎浦公民館運営審議委員</li>
-                <li>石川県日曜野球協会顧問</li>
-                <li>国際空手道連盟極真会館顧問</li>
-                <li>兼六レッドソックス顧問 etc</li>
+                <li>参政党石川第1区国政改革委員 / 参政党副幹事長兼副事務局長</li>
+                <li>救う会石川 幹事長 / 金沢市南倫理法人会会員</li>
+                <li>石川盛徳会会員・志命塾会員 / 崎浦地区町会連合会相談役</li>
+                <li>崎浦公民館運営審議委員 / 石川県日曜野球協会顧問</li>
+                <li>国際空手道連盟極真会館顧問 / 兼六レッドソックス顧問 etc</li>
             </ul>
-
             <h3 class="info-h3">SNS / LINKS</h3>
             <ul class="info-list">
-                <li>X：<a href="https://x.com/y16kawa" target="_blank">https://x.com/y16kawa</a></li>
-                <li>Instagram：<a href="https://www.instagram.com/y16kawa" target="_blank">https://www.instagram.com/y16kawa</a></li>
-                <li>Facebook：<a href="https://www.facebook.com/y16kawa" target="_blank">https://www.facebook.com/y16kawa</a></li>
-                <li>YouTube：<a href="https://www.youtube.com/@kaway16" target="_blank">https://www.youtube.com/@kaway16</a></li>
-                <li>公式サイト：<a href="https://y16.jp/" target="_blank">https://y16.jp/</a></li>
-                <li style="margin-top: 10px;">参政党石川HP：<a href="https://ishikawakenren.hp.peraichi.com/" target="_blank">https://ishikawakenren.hp.peraichi.com/</a></li>
-                <li>石川県連 X：<a href="https://x.com/sanseitou3" target="_blank">https://x.com/sanseitou3</a></li>
+                <li>X：<a href="https://x.com/y16kawa" target="_blank">@y16kawa</a></li>
+                <li>Instagram：<a href="https://www.instagram.com/y16kawa" target="_blank">Instagram</a></li>
+                <li>Facebook：<a href="https://www.facebook.com/y16kawa" target="_blank">Facebook</a></li>
+                <li>YouTube：<a href="https://www.youtube.com/@kaway16" target="_blank">YouTube Channel</a></li>
+                <li>公式サイト：<a href="https://y16.jp/" target="_blank">y16.jp</a></li>
             </ul>
         </div>
-
         <div class="profile-photo-container">
             <img src="photosa/kawa002.jpg" alt="川 裕一郎" class="profile-photo" onerror="this.src='photosa/kawa002.JPG'">
         </div>
+    </div>
 
+    <div class="section-title">VIDEO ARCHIVE (12)</div>
+    <div class="grid-wrapper">
+        <div class="grid-4col">
+            <img src="https://img.youtube.com/vi/nHLRHJIdAhg/mqdefault.jpg" class="video-item-v" onclick="openVideo('nHLRHJIdAhg')" alt="No.1">
+            <img src="https://img.youtube.com/vi/FKnQb-UzEXM/mqdefault.jpg" class="video-item-v" onclick="openVideo('FKnQb-UzEXM')" alt="No.2">
+            <img src="https://img.youtube.com/vi/4rRAkc-sVdA/mqdefault.jpg" class="video-item-v" onclick="openVideo('4rRAkc-sVdA')" alt="No.3">
+            <img src="https://img.youtube.com/vi/7KP4l1MlZ6Q/mqdefault.jpg" class="video-item-v" onclick="openVideo('7KP4l1MlZ6Q')" alt="No.4">
+            <img src="https://img.youtube.com/vi/LmVRIj2i9ro/mqdefault.jpg" class="video-item-v" onclick="openVideo('LmVRIj2i9ro')" alt="No.5">
+            <img src="https://img.youtube.com/vi/34a9M11oTnU/mqdefault.jpg" class="video-item-v" onclick="openVideo('34a9M11oTnU')" alt="No.6">
+            <img src="https://img.youtube.com/vi/0EmHOwreXdw/mqdefault.jpg" class="video-item-v" onclick="openVideo('0EmHOwreXdw')" alt="No.7">
+            <img src="https://img.youtube.com/vi/u00vpqFdEI4/mqdefault.jpg" class="video-item-v" onclick="openVideo('u00vpqFdEI4')" alt="No.8">
+            <img src="https://img.youtube.com/vi/I_B2xikdjI8/mqdefault.jpg" class="video-item-v" onclick="openVideo('I_B2xikdjI8')" alt="No.9">
+            <img src="https://img.youtube.com/vi/E-De0RDx0NU/mqdefault.jpg" class="video-item-v" onclick="openVideo('E-De0RDx0NU')" alt="No.10">
+            <img src="https://img.youtube.com/vi/UlPbX0dYrR4/mqdefault.jpg" class="video-item-v" onclick="openVideo('UlPbX0dYrR4')" alt="No.11">
+            <img src="https://img.youtube.com/vi/ANvQXY5zbEg/mqdefault.jpg" class="video-item-v" onclick="openVideo('ANvQXY5zbEg')" alt="No.12">
+        </div>
+    </div>
+
+    <div class="section-title">PHOTO GALLERY (12)</div>
+    <div class="grid-wrapper">
+        <div class="grid-4col">
+            <img src="photosa/kawa_p01.jpg" class="photo-item-v" alt="No.1">
+            <img src="photosa/kawa_p02.jpg" class="photo-item-v" alt="No.2">
+            <img src="photosa/kawa_p03.jpg" class="photo-item-v" alt="No.3">
+            <img src="photosa/kawa_p04.jpg" class="photo-item-v" alt="No.4">
+            <img src="photosa/kawa_p05.jpg" class="photo-item-v" alt="No.5">
+            <img src="photosa/kawa_p06.jpg" class="photo-item-v" alt="No.6">
+            <img src="photosa/kawa_p07.jpg" class="photo-item-v" alt="No.7">
+            <img src="photosa/kawa_p08.jpg" class="photo-item-v" alt="No.8">
+            <img src="photosa/kawa_p09.jpg" class="photo-item-v" alt="No.9">
+            <img src="photosa/kawa_p10.jpg" class="photo-item-v" alt="No.10">
+            <img src="photosa/kawa_p11.jpg" class="photo-item-v" alt="No.11">
+            <img src="photosa/kawa_p12.jpg" class="photo-item-v" alt="No.12">
+        </div>
     </div>
 </div>
+
+<div id="overlay" onclick="closeOverlay()">
+    <div id="overlay-content" onclick="event.stopPropagation()">
+        <iframe id="overlay-video" src="" frameborder="0" allowfullscreen></iframe>
+        <br><button class="close-btn" onclick="closeOverlay()">× CLOSE</button>
+    </div>
+</div>
+
+<script>
+    function openVideo(id) {
+        const video = document.getElementById('overlay-video');
+        video.src = "https://www.youtube.com/embed/" + id + "?autoplay=1";
+        document.getElementById('overlay').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closeOverlay() {
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('overlay-video').src = '';
+        document.body.style.overflow = '';
+    }
+</script>
+
+<footer>&copy; 2026 MIYABI'S PORTAL</footer>
 
 </body>
 </html>
