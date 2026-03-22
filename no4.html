@@ -42,7 +42,6 @@
         .music-card iframe { width: 100%; aspect-ratio: 16/9; border-radius: 12px; border: 2px solid rgba(255,255,255,0.1); }
         .music-title { margin-top: 15px; font-weight: bold; color: #fff; text-align: center; font-size: 1rem; }
 
-        /* ヒットチャートセクション */
         .trending-section {
             background: rgba(15, 23, 42, 0.8); padding: 40px 20px; border-radius: 20px;
         }
@@ -59,29 +58,24 @@
         .thumb-item:hover { transform: translateY(-5px); background: rgba(244, 114, 182, 0.1); border-color: #f472b6; }
         .rank-badge { position: absolute; top: 0; left: 0; background: #db2777; color: #fff; padding: 4px 12px; font-weight: bold; font-size: 1rem; border-radius: 0 0 12px 0; z-index: 2; }
         
-        .thumb-img-container { width: 100%; aspect-ratio: 16/9; background: #000; }
+        .thumb-img-container { width: 100%; aspect-ratio: 16/9; background: #000; overflow: hidden; }
         .thumb-img { width: 100%; height: 100%; object-fit: cover; }
         
         .thumb-text { padding: 15px; text-align: left; }
         .thumb-artist { color: #f472b6; font-weight: bold; display: block; font-size: 0.85rem; margin-bottom: 4px; }
-        .thumb-song { font-size: 1.1rem; color: #fff; font-weight: bold; line-height: 1.3; }
-        .dl-info { font-size: 0.75rem; color: #94a3b8; margin-top: 10px; display: block; }
+        .thumb-song { font-size: 1rem; color: #fff; font-weight: bold; line-height: 1.3; }
 
         footer { margin: 80px 0 40px; color: #475569; font-size: 0.9rem; text-align: center; }
 
-        /* スマホ・タブレット対応 */
-        @media (max-width: 1024px) {
-            .thumb-grid { grid-template-columns: repeat(2, 1fr); }
-        }
+        @media (max-width: 1024px) { .thumb-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) {
             .top-3-grid { grid-template-columns: 1fr; }
-            /* スマホで1列にしてリストを巨大化 */
             .thumb-grid { grid-template-columns: 1fr; gap: 20px; }
-            .thumb-item { display: flex; align-items: stretch; height: 120px; }
-            .thumb-img-container { width: 45%; height: 100%; }
-            .thumb-text { width: 55%; padding: 15px; display: flex; flex-direction: column; justify-content: center; }
-            .thumb-song { font-size: 1.2rem; }
-            .rank-badge { padding: 6px 15px; font-size: 1.2rem; }
+            .thumb-item { display: flex; align-items: stretch; height: 110px; }
+            .thumb-img-container { width: 40%; height: 100%; }
+            .thumb-text { width: 60%; padding: 12px; display: flex; flex-direction: column; justify-content: center; }
+            .thumb-song { font-size: 1.1rem; }
+            .rank-badge { padding: 4px 12px; font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -124,105 +118,105 @@
             <h3 class="trending-title"><span>💖</span> Latest Hits Ranking 20</h3>
             <div class="thumb-grid">
                 
-                <a href="https://www.youtube.com/watch?v=v_1Aas0h4E4" target="_blank" class="thumb-item">
+                <a href="https://www.youtube.com/watch?v=1DzBKtD3JzI" target="_blank" class="thumb-item">
                     <span class="rank-badge">1</span>
-                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/v_1Aas0h4E4/mqdefault.jpg" class="thumb-img"></div>
-                    <div class="thumb-text"><span class="thumb-artist">嵐</span><span class="thumb-song">Five</span><span class="dl-info">133,204 DL</span></div>
+                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/1DzBKtD3JzI/mqdefault.jpg" class="thumb-img"></div>
+                    <div class="thumb-text"><span class="thumb-artist">嵐</span><span class="thumb-song">FIVE</span></div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=q_M6p7Vj98Q" target="_blank" class="thumb-item">
+                <a href="https://www.youtube.com/watch?v=6V_fTnlj_Dg" target="_blank" class="thumb-item">
                     <span class="rank-badge">2</span>
-                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/q_M6p7Vj98Q/mqdefault.jpg" class="thumb-img"></div>
-                    <div class="thumb-text"><span class="thumb-artist">稲葉浩志</span><span class="thumb-song">タッチ</span><span class="dl-info">29,088 DL</span></div>
+                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/6V_fTnlj_Dg/mqdefault.jpg" class="thumb-img"></div>
+                    <div class="thumb-text"><span class="thumb-artist">稲葉浩志</span><span class="thumb-song">タッチ</span></div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=mI3u69Y79-M" target="_blank" class="thumb-item">
+                <a href="https://www.youtube.com/watch?v=Yy94N8JUdEI" target="_blank" class="thumb-item">
                     <span class="rank-badge">3</span>
-                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/mI3u69Y79-M/mqdefault.jpg" class="thumb-img"></div>
-                    <div class="thumb-text"><span class="thumb-artist">Mr.Children</span><span class="thumb-song">産声</span><span class="dl-info">8,219 DL</span></div>
+                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/Yy94N8JUdEI/mqdefault.jpg" class="thumb-img"></div>
+                    <div class="thumb-text"><span class="thumb-artist">Mr.Children</span><span class="thumb-song">産声</span></div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=xV-E-4C7j8M" target="_blank" class="thumb-item">
+                <a href="https://www.youtube.com/watch?v=VEiBxLwfU3E" target="_blank" class="thumb-item">
                     <span class="rank-badge">4</span>
-                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/xV-E-4C7j8M/mqdefault.jpg" class="thumb-img"></div>
-                    <div class="thumb-text"><span class="thumb-artist">Snow Man</span><span class="thumb-song">オドロウゼ!</span><span class="dl-info">5,540 DL</span></div>
+                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/VEiBxLwfU3E/mqdefault.jpg" class="thumb-img"></div>
+                    <div class="thumb-text"><span class="thumb-artist">Snow Man</span><span class="thumb-song">オドロウゼ!</span></div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=ptiK8U4WlSc" target="_blank" class="thumb-item">
+                <a href="https://www.youtube.com/watch?v=HWA3fLUzPds" target="_blank" class="thumb-item">
                     <span class="rank-badge">5</span>
-                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/ptiK8U4WlSc/mqdefault.jpg" class="thumb-img"></div>
-                    <div class="thumb-text"><span class="thumb-artist">藤井 風</span><span class="thumb-song">My Place</span><span class="dl-info">4,025 DL</span></div>
+                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/HWA3fLUzPds/mqdefault.jpg" class="thumb-img"></div>
+                    <div class="thumb-text"><span class="thumb-artist">藤井 風</span><span class="thumb-song">My Place</span></div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=9_p_n8E4E5o" target="_blank" class="thumb-item">
+                <a href="https://www.youtube.com/watch?v=MjeiIal1ZR0" target="_blank" class="thumb-item">
                     <span class="rank-badge">6</span>
-                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/9_p_n8E4E5o/mqdefault.jpg" class="thumb-img"></div>
-                    <div class="thumb-text"><span class="thumb-artist">Mrs. GREEN APPLE</span><span class="thumb-song">lulu.</span><span class="dl-info">3,529 DL</span></div>
+                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/MjeiIal1ZR0/mqdefault.jpg" class="thumb-img"></div>
+                    <div class="thumb-text"><span class="thumb-artist">Mrs. GREEN APPLE</span><span class="thumb-song">lulu.</span></div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=cyq5QN7S_9Y" target="_blank" class="thumb-item">
+                <a href="https://www.youtube.com/watch?v=YvYii6dluM8" target="_blank" class="thumb-item">
                     <span class="rank-badge">7</span>
-                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/cyq5QN7S_9Y/mqdefault.jpg" class="thumb-img"></div>
-                    <div class="thumb-text"><span class="thumb-artist">Ado</span><span class="thumb-song">ビバリウム</span><span class="dl-info">3,331 DL</span></div>
+                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/YvYii6dluM8/mqdefault.jpg" class="thumb-img"></div>
+                    <div class="thumb-text"><span class="thumb-artist">Ado</span><span class="thumb-song">ビバリウム</span></div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=fhzKLBZJC3w" target="_blank" class="thumb-item">
+                <a href="https://www.youtube.com/watch?v=zz2a9Q2Wru0" target="_blank" class="thumb-item">
                     <span class="rank-badge">8</span>
-                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/fhzKLBZJC3w/mqdefault.jpg" class="thumb-img"></div>
-                    <div class="thumb-text"><span class="thumb-artist">King Gnu</span><span class="thumb-song">AIZO</span><span class="dl-info">3,131 DL</span></div>
+                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/zz2a9Q2Wru0/mqdefault.jpg" class="thumb-img"></div>
+                    <div class="thumb-text"><span class="thumb-artist">King Gnu</span><span class="thumb-song">AIZO</span></div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=h6D0P4V9L6E" target="_blank" class="thumb-item">
+                <a href="https://www.youtube.com/watch?v=wTc3jXDTNBo" target="_blank" class="thumb-item">
                     <span class="rank-badge">9</span>
-                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/h6D0P4V9L6E/mqdefault.jpg" class="thumb-img"></div>
-                    <div class="thumb-text"><span class="thumb-artist">RADWIMPS</span><span class="thumb-song">正解</span><span class="dl-info">2,831 DL</span></div>
+                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/wTc3jXDTNBo/mqdefault.jpg" class="thumb-img"></div>
+                    <div class="thumb-text"><span class="thumb-artist">RADWIMPS</span><span class="thumb-song">正解</span></div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=Yf8U7_M4q0M" target="_blank" class="thumb-item">
+                <a href="https://www.youtube.com/watch?v=ZVUxJsPfoX8" target="_blank" class="thumb-item">
                     <span class="rank-badge">10</span>
-                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/Yf8U7_M4q0M/mqdefault.jpg" class="thumb-img"></div>
-                    <div class="thumb-text"><span class="thumb-artist">M!LK</span><span class="thumb-song">好きすぎて滅!</span><span class="dl-info">2,804 DL</span></div>
+                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/ZVUxJsPfoX8/mqdefault.jpg" class="thumb-img"></div>
+                    <div class="thumb-text"><span class="thumb-artist">M!LK</span><span class="thumb-song">好きすぎて滅!</span></div>
                 </a>
-                <a href="https://www.youtube.com/results?search_query=STARGLOW+Green+Light" target="_blank" class="thumb-item">
+                <a href="https://www.youtube.com/watch?v=FKtMzDOV08M" target="_blank" class="thumb-item">
                     <span class="rank-badge">11</span>
-                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/ZRtdQ81jPUQ/mqdefault.jpg" class="thumb-img"></div>
-                    <div class="thumb-text"><span class="thumb-artist">STARGLOW</span><span class="thumb-song">Green Light</span><span class="dl-info">2,544 DL</span></div>
+                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/FKtMzDOV08M/mqdefault.jpg" class="thumb-img"></div>
+                    <div class="thumb-text"><span class="thumb-artist">STARGLOW</span><span class="thumb-song">Green Light</span></div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=-ze6X-T04Go" target="_blank" class="thumb-item">
+                <a href="https://www.youtube.com/watch?v=MJ70B_cwnPk" target="_blank" class="thumb-item">
                     <span class="rank-badge">12</span>
-                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/-ze6X-T04Go/mqdefault.jpg" class="thumb-img"></div>
-                    <div class="thumb-text"><span class="thumb-artist">米津玄師</span><span class="thumb-song">IRIS OUT</span><span class="dl-info">2,334 DL</span></div>
+                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/MJ70B_cwnPk/mqdefault.jpg" class="thumb-img"></div>
+                    <div class="thumb-text"><span class="thumb-artist">米津玄師</span><span class="thumb-song">IRIS OUT</span></div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=hN5MBlGUX28" target="_blank" class="thumb-item">
+                <a href="https://www.youtube.com/watch?v=-euyxC1IY1A" target="_blank" class="thumb-item">
                     <span class="rank-badge">13</span>
-                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/hN5MBlGUX28/mqdefault.jpg" class="thumb-img"></div>
-                    <div class="thumb-text"><span class="thumb-artist">Mr.Children</span><span class="thumb-song">Again</span><span class="dl-info">2,316 DL</span></div>
+                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/-euyxC1IY1A/mqdefault.jpg" class="thumb-img"></div>
+                    <div class="thumb-text"><span class="thumb-artist">Mr.Children</span><span class="thumb-song">Again</span></div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=jZ1V-Fz6ZkM" target="_blank" class="thumb-item">
+                <a href="https://www.youtube.com/watch?v=tpFDnOnOdSQ" target="_blank" class="thumb-item">
                     <span class="rank-badge">14</span>
-                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/jZ1V-Fz6ZkM/mqdefault.jpg" class="thumb-img"></div>
-                    <div class="thumb-text"><span class="thumb-artist">M!LK</span><span class="thumb-song">爆裂愛してる</span><span class="dl-info">2,223 DL</span></div>
+                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/tpFDnOnOdSQ/mqdefault.jpg" class="thumb-img"></div>
+                    <div class="thumb-text"><span class="thumb-artist">M!LK</span><span class="thumb-song">爆裂愛してる</span></div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=O0lZ4uS8x_0" target="_blank" class="thumb-item">
+                <a href="https://www.youtube.com/watch?v=5DfWkp7uQMs" target="_blank" class="thumb-item">
                     <span class="rank-badge">15</span>
-                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/O0lZ4uS8x_0/mqdefault.jpg" class="thumb-img"></div>
-                    <div class="thumb-text"><span class="thumb-artist">sumika</span><span class="thumb-song">Honto</span><span class="dl-info">2,202 DL</span></div>
+                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/5DfWkp7uQMs/mqdefault.jpg" class="thumb-img"></div>
+                    <div class="thumb-text"><span class="thumb-artist">sumika</span><span class="thumb-song">Honto</span></div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=ixKddZpZ_Hk" target="_blank" class="thumb-item">
+                <a href="https://www.youtube.com/watch?v=wl6V4GpVTj4" target="_blank" class="thumb-item">
                     <span class="rank-badge">16</span>
-                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/ixKddZpZ_Hk/mqdefault.jpg" class="thumb-img"></div>
-                    <div class="thumb-text"><span class="thumb-artist">back number</span><span class="thumb-song">どうしてもどうしても</span><span class="dl-info">1,887 DL</span></div>
+                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/wl6V4GpVTj4/mqdefault.jpg" class="thumb-img"></div>
+                    <div class="thumb-text"><span class="thumb-artist">back number</span><span class="thumb-song">どうしてもどうしても</span></div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=LIlZBaZfU0Y" target="_blank" class="thumb-item">
+                <a href="https://www.youtube.com/watch?v=iRb67zfMF7M" target="_blank" class="thumb-item">
                     <span class="rank-badge">17</span>
-                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/LIlZBaZfU0Y/mqdefault.jpg" class="thumb-img"></div>
-                    <div class="thumb-text"><span class="thumb-artist">サカナクション</span><span class="thumb-song">いらない</span><span class="dl-info">1,696 DL</span></div>
+                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/iRb67zfMF7M/mqdefault.jpg" class="thumb-img"></div>
+                    <div class="thumb-text"><span class="thumb-artist">サカナクション</span><span class="thumb-song">いらない</span></div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=yZ4A_u5XvG8" target="_blank" class="thumb-item">
+                <a href="https://www.youtube.com/watch?v=fTY5h_VKoCA" target="_blank" class="thumb-item">
                     <span class="rank-badge">18</span>
-                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/yZ4A_u5XvG8/mqdefault.jpg" class="thumb-img"></div>
-                    <div class="thumb-text"><span class="thumb-artist">HANA</span><span class="thumb-song">ALL IN</span><span class="dl-info">1,642 DL</span></div>
+                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/fTY5h_VKoCA/mqdefault.jpg" class="thumb-img"></div>
+                    <div class="thumb-text"><span class="thumb-artist">HANA</span><span class="thumb-song">ALL IN</span></div>
                 </a>
-                <a href="https://www.youtube.com/watch?v=W_S_oD1L7Yc" target="_blank" class="thumb-item">
+                <a href="https://www.youtube.com/watch?v=a8dgNdJVluc" target="_blank" class="thumb-item">
                     <span class="rank-badge">19</span>
-                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/W_S_oD1L7Yc/mqdefault.jpg" class="thumb-img"></div>
-                    <div class="thumb-text"><span class="thumb-artist">サカナクション</span><span class="thumb-song">怪獣</span><span class="dl-info">1,538 DL</span></div>
+                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/a8dgNdJVluc/mqdefault.jpg" class="thumb-img"></div>
+                    <div class="thumb-text"><span class="thumb-artist">サカナクション</span><span class="thumb-song">怪獣</span></div>
                 </a>
-                <a href="https://www.youtube.com/results?search_query=YUTA+PLAY+BACK" target="_blank" class="thumb-item">
+                <a href="https://www.youtube.com/watch?v=5F5VEBxlM6k" target="_blank" class="thumb-item">
                     <span class="rank-badge">20</span>
-                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/F-M0B8uF6G8/mqdefault.jpg" class="thumb-img"></div>
-                    <div class="thumb-text"><span class="thumb-artist">YUTA</span><span class="thumb-song">PLAY BACK</span><span class="dl-info">1,493 DL</span></div>
+                    <div class="thumb-img-container"><img src="https://img.youtube.com/vi/5F5VEBxlM6k/mqdefault.jpg" class="thumb-img"></div>
+                    <div class="thumb-text"><span class="thumb-artist">YUTA</span><span class="thumb-song">PLAY BACK</span></div>
                 </a>
 
             </div>
