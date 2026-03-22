@@ -43,28 +43,27 @@
         .music-card iframe { width: 100%; aspect-ratio: 16/9; border-radius: 8px; border: 1px solid #334155; }
         .music-title { margin-top: 12px; font-weight: bold; color: #fff; text-align: center; font-size: 0.9rem; min-height: 3em; }
 
-        /* 最新ヒット10人セクション */
+        /* 最新ヒット10曲（サムネイル付き） */
         .trending-section {
             background: rgba(15, 23, 42, 0.5); padding: 30px; border-radius: 12px;
         }
-        .trending-title { font-size: 1.4rem; color: #38bdf8; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        .trending-list { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 15px; 
-            list-style: none; padding: 0;
+        .trending-title { font-size: 1.4rem; color: #38bdf8; margin-bottom: 25px; display: flex; align-items: center; gap: 10px; }
+        
+        .thumb-grid {
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px;
         }
-        .trending-list li {
-            background: rgba(255,255,255,0.05); padding: 15px 20px; border-radius: 6px;
-            display: flex; flex-direction: column; justify-content: center; color: #e2e8f0; transition: 0.3s;
-        }
-        .trending-list li:hover { background: rgba(56, 189, 248, 0.1); transform: translateY(-2px); }
-        .artist-info { font-size: 0.8rem; color: #38bdf8; font-weight: bold; margin-bottom: 4px; }
-        .song-info { font-size: 1rem; color: #fff; }
+        .thumb-item { text-decoration: none; transition: 0.3s; }
+        .thumb-item:hover { transform: translateY(-5px); }
+        .thumb-img { width: 100%; aspect-ratio: 16/9; border-radius: 6px; object-fit: cover; border: 1px solid rgba(255,255,255,0.1); }
+        .thumb-text { font-size: 0.75rem; color: #cbd5e1; margin-top: 8px; text-align: left; line-height: 1.4; }
+        .thumb-artist { color: #38bdf8; font-weight: bold; display: block; margin-bottom: 2px; }
 
         footer { margin: 80px 0 40px; color: #475569; font-size: 0.9rem; text-align: center; }
 
+        @media (max-width: 1024px) { .thumb-grid { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 768px) {
             .top-3-grid { grid-template-columns: 1fr; }
-            .trending-list { grid-template-columns: 1fr; }
+            .thumb-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -74,18 +73,18 @@
     <a href="index.html" class="back-btn">← Portal Top</a>
     
     <h1>Music Gallery</h1>
-    <p class="subtitle">真空管アンプで味わいたい、至高のメロディライン</p>
+    <p class="subtitle">真空管アンプで味わいたい、sayaさんの透き通る歌声</p>
 
     <div class="artist-block">
         <div class="artist-header">
             <h2 class="artist-name">saya（チャンネルさや）</h2>
-            <span class="tag">RECOMMEND</span>
+            <span class="tag">SPECIAL COVER</span>
         </div>
 
         <div class="comment-box">
-            「谷村新司さんの名曲『群青』のカバーは、彼女の表現力が最も際立つ一曲。
-            ピアノの旋律と、空気に溶け込むような歌声の重なりが実に見事です。
-            大人のオーディオで、静かな夜にじっくりと聴き込みたい3曲を選びました。」
+            「sayaさんの歌声は、ピアノ一本の伴奏でも空間を支配する圧倒的な透明感があります。
+            谷村新司さんの『群青』、ジブリの名曲、そして美空ひばりさんの『愛燦燦』。
+            ジャンルを超えて、心に深く染み入る3つの物語をお楽しみください。」
         </div>
 
         <div class="top-3-grid">
@@ -94,29 +93,59 @@
                 <div class="music-title">群青 - 谷村新司<br>(Covered by saya)</div>
             </div>
             <div class="music-card">
-                <iframe src="https://www.youtube.com/embed/YpS8V_9Xq7A" allowfullscreen></iframe>
-                <div class="music-title">大地を歩む<br>(Original)</div>
+                <iframe src="https://www.youtube.com/embed/wHlHtNgZ18k" allowfullscreen></iframe>
+                <div class="music-title">君をのせて - ラピュタ<br>(Covered by saya)</div>
             </div>
             <div class="music-card">
-                <iframe src="https://www.youtube.com/embed/S_7-FvXbT44" allowfullscreen></iframe>
-                <div class="music-title">祈りの詩<br>(Original)</div>
+                <iframe src="https://www.youtube.com/embed/2ETfPOqCOUc" allowfullscreen></iframe>
+                <div class="music-title">愛燦燦 - 美空ひばり<br>(Covered by saya)</div>
             </div>
         </div>
 
         <div class="trending-section">
-            <h3 class="trending-title"><span>♪</span> 最新ヒット 10人10曲</h3>
-            <ul class="trending-list">
-                <li><span class="artist-info">Creepy Nuts</span><span class="song-info">Bling-Bang-Bang-Born</span></li>
-                <li><span class="artist-info">Vaundy</span><span class="song-info">タイムパラドックス</span></li>
-                <li><span class="artist-info">Mrs. GREEN APPLE</span><span class="song-info">ライラック</span></li>
-                <li><span class="artist-info">tuki.</span><span class="song-info">晩餐歌</span></li>
-                <li><span class="artist-info">Omoinotake</span><span class="song-info">幾億光年</span></li>
-                <li><span class="artist-info">藤井 風</span><span class="song-info">満ちてゆく</span></li>
-                <li><span class="artist-info">YOASOBI</span><span class="song-info">アイドル</span></li>
-                <li><span class="artist-info">King Gnu</span><span class="song-info">SPECIALZ</span></li>
-                <li><span class="artist-info">Official髭男dism</span><span class="song-info">Subtitle</span></li>
-                <li><span class="artist-info">米津玄師</span><span class="song-info">さよーならまたいつか！</span></li>
-            </ul>
+            <h3 class="trending-title"><span>♪</span> 最新ヒット・おすすめ 10曲</h3>
+            <div class="thumb-grid">
+                <a href="https://www.youtube.com/watch?v=210R0ozmLwg" target="_blank" class="thumb-item">
+                    <img src="https://img.youtube.com/vi/210R0ozmLwg/mqdefault.jpg" class="thumb-img">
+                    <div class="thumb-text"><span class="thumb-artist">Creepy Nuts</span>Bling-Bang-Bang-Born</div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=7L7V_S3Xj-I" target="_blank" class="thumb-item">
+                    <img src="https://img.youtube.com/vi/7L7V_S3Xj-I/mqdefault.jpg" class="thumb-img">
+                    <div class="thumb-text"><span class="thumb-artist">Vaundy</span>タイムパラドックス</div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=9_p_n8E4E5o" target="_blank" class="thumb-item">
+                    <img src="https://img.youtube.com/vi/9_p_n8E4E5o/mqdefault.jpg" class="thumb-img">
+                    <div class="thumb-text"><span class="thumb-artist">Mrs. GREEN APPLE</span>ライラック</div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=ixKddZpZ_Hk" target="_blank" class="thumb-item">
+                    <img src="https://img.youtube.com/vi/ixKddZpZ_Hk/mqdefault.jpg" class="thumb-img">
+                    <div class="thumb-text"><span class="thumb-artist">tuki.</span>晩餐歌</div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=oXvAn63iX-E" target="_blank" class="thumb-item">
+                    <img src="https://img.youtube.com/vi/oXvAn63iX-E/mqdefault.jpg" class="thumb-img">
+                    <div class="thumb-text"><span class="thumb-artist">Omoinotake</span>幾億光年</div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=ptiK8U4WlSc" target="_blank" class="thumb-item">
+                    <img src="https://img.youtube.com/vi/ptiK8U4WlSc/mqdefault.jpg" class="thumb-img">
+                    <div class="thumb-text"><span class="thumb-artist">藤井 風</span>満ちてゆく</div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=ZRtdQ81jPUQ" target="_blank" class="thumb-item">
+                    <img src="https://img.youtube.com/vi/ZRtdQ81jPUQ/mqdefault.jpg" class="thumb-img">
+                    <div class="thumb-text"><span class="thumb-artist">YOASOBI</span>アイドル</div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=fhzKLBZJC3w" target="_blank" class="thumb-item">
+                    <img src="https://img.youtube.com/vi/fhzKLBZJC3w/mqdefault.jpg" class="thumb-img">
+                    <div class="thumb-text"><span class="thumb-artist">King Gnu</span>SPECIALZ</div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=hN5MBlGUX28" target="_blank" class="thumb-item">
+                    <img src="https://img.youtube.com/vi/hN5MBlGUX28/mqdefault.jpg" class="thumb-img">
+                    <div class="thumb-text"><span class="thumb-artist">Official髭男dism</span>Subtitle</div>
+                </a>
+                <a href="https://www.youtube.com/watch?v=-ze6X-T04Go" target="_blank" class="thumb-item">
+                    <img src="https://img.youtube.com/vi/-ze6X-T04Go/mqdefault.jpg" class="thumb-img">
+                    <div class="thumb-text"><span class="thumb-artist">米津玄師</span>さよーならまたいつか！</div>
+                </a>
+            </div>
         </div>
     </div>
 
