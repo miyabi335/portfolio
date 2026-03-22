@@ -8,122 +8,71 @@
         body { 
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
             margin: 0; background: #020617; text-align: center; color: #e2e8f0; 
+            line-height: 1.6;
         }
 
-        /* --- 【修正】ヘッダー：画像を小さく、バランスよく配置 --- */
+        /* --- ヘッダー：画質を優先し、バランスよく配置 --- */
         .header-container { 
-            position: relative; width: 100%; 
-            /* 高さ固定を撤廃し、余白で調整 */
-            padding: 60px 0 20px; 
-            background: #000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            width: 100%; padding: 40px 0 20px; background: #000;
+            display: flex; flex-direction: column; align-items: center;
         }
         .header-image-wrapper {
-            width: 100%;
-            max-width: 1000px; /* 画像が粗くならない最大幅 */
-            padding: 0 20px;
-            box-sizing: border-box;
+            width: 100%; max-width: 900px; padding: 0 20px; box-sizing: border-box;
         }
         .header-image { 
-            width: 100%; 
-            height: auto; 
-            object-fit: contain; /* 画像全体を表示 */
-            border-radius: 8px; /* 少し角を丸く */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* 軽い影で浮かせる */
-        }
-        .header-text { 
-            margin-top: 30px; /* 画像との間隔 */
-            text-align: center;
+            width: 100%; height: auto; border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .header-text h1 { 
-            font-size: 2.8rem; /* 少し小さくして上品に */
-            letter-spacing: 0.3em; margin: 0; color: #fff;
+            font-size: 2.8rem; letter-spacing: 0.3em; margin: 25px 0 0; color: #fff;
             text-shadow: 0 0 15px rgba(255,255,255,0.3); 
         }
 
         .main-wrapper { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
 
-        /* --- 注目動画セクション --- */
-        .featured-video-container {
-            margin-top: 40px;
-            width: 100%;
+        /* --- 注目動画セクション（今一番の見せ場） --- */
+        .featured-video-container { margin-top: 40px; width: 100%; }
+        .video-status-tag {
+            display: inline-block; background: #fb8c00; color: #fff;
+            padding: 5px 15px; border-radius: 4px; font-weight: bold; font-size: 0.9rem;
+            margin-bottom: 15px; letter-spacing: 0.1em;
         }
         .video-player-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 1000px; 
-            margin: 0 auto;
-            aspect-ratio: 16/9;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid rgba(251, 140, 0, 0.4); 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            position: relative; width: 100%; max-width: 1000px; margin: 0 auto;
+            aspect-ratio: 16/9; border-radius: 12px; overflow: hidden;
+            border: 1px solid rgba(251, 140, 0, 0.4); box-shadow: 0 10px 40px rgba(0,0,0,0.8);
         }
         .video-player-wrapper iframe {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
         }
-        .video-status-tag {
-            display: inline-block;
-            background: #fb8c00; color: #fff;
-            padding: 5px 15px; border-radius: 4px;
-            font-weight: bold; font-size: 0.9rem; margin-bottom: 15px;
-            letter-spacing: 0.1em;
-        }
+        .featured-caption { margin-top: 15px; font-weight: bold; color: #fb8c00; font-size: 1.1rem; }
 
         /* セクション見出し */
         .section-title { 
             margin-top: 70px; padding: 15px 0; font-weight: bold; font-size: 1.5rem;
-            color: #f8fafc; letter-spacing: 0.1em;
-            border-bottom: 1px solid rgba(255,255,255,0.1); 
+            color: #f8fafc; letter-spacing: 0.1em; border-bottom: 1px solid rgba(255,255,255,0.1); 
             text-align: left; margin-bottom: 30px;
         }
         .section-title.sansei { color: #fb8c00; border-bottom: 1px solid rgba(251, 140, 0, 0.4); }
 
-        /* --- ボタン・ナビゲーション --- */
-        .grid-5col { 
-            display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-bottom: 30px; 
-        }
-        .nav-btn, .sansei-btn { 
-            display: flex; align-items: center; justify-content: center; 
-            padding: 20px 10px; 
-            border-radius: 8px; text-decoration: none; 
-            font-weight: 900; 
-            font-size: 1.1rem; 
-            transition: 0.3s;
-            box-sizing: border-box;
-            min-height: 70px; 
-        }
-        
-        .nav-btn { 
-            background: rgba(56, 189, 248, 0.1); color: #38bdf8; 
-            border: 2px solid rgba(56, 189, 248, 0.3);
-        }
-        .nav-btn:hover { background: rgba(56, 189, 248, 0.2); border-color: #38bdf8; transform: translateY(-3px); }
-        .nav-link-special { 
-            background: rgba(251, 140, 0, 0.15) !important; 
-            color: #fb8c00 !important; 
-            border-color: #fb8c00 !important; 
-        }
+        /* --- グリッドレイアウト --- */
+        .grid-5col { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-bottom: 30px; }
+        .grid-4col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 40px; }
 
-        .sansei-btn { 
-            background: #fb8c00; color: #fff; border: none; 
-            box-shadow: 0 4px 0 #c2410c;
+        .nav-btn, .sansei-btn { 
+            display: flex; align-items: center; justify-content: center; padding: 20px 10px; 
+            border-radius: 8px; text-decoration: none; font-weight: 900; font-size: 1.1rem; 
+            transition: 0.3s; box-sizing: border-box; min-height: 70px; 
         }
+        .nav-btn { background: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 2px solid rgba(56, 189, 248, 0.3); }
+        .nav-btn:hover { background: rgba(56, 189, 248, 0.2); border-color: #38bdf8; transform: translateY(-3px); }
+        .nav-link-special { background: rgba(251, 140, 0, 0.15) !important; color: #fb8c00 !important; border-color: #fb8c00 !important; }
+
+        .sansei-btn { background: #fb8c00; color: #fff; border: none; box-shadow: 0 4px 0 #c2410c; }
         .sansei-btn:hover { background: #f97316; transform: translateY(-2px); box-shadow: 0 2px 0 #c2410c; }
 
-        .grid-4col { 
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 40px;
-        }
-        .photo-item { 
-            width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px; 
-            transition: 0.4s;
-        }
-        .video-item { 
-            width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; 
-            cursor: pointer; transition: 0.3s;
-        }
+        .photo-item, .video-item { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px; transition: 0.4s; }
+        .video-item { aspect-ratio: 16/9; cursor: pointer; }
         .video-item:hover { transform: scale(1.04); box-shadow: 0 10px 30px rgba(0,0,0,0.7); }
 
         /* --- 動画再生オーバーレイ --- */
@@ -131,30 +80,17 @@
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 10000; 
         }
-        #overlay-content { 
-            width: 95%; 
-            max-width: 1600px; 
-            text-align: center; 
-        }
-        #overlay-video { 
-            width: 100%; 
-            aspect-ratio: 16/9; 
-            box-shadow: 0 0 50px rgba(0,0,0,1);
-            border: 1px solid #333;
-        }
+        #overlay-content { width: 95%; max-width: 1600px; text-align: center; }
+        #overlay-video { width: 100%; aspect-ratio: 16/9; box-shadow: 0 0 50px rgba(0,0,0,1); }
         .close-btn { 
             margin-top: 30px; background: #ef4444; color: #fff; border: none;
-            padding: 15px 60px; border-radius: 50px; cursor: pointer; 
-            font-weight: bold; font-size: 1.2rem; transition: 0.3s;
+            padding: 15px 60px; border-radius: 50px; cursor: pointer; font-weight: bold; 
         }
 
         @media (max-width: 1024px) {
-            .grid-5col { grid-template-columns: repeat(2, 1fr); }
-            .grid-4col { grid-template-columns: repeat(2, 1fr); }
-            .header-container { padding: 40px 0 10px; }
-            .header-image-wrapper { max-width: 100%; }
-            .header-text h1 { font-size: 1.8rem; letter-spacing: 0.2em; }
-            .nav-btn, .sansei-btn { font-size: 1rem; padding: 15px 5px; }
+            .grid-5col, .grid-4col { grid-template-columns: repeat(2, 1fr); }
+            .header-text h1 { font-size: 1.8rem; }
+            .nav-btn, .sansei-btn { font-size: 1rem; }
         }
     </style>
 </head>
@@ -162,7 +98,7 @@
 
 <header class="header-container">
     <div class="header-image-wrapper">
-        <img src="portfolio/photosa/head02.png" alt="MIYABI'S PORTAL ヘッダー" class="header-image">
+        <img src="portfolio/photosa/head02.png" alt="MIYABI'S PORTAL" class="header-image" onerror="this.src='head02.png';">
     </div>
     <div class="header-text">
         <h1>MIYABI'S PORTAL</h1>
@@ -175,23 +111,18 @@
         <div class="video-status-tag">NOW TRENDING</div>
         <div class="video-player-wrapper">
             <iframe 
-                src="https://www.youtube.com/embed/UvdvU_bHKM0?autoplay=1&mute=1&rel=0&modestbranding=1" 
+                src="https://www.youtube.com/embed/UvdvU_bHKM0?autoplay=1&mute=1&rel=0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen>
             </iframe>
         </div>
-        <div style="margin-top:10px; font-weight: bold; color: #fb8c00;">
-            【国会中継】参議院議員 神谷宗幣 国会質疑
-        </div>
+        <div class="featured-caption">【国会中継】「国際紛争と日本の供給力」参議院議員 神谷宗幣</div>
     </section>
 
     <div class="section-title">NAVIGATION MENU</div>
     <nav class="grid-5col">
-        <div class="nav-btn">No.1</div>
-        <div class="nav-btn">No.2</div>
-        <div class="nav-btn">No.3</div>
-        <a href="no4.html" class="nav-btn">Music</a>
-        <div class="nav-btn">No.5</div>
+        <div class="nav-btn">No.1</div><div class="nav-btn">No.2</div><div class="nav-btn">No.3</div>
+        <a href="no4.html" class="nav-btn">Music</a><div class="nav-btn">No.5</div>
         <a href="https://www.gov-online.go.jp/governmentlinks/" target="_blank" class="nav-btn">官公庁サイト</a>
         <a href="https://www.j-lis.go.jp/spd/map-search/cms_1069.html" target="_blank" class="nav-btn">自治体マップ</a>
         <a href="https://uub.jp/map/kyoto/" target="_blank" class="nav-btn">47都道府県地図</a>
@@ -224,20 +155,6 @@
     <div class="grid-4col">
         <img src="photo1.jpg" class="photo-item"><img src="photo2.jpg" class="photo-item">
         <img src="photo3.jpg" class="photo-item"><img src="photo4.jpg" class="photo-item">
-        <img src="photo5.jpg" class="photo-item"><img src="photo6.jpg" class="photo-item">
-        <img src="photo7.jpg" class="photo-item"><img src="photo8.jpg" class="photo-item">
-    </div>
-
-    <div class="section-title">GENERAL VIDEO ARCHIVE</div>
-    <div class="grid-4col">
-        <img src="https://img.youtube.com/vi/G1hKzCkywM8/mqdefault.jpg" class="video-item" onclick="openVideo('G1hKzCkywM8')">
-        <img src="https://img.youtube.com/vi/a-8XiE7W7u4/mqdefault.jpg" class="video-item" onclick="openVideo('a-8XiE7W7u4')">
-        <img src="https://img.youtube.com/vi/q2_c2_WfJFg/mqdefault.jpg" class="video-item" onclick="openVideo('q2_c2_WfJFg')">
-        <img src="https://img.youtube.com/vi/BpITZk7sa8E/mqdefault.jpg" class="video-item" onclick="openVideo('BpITZk7sa8E')">
-        <img src="https://img.youtube.com/vi/9WfVd_3MizM/mqdefault.jpg" class="video-item" onclick="openVideo('9WfVd_3MizM')">
-        <img src="https://img.youtube.com/vi/XqX8Zz_X_lY/mqdefault.jpg" class="video-item" onclick="openVideo('XqX8Zz_X_lY')">
-        <img src="https://img.youtube.com/vi/L0MK7qz13bU/mqdefault.jpg" class="video-item" onclick="openVideo('L0MK7qz13bU')">
-        <img src="https://img.youtube.com/vi/oHg5SJYRHA0/mqdefault.jpg" class="video-item" onclick="openVideo('oHg5SJYRHA0')">
     </div>
 
 </div>
@@ -263,7 +180,7 @@
     }
 </script>
 
-<footer style="margin: 100px 0 50px; color: #475569; font-size: 1rem;">
+<footer style="margin: 100px 0 50px; color: #475569;">
     &copy; 2026 MIYABI'S PORTAL
 </footer>
 
