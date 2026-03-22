@@ -10,26 +10,42 @@
             margin: 0; background: #020617; text-align: center; color: #e2e8f0; 
         }
 
-        /* --- ヘッダー --- */
+        /* --- 【修正】ヘッダー：画像を小さく、バランスよく配置 --- */
         .header-container { 
-            position: relative; width: 100%; height: 450px; 
-            overflow: hidden; background: #000;
+            position: relative; width: 100%; 
+            /* 高さ固定を撤廃し、余白で調整 */
+            padding: 60px 0 20px; 
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header-image-wrapper {
+            width: 100%;
+            max-width: 1000px; /* 画像が粗くならない最大幅 */
+            padding: 0 20px;
+            box-sizing: border-box;
         }
         .header-image { 
-            width: 100%; height: 100%; object-fit: cover;
-            object-position: center 30%; opacity: 0.8;
+            width: 100%; 
+            height: auto; 
+            object-fit: contain; /* 画像全体を表示 */
+            border-radius: 8px; /* 少し角を丸く */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* 軽い影で浮かせる */
         }
         .header-text { 
-            position: absolute; bottom: 40px; right: 40px; text-align: right;
+            margin-top: 30px; /* 画像との間隔 */
+            text-align: center;
         }
         .header-text h1 { 
-            font-size: 3.5rem; letter-spacing: 0.3em; margin: 0; color: #fff;
-            text-shadow: 0 0 20px rgba(0,0,0,1); 
+            font-size: 2.8rem; /* 少し小さくして上品に */
+            letter-spacing: 0.3em; margin: 0; color: #fff;
+            text-shadow: 0 0 15px rgba(255,255,255,0.3); 
         }
 
         .main-wrapper { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
 
-        /* --- 【新規】注目動画セクション（現在のスタイルに統合） --- */
+        /* --- 注目動画セクション --- */
         .featured-video-container {
             margin-top: 40px;
             width: 100%;
@@ -37,12 +53,12 @@
         .video-player-wrapper {
             position: relative;
             width: 100%;
-            max-width: 1000px; /* 見栄えの良い最大幅 */
+            max-width: 1000px; 
             margin: 0 auto;
             aspect-ratio: 16/9;
             border-radius: 12px;
             overflow: hidden;
-            border: 1px solid rgba(251, 140, 0, 0.4); /* 参政党カラーの薄い枠線 */
+            border: 1px solid rgba(251, 140, 0, 0.4); 
             box-shadow: 0 10px 40px rgba(0,0,0,0.8);
         }
         .video-player-wrapper iframe {
@@ -135,8 +151,9 @@
         @media (max-width: 1024px) {
             .grid-5col { grid-template-columns: repeat(2, 1fr); }
             .grid-4col { grid-template-columns: repeat(2, 1fr); }
-            .header-container { height: 350px; }
-            .header-text h1 { font-size: 2.2rem; }
+            .header-container { padding: 40px 0 10px; }
+            .header-image-wrapper { max-width: 100%; }
+            .header-text h1 { font-size: 1.8rem; letter-spacing: 0.2em; }
             .nav-btn, .sansei-btn { font-size: 1rem; padding: 15px 5px; }
         }
     </style>
@@ -144,8 +161,12 @@
 <body>
 
 <header class="header-container">
-    <img src="fuji00001.jpg" alt="富士山" class="header-image">
-    <div class="header-text"><h1>MIYABI'S PORTAL</h1></div>
+    <div class="header-image-wrapper">
+        <img src="portfolio/photosa/head02.png" alt="MIYABI'S PORTAL ヘッダー" class="header-image">
+    </div>
+    <div class="header-text">
+        <h1>MIYABI'S PORTAL</h1>
+    </div>
 </header>
 
 <div class="main-wrapper">
@@ -160,9 +181,10 @@
             </iframe>
         </div>
         <div style="margin-top:10px; font-weight: bold; color: #fb8c00;">
-            【国会中継】「国際紛争と日本の供給力」参議院議員 神谷宗幣 国会質疑
+            【国会中継】参議院議員 神谷宗幣 国会質疑
         </div>
     </section>
+
     <div class="section-title">NAVIGATION MENU</div>
     <nav class="grid-5col">
         <div class="nav-btn">No.1</div>
