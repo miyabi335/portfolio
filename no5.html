@@ -31,20 +31,26 @@
         }
         .main-wrapper { max-width: 1400px; margin: 0 auto; padding: 0 20px; text-align: left; }
 
-        /* プロフィールセクション */
+        /* プロフィールセクション（横並び） */
         .profile-flex {
             display: flex;
-            align-items: flex-start;
-            gap: 40px;
+            /* --- 【修正点】上下中央揃えに変更 --- */
+            align-items: center; 
+            gap: 60px; /* 間隔を少し広く */
             margin-top: 50px;
             margin-bottom: 50px;
             background: rgba(255,255,255,0.03);
-            padding: 40px;
+            padding: 50px; /* 内側の余白を少し広く */
             border-radius: 12px;
             border: 1px solid rgba(56, 189, 248, 0.1);
         }
         .profile-text-container { flex: 1; }
-        .profile-photo-container { flex: 0 0 350px; }
+
+        /* 写真エリア */
+        .profile-photo-container { 
+            /* --- 【修正点】写真の横幅を少し大きく調整 --- */
+            flex: 0 0 450px; 
+        }
         .profile-photo {
             width: 100%;
             height: auto;
@@ -52,6 +58,8 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             border: 2px solid rgba(255,255,255,0.1);
         }
+
+        /* テキスト装飾 */
         .profile-name { font-size: 2.5rem; letter-spacing: 0.1em; color: #fff; margin: 0 0 20px 0; }
         .profile-basic-info { font-size: 1.1rem; line-height: 1.8; color: #cbd5e1; margin-bottom: 30px; }
         .info-h3 { font-size: 1.3rem; color: #38bdf8; border-left: 4px solid #38bdf8; padding-left: 15px; margin-top: 40px; margin-bottom: 20px; }
@@ -69,9 +77,19 @@
             font-weight: bold; font-size: 1rem;
             transition: 0.3s;
         }
+        .back-btn:hover { background: rgba(56, 189, 248, 0.2); transform: translateX(-5px); }
+
+        /* スマホ対応 */
         @media (max-width: 1024px) {
-            .profile-flex { flex-direction: column-reverse; padding: 20px; gap: 20px; }
-            .profile-photo-container { flex: none; width: 100%; max-width: 300px; margin: 0 auto; }
+            .header-container { height: 320px; }
+            .header-text h1 { font-size: 2rem; }
+            .profile-flex { 
+                flex-direction: column-reverse; /* スマホでは縦並び、写真を上に */
+                padding: 30px; 
+                gap: 30px; 
+            }
+            .profile-photo-container { flex: none; width: 100%; max-width: 350px; margin: 0 auto; }
+            .profile-name { font-size: 2rem; }
         }
     </style>
 </head>
@@ -86,8 +104,10 @@
     <a href="index.html" class="back-btn">← 戻る</a>
 
     <div class="profile-flex">
+        
         <div class="profile-text-container">
             <h2 class="profile-name">川 裕一郎</h2>
+            
             <div class="profile-basic-info">
                 昭和46年10月27日 金沢市生まれ O型<br>
                 趣味／愛犬と散歩、ゴルフ、旅行、映画鑑賞<br>
@@ -115,12 +135,15 @@
                 <li>Facebook：<a href="https://www.facebook.com/y16kawa" target="_blank">https://www.facebook.com/y16kawa</a></li>
                 <li>YouTube：<a href="https://www.youtube.com/@kaway16" target="_blank">https://www.youtube.com/@kaway16</a></li>
                 <li>公式サイト：<a href="https://y16.jp/" target="_blank">https://y16.jp/</a></li>
+                <li style="margin-top: 10px;">参政党石川HP：<a href="https://ishikawakenren.hp.peraichi.com/" target="_blank">https://ishikawakenren.hp.peraichi.com/</a></li>
+                <li>石川県連 X：<a href="https://x.com/sanseitou3" target="_blank">https://x.com/sanseitou3</a></li>
             </ul>
         </div>
 
         <div class="profile-photo-container">
             <img src="photosa/kawa002.jpg" alt="川 裕一郎" class="profile-photo" onerror="this.src='photosa/kawa002.JPG'">
         </div>
+
     </div>
 </div>
 
