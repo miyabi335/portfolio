@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MIYABI'S PORTAL</title>
     <style>
-        /* 全体レイアウト固定 */
+        /* レイアウト崩れ防止プロトコル */
         * { box-sizing: border-box; }
         body { 
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
@@ -13,12 +13,13 @@
             line-height: 1.8;
         }
 
-        /* --- ヘッダー：head02.png 指定 --- */
+        /* --- ヘッダー：指定パス画像を荒らさず配置 --- */
         .header-container { 
             width: 100%; padding: 50px 0 30px; background: #000; border-bottom: 1px solid #1e293b;
         }
         .header-image-wrapper {
-            max-width: 800px; margin: 0 auto; padding: 0 20px;
+            max-width: 800px; /* 画像が荒れない適切なサイズに制限 */
+            margin: 0 auto; padding: 0 20px;
         }
         .header-image { 
             width: 100%; height: auto; border-radius: 12px; 
@@ -30,12 +31,12 @@
             text-shadow: 0 0 20px rgba(255,255,255,0.2); 
         }
 
-        /* メインコンテナ */
+        /* メインコンテンツ枠 */
         .main-wrapper { 
             max-width: 1200px; margin: 0 auto; padding: 0 20px; text-align: left; 
         }
 
-        /* 注目動画 */
+        /* 注目動画セクション */
         .featured-section { margin: 50px 0; width: 100%; text-align: center; }
         .video-player-wrapper {
             position: relative; width: 100%; aspect-ratio: 16/9; 
@@ -46,7 +47,7 @@
         .video-player-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
         .video-label { margin-top: 15px; color: #fb8c00; font-weight: bold; font-size: 1.2rem; }
 
-        /* 見出し */
+        /* セクション見出し */
         .section-title { 
             margin: 80px 0 30px; padding: 15px 0; font-weight: bold; font-size: 1.6rem;
             color: #f8fafc; border-bottom: 2px solid rgba(255,255,255,0.1); 
@@ -71,7 +72,7 @@
         .sansei-btn { background: #fb8c00; color: #fff; border: none; box-shadow: 0 4px 0 #c2410c; }
         .sansei-btn:hover { background: #f97316; transform: translateY(-3px); box-shadow: 0 2px 0 #c2410c; }
 
-        /* 画像・動画アイテム */
+        /* メディアアイテム */
         .photo-item, .video-item { 
             width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px; 
             transition: 0.4s; border: 1px solid rgba(255,255,255,0.05);
@@ -88,6 +89,7 @@
         #overlay-video { width: 100%; aspect-ratio: 16/9; }
         .close-btn { margin-top: 30px; background: #ef4444; color: #fff; border: none; padding: 15px 60px; border-radius: 50px; cursor: pointer; font-weight: bold; }
 
+        /* スマホ対応 */
         @media (max-width: 1024px) {
             .grid-5col, .grid-4col { grid-template-columns: repeat(2, 1fr); }
             .header-text h1 { font-size: 2rem; }
