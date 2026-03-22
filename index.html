@@ -5,133 +5,243 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MIYABI'S PORTAL</title>
     <style>
-        /* --- オリジナル・ベーススタイル（維持） --- */
-        body { font-family: Arial, sans-serif; margin: 0; background-color: #f0f0f0; text-align: center; }
-        header { background-color: #333; color: #fff; padding: 25px 0; border-bottom: 3px solid #db2777; }
-        
-        /* --- 【大画面化】注目動画セクション --- */
-        .featured-video-area {
-            width: 100%; /* 横幅いっぱい */
-            max-width: 100%;
-            margin: 0; /* 余白をなくしてダイレクトに繋げる */
-            background: #000;
-            position: relative;
+        body { 
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            margin: 0; background: #020617; text-align: center; color: #e2e8f0; 
         }
-        .video-aspect-ratio {
+
+        /* --- ヘッダー --- */
+        .header-container { 
+            position: relative; width: 100%; height: 450px; 
+            overflow: hidden; background: #000;
+        }
+        .header-image { 
+            width: 100%; height: 100%; object-fit: cover;
+            object-position: center 30%; opacity: 0.8;
+        }
+        .header-text { 
+            position: absolute; bottom: 40px; right: 40px; text-align: right;
+        }
+        .header-text h1 { 
+            font-size: 3.5rem; letter-spacing: 0.3em; margin: 0; color: #fff;
+            text-shadow: 0 0 20px rgba(0,0,0,1); 
+        }
+
+        .main-wrapper { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- 【新規】注目動画セクション（現在のスタイルに統合） --- */
+        .featured-video-container {
+            margin-top: 40px;
+            width: 100%;
+        }
+        .video-player-wrapper {
             position: relative;
             width: 100%;
-            /* PCでは高さを出し、スマホでも迫力を維持する比率 */
-            padding-top: 45%; 
-            background: #000;
+            max-width: 1000px; /* 見栄えの良い最大幅 */
+            margin: 0 auto;
+            aspect-ratio: 16/9;
+            border-radius: 12px;
             overflow: hidden;
+            border: 1px solid rgba(251, 140, 0, 0.4); /* 参政党カラーの薄い枠線 */
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
         }
-        @media (max-width: 768px) {
-            .video-aspect-ratio { padding-top: 56.25%; /* スマホは標準比率で大きく */ }
+        .video-player-wrapper iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
         }
-        .video-aspect-ratio iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        .video-label-bar {
-            background: linear-gradient(90deg, #333 0%, #db2777 50%, #333 100%);
-            color: #fff;
-            padding: 10px 0;
-            font-weight: bold;
-            font-size: 1.1rem;
+        .video-status-tag {
+            display: inline-block;
+            background: #fb8c00; color: #fff;
+            padding: 5px 15px; border-radius: 4px;
+            font-weight: bold; font-size: 0.9rem; margin-bottom: 15px;
             letter-spacing: 0.1em;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
-        /* --- オリジナル・ナビゲーション（維持） --- */
-        nav { background-color: #444; color: #fff; padding: 15px 0; }
-        nav ul { list-style-type: none; padding: 0; margin: 0; display: flex; justify-content: center; }
-        nav ul li { margin: 0 20px; }
-        nav ul li a { text-decoration: none; color: #fff; font-weight: bold; font-size: 18px; transition: 0.3s; }
-        nav ul li a:hover { color: #ffcc00; text-shadow: 0 0 10px rgba(255,204,0,0.5); }
-
-        /* --- オリジナル・コンテンツカード（維持） --- */
-        .container { display: flex; flex-wrap: wrap; justify-content: center; padding: 30px 10px; }
-        .card { 
-            background-color: #fff; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.1); 
-            margin: 15px; padding: 25px; width: 320px; text-align: left; transition: 0.3s; 
-            border-top: 4px solid #444;
+        /* セクション見出し */
+        .section-title { 
+            margin-top: 70px; padding: 15px 0; font-weight: bold; font-size: 1.5rem;
+            color: #f8fafc; letter-spacing: 0.1em;
+            border-bottom: 1px solid rgba(255,255,255,0.1); 
+            text-align: left; margin-bottom: 30px;
         }
-        .card:hover { transform: translateY(-8px); border-top-color: #db2777; }
-        .card h2 { color: #333; margin-top: 0; font-size: 1.4rem; }
-        .card p { color: #666; font-size: 15px; line-height: 1.6; }
-        .card a { display: block; margin-top: 20px; text-decoration: none; color: #db2777; font-weight: bold; }
+        .section-title.sansei { color: #fb8c00; border-bottom: 1px solid rgba(251, 140, 0, 0.4); }
+
+        /* --- ボタン・ナビゲーション --- */
+        .grid-5col { 
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-bottom: 30px; 
+        }
+        .nav-btn, .sansei-btn { 
+            display: flex; align-items: center; justify-content: center; 
+            padding: 20px 10px; 
+            border-radius: 8px; text-decoration: none; 
+            font-weight: 900; 
+            font-size: 1.1rem; 
+            transition: 0.3s;
+            box-sizing: border-box;
+            min-height: 70px; 
+        }
         
-        footer { padding: 50px 0; color: #888; font-size: 0.9rem; background: #333; color: #ccc; margin-top: 50px; }
+        .nav-btn { 
+            background: rgba(56, 189, 248, 0.1); color: #38bdf8; 
+            border: 2px solid rgba(56, 189, 248, 0.3);
+        }
+        .nav-btn:hover { background: rgba(56, 189, 248, 0.2); border-color: #38bdf8; transform: translateY(-3px); }
+        .nav-link-special { 
+            background: rgba(251, 140, 0, 0.15) !important; 
+            color: #fb8c00 !important; 
+            border-color: #fb8c00 !important; 
+        }
 
-        /* スマホ用最適化 */
-        @media (max-width: 600px) {
-            .card { width: 90%; }
-            nav ul { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 10px; }
-            nav ul li { margin: 5px 10px; }
+        .sansei-btn { 
+            background: #fb8c00; color: #fff; border: none; 
+            box-shadow: 0 4px 0 #c2410c;
+        }
+        .sansei-btn:hover { background: #f97316; transform: translateY(-2px); box-shadow: 0 2px 0 #c2410c; }
+
+        .grid-4col { 
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 40px;
+        }
+        .photo-item { 
+            width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px; 
+            transition: 0.4s;
+        }
+        .video-item { 
+            width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; 
+            cursor: pointer; transition: 0.3s;
+        }
+        .video-item:hover { transform: scale(1.04); box-shadow: 0 10px 30px rgba(0,0,0,0.7); }
+
+        /* --- 動画再生オーバーレイ --- */
+        #overlay { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 10000; 
+        }
+        #overlay-content { 
+            width: 95%; 
+            max-width: 1600px; 
+            text-align: center; 
+        }
+        #overlay-video { 
+            width: 100%; 
+            aspect-ratio: 16/9; 
+            box-shadow: 0 0 50px rgba(0,0,0,1);
+            border: 1px solid #333;
+        }
+        .close-btn { 
+            margin-top: 30px; background: #ef4444; color: #fff; border: none;
+            padding: 15px 60px; border-radius: 50px; cursor: pointer; 
+            font-weight: bold; font-size: 1.2rem; transition: 0.3s;
+        }
+
+        @media (max-width: 1024px) {
+            .grid-5col { grid-template-columns: repeat(2, 1fr); }
+            .grid-4col { grid-template-columns: repeat(2, 1fr); }
+            .header-container { height: 350px; }
+            .header-text h1 { font-size: 2.2rem; }
+            .nav-btn, .sansei-btn { font-size: 1rem; padding: 15px 5px; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>MIYABI'S PORTAL</h1>
+<header class="header-container">
+    <img src="fuji00001.jpg" alt="富士山" class="header-image">
+    <div class="header-text"><h1>MIYABI'S PORTAL</h1></div>
 </header>
 
-<section class="featured-video-area">
-    <div class="video-aspect-ratio">
-        <iframe 
-            src="https://www.youtube.com/embed/UvdvU_bHKM0?autoplay=1&mute=1&rel=0&controls=1&modestbranding=1" 
-            title="注目動画" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-        </iframe>
-    </div>
-    <div class="video-label-bar">
-        PICK UP: 神谷宗幣 議員 国会質疑 (令和8年3月17日)
-    </div>
-</section>
+<div class="main-wrapper">
 
-<nav>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="no1.html">Tools</a></li>
-        <li><a href="no4.html">Music</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Contact</a></li>
-    </ul>
-</nav>
+    <section class="featured-video-container">
+        <div class="video-status-tag">NOW TRENDING</div>
+        <div class="video-player-wrapper">
+            <iframe 
+                src="https://www.youtube.com/embed/UvdvU_bHKM0?autoplay=1&mute=1&rel=0&modestbranding=1" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div style="margin-top:10px; font-weight: bold; color: #fb8c00;">
+            【国会中継】「国際紛争と日本の供給力」参議院議員 神谷宗幣 国会質疑
+        </div>
+    </section>
+    <div class="section-title">NAVIGATION MENU</div>
+    <nav class="grid-5col">
+        <div class="nav-btn">No.1</div>
+        <div class="nav-btn">No.2</div>
+        <div class="nav-btn">No.3</div>
+        <a href="no4.html" class="nav-btn">Music</a>
+        <div class="nav-btn">No.5</div>
+        <a href="https://www.gov-online.go.jp/governmentlinks/" target="_blank" class="nav-btn">官公庁サイト</a>
+        <a href="https://www.j-lis.go.jp/spd/map-search/cms_1069.html" target="_blank" class="nav-btn">自治体マップ</a>
+        <a href="https://uub.jp/map/kyoto/" target="_blank" class="nav-btn">47都道府県地図</a>
+        <div class="nav-btn">No.9</div>
+        <a href="no10.html" class="nav-btn nav-link-special">Links集 (No.10)</a>
+    </nav>
 
-<div class="container">
-    <div class="card">
-        <h2>Smart Tools</h2>
-        <p>Photoshopの効率化や自作Pythonツールのアーカイブ。制作を支える心強い相棒たちをまとめています。</p>
-        <a href="no1.html">Toolsを開く →</a>
+    <div class="section-title sansei">SANSEITO AREA</div>
+    <div class="grid-5col">
+        <a href="https://sanseito.jp/" target="_blank" class="sansei-btn">公式サイト</a>
+        <a href="https://sanseito.jp/news/" target="_blank" class="sansei-btn">最新ニュース</a>
+        <a href="https://info.sanseito.jp/" target="_blank" class="sansei-btn">イベント</a>
+        <a href="https://sanseito.jp/member/" target="_blank" class="sansei-btn">メンバー</a>
+        <a href="https://sanseito.jp/2020/candidate/" target="_blank" class="sansei-btn">候補予定者</a>
+        <a href="https://www.youtube.com/@sanseito-official" target="_blank" class="sansei-btn">YouTube</a>
+        <a href="https://x.com/sansei411" target="_blank" class="sansei-btn">X (旧Twitter)</a>
+        <a href="https://www.instagram.com/sanseito" target="_blank" class="sansei-btn">Instagram</a>
+        <a href="https://www.tiktok.com/@sanseito" target="_blank" class="sansei-btn">TikTok</a>
+        <a href="https://go2senkyo.com/articles/tag/%E5%8F%82%E6%94%BF%E5%85%9A" target="_blank" class="sansei-btn">選挙ドットコム</a>
     </div>
 
-    <div class="card">
-        <h2>Music Gallery</h2>
-        <p>癒やしのsayaさんカバーと、最新チャート20曲をセレクト。高音質な音楽体験をポータルから。</p>
-        <a href="no4.html">Musicを開く →</a>
+    <div class="grid-4col">
+        <img src="https://img.youtube.com/vi/av8FzH-rl_0/mqdefault.jpg" class="video-item" onclick="openVideo('av8FzH-rl_0')">
+        <img src="https://img.youtube.com/vi/anwipaF_gLU/mqdefault.jpg" class="video-item" onclick="openVideo('anwipaF_gLU')">
+        <img src="https://img.youtube.com/vi/78uHp5bLyto/mqdefault.jpg" class="video-item" onclick="openVideo('78uHp5bLyto')">
+        <img src="https://img.youtube.com/vi/kcyuEbUbSr8/mqdefault.jpg" class="video-item" onclick="openVideo('kcyuEbUbSr8')">
     </div>
 
-    <div class="card">
-        <h2>Political Insight</h2>
-        <p>国政の動向や重要な議論をピックアップ。市民として知っておくべき情報をキュレーションしています。</p>
-        <a href="#">Newsをチェック →</a>
+    <div class="section-title">PHOTO GALLERY</div>
+    <div class="grid-4col">
+        <img src="photo1.jpg" class="photo-item"><img src="photo2.jpg" class="photo-item">
+        <img src="photo3.jpg" class="photo-item"><img src="photo4.jpg" class="photo-item">
+        <img src="photo5.jpg" class="photo-item"><img src="photo6.jpg" class="photo-item">
+        <img src="photo7.jpg" class="photo-item"><img src="photo8.jpg" class="photo-item">
     </div>
 
-    <div class="card">
-        <h2>Hobby Portal</h2>
-        <p>ミニベロのカスタマイズやアマチュア無線の記録など、多趣味な活動のポートフォリオです。</p>
-        <a href="#">Profileを見る →</a>
+    <div class="section-title">GENERAL VIDEO ARCHIVE</div>
+    <div class="grid-4col">
+        <img src="https://img.youtube.com/vi/G1hKzCkywM8/mqdefault.jpg" class="video-item" onclick="openVideo('G1hKzCkywM8')">
+        <img src="https://img.youtube.com/vi/a-8XiE7W7u4/mqdefault.jpg" class="video-item" onclick="openVideo('a-8XiE7W7u4')">
+        <img src="https://img.youtube.com/vi/q2_c2_WfJFg/mqdefault.jpg" class="video-item" onclick="openVideo('q2_c2_WfJFg')">
+        <img src="https://img.youtube.com/vi/BpITZk7sa8E/mqdefault.jpg" class="video-item" onclick="openVideo('BpITZk7sa8E')">
+        <img src="https://img.youtube.com/vi/9WfVd_3MizM/mqdefault.jpg" class="video-item" onclick="openVideo('9WfVd_3MizM')">
+        <img src="https://img.youtube.com/vi/XqX8Zz_X_lY/mqdefault.jpg" class="video-item" onclick="openVideo('XqX8Zz_X_lY')">
+        <img src="https://img.youtube.com/vi/L0MK7qz13bU/mqdefault.jpg" class="video-item" onclick="openVideo('L0MK7qz13bU')">
+        <img src="https://img.youtube.com/vi/oHg5SJYRHA0/mqdefault.jpg" class="video-item" onclick="openVideo('oHg5SJYRHA0')">
+    </div>
+
+</div>
+
+<div id="overlay" onclick="closeOverlay()">
+    <div id="overlay-content" onclick="event.stopPropagation()">
+        <iframe id="overlay-video" src="" frameborder="0" allowfullscreen></iframe><br>
+        <button class="close-btn" onclick="closeOverlay()">× CLOSE</button>
     </div>
 </div>
 
-<footer>
+<script>
+    function openVideo(id) {
+        const video = document.getElementById('overlay-video');
+        video.src = "https://www.youtube.com/embed/" + id + "?autoplay=1";
+        document.getElementById('overlay').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closeOverlay() {
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('overlay-video').src = '';
+        document.body.style.overflow = '';
+    }
+</script>
+
+<footer style="margin: 100px 0 50px; color: #475569; font-size: 1rem;">
     &copy; 2026 MIYABI'S PORTAL
 </footer>
 
