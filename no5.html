@@ -3,34 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>川さん - MIYABI'S PORTAL</title>
+    <title>川 裕一郎 プロフィール - MIYABI'S PORTAL</title>
     <style>
         body { 
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", sans-serif;
             margin: 0; background: #020617; text-align: center; color: #e2e8f0; 
         }
 
-        /* ヘッダーの枠組み（富士山と同じ高さ450pxを維持） */
+        /* ヘッダー */
         .header-container { 
             position: relative; width: 100%; height: 450px; 
             overflow: hidden; background: #000;
-            display: flex; align-items: center; justify-content: center; /* 画像を中央に */
+            display: flex; align-items: center; justify-content: center;
         }
 
-        /* --- 【川さんの画像専用の調整】 --- */
         .header-image { 
-            /* 横幅いっぱいにせず、高さに合わせてサイズを抑える */
-            height: 80%;      /* ヘッダーの高さの80%に縮小 */
-            width: auto;      /* 横幅は比率を保って自動調整 */
-            max-width: 90%;   /* スマホでもはみ出さない */
-            
-            /* 画質をクッキリさせる設定 */
+            height: 80%; width: auto; max-width: 90%;
             object-fit: contain; 
             image-rendering: -webkit-optimize-contrast; 
             image-rendering: crisp-edges;
-
-            opacity: 1.0;     /* 荒く見えないよう透明度をなくしてハッキリさせる */
-            display: block;
+            opacity: 1.0; display: block;
         }
 
         .header-text { 
@@ -44,11 +36,90 @@
 
         .main-wrapper { max-width: 1400px; margin: 0 auto; padding: 0 20px; text-align: left; }
 
-        .section-title { 
-            margin-top: 70px; padding: 15px 0; font-weight: bold; font-size: 1.5rem;
-            color: #f8fafc; letter-spacing: 0.1em;
-            border-bottom: 2px solid #38bdf8; 
+        /* --- プロフィールセクションのレイアウト --- */
+        .profile-flex {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            background: rgba(255,255,255,0.03);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid rgba(56, 189, 248, 0.1);
+        }
+
+        /* 左側：テキストエリア */
+        .profile-text-container {
+            flex: 1;
+        }
+
+        /* 右側：写真エリア */
+        .profile-photo-container {
+            flex: 0 0 350px; /* 写真の幅を350pxに固定 */
+        }
+        .profile-photo {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        /* テキスト装飾 */
+        .profile-name {
+            font-size: 2.5rem;
+            letter-spacing: 0.1em;
+            color: #fff;
+            margin: 0 0 20px 0;
+        }
+        .profile-basic-info {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #cbd5e1;
             margin-bottom: 30px;
+        }
+
+        /* 役職・リンクのリストスタイル */
+        .info-h3 {
+            font-size: 1.3rem;
+            color: #38bdf8;
+            border-left: 4px solid #38bdf8;
+            padding-left: 15px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .info-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+        .info-list li::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: #38bdf8;
+            font-size: 0.8rem;
+            top: 4px;
+        }
+
+        /* リンクの色 */
+        .info-list a {
+            color: #38bdf8;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .info-list a:hover {
+            text-decoration: underline;
+            color: #fff;
         }
 
         .back-btn {
@@ -61,10 +132,24 @@
         }
         .back-btn:hover { background: rgba(56, 189, 248, 0.2); transform: translateX(-5px); }
 
+        /* スマホ対応 */
         @media (max-width: 1024px) {
             .header-container { height: 320px; }
             .header-text h1 { font-size: 2rem; }
-            .header-image { height: 75%; } /* スマホでもさらに少し小さくして画質維持 */
+            .header-image { height: 75%; }
+            
+            .profile-flex {
+                flex-direction: column-reverse; /* 写真を上、テキストを下 */
+                padding: 20px;
+                gap: 20px;
+            }
+            .profile-photo-container {
+                flex: none;
+                width: 100%;
+                max-width: 300px; /* スマホでは少し小さめに */
+                margin: 0 auto; /* 中央配置 */
+            }
+            .profile-name { font-size: 2rem; }
         }
     </style>
 </head>
@@ -80,11 +165,47 @@
 <div class="main-wrapper">
     <a href="index.html" class="back-btn">← 戻る</a>
 
-    <div class="section-title">川さんのアーカイブ</div>
-    
-    <div style="background: rgba(255,255,255,0.03); padding: 30px; border-radius: 12px; font-size: 1.1rem; line-height: 1.8; color: #cbd5e1;">
-        ヘッダーの「川さん」画像を引き伸ばさず、本来の画質を活かして表示するように調整しました。<br>
-        富士山（ホーム画面）のレイアウトは一切変えていません。
+    <div class="profile-flex">
+        
+        <div class="profile-text-container">
+            <h2 class="profile-name">川 裕一郎</h2>
+            
+            <div class="profile-basic-info">
+                昭和46年10月27日 金沢市生まれ O型<br>
+                趣味／愛犬と散歩、ゴルフ、旅行、映画鑑賞<br>
+                地元企業役員を経て、弱い立場の人に光が当たらない現状を変えるため政治の道を志す。
+            </div>
+
+            <h3 class="info-h3">主な役職</h3>
+            <ul class="info-list">
+                <li>参政党石川第1区国政改革委員</li>
+                <li>参政党副幹事長兼副事務局長</li>
+                <li>救う会石川 幹事長</li>
+                <li>金沢市南倫理法人会会員</li>
+                <li>石川盛徳会会員・志命塾会員</li>
+                <li>崎浦地区町会連合会相談役</li>
+                <li>崎浦公民館運営審議委員</li>
+                <li>石川県日曜野球協会顧問</li>
+                <li>国際空手道連盟極真会館顧問</li>
+                <li>兼六レッドソックス顧問 etc</li>
+            </ul>
+
+            <h3 class="info-h3">SNS / LINKS</h3>
+            <ul class="info-list">
+                <li>X：<a href="https://x.com/y16kawa" target="_blank">https://x.com/y16kawa</a></li>
+                <li>Instagram：<a href="https://x.com/y16kawa" target="_blank">https://x.com/y16kawa</a></li>
+                <li>Facebook：<a href="https://www.facebook.com/y16kawa" target="_blank">https://www.facebook.com/y16kawa</a></li>
+                <li>YouTube：<a href="https://www.youtube.com/@kaway16" target="_blank">https://www.youtube.com/@kaway16</a></li>
+                <li>公式サイト：<a href="https://y16.jp/" target="_blank">https://y16.jp/</a></li>
+                <li style="margin-top: 10px;">参政党石川HP：<a href="https://ishikawakenren.hp.peraichi.com/" target="_blank">https://ishikawakenren.hp.peraichi.com/</a></li>
+                <li>石川県連 X：<a href="https://x.com/sanseitou3" target="_blank">https://x.com/sanseitou3</a></li>
+            </ul>
+        </div>
+
+        <div class="profile-photo-container">
+            <img src="potos/kawa002.jpg" alt="川 裕一郎" class="profile-photo">
+        </div>
+
     </div>
 </div>
 
