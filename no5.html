@@ -43,7 +43,9 @@
         .profile-photo {
             width: 100%; height: auto; border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 2px solid rgba(255,255,255,0.1);
+            cursor: pointer; transition: 0.3s;
         }
+        .profile-photo:hover { transform: scale(1.02); border-color: #38bdf8; }
 
         .profile-name { font-size: 2.5rem; letter-spacing: 0.1em; color: #fff; margin: 0 0 20px 0; }
         .profile-basic-info { font-size: 1.1rem; line-height: 1.8; color: #cbd5e1; margin-bottom: 30px; }
@@ -54,7 +56,7 @@
         .info-list a { color: #38bdf8; text-decoration: none; transition: 0.3s; }
         .info-list a:hover { text-decoration: underline; color: #fff; }
 
-        /* ギャラリーセクション共通 */
+        /* ギャラリーセクション */
         .section-title { 
             margin-top: 70px; padding: 15px 0; font-weight: bold; font-size: 1.5rem;
             color: #f8fafc; letter-spacing: 0.1em; border-bottom: 1px solid rgba(56, 189, 248, 0.2); 
@@ -77,23 +79,15 @@
             transform: scale(1.05); box-shadow: 0 10px 30px rgba(0,0,0,0.7); border-color: #38bdf8; 
         }
 
-        /* --- オーバーレイ（動画・写真共通） --- */
+        /* オーバーレイ */
         #overlay { 
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0.95); align-items: center; justify-content: center; z-index: 10000; 
-            cursor: pointer; /* 黒背景クリックで閉じる */
+            cursor: pointer;
         }
         #overlay-content { width: 95%; max-width: 1200px; text-align: center; position: relative; cursor: default; }
-        
-        /* 動画用（初期状態） */
         #overlay-video { width: 100%; aspect-ratio: 16/9; box-shadow: 0 0 50px rgba(0,0,0,1); border: 1px solid #333; display: none; }
-        
-        /* --- 【新規】写真用拡大スタイル --- */
-        #overlay-image { 
-            max-width: 100%; max-height: 90vh; /* 画面の高さの90%までに制限 */
-            border-radius: 8px; border: 4px solid #fff; box-shadow: 0 0 50px rgba(0,0,0,1); 
-            display: none; object-fit: contain; /* 縦横比を維持 */
-        }
+        #overlay-image { max-width: 100%; max-height: 85vh; border-radius: 8px; border: 3px solid #fff; display: none; object-fit: contain; }
 
         .close-btn { margin-top: 30px; background: #ef4444; color: #fff; border: none; padding: 15px 60px; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1.2rem; }
 
@@ -110,7 +104,6 @@
             .profile-flex { flex-direction: column-reverse; padding: 30px; gap: 30px; }
             .profile-photo-container { flex: none; width: 100%; max-width: 350px; margin: 0 auto; }
             .grid-4col { grid-template-columns: repeat(2, 1fr); }
-            #overlay-content { max-width: 100%; }
         }
     </style>
 </head>
@@ -132,6 +125,7 @@
                 趣味／愛犬と散歩、ゴルフ、旅行、映画鑑賞<br>
                 地元企業役員を経て、弱い立場の人に光が当たらない現状を変えるため政治の道を志す。
             </div>
+
             <h3 class="info-h3">主な役職</h3>
             <ul class="info-list">
                 <li>参政党石川第1区国政改革委員 / 参政党副幹事長兼副事務局長</li>
@@ -140,13 +134,22 @@
                 <li>崎浦公民館運営審議委員 / 石川県日曜野球協会顧問</li>
                 <li>国際空手道連盟極真会館顧問 / 兼六レッドソックス顧問 etc</li>
             </ul>
-            <h3 class="info-h3">SNS / LINKS</h3>
+
+            <h3 class="info-h3">SNS / LINKS（川 裕一郎 個人）</h3>
             <ul class="info-list">
-                <li>X：<a href="https://x.com/y16kawa" target="_blank">@y16kawa</a></li>
+                <li>X (旧Twitter)：<a href="https://x.com/y16kawa" target="_blank">@y16kawa</a></li>
                 <li>Instagram：<a href="https://www.instagram.com/y16kawa" target="_blank">Instagram</a></li>
                 <li>Facebook：<a href="https://www.facebook.com/y16kawa" target="_blank">Facebook</a></li>
                 <li>YouTube：<a href="https://www.youtube.com/@kaway16" target="_blank">YouTube Channel</a></li>
                 <li>公式サイト：<a href="https://y16.jp/" target="_blank">y16.jp</a></li>
+            </ul>
+
+            <h3 class="info-h3">参政党 石川県連 情報</h3>
+            <ul class="info-list">
+                <li>参政党石川県連HP：<a href="https://ishikawakenren.hp.peraichi.com/" target="_blank">公式ホームページ</a></li>
+                <li>X (県連)：<a href="https://x.com/sanseitou3" target="_blank">@sanseitou3</a></li>
+                <li>Instagram (県連)：<a href="https://www.instagram.com/sanseito_ishikawa/?hl=ja" target="_blank">Instagram (石川)</a></li>
+                <li>YouTube (県連)：<a href="https://www.youtube.com/@%E5%8F%82%E6%94%BF%E5%85%9A%E7%9F%B3%E5%B7%9D%E7%9C%8C%E9%80%A3" target="_blank">YouTube (石川県連)</a></li>
             </ul>
         </div>
         <div class="profile-photo-container">
@@ -200,39 +203,26 @@
 </div>
 
 <script>
-    // 動画用
     function openVideo(id) {
-        const video = document.getElementById('overlay-video');
-        const image = document.getElementById('overlay-image');
-        
-        // 動画を表示、写真を非表示
-        image.style.display = 'none';
-        video.style.display = 'block';
-        
-        video.src = "https://www.youtube.com/embed/" + id + "?autoplay=1";
+        const v = document.getElementById('overlay-video');
+        const i = document.getElementById('overlay-image');
+        i.style.display = 'none';
+        v.style.display = 'block';
+        v.src = "https://www.youtube.com/embed/" + id + "?autoplay=1";
         document.getElementById('overlay').style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
-
-    // 【新規】写真用
     function openPhoto(src) {
-        const video = document.getElementById('overlay-video');
-        const image = document.getElementById('overlay-image');
-        
-        // 写真を表示、動画を非表示
-        video.style.display = 'none';
-        image.style.display = 'block';
-        
-        image.src = src; // クリックされた写真のパスを設定
+        const v = document.getElementById('overlay-video');
+        const i = document.getElementById('overlay-image');
+        v.style.display = 'none';
+        i.style.display = 'block';
+        i.src = src;
         document.getElementById('overlay').style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
-
-    // 閉じる処理（共通）
     function closeOverlay() {
         document.getElementById('overlay').style.display = 'none';
-        
-        // リセット
         document.getElementById('overlay-video').src = '';
         document.getElementById('overlay-image').src = '';
         document.body.style.overflow = '';
