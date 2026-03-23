@@ -10,7 +10,6 @@
             --accent-blue: #38bdf8;
             --accent-orange: #fb8c00;
             --bg-dark: #020617;
-            --card-bg: rgba(255, 255, 255, 0.03);
         }
 
         body { 
@@ -78,18 +77,6 @@
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
         .video-caption { margin-top: 15px; color: var(--primary-pink); font-weight: bold; font-size: 1.1rem; }
 
-        /* カードセクション (3列) */
-        .card-container-3col { 
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin: 50px 0; 
-        }
-        .card { 
-            background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 20px; padding: 30px; text-decoration: none; color: inherit; transition: 0.3s; text-align: left;
-        }
-        .card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.05); border-color: var(--primary-pink); }
-        .card h2 { color: var(--primary-pink); margin: 0 0 15px 0; font-size: 1.6rem; }
-        .card p { margin: 0; font-size: 1rem; color: #94a3b8; }
-
         /* オーバーレイ */
         #overlay { 
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
@@ -103,7 +90,6 @@
         @media (max-width: 1024px) {
             .grid-5col { grid-template-columns: repeat(2, 1fr); }
             .grid-4col { grid-template-columns: repeat(2, 1fr); }
-            .card-container-3col { grid-template-columns: 1fr; }
             .header-container { height: 350px; }
             .header-text h1 { font-size: 2.2rem; }
         }
@@ -160,21 +146,6 @@
         <img src="https://img.youtube.com/vi/anwipaF_gLU/mqdefault.jpg" class="video-item" onclick="openVideo('anwipaF_gLU')">
         <img src="https://img.youtube.com/vi/78uHp5bLyto/mqdefault.jpg" class="video-item" onclick="openVideo('78uHp5bLyto')">
         <img src="https://img.youtube.com/vi/kcyuEbUbSr8/mqdefault.jpg" class="video-item" onclick="openVideo('kcyuEbUbSr8')">
-    </div>
-
-    <div class="card-container-3col">
-        <a href="no1.html" class="card">
-            <h2>Smart Tools</h2>
-            <p>Photoshopショートカットや最新の便利ツールに素早くアクセス。作業効率を向上させます。</p>
-        </a>
-        <a href="no4.html" class="card">
-            <h2>Music Gallery</h2>
-            <p>癒やしのsayaさんカバー曲と最新ヒットチャート20選。お気に入りの音楽をチェック。</p>
-        </a>
-        <div class="card">
-            <h2>Latest News</h2>
-            <p>日々更新される情報のアーカイブ。気になる最新トピックを素早くキャッチアップ。</p>
-        </div>
     </div>
 
     <div class="section-title">PHOTO GALLERY</div>
